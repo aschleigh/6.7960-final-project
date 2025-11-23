@@ -1,0 +1,24 @@
+{
+  "similarity_matrix": [
+    [
+      1.0,
+      -0.057381950318813324
+    ],
+    [
+      -0.057381950318813324,
+      1.0000001192092896
+    ]
+  ],
+  "concepts": [
+    "formal",
+    "positive"
+  ],
+  "categories": {
+    "orthogonal": [
+      "('formal', 'positive', -0.057381950318813324)"
+    ],
+    "aligned": [],
+    "opposing": [],
+    "other": []
+  }
+}
