@@ -33,8 +33,8 @@ from evaluation.classifiers import MultiAttributeEvaluator
 from evaluation.metrics import QualityMetrics
 from evaluation.geometry import compute_similarity_matrix
 
+# helper conversion function
 def convert_to_native(obj):
-    """Recursively convert numpy types to Python native types for JSON serialization."""
     if isinstance(obj, dict):
         return {k: convert_to_native(v) for k, v in obj.items()}
     elif isinstance(obj, list):
@@ -50,7 +50,7 @@ def convert_to_native(obj):
     elif obj is None or isinstance(obj, (int, float, str, bool)):
         return obj
     else:
-        return str(obj)  # Fallback: convert to string
+        return str(obj)  
 
 def run_extraction_validation(
     model,
@@ -60,16 +60,13 @@ def run_extraction_validation(
     layers: List[int],
     output_dir: Path
 ) -> Dict:
-    """
-    Step 1: Extract vectors and validate they separate positive/negative examples.
-    """
+    
     print("\n" + "="*60)
-    print("STEP 1: Extracting and Validating Steering Vectors")
+    print("STEP 1: Extracting and validating steering vectors")
     print("="*60)
     
     results = {"extraction_quality": {}}
     
-    # Extract all vectors
     steering_vectors = extract_all_vectors(
         model=model,
         tokenizer=tokenizer,
@@ -79,7 +76,6 @@ def run_extraction_validation(
         cache_dir=output_dir / "vectors"
     )
     
-    # Validate each vector
     for concept in concepts:
         results["extraction_quality"][concept] = {}
         
@@ -97,14 +93,13 @@ def run_extraction_validation(
             print(f"  Cohen's d: {quality['cohens_d']:.3f}")
             print(f"  Separation accuracy: {quality['separation_accuracy']:.1%}")
     
-    # Save results
-    try:
-        extraction_quality = convert_to_native(results["extraction_quality"])
-        with open(output_dir / "extraction_quality.json", "w") as f:
-            json.dump(extraction_quality, f, indent=2)
-        print(f"✓ Extraction quality saved")
-    except Exception as e:
-        print(f"⚠ Warning: Failed to save extraction quality: {e}")
+    # try:
+    extraction_quality = convert_to_native(results["extraction_quality"])
+    with open(output_dir / "extraction_quality.json", "w") as f:
+        json.dump(extraction_quality, f, indent=2)
+    print(f"✓ Extraction quality saved")
+    # except Exception as e:
+    #     print(f"Warning: Failed to save extraction quality: {e}")
     return steering_vectors, extraction_quality
 
 
@@ -113,38 +108,33 @@ def run_geometry_analysis(
     default_layer: int,
     output_dir: Path
 ) -> Dict:
-    """
-    Step 2: Analyze geometric relationships between steering vectors.
-    """
+
     print("\n" + "="*60)
-    print("STEP 2: Analyzing Steering Vector Geometry")
+    print("STEP 2: Analyzing steering vector geometry")
     print("="*60)
     
-    # Get vectors at default layer
     vectors_at_layer = {
         concept: vectors[default_layer]
         for concept, vectors in steering_vectors.items()
     }
     
-    # Compute similarity matrix
+    # pairwise similarity (should be 1 along diagonals)
     sim_matrix, concepts = compute_similarity_matrix(vectors_at_layer)
     
     print("\nCosine Similarity Matrix:")
     print("-" * 40)
     
-    # Print header
     header = "         " + " ".join([f"{c[:6]:>7}" for c in concepts])
     print(header)
     
-    # Print rows
     for i, c1 in enumerate(concepts):
         row = f"{c1[:8]:<8}"
         for j, c2 in enumerate(concepts):
             row += f" {sim_matrix[i,j]:>7.3f}"
         print(row)
     
-    # Categorize pairs
     from evaluation.geometry import categorize_pairs_by_similarity
+    # sorts pairs into buckets based on how similar they are
     categories = categorize_pairs_by_similarity(sim_matrix, concepts)
     
     print("\n\nPair Categories:")
@@ -155,7 +145,6 @@ def run_geometry_analysis(
             for c1, c2, sim in pairs:
                 print(f"  {c1} <-> {c2}: {sim:.3f}")
     
-    # Save results
     results = {
         "similarity_matrix": sim_matrix.tolist(),
         "concepts": concepts,
@@ -165,15 +154,14 @@ def run_geometry_analysis(
         }
     }
     
-    # Convert to native types
     results = convert_to_native(results)
     
-    try:
-        with open(output_dir / "geometry_analysis.json", "w") as f:
-            json.dump(results, f, indent=2)
-        print(f"✓ Geometry results saved")
-    except Exception as e:
-        print(f"⚠ Warning: Failed to save geometry JSON: {e}")
+    # try:
+    with open(output_dir / "geometry_analysis.json", "w") as f:
+        json.dump(results, f, indent=2)
+    print(f"✓ Geometry results saved")
+    # except Exception as e:
+    #     print(f"Warning: Failed to save geometry JSON: {e}")
 
 
 def run_steering_validation(
@@ -181,20 +169,18 @@ def run_steering_validation(
     tokenizer,
     steering_vectors: Dict[str, Dict[int, torch.Tensor]],
     concepts: List[str],
-    default_layer: int,
+    layers_per_concept,
     test_prompts: List[str],
     output_dir: Path,
     n_prompts: int = 10,
     n_generations: int = 3
 ) -> Dict:
-    """
-    Step 3: Validate that steering actually changes generation in expected ways.
-    """
+    # does steering behave as expected?
     print("\n" + "="*60)
     print("STEP 3: Validating Steering Effects")
     print("="*60)
     
-    # Initialize evaluator
+    
     evaluator = MultiAttributeEvaluator(concepts)
     quality_metrics = QualityMetrics()
     
@@ -203,10 +189,10 @@ def run_steering_validation(
         "aggregated": {}
     }
     
-    # Use subset of prompts
     prompts = test_prompts[:n_prompts]
     
     for concept in concepts:
+        default_layer = layers_per_concept[concept]
         print(f"\n\nTesting: {concept}")
         print("-" * 40)
         
@@ -218,7 +204,7 @@ def run_steering_validation(
         }
         
         for prompt in tqdm(prompts, desc=f"Generating for {concept}"):
-            # Generate baseline
+            # baseline
             for _ in range(n_generations):
                 baseline_text = generate_baseline(
                     model, tokenizer, prompt,
@@ -228,8 +214,7 @@ def run_steering_validation(
                 baseline_score = evaluator.classifiers[concept].score(baseline_text)
                 concept_results["baseline"]["texts"].append(baseline_text)
                 concept_results["baseline"]["scores"].append(baseline_score)
-            
-            # Generate with steering
+            # steered 
             config = SteeringConfig(vector=sv, layer=default_layer, coefficient=1.0)
             for _ in range(n_generations):
                 steered_text = generate_with_steering(
@@ -241,7 +226,6 @@ def run_steering_validation(
                 concept_results["steered"]["texts"].append(steered_text)
                 concept_results["steered"]["scores"].append(steered_score)
         
-        # Compute statistics
         baseline_scores = concept_results["baseline"]["scores"]
         steered_scores = concept_results["steered"]["scores"]
         
@@ -250,7 +234,7 @@ def run_steering_validation(
         steered_mean = np.mean(steered_scores)
         improvement = steered_mean - baseline_mean
         
-        # Success rate: fraction where steered > baseline
+        # success rate: fraction where steered > baseline
         n_samples = len(baseline_scores)
         successes = sum(
             1 for s, b in zip(steered_scores, baseline_scores) if s > b
@@ -271,7 +255,6 @@ def run_steering_validation(
         print(f"  Improvement:    {improvement:+.3f}")
         print(f"  Success rate:   {success_rate:.1%}")
         
-        # Quality check
         quality_comparison = quality_metrics.compare(
             concept_results["baseline"]["texts"],
             concept_results["steered"]["texts"]
@@ -282,7 +265,6 @@ def run_steering_validation(
         
         results["per_concept"][concept] = concept_results
     
-    # Aggregate statistics
     all_improvements = [
         results["per_concept"][c]["statistics"]["improvement"]
         for c in concepts
@@ -299,30 +281,28 @@ def run_steering_validation(
         "total_concepts": len(concepts)
     }
     
-    # Save results (excluding full texts to save space)
-    try:
-        results_to_save = {
-            "per_concept": {
-                c: {
-                    "statistics": r["statistics"],
-                    "quality": r["quality"]
-                }
-                for c, r in results["per_concept"].items()
-            },
-            "aggregated": results["aggregated"]
-        }
-        
-        # Convert numpy types to native Python types
-        results_to_save = convert_to_native(results_to_save)
-        
-        with open(output_dir / "steering_validation.json", "w") as f:
-            json.dump(results_to_save, f, indent=2)
-        
-        print(f"\n✓ Results saved to {output_dir / 'steering_validation.json'}")
+    # try:
+    results_to_save = {
+        "per_concept": {
+            c: {
+                "statistics": r["statistics"],
+                "quality": r["quality"]
+            }
+            for c, r in results["per_concept"].items()
+        },
+        "aggregated": results["aggregated"]
+    }
     
-    except Exception as e:
-        print(f"\n⚠ Warning: Failed to save JSON: {e}")
-        print("Continuing anyway...")
+    results_to_save = convert_to_native(results_to_save)
+    
+    with open(output_dir / "steering_validation.json", "w") as f:
+        json.dump(results_to_save, f, indent=2)
+    
+    print(f"\n✓ Results saved to {output_dir / 'steering_validation.json'}")
+    
+    # except Exception as e:
+    #     print(f"Warning: Failed to save JSON: {e}")
+    #     print("Continuing anyway...")
     
     return results
 
@@ -343,7 +323,7 @@ def run_coefficient_analysis(
     Step 4: Analyze how steering coefficient affects results.
     """
     print("\n" + "="*60)
-    print(f"STEP 4: Coefficient Analysis for '{concept}'")
+    print(f"STEP 4: Coefficient analysis for '{concept}'")
     print("="*60)
     
     from evaluation.classifiers import AttributeClassifier
@@ -370,7 +350,7 @@ def run_coefficient_analysis(
                 results[coef]["scores"].append(score)
                 results[coef]["texts"].append(text)
         
-        # Compute perplexity
+        # log(perplexity) = entropy. calculates how likely the generated text is seen under this model.
         perplexities = quality_metrics.perplexity_calc.compute_batch(results[coef]["texts"])
         results[coef]["perplexities"] = perplexities
         
@@ -429,6 +409,10 @@ def find_optimal_layer(
             for _ in range(n_generations):
                 text = generate_with_steering(model, tokenizer, prompt, config)
                 score = classifier.score(text)
+                print("CONCEPT: ", concept)
+                print("PROMPT: ", prompt)
+                print("TEXT GENERATED: ", text)
+                print("SCORE: ", score)
                 scores.append(score)
         
         import numpy as np
@@ -495,13 +479,26 @@ def main():
         steering_vectors, extraction_results = run_extraction_validation(
             model, tokenizer, concepts, contrastive_pairs, layers, output_dir
         )
+
+    optimal_layers = {}
+    for concept in concepts:
+        optimal_layers[concept] = find_optimal_layer(
+            model,
+            tokenizer,
+            steering_vectors,
+            concept,
+            layers,
+            test_prompts,
+            n_prompts=5,
+            n_generations=2
+        )
     
     # Step 2: Geometry analysis
     geometry_results = run_geometry_analysis(steering_vectors, default_layer, output_dir)
     
     # Step 3: Steering validation
     steering_results = run_steering_validation(
-        model, tokenizer, steering_vectors, concepts, default_layer,
+        model, tokenizer, steering_vectors, concepts, optimal_layers,
         test_prompts, output_dir, n_prompts=10, n_generations=3
     )
     
@@ -510,8 +507,9 @@ def main():
         steering_results["per_concept"].keys(),
         key=lambda c: steering_results["per_concept"][c]["statistics"]["improvement"]
     )
+    coef_layer = optimal_layers[best_concept]
     coefficient_results = run_coefficient_analysis(
-        model, tokenizer, steering_vectors, best_concept, default_layer,
+        model, tokenizer, steering_vectors, best_concept, coef_layer,
         test_prompts, output_dir
     )
     

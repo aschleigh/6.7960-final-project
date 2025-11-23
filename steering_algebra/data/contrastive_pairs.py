@@ -9,21 +9,12 @@ Each concept needs pairs of (positive_prompt, negative_prompt) where:
 from typing import List, Tuple, Dict
 import random
 
-# Type alias for clarity
 ContrastivePair = Tuple[str, str]  # (positive, negative)
+
+# below we have formal vs. casual, positive vs. negative, verbose vs. concise, confident vs. uncertain, technical vs. simple
 
 
 def get_contrastive_pairs(concept: str, n_pairs: int = 100) -> List[ContrastivePair]:
-    """
-    Get contrastive pairs for a given concept.
-    
-    Args:
-        concept: Target concept (e.g., "formal", "positive")
-        n_pairs: Number of pairs to generate
-        
-    Returns:
-        List of (positive_prompt, negative_prompt) tuples
-    """
     generators = {
         "formal": _formal_pairs,
         "casual": _casual_pairs,
@@ -37,16 +28,14 @@ def get_contrastive_pairs(concept: str, n_pairs: int = 100) -> List[ContrastiveP
         "simple": _simple_pairs,
     }
     
-    if concept not in generators:
-        raise ValueError(f"Unknown concept: {concept}. Available: {list(generators.keys())}")
+    # if concept not in generators:
+    #     raise ValueError(f"Unknown concept: {concept}. Available: {list(generators.keys())}")
     
-    return generators[concept](n_pairs)
+    return generators[concept](n_pairs) 
 
 
 def _formal_pairs(n: int) -> List[ContrastivePair]:
-    """Generate formal vs casual contrastive pairs."""
     templates = [
-        # Template: (formal_prefix, casual_prefix, continuation)
         (
             "Please write a formal response: ",
             "Write a casual response: ",
@@ -86,9 +75,10 @@ def _formal_pairs(n: int) -> List[ContrastivePair]:
     
     pairs = []
     for _ in range(n):
-        template = random.choice(templates)
-        topic = random.choice(topics)
-        positive = f"{template[0]}{topic}"
+        template = random.choice(templates) # choose a random prompt
+        topic = random.choice(topics) # choose a random subject
+        # prompt creation 
+        positive = f"{template[0]}{topic}" 
         negative = f"{template[1]}{topic}"
         pairs.append((positive, negative))
     
@@ -96,13 +86,12 @@ def _formal_pairs(n: int) -> List[ContrastivePair]:
 
 
 def _casual_pairs(n: int) -> List[ContrastivePair]:
-    """Casual is the opposite of formal - swap the pair order."""
     formal_pairs = _formal_pairs(n)
+    # opposite of formal pairs
     return [(neg, pos) for pos, neg in formal_pairs]
 
 
 def _positive_pairs(n: int) -> List[ContrastivePair]:
-    """Generate positive vs negative sentiment pairs."""
     templates = [
         (
             "Write a positive review of: ",
@@ -157,13 +146,11 @@ def _positive_pairs(n: int) -> List[ContrastivePair]:
 
 
 def _negative_pairs(n: int) -> List[ContrastivePair]:
-    """Negative sentiment - swap positive pairs."""
     positive_pairs = _positive_pairs(n)
     return [(neg, pos) for pos, neg in positive_pairs]
 
 
 def _verbose_pairs(n: int) -> List[ContrastivePair]:
-    """Generate verbose vs concise pairs."""
     templates = [
         (
             "Write a detailed, comprehensive explanation of: ",
@@ -218,13 +205,11 @@ def _verbose_pairs(n: int) -> List[ContrastivePair]:
 
 
 def _concise_pairs(n: int) -> List[ContrastivePair]:
-    """Concise is opposite of verbose."""
     verbose_pairs = _verbose_pairs(n)
     return [(neg, pos) for pos, neg in verbose_pairs]
 
 
 def _confident_pairs(n: int) -> List[ContrastivePair]:
-    """Generate confident vs uncertain pairs."""
     templates = [
         (
             "State with absolute certainty: ",
@@ -279,13 +264,11 @@ def _confident_pairs(n: int) -> List[ContrastivePair]:
 
 
 def _uncertain_pairs(n: int) -> List[ContrastivePair]:
-    """Uncertain is opposite of confident."""
     confident_pairs = _confident_pairs(n)
     return [(neg, pos) for pos, neg in confident_pairs]
 
 
 def _technical_pairs(n: int) -> List[ContrastivePair]:
-    """Generate technical vs simple explanation pairs."""
     templates = [
         (
             "Explain to an expert with technical terminology: ",
@@ -340,25 +323,19 @@ def _technical_pairs(n: int) -> List[ContrastivePair]:
 
 
 def _simple_pairs(n: int) -> List[ContrastivePair]:
-    """Simple is opposite of technical."""
     technical_pairs = _technical_pairs(n)
     return [(neg, pos) for pos, neg in technical_pairs]
 
-
-# ============================================================
-# Utility functions
-# ============================================================
-
 def get_all_pairs(concepts: List[str], n_pairs: int = 100) -> Dict[str, List[ContrastivePair]]:
-    """Get contrastive pairs for all concepts."""
+    # 500 pairs total. Wondering if reversing is a good idea -- introducing some kind of bias or correlation?
+    # actually nvm they are regenerated 
     return {concept: get_contrastive_pairs(concept, n_pairs) for concept in concepts}
 
 
-def validate_pairs(pairs: List[ContrastivePair]) -> bool:
-    """Validate that pairs are properly formatted."""
-    for pos, neg in pairs:
-        if not isinstance(pos, str) or not isinstance(neg, str):
-            return False
-        if len(pos) == 0 or len(neg) == 0:
-            return False
-    return True
+# def validate_pairs(pairs: List[ContrastivePair]) -> bool:
+#     for pos, neg in pairs:
+#         if not isinstance(pos, str) or not isinstance(neg, str):
+#             return False
+#         if len(pos) == 0 or len(neg) == 0:
+#             return False
+#     return True

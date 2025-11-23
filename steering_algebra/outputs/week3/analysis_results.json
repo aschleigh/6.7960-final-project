@@ -6,68 +6,140 @@
       "coefficients": [
         {
           "coefficient": 0.0,
-          "mean_score": 0.7013992369174957,
-          "std_score": 0.23048185317718314,
+          "mean_score": 0.6341233919064204,
+          "std_score": 0.20954061455067213,
           "mean_perplexity": Infinity,
           "std_perplexity": NaN,
-          "mean_repetition": 0.012490979719408102,
-          "min_score": 0.5,
-          "max_score": 0.9970038533210754,
-          "success_rate": 0.5,
+          "mean_repetition": 0.016801950804127126,
+          "min_score": 0.37070074677467346,
+          "max_score": 0.9970979690551758,
+          "success_rate": 0.36666666666666664,
           "quality_score": 0.0
         },
         {
-          "coefficient": 0.5,
-          "mean_score": 0.8363994061946869,
-          "std_score": 0.15411498735579288,
-          "mean_perplexity": 6.771319377884504,
-          "std_perplexity": 2.1875787752790807,
-          "mean_repetition": 0.01839708489043396,
-          "min_score": 0.5698196291923523,
-          "max_score": 0.9968497157096863,
+          "coefficient": 0.25,
+          "mean_score": 0.8581527272860209,
+          "std_score": 0.14156702708017924,
+          "mean_perplexity": 7.514367207365661,
+          "std_perplexity": 2.280822698414279,
+          "mean_repetition": 0.008814328891080454,
+          "min_score": 0.579806923866272,
+          "max_score": 0.9972032308578491,
           "success_rate": 1.0,
-          "quality_score": 0.2871564418107421
+          "quality_score": 0.284456359038918
+        },
+        {
+          "coefficient": 0.5,
+          "mean_score": 0.8978582123915354,
+          "std_score": 0.13611898674386555,
+          "mean_perplexity": 7.557263475183094,
+          "std_perplexity": 3.140181340459581,
+          "mean_repetition": 0.014700379872554504,
+          "min_score": 0.5587393045425415,
+          "max_score": 0.9971756935119629,
+          "success_rate": 1.0,
+          "quality_score": 0.29705723545905477
+        },
+        {
+          "coefficient": 0.75,
+          "mean_score": 0.8562186857064565,
+          "std_score": 0.12964428475754994,
+          "mean_perplexity": 7.7491183795202705,
+          "std_perplexity": 2.976662809071694,
+          "mean_repetition": 0.02050522113834813,
+          "min_score": 0.5286841988563538,
+          "max_score": 0.9973141551017761,
+          "success_rate": 1.0,
+          "quality_score": 0.28095044079097
         },
         {
           "coefficient": 1.0,
-          "mean_score": 0.9222209632396698,
-          "std_score": 0.0798282460201694,
-          "mean_perplexity": 6.9087016721617704,
-          "std_perplexity": 2.1243020656909377,
-          "mean_repetition": 0.009021361412317097,
-          "min_score": 0.7834945917129517,
-          "max_score": 0.9972091317176819,
-          "success_rate": 1.0,
-          "quality_score": 0.3144526420523453
+          "mean_score": 0.8663581113020579,
+          "std_score": 0.17466447883139272,
+          "mean_perplexity": 7.776526588176858,
+          "std_perplexity": 2.3121476481858974,
+          "mean_repetition": 0.016082410537732583,
+          "min_score": 0.3585349917411804,
+          "max_score": 0.9972022771835327,
+          "success_rate": 0.9333333333333333,
+          "quality_score": 0.2839485211880638
+        },
+        {
+          "coefficient": 1.25,
+          "mean_score": 0.8669390122095744,
+          "std_score": 0.17879743255543612,
+          "mean_perplexity": 8.486353082707733,
+          "std_perplexity": 2.7186667295745175,
+          "mean_repetition": 0.01060220994105113,
+          "min_score": 0.41743358969688416,
+          "max_score": 0.9971634745597839,
+          "success_rate": 0.9333333333333333,
+          "quality_score": 0.27623075991688545
         },
         {
           "coefficient": 1.5,
-          "mean_score": 0.9408437728881835,
-          "std_score": 0.07016624212360507,
-          "mean_perplexity": 6.384282900761469,
-          "std_perplexity": 1.6088184961392527,
-          "mean_repetition": 0.007077690811402085,
-          "min_score": 0.7950276732444763,
-          "max_score": 0.997075080871582,
+          "mean_score": 0.8786540200312932,
+          "std_score": 0.13384305839080377,
+          "mean_perplexity": 8.260277784636195,
+          "std_perplexity": 2.601474788177987,
+          "mean_repetition": 0.011106402086898542,
+          "min_score": 0.4102835953235626,
+          "max_score": 0.9972291588783264,
+          "success_rate": 0.9666666666666667,
+          "quality_score": 0.28239299991599703
+        },
+        {
+          "coefficient": 1.75,
+          "mean_score": 0.9235024948914846,
+          "std_score": 0.09484852718213377,
+          "mean_perplexity": 7.775942190380534,
+          "std_perplexity": 2.6492131540124073,
+          "mean_repetition": 0.01467795534656184,
+          "min_score": 0.6906882524490356,
+          "max_score": 0.997187077999115,
           "success_rate": 1.0,
-          "quality_score": 0.32967652197266556
+          "quality_score": 0.302685025261185
         },
         {
           "coefficient": 2.0,
-          "mean_score": 0.8697413921356201,
-          "std_score": 0.12901379019279616,
-          "mean_perplexity": 8.002865489532367,
-          "std_perplexity": 2.3049386921501522,
-          "mean_repetition": 0.013269824045686112,
-          "min_score": 0.5507354736328125,
-          "max_score": 0.9969645142555237,
+          "mean_score": 0.919727889696757,
+          "std_score": 0.10694359116706079,
+          "mean_perplexity": 7.7262559029047715,
+          "std_perplexity": 2.5427743796339835,
+          "mean_repetition": 0.01807485257257838,
+          "min_score": 0.6649768352508545,
+          "max_score": 0.9972900152206421,
           "success_rate": 1.0,
-          "quality_score": 0.2824019374948549
+          "quality_score": 0.3020825471695849
+        },
+        {
+          "coefficient": 2.5,
+          "mean_score": 0.904192453622818,
+          "std_score": 0.13132825459261951,
+          "mean_perplexity": 7.958087032873778,
+          "std_perplexity": 3.366463444302862,
+          "mean_repetition": 0.021276890543355718,
+          "min_score": 0.560626745223999,
+          "max_score": 0.99724942445755,
+          "success_rate": 1.0,
+          "quality_score": 0.29412393220323607
+        },
+        {
+          "coefficient": 3.0,
+          "mean_score": 0.936524897813797,
+          "std_score": 0.09326095780527793,
+          "mean_perplexity": 7.4570782793936825,
+          "std_perplexity": 1.895507601771295,
+          "mean_repetition": 0.026787219360118585,
+          "min_score": 0.6226585507392883,
+          "max_score": 0.997215747833252,
+          "success_rate": 1.0,
+          "quality_score": 0.3112243119868333
         }
       ],
-      "optimal_coefficient": 1.5,
-      "optimal_score": 0.9408437728881835,
-      "optimal_perplexity": 6.384282900761469
+      "optimal_coefficient": 3.0,
+      "optimal_score": 0.936524897813797,
+      "optimal_perplexity": 7.4570782793936825
     }
   },
   "layer_ablation_single": {
@@ -77,42 +149,42 @@
       "layers": [
         {
           "layer": 8,
-          "mean_score": 0.901487284898758,
-          "std_score": 0.06697995518961876,
-          "mean_perplexity": 6.497602625555389,
+          "mean_score": 0.8922135293483734,
+          "std_score": 0.11190642984761115,
+          "mean_perplexity": 7.107839542084731,
           "success_rate": 1.0
         },
         {
           "layer": 10,
-          "mean_score": 0.9187174379825592,
-          "std_score": 0.10706807637253282,
-          "mean_perplexity": 6.843533308384039,
-          "success_rate": 1.0
+          "mean_score": 0.8493049810330073,
+          "std_score": 0.1622840340996634,
+          "mean_perplexity": 7.476150314569519,
+          "success_rate": 0.9666666666666667
         },
         {
           "layer": 12,
-          "mean_score": 0.9589196145534515,
-          "std_score": 0.047536616884979004,
-          "mean_perplexity": 7.463558500620971,
+          "mean_score": 0.8877166946729024,
+          "std_score": 0.11717275526164402,
+          "mean_perplexity": 7.737033537867378,
           "success_rate": 1.0
         },
         {
           "layer": 14,
-          "mean_score": 0.935251921415329,
-          "std_score": 0.06538711796478898,
-          "mean_perplexity": 7.477552951639136,
+          "mean_score": 0.8998476485411326,
+          "std_score": 0.1382643660151076,
+          "mean_perplexity": 7.318732710780113,
           "success_rate": 1.0
         },
         {
           "layer": 16,
-          "mean_score": 0.8862787902355194,
-          "std_score": 0.12187891465522688,
-          "mean_perplexity": 7.268550812511741,
-          "success_rate": 1.0
+          "mean_score": 0.8646913448969523,
+          "std_score": 0.16291153838065106,
+          "mean_perplexity": 7.500500287292251,
+          "success_rate": 0.9666666666666667
         }
       ],
-      "best_layer": 12,
-      "best_score": 0.9589196145534515
+      "best_layer": 14,
+      "best_score": 0.8998476485411326
     }
   },
   "layer_ablation_composition": {
@@ -121,32 +193,32 @@
     "same_layer": [
       {
         "layer": 8,
-        "mean_score_a": 0.8267117768526078,
-        "mean_score_b": 0.5769906051456928,
-        "joint_success_rate": 0.5
+        "mean_score_a": 0.8757049898306529,
+        "mean_score_b": 0.5935437039782604,
+        "joint_success_rate": 0.5666666666666667
       },
       {
         "layer": 10,
-        "mean_score_a": 0.880301558971405,
-        "mean_score_b": 0.619536780193448,
-        "joint_success_rate": 0.6
+        "mean_score_a": 0.8801167488098145,
+        "mean_score_b": 0.6957647571961085,
+        "joint_success_rate": 0.6666666666666666
       },
       {
         "layer": 12,
-        "mean_score_a": 0.9212305009365082,
-        "mean_score_b": 0.555599682033062,
-        "joint_success_rate": 0.5
+        "mean_score_a": 0.8720583359400431,
+        "mean_score_b": 0.5268877821664015,
+        "joint_success_rate": 0.5333333333333333
       },
       {
         "layer": 14,
-        "mean_score_a": 0.8237184226512909,
-        "mean_score_b": 0.7981991946697236,
-        "joint_success_rate": 0.9
+        "mean_score_a": 0.8900527596473694,
+        "mean_score_b": 0.7179696044574181,
+        "joint_success_rate": 0.7666666666666667
       },
       {
         "layer": 16,
-        "mean_score_a": 0.8736958205699921,
-        "mean_score_b": 0.6212867118418217,
+        "mean_score_a": 0.8724060773849487,
+        "mean_score_b": 0.6591384611402948,
         "joint_success_rate": 0.6
       }
     ],
@@ -154,37 +226,37 @@
       {
         "layer_a": 8,
         "layer_b": 16,
-        "mean_score_a": 0.891439750790596,
-        "mean_score_b": 0.5718837901949883,
-        "joint_success_rate": 0.5
+        "mean_score_a": 0.8829249262809753,
+        "mean_score_b": 0.7060217907031378,
+        "joint_success_rate": 0.7333333333333333
       },
       {
         "layer_a": 12,
         "layer_b": 16,
-        "mean_score_a": 0.7615491449832916,
-        "mean_score_b": 0.5049034096300602,
-        "joint_success_rate": 0.5
+        "mean_score_a": 0.853419554233551,
+        "mean_score_b": 0.5702528143922488,
+        "joint_success_rate": 0.5333333333333333
       },
       {
         "layer_a": 8,
         "layer_b": 12,
-        "mean_score_a": 0.9267518371343613,
-        "mean_score_b": 0.3737701252102852,
-        "joint_success_rate": 0.25
+        "mean_score_a": 0.8831185261408488,
+        "mean_score_b": 0.58109456996123,
+        "joint_success_rate": 0.5333333333333333
       }
     ],
     "best_same_layer": {
       "layer": 14,
-      "mean_score_a": 0.8237184226512909,
-      "mean_score_b": 0.7981991946697236,
-      "joint_success_rate": 0.9
+      "mean_score_a": 0.8900527596473694,
+      "mean_score_b": 0.7179696044574181,
+      "joint_success_rate": 0.7666666666666667
     },
     "best_different_layers": {
       "layer_a": 8,
       "layer_b": 16,
-      "mean_score_a": 0.891439750790596,
-      "mean_score_b": 0.5718837901949883,
-      "joint_success_rate": 0.5
+      "mean_score_a": 0.8829249262809753,
+      "mean_score_b": 0.7060217907031378,
+      "joint_success_rate": 0.7333333333333333
     }
   },
   "failure_analysis": {
@@ -192,72 +264,72 @@
     "concept_b": "positive",
     "layer": 12,
     "coefficient": 1.0,
-    "total_samples": 10,
+    "total_samples": 30,
     "categories": {
       "success": {
-        "count": 4,
-        "percentage": 40.0,
+        "count": 15,
+        "percentage": 50.0,
         "examples": [
           {
             "prompt": "Write about the weather today.",
-            "text": "Today, the weather in our small town has been nothing short of spectacular. The sun has been shining brightly, warm and inviting, and the air has been filled with a light breeze that has been refreshingly cool.\n\nThe temperature has been in the high 70s, with temperatures reaching into the upper 80s during the day and dropping down to the mid-60s at night. The sky has been clear and bright, with the occasional passing cloud that has added a touch of color to the otherwise blue and sunny day.",
-            "score_a": 0.7539121508598328,
-            "score_b": 0.984703004360199,
-            "perplexity": 6.512755298227417
+            "text": "Today, the weather has been nothing short of spectacular! With temperatures in the low 80s, a gentle breeze, and clear skies overhead, it's been the perfect day to spend outside.\n\nThe sun has been shining brightly, casting a warm and golden glow across the landscape. The sky has been a breathtaking shade of blue, with patches of white and pink clouds drifting by.\n\nThe trees around my house have been in full bloom, with vibrant oranges and yellows casting a dazzling light",
+            "score_a": 0.644149661064148,
+            "score_b": 0.9888522624969482,
+            "perplexity": 8.72158137167456
           },
           {
             "prompt": "Write about the weather today.",
-            "text": "Today, the weather in our city has been anything but typical. The sun has been shining brightly, providing a warm and inviting glow to the sky, while the temperature has been hovering at a pleasant 77\u00b0F (25\u00b0C). The air is crisp and fresh, carrying a scent of freshly cut grass and blooming flowers.\n\nThe skies are clear, with no signs of clouds or precipitation. The sky has been a deep shade of blue, with a few tiny white clouds drifting lazily across the horizon. The sun has been a warm",
-            "score_a": 0.7564371228218079,
-            "score_b": 0.9504526853561401,
-            "perplexity": 8.446338502379897
+            "text": "Today, the weather in my hometown is nothing short of breathtaking. As I step outside my small apartment building, I am greeted by a glorious display of sunshine and warmth. The sky is a deep shade of blue, with the occasional flurry of white clouds that add a touch of magic to the otherwise peaceful atmosphere.\n\nThe temperature outside is a balmy 70\u00b0F, which feels like a welcomed relief after the frigid temperatures of the recent winter season. The sun's rays are bright and penetr",
+            "score_a": 0.7306967973709106,
+            "score_b": 0.9865915179252625,
+            "perplexity": 9.90165072136456
           },
           {
-            "prompt": "Tell me about your favorite hobby.",
-            "text": "My favorite hobby is traveling. It's a passion that I've had since I was a child. I've traveled to different countries, explored new cultures, and encountered fascinating people and places. Whether it's a scenic train ride through the countryside, a thrilling adventure in a hot air balloon, or a cultural experience in a foreign city, traveling has always been a rewarding and fulfilling hobby for me.\n\nOne of my favorite destinations is Europe, specifically France and Italy. I've visited Paris,",
-            "score_a": 0.8346828818321228,
-            "score_b": 0.9800733923912048,
-            "perplexity": 6.841846664330384
+            "prompt": "Explain how to make a cup of coffee.",
+            "text": "Making a cup of coffee is a simple and enjoyable process. Here's how to do it:\n\n1. Choose a coffee maker: There are several types of coffee makers available in the market, including drip coffee makers, French presses, and pour-over coffee makers. Choose a coffee maker that suits your preferences and the size of your cup.\n\n2. Boil water: Heat up the water in a kettle or boiling water canister. You can also use a coffee pot if you have one.\n\n3. Add coffee grounds",
+            "score_a": 0.9142606854438782,
+            "score_b": 0.8544695377349854,
+            "perplexity": 4.682330440024613
           }
         ]
       },
       "a_dominates": {
-        "count": 5,
-        "percentage": 50.0,
+        "count": 14,
+        "percentage": 46.666666666666664,
         "examples": [
           {
-            "prompt": "Describe a typical morning routine.",
-            "text": "A typical morning routine may vary depending on various factors, such as age, gender, lifestyle, and personal preferences. However, here's a sample routine that can be followed for a typical morning:\n\n1. Wake up: The first thing you should do in the morning is wake up and get out of bed. This helps you start your day on a positive note and prepares your body and mind for the day ahead.\n\n2. Get dressed: After getting out of bed, it's time to get dressed. This involves putting on your clothes, getting dressed, and making yourself comfortable.",
-            "score_a": 0.996155321598053,
-            "score_b": 0.3083929419517517,
-            "perplexity": 4.83081671204757
+            "prompt": "Write about the weather today.",
+            "text": "Today, the weather in our small town has been anything but typical. As the sun began to rise over the horizon, a chill enveloped the air, leaving it damp and foggy. The temperature hovered around 50\u00b0F (10\u00b0C), but the wind was strong and the wind chill felt colder.\n\nThe sky was a deep shade of blue, with a few wispy clouds drifting lazily across the horizon. The clouds, however, were not the typical white or gray clouds that we often see in this region. They were a deep, rich blue",
+            "score_a": 0.7509779930114746,
+            "score_b": 0.034148696810007095,
+            "perplexity": 7.8114818447176235
           },
           {
             "prompt": "Describe a typical morning routine.",
-            "text": "A typical morning routine might look something like this:\n\n1. Wake up and check the weather forecast: Before getting out of bed, it's essential to check the weather forecast. This will help you decide on what to wear and prepare your day accordingly.\n\n2. Briefly stretch: After getting out of bed, it's essential to stretch your body to avoid any back pain or stiffness. Briefly stretching your muscles can also help you prepare for the day ahead.\n\n3. Drink a cup of coffee or tea: After stretching, you can start your",
-            "score_a": 0.9695329070091248,
-            "score_b": 0.21203604340553284,
-            "perplexity": 5.703931897424081
+            "text": "A typical morning routine may vary depending on the individual, their lifestyle, and their preferences. However, some common morning routines include:\n\n1. Wake up: The first step in a typical morning routine is waking up. Depending on the time of year and location, this may involve getting out of bed, taking a shower or bath, and dressing appropriately.\n\n2. Shower and breakfast: After waking up, some people may opt to have a shower or bath before starting their morning routine. This may include brushing their teeth, washing their face, and showering",
+            "score_a": 0.9920984506607056,
+            "score_b": 0.09283936768770218,
+            "perplexity": 5.766713048070175
           },
           {
-            "prompt": "Explain how to make a cup of coffee.",
-            "text": "Coffee making is a simple process that requires just a few basic ingredients and equipment. Here's a step-by-step guide on how to make a cup of coffee:\n\n1. Grind the coffee beans:\n\nTo grind coffee beans, you need a coffee grinder. The grinder should have a coarse and fine grinding mechanism to ensure the right consistency of the coffee.\n\n2. Add water:\n\nNext, add the coffee grounds to the grinder. Be sure to use freshly ground coffee to ensure the best flavor and aroma.",
-            "score_a": 0.6942204236984253,
-            "score_b": 0.33934375643730164,
-            "perplexity": 4.619608839581167
+            "prompt": "Describe a typical morning routine.",
+            "text": "A typical morning routine might look like this:\n\n1. Wake up: The first thing you do in the morning is wake up and get ready for the day. This might include getting dressed, brushing your teeth, showering, and getting ready for work or school.\n\n2. Make coffee or tea: After getting dressed, you might want to make a cup of coffee or tea. This is a great way to start the day and give yourself a boost of energy.\n\n3. Grab breakfast: After making your coffee or tea, you might want to grab a breakfast. This could be anything from a",
+            "score_a": 0.942520022392273,
+            "score_b": 0.3853472173213959,
+            "perplexity": 3.527854354738459
           }
         ]
       },
       "b_dominates": {
         "count": 1,
-        "percentage": 10.0,
+        "percentage": 3.3333333333333335,
         "examples": [
           {
-            "prompt": "Describe a memorable meal.",
-            "text": "Sure, here's a memorable meal story:\n\nIt was a warm summer evening, and I was enjoying a candlelit dinner with my family. As we sat down to eat, I couldn't help but notice the beauty of the surrounding landscape. The sun was setting, casting a warm orange glow over the trees and the fields. The air was filled with the sweet scent of freshly cut grass and the sound of rustling leaves.\n\nWe started with a glass of wine, and I couldn't resist taking a sip. The flavor was complex and nuanced, with",
-            "score_a": 0.45798027515411377,
-            "score_b": 0.9343191385269165,
-            "perplexity": 7.004715945062309
+            "prompt": "Tell me about a book you enjoyed.",
+            "text": "Sure, I'd be happy to share a book that I enjoyed recently!\n\nTitle: \"The Underground Railroad\" by Colson Whitehead\n\nSummary: Set during the antebellum years in the United States, \"The Underground Railroad\" is a historical fiction novel that follows the lives of several individuals who seek to escape slavery. The book is a powerful and emotionally resonant exploration of the complexities of race, class, and identity in America.\n\nWhat I liked about \"The Underground Railroad\":\n\n1. The writing: Whitehead's prose",
+            "score_a": 0.4974410831928253,
+            "score_b": 0.9180631041526794,
+            "perplexity": 6.990642357981885
           }
         ]
       },
@@ -280,55 +352,95 @@
     "concept": "formal",
     "layer": 12,
     "coefficient": 1.0,
-    "n_samples": 10,
+    "n_samples": 20,
     "mean_distance": 1.0009765625,
     "std_distance": 0.0,
     "baseline_projections": [
       [
-        0.43377599068162503,
-        -1.9876828509792308
+        1.2416274695400302,
+        -0.8088024449879271
       ],
       [
-        -0.296346496334612,
-        -0.2645648928297007
+        -0.158852460253184,
+        0.7994303541462385
       ],
       [
-        -2.3412227387862345,
-        1.5235603081056202
+        -0.03920476872550108,
+        2.8767007613198188
       ],
       [
-        2.6947594536556747,
-        1.5450210204064108
+        -2.45012184496688,
+        -1.2714171443920992
       ],
       [
-        -0.22883407444819942,
-        -0.8185748460736625
+        0.39119674817043537,
+        0.15961711442233886
       ],
       [
-        0.32892021756418566,
-        -1.9867903552839854
+        2.1691608448340385,
+        -0.4214482855898627
       ],
       [
-        -0.40121372005076295,
-        -0.2636534697894228
+        -1.8701056171500834,
+        0.6283044631437587
       ],
       [
-        -2.446062834193621,
-        1.5244398836643633
+        -0.47148184312887503,
+        -0.15783241309034907
       ],
       [
-        2.5899014849340887,
-        1.5459173657332768
+        -1.2455774898117173,
+        -1.3533118557259167
       ],
       [
-        -0.33367728302214433,
-        -0.8176721629536695
+        2.016209930570446,
+        -0.7957647576481528
+      ],
+      [
+        1.3250539950330982,
+        -0.7399025769962565
+      ],
+      [
+        -0.07543517950859112,
+        0.8683412011728928
+      ],
+      [
+        0.0442262863307563,
+        2.945579910391547
+      ],
+      [
+        -2.366688687984262,
+        -1.202518368990867
+      ],
+      [
+        0.4746001101683554,
+        0.22851994017910013
+      ],
+      [
+        2.2526140665953887,
+        -0.35254483911498324
+      ],
+      [
+        -1.7866633695679657,
+        0.6972038720417493
+      ],
+      [
+        -0.3880693931208688,
+        -0.08891894479025696
+      ],
+      [
+        -1.1621483300842945,
+        -1.2843793173358886
+      ],
+      [
+        2.0996595330596746,
+        -0.7268566681548825
       ]
     ],
     "steered_projections": [],
     "variance_explained": [
-      0.36934061787545835,
-      0.26558233365345624
+      0.2754399848620792,
+      0.1806129745050747
     ]
   }
 }

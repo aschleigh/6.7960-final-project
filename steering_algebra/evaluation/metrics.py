@@ -202,38 +202,6 @@ class QualityMetrics:
     def __init__(self, device: str = "cuda"):
         self.perplexity_calc = PerplexityCalculator(device=device)
     
-    # def evaluate(self, texts: List[str]) -> Dict:
-    #     """
-    #     Compute all quality metrics for a set of generated texts.
-        
-    #     Returns:
-    #         Dict with all metrics
-    #     """
-    #     # Perplexity
-    #     perplexities = self.perplexity_calc.compute_batch(texts)
-        
-    #     # Diversity
-    #     distinct_1 = compute_distinct_n(texts, n=1)
-    #     distinct_2 = compute_distinct_n(texts, n=2)
-        
-    #     # Self-BLEU (diversity across samples)
-    #     self_bleu = compute_self_bleu(texts)
-        
-    #     # Repetition (within each text)
-    #     repetition_ratios = [compute_repetition_ratio(t) for t in texts]
-        
-    #     # Length
-    #     length_stats = compute_length_stats(texts)
-        
-    #     return {
-    #         "perplexity_mean": np.mean(perplexities),
-    #         "perplexity_std": np.std(perplexities),
-    #         "distinct_1": distinct_1,
-    #         "distinct_2": distinct_2,
-    #         "self_bleu": self_bleu,
-    #         "repetition_mean": np.mean(repetition_ratios),
-    #         **length_stats
-    #     }
     def evaluate(self, texts: List[str]) -> Dict:
         """
         Compute all quality metrics for a set of generated texts.

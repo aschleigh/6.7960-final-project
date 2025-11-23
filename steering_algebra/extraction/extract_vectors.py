@@ -15,7 +15,7 @@ from pathlib import Path
 import json
 
 from extraction.hooks import ActivationHooks
-from data.contrastive_pairs import ContrastivePair
+from data.contrastive_pairs import ContrastivePair # [value, anti-value]
 
 
 def extract_steering_vector(
@@ -28,9 +28,8 @@ def extract_steering_vector(
     normalize: bool = True,
     device: str = "cuda"
 ) -> Tensor:
+    # extracting a steering vector using CAA
     """
-    Extract a steering vector using CAA.
-    
     Args:
         model: The language model
         tokenizer: The tokenizer
@@ -49,11 +48,9 @@ def extract_steering_vector(
     positive_activations = []
     negative_activations = []
     
-    # Process in batches
     for i in tqdm(range(0, len(contrastive_pairs), batch_size), desc=f"Extracting layer {layer_idx}"):
         batch_pairs = contrastive_pairs[i:i + batch_size]
         
-        # Extract positive activations
         pos_prompts = [p[0] for p in batch_pairs]
         pos_acts = _get_activations(
             model, tokenizer, hooks, pos_prompts, 
@@ -61,7 +58,6 @@ def extract_steering_vector(
         )
         positive_activations.append(pos_acts)
         
-        # Extract negative activations
         neg_prompts = [p[1] for p in batch_pairs]
         neg_acts = _get_activations(
             model, tokenizer, hooks, neg_prompts,
@@ -69,17 +65,15 @@ def extract_steering_vector(
         )
         negative_activations.append(neg_acts)
     
-    # Concatenate all activations
     positive_activations = torch.cat(positive_activations, dim=0)  # (n_pairs, hidden_dim)
     negative_activations = torch.cat(negative_activations, dim=0)
     
-    # Compute steering vector as difference of means
     steering_vector = positive_activations.mean(dim=0) - negative_activations.mean(dim=0)
     
     if normalize:
         steering_vector = steering_vector / steering_vector.norm()
     
-    return steering_vector
+    return steering_vector # shape hidden_dim
 
 
 def _get_activations(
@@ -90,10 +84,8 @@ def _get_activations(
     layer_idx: int,
     token_position: int,
     device: str
-) -> Tensor:
-    """Helper to extract activations for a batch of prompts."""
+) -> Tensor:    
     
-    # Tokenize
     inputs = tokenizer(
         prompts,
         return_tensors="pt",
@@ -102,16 +94,17 @@ def _get_activations(
         max_length=512
     ).to(device)
     
-    # Extract activations
+    # extracting activations
     with hooks.extraction_context([layer_idx]) as cache:
         with torch.no_grad():
             model(**inputs)
         
         acts = cache[f"layer_{layer_idx}_residual"]  # (batch, seq_len, hidden_dim)
     
-    # Get activations at specified token position
+    # is there a way to not need to calculate for all tokens? do we need to have the seq_len dimension?
+    # retrieve activations at a specific token position
+    # also where does attention mask come from
     if token_position == -1:
-        # Get last non-padding token for each sequence
         seq_lens = inputs["attention_mask"].sum(dim=1) - 1
         batch_acts = []
         for b in range(acts.shape[0]):
@@ -135,9 +128,6 @@ def extract_all_vectors(
 ) -> Dict[str, Dict[int, Tensor]]:
     """
     Extract steering vectors for all concepts and layers.
-    
-    Returns:
-        Dict mapping concept -> layer -> steering_vector
     """
     all_vectors = {}
     
@@ -202,26 +192,28 @@ def analyze_extraction_quality(
     pos_prompts = [p[0] for p in contrastive_pairs]
     neg_prompts = [p[1] for p in contrastive_pairs]
     
-    # Get activations
+    
     pos_acts = _get_activations(model, tokenizer, hooks, pos_prompts, layer_idx, -1, device)
     neg_acts = _get_activations(model, tokenizer, hooks, neg_prompts, layer_idx, -1, device)
     
-    # Project onto steering vector
+    # dot product (projection) between activations and steering vector. high similarity between positive and lower between negative indicates good steering vector
     sv_norm = steering_vector / steering_vector.norm()
     pos_proj = (pos_acts @ sv_norm).float().cpu().numpy()
     neg_proj = (neg_acts @ sv_norm).float().cpu().numpy()
     
-    # Compute separation statistics
+    # want pos_mean >> neg_mean
     pos_mean = pos_proj.mean()
     neg_mean = neg_proj.mean()
+    # measure how spread out projection scores are within each group (want small deviations, consistent behavior)
     pos_std = pos_proj.std()
     neg_std = neg_proj.std()
     
-    # Cohen's d (effect size)
+    # Cohen's d (effect size, how many SDs the groups are separated by)
+    # 0.2 small effect, 0.5 medium, 0.8 large ,1.5+ strong separation (good steering direction)
     pooled_std = ((pos_std**2 + neg_std**2) / 2) ** 0.5
     cohens_d = (pos_mean - neg_mean) / pooled_std
     
-    # Classification accuracy (how well does sign of projection classify?)
+    # classification accuracy against mean
     threshold = (pos_mean + neg_mean) / 2
     pos_correct = (pos_proj > threshold).sum()
     neg_correct = (neg_proj <= threshold).sum()

@@ -37,16 +37,13 @@ class ActivationHooks:
         self.cache = ActivationCache({})
         
     def _get_layer_module(self, layer_idx: int):
-        """Get the module for a specific layer."""
-        # Works for Llama, Mistral, and similar architectures
+        # get module for a specific layer 
         if hasattr(self.model, 'model'):
-            # For models wrapped in a class (e.g., LlamaForCausalLM)
-            return self.model.model.layers[layer_idx]
+            return self.model.model.layers[layer_idx] # llama (big) is wrapped
         else:
             return self.model.layers[layer_idx]
     
     def _get_num_layers(self) -> int:
-        """Get the number of layers in the model."""
         if hasattr(self.model, 'model'):
             return len(self.model.model.layers)
         else:
@@ -57,24 +54,18 @@ class ActivationHooks:
         layer_idx: int, 
         component: str = "residual"
     ) -> None:
-        """
-        Register a hook to extract activations from a layer.
-        
-        Args:
-            layer_idx: Which layer to hook
-            component: "residual" (after layer), "attn", or "mlp"
-        """
+        # get hook for a layer
         layer = self._get_layer_module(layer_idx)
         cache_key = f"layer_{layer_idx}_{component}"
         
         def hook_fn(module, input, output):
-            # Output is typically (hidden_states, ...) or just hidden_states
             if isinstance(output, tuple):
                 hidden_states = output[0]
             else:
                 hidden_states = output
+            # update the cache for this layer (activations) 
             self.cache[cache_key] = hidden_states.detach().clone()
-        
+        # hook for this layer
         handle = layer.register_forward_hook(hook_fn)
         self.hooks.append(handle)
     
@@ -85,15 +76,7 @@ class ActivationHooks:
         coefficient: float = 1.0,
         token_positions: Optional[List[int]] = None
     ) -> None:
-        """
-        Register a hook to add a steering vector to activations.
-        
-        Args:
-            layer_idx: Which layer to steer
-            steering_vector: The steering vector to add
-            coefficient: Scaling factor for the steering vector
-            token_positions: Which token positions to steer (None = all)
-        """
+        # hook to add steering vector to activations (with a scalar). can also choose which tokens to steer (none = all)
         layer = self._get_layer_module(layer_idx)
         
         def hook_fn(module, input, output):
@@ -104,20 +87,16 @@ class ActivationHooks:
                 hidden_states = output
                 rest = None
             
-            # Ensure steering vector is on correct device and dtype
             sv = steering_vector.to(hidden_states.device, hidden_states.dtype)
             
-            # Apply steering
             if token_positions is None:
-                # Steer all positions
-                hidden_states = hidden_states + coefficient * sv
+                hidden_states = hidden_states + coefficient * sv # STEER
             else:
-                # Steer only specified positions
                 for pos in token_positions:
                     hidden_states[:, pos, :] = hidden_states[:, pos, :] + coefficient * sv
             
             if rest is not None:
-                return (hidden_states,) + rest
+                return (hidden_states,) + rest # steered activations 
             return hidden_states
         
         handle = layer.register_forward_hook(hook_fn)

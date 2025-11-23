@@ -29,6 +29,7 @@ class AttributeClassifier:
     """
     
     # Map concepts to pre-trained models
+    # ONLY THESE (minus toxic) have supervised fine-tuned classifiers
     PRETRAINED_MODELS = {
         "formal": "s-nlp/roberta-base-formality-ranker",
         "positive": "cardiffnlp/twitter-roberta-base-sentiment-latest",
@@ -53,8 +54,10 @@ class AttributeClassifier:
         self.method = method
         
         if method == "pretrained":
+            print(f"[Classifier] Using pretrained model for concept '{concept}': {self.PRETRAINED_MODELS[concept]}")
             self._load_pretrained(concept)
         else:
+            print(f"[Classifier] Using zero-shot model for concept '{concept}': {zero_shot_model}")
             self._load_zero_shot(zero_shot_model)
     
     def _load_pretrained(self, concept: str):
@@ -83,10 +86,8 @@ class AttributeClassifier:
         Returns:
             Score in [0, 1] where higher = more of the concept
         """
-        # Validate input
         if not text or len(text.strip()) < 3:
-            # Return neutral score for empty/invalid text
-            return 0.5
+            return 0.5 # invalid text
         
         if self.method == "pretrained":
             return self._score_pretrained(text)
@@ -108,7 +109,6 @@ class AttributeClassifier:
         
         probs = torch.softmax(logits, dim=-1)[0]
         
-        # Handle different model outputs
         if self._is_sentiment:
             # Sentiment models typically: [negative, neutral, positive]
             if self.concept == "positive":
