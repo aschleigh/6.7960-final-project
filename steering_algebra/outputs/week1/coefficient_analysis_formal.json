@@ -1,44 +1,44 @@
 {
   "0.0": {
-    "mean_score": 0.5834784030914306,
-    "std_score": 0.17045705461587704,
-    "mean_perplexity": 8000.854076150985,
-    "std_perplexity": 3998.2918477809767
+    "mean_score": 0.5363099366426468,
+    "std_score": 0.15628910099185772,
+    "mean_perplexity": 8000.933234694642,
+    "std_perplexity": 3998.1335446278317
   },
   "0.5": {
-    "mean_score": 0.9362809896469116,
-    "std_score": 0.062226037977725406,
-    "mean_perplexity": 6.99790069392527,
-    "std_perplexity": 1.7730820093002713
+    "mean_score": 0.9035751581192016,
+    "std_score": 0.09977983963409423,
+    "mean_perplexity": 6.4945446833589155,
+    "std_perplexity": 1.7940420510293795
   },
   "1.0": {
-    "mean_score": 0.931512999534607,
-    "std_score": 0.08483124259123902,
-    "mean_perplexity": 6.921762351099805,
-    "std_perplexity": 2.3012058745365427
+    "mean_score": 0.9354475200176239,
+    "std_score": 0.0753073659493737,
+    "mean_perplexity": 7.653864719311355,
+    "std_perplexity": 2.7059833022608686
   },
   "1.5": {
-    "mean_score": 0.9105875492095947,
-    "std_score": 0.13114350946264616,
-    "mean_perplexity": 8.0598566955655,
-    "std_perplexity": 3.3068294469199753
+    "mean_score": 0.9675525188446045,
+    "std_score": 0.050898649734662016,
+    "mean_perplexity": 8.455834890783049,
+    "std_perplexity": 4.475468636440322
   },
   "2.0": {
-    "mean_score": 0.9097793340682984,
-    "std_score": 0.11791765045438943,
-    "mean_perplexity": 7.475407751532012,
-    "std_perplexity": 3.139351532378542
+    "mean_score": 0.9631216347217559,
+    "std_score": 0.04461971215340807,
+    "mean_perplexity": 6.915011099921952,
+    "std_perplexity": 2.142315648896546
   },
   "2.5": {
-    "mean_score": 0.9279965877532959,
-    "std_score": 0.08363309353335631,
-    "mean_perplexity": 7.569476931848134,
-    "std_perplexity": 2.232429107092136
+    "mean_score": 0.9188472211360932,
+    "std_score": 0.08056102509081138,
+    "mean_perplexity": 8.597668370861346,
+    "std_perplexity": 3.443432499028808
   },
   "3.0": {
-    "mean_score": 0.907250490784645,
-    "std_score": 0.16592971186271735,
-    "mean_perplexity": 7.071108061739244,
-    "std_perplexity": 2.5814536895910427
+    "mean_score": 0.895184788107872,
+    "std_score": 0.19069390796230273,
+    "mean_perplexity": 8.586274473577564,
+    "std_perplexity": 2.882924551189086
   }
 }

@@ -47,7 +47,7 @@ def compute_similarity_matrix(
 def categorize_pairs_by_similarity(
     sim_matrix: np.ndarray,
     concepts: List[str],
-    orthogonal_threshold: float = 0.2,
+    orthogonal_threshold: float = 0.05,
     aligned_threshold: float = 0.5
 ) -> Dict[str, List[Tuple[str, str, float]]]:
     """

@@ -32,6 +32,7 @@ from evaluation.geometry import (
     project_vectors_2d
 )
 from extraction.extract_vectors import load_cached_vectors
+from steering.layer_selection import find_optimal_layers_batch
 
 
 def coefficient_sweep_detailed(
@@ -312,7 +313,8 @@ def analyze_failure_modes(
     steering_vectors: Dict[str, torch.Tensor],
     concept_a: str,
     concept_b: str,
-    layer: int,
+    layer_a: int,
+    layer_b: int,
     prompts: List[str],
     coefficient: float = 1.0,
     n_generations: int = 10
@@ -346,8 +348,8 @@ def analyze_failure_modes(
         for _ in range(n_generations):
             # Generate with composition
             config = [
-                SteeringConfig(vector=vec_a, layer=layer, coefficient=coefficient),
-                SteeringConfig(vector=vec_b, layer=layer, coefficient=coefficient)
+                SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coefficient),
+                SteeringConfig(vector=vec_b, layer=layer)b, coefficient=coefficient)
             ]
             text = generate_with_steering(model, tokenizer, prompt, config)
             
@@ -637,7 +639,27 @@ def main():
         concepts,
         layers
     )
-    steering_vectors_default = {c: vecs[default_layer] for c, vecs in steering_vectors_by_layer_all.items()}
+
+    # In main(), after loading vectors:
+    optimal_layers = find_optimal_layers_batch(
+        model,
+        tokenizer,
+        steering_vectors_by_layer_all,  # or steering_vectors_by_layer for week2
+        concepts,
+        layers,
+        prompts,
+        n_prompts=5,
+        n_generations=2
+    )
+
+    # Create steering vectors using optimal layers
+    steering_vectors_default = {
+        c: steering_vectors_by_layer_all[c][optimal_layers[c]] 
+        for c in concepts if c in steering_vectors_by_layer_all
+    }
+
+
+    # steering_vectors_default = {c: vecs[default_layer] for c, vecs in steering_vectors_by_layer_all.items()}
     
     # Get prompts
     prompts = get_test_prompts()
@@ -661,9 +683,10 @@ def main():
     for concept in concepts[:3]:  # Test top 3
         if concept in steering_vectors_default:
             try:
+                optimal_layer = optimal_layers[concept]
                 result = coefficient_sweep_detailed(
                     model, tokenizer, steering_vectors_default,
-                    concept, default_layer, prompts,
+                    concept, optimal_layer, prompts,
                     coefficient_range=coef_range,
                     n_generations=n_gen
                 )
@@ -727,6 +750,9 @@ def main():
                 concept_a, concept_b, layers, prompts,
                 coefficient=1.0, n_generations=n_gen
             )
+            # Add metadata about which layers were optimal
+            layer_ablation_comp_result["optimal_layer_a"] = optimal_layers[concept_a]
+            layer_ablation_comp_result["optimal_layer_b"] = optimal_layers[concept_b]
             all_results["layer_ablation_composition"] = layer_ablation_comp_result
         except Exception as e:
             print(f"Error in composition layer ablation: {e}")
@@ -739,11 +765,15 @@ def main():
     
     if concept_a in steering_vectors_default and concept_b in steering_vectors_default:
         try:
+            analysis_layer = optimal_layers[concept_a] if optimal_layers[concept_a] == optimal_layers[concept_b] else default_layer
             failure_analysis = analyze_failure_modes(
                 model, tokenizer, steering_vectors_default,
-                concept_a, concept_b, default_layer, prompts,
+                concept_a, concept_b, analysis_layer, prompts,
                 coefficient=1.0, n_generations=n_gen
             )
+            failure_analysis["layer_used"] = analysis_layer  # Track which layer was used
+            failure_analysis["optimal_layer_a"] = optimal_layers[concept_a]
+            failure_analysis["optimal_layer_b"] = optimal_layers[concept_b]
             all_results["failure_analysis"] = failure_analysis
         except Exception as e:
             print(f"Error in failure analysis: {e}")

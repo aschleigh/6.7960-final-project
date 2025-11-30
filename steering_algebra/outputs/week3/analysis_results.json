@@ -6,140 +6,422 @@
       "coefficients": [
         {
           "coefficient": 0.0,
-          "mean_score": 0.6341233919064204,
-          "std_score": 0.20954061455067213,
+          "mean_score": 0.6312278439601262,
+          "std_score": 0.2222292838895926,
           "mean_perplexity": Infinity,
           "std_perplexity": NaN,
-          "mean_repetition": 0.016801950804127126,
-          "min_score": 0.37070074677467346,
-          "max_score": 0.9970979690551758,
-          "success_rate": 0.36666666666666664,
+          "mean_repetition": 0.013039910836213845,
+          "min_score": 0.3086559474468231,
+          "max_score": 0.9970007538795471,
+          "success_rate": 0.3333333333333333,
           "quality_score": 0.0
         },
         {
           "coefficient": 0.25,
-          "mean_score": 0.8581527272860209,
-          "std_score": 0.14156702708017924,
-          "mean_perplexity": 7.514367207365661,
-          "std_perplexity": 2.280822698414279,
-          "mean_repetition": 0.008814328891080454,
-          "min_score": 0.579806923866272,
-          "max_score": 0.9972032308578491,
-          "success_rate": 1.0,
-          "quality_score": 0.284456359038918
+          "mean_score": 0.8572232435146968,
+          "std_score": 0.15669523160975043,
+          "mean_perplexity": 7.699189434467589,
+          "std_perplexity": 1.8458835721252318,
+          "mean_repetition": 0.014529364836424145,
+          "min_score": 0.4954151213169098,
+          "max_score": 0.9971669316291809,
+          "success_rate": 0.9666666666666667,
+          "quality_score": 0.2818779388455746
         },
         {
           "coefficient": 0.5,
-          "mean_score": 0.8978582123915354,
-          "std_score": 0.13611898674386555,
-          "mean_perplexity": 7.557263475183094,
-          "std_perplexity": 3.140181340459581,
-          "mean_repetition": 0.014700379872554504,
-          "min_score": 0.5587393045425415,
-          "max_score": 0.9971756935119629,
+          "mean_score": 0.8637824535369873,
+          "std_score": 0.12648067311105593,
+          "mean_perplexity": 7.0459263569655235,
+          "std_perplexity": 2.0223328755590453,
+          "mean_repetition": 0.013958256502844804,
+          "min_score": 0.6326562166213989,
+          "max_score": 0.9971953630447388,
           "success_rate": 1.0,
-          "quality_score": 0.29705723545905477
+          "quality_score": 0.2925646708116083
         },
         {
           "coefficient": 0.75,
-          "mean_score": 0.8562186857064565,
-          "std_score": 0.12964428475754994,
-          "mean_perplexity": 7.7491183795202705,
-          "std_perplexity": 2.976662809071694,
-          "mean_repetition": 0.02050522113834813,
-          "min_score": 0.5286841988563538,
-          "max_score": 0.9973141551017761,
-          "success_rate": 1.0,
-          "quality_score": 0.28095044079097
+          "mean_score": 0.8936855177084605,
+          "std_score": 0.13071176489647043,
+          "mean_perplexity": 7.892302671479249,
+          "std_perplexity": 3.489640581060489,
+          "mean_repetition": 0.010221717851571109,
+          "min_score": 0.42175817489624023,
+          "max_score": 0.9972450733184814,
+          "success_rate": 0.9666666666666667,
+          "quality_score": 0.29149321027323455
         },
         {
           "coefficient": 1.0,
-          "mean_score": 0.8663581113020579,
-          "std_score": 0.17466447883139272,
-          "mean_perplexity": 7.776526588176858,
-          "std_perplexity": 2.3121476481858974,
-          "mean_repetition": 0.016082410537732583,
-          "min_score": 0.3585349917411804,
-          "max_score": 0.9972022771835327,
-          "success_rate": 0.9333333333333333,
-          "quality_score": 0.2839485211880638
+          "mean_score": 0.8852961540222168,
+          "std_score": 0.15004861731817126,
+          "mean_perplexity": 7.573636196983411,
+          "std_perplexity": 2.800322093249263,
+          "mean_repetition": 0.02405586641195876,
+          "min_score": 0.5147347450256348,
+          "max_score": 0.9972387552261353,
+          "success_rate": 1.0,
+          "quality_score": 0.2926914967748057
         },
         {
           "coefficient": 1.25,
-          "mean_score": 0.8669390122095744,
-          "std_score": 0.17879743255543612,
-          "mean_perplexity": 8.486353082707733,
-          "std_perplexity": 2.7186667295745175,
-          "mean_repetition": 0.01060220994105113,
-          "min_score": 0.41743358969688416,
-          "max_score": 0.9971634745597839,
-          "success_rate": 0.9333333333333333,
-          "quality_score": 0.27623075991688545
+          "mean_score": 0.8970352451006571,
+          "std_score": 0.13764369877697144,
+          "mean_perplexity": 7.645837488613235,
+          "std_perplexity": 2.4794038549003456,
+          "mean_repetition": 0.020142910713472205,
+          "min_score": 0.5558781623840332,
+          "max_score": 0.9973204731941223,
+          "success_rate": 1.0,
+          "quality_score": 0.29564519897699926
         },
         {
           "coefficient": 1.5,
-          "mean_score": 0.8786540200312932,
-          "std_score": 0.13384305839080377,
-          "mean_perplexity": 8.260277784636195,
-          "std_perplexity": 2.601474788177987,
-          "mean_repetition": 0.011106402086898542,
-          "min_score": 0.4102835953235626,
-          "max_score": 0.9972291588783264,
-          "success_rate": 0.9666666666666667,
-          "quality_score": 0.28239299991599703
+          "mean_score": 0.907024351755778,
+          "std_score": 0.11354283946157856,
+          "mean_perplexity": 7.8394986833852665,
+          "std_perplexity": 2.606807472197707,
+          "mean_repetition": 0.01521594715716842,
+          "min_score": 0.6698789596557617,
+          "max_score": 0.9972538352012634,
+          "success_rate": 1.0,
+          "quality_score": 0.2964931344903251
         },
         {
           "coefficient": 1.75,
-          "mean_score": 0.9235024948914846,
-          "std_score": 0.09484852718213377,
-          "mean_perplexity": 7.775942190380534,
-          "std_perplexity": 2.6492131540124073,
-          "mean_repetition": 0.01467795534656184,
-          "min_score": 0.6906882524490356,
-          "max_score": 0.997187077999115,
+          "mean_score": 0.9148275315761566,
+          "std_score": 0.12317856105370754,
+          "mean_perplexity": 8.619168252510244,
+          "std_perplexity": 3.5746591863320276,
+          "mean_repetition": 0.014087123274985024,
+          "min_score": 0.5635984539985657,
+          "max_score": 0.997212827205658,
           "success_rate": 1.0,
-          "quality_score": 0.302685025261185
+          "quality_score": 0.29005416652267685
         },
         {
           "coefficient": 2.0,
-          "mean_score": 0.919727889696757,
-          "std_score": 0.10694359116706079,
-          "mean_perplexity": 7.7262559029047715,
-          "std_perplexity": 2.5427743796339835,
-          "mean_repetition": 0.01807485257257838,
-          "min_score": 0.6649768352508545,
-          "max_score": 0.9972900152206421,
+          "mean_score": 0.8965067545572917,
+          "std_score": 0.13113919108347236,
+          "mean_perplexity": 8.208192096048007,
+          "std_perplexity": 3.3249878989646113,
+          "mean_repetition": 0.024845787902405783,
+          "min_score": 0.5228215456008911,
+          "max_score": 0.9972718358039856,
           "success_rate": 1.0,
-          "quality_score": 0.3020825471695849
+          "quality_score": 0.28871769537016817
         },
         {
           "coefficient": 2.5,
-          "mean_score": 0.904192453622818,
-          "std_score": 0.13132825459261951,
-          "mean_perplexity": 7.958087032873778,
-          "std_perplexity": 3.366463444302862,
-          "mean_repetition": 0.021276890543355718,
-          "min_score": 0.560626745223999,
-          "max_score": 0.99724942445755,
+          "mean_score": 0.9015032807985942,
+          "std_score": 0.13396485385548026,
+          "mean_perplexity": 8.776803462021386,
+          "std_perplexity": 3.3340706517375476,
+          "mean_repetition": 0.02043971350750495,
+          "min_score": 0.5700817704200745,
+          "max_score": 0.9972087740898132,
           "success_rate": 1.0,
-          "quality_score": 0.29412393220323607
+          "quality_score": 0.28419652388980915
         },
         {
           "coefficient": 3.0,
-          "mean_score": 0.936524897813797,
-          "std_score": 0.09326095780527793,
-          "mean_perplexity": 7.4570782793936825,
-          "std_perplexity": 1.895507601771295,
-          "mean_repetition": 0.026787219360118585,
-          "min_score": 0.6226585507392883,
-          "max_score": 0.997215747833252,
+          "mean_score": 0.9247995495796204,
+          "std_score": 0.10316771403316312,
+          "mean_perplexity": 8.975232434316618,
+          "std_perplexity": 3.6621012474226404,
+          "mean_repetition": 0.017044712767236337,
+          "min_score": 0.637836217880249,
+          "max_score": 0.9971852898597717,
           "success_rate": 1.0,
-          "quality_score": 0.3112243119868333
+          "quality_score": 0.2895002575426158
         }
       ],
-      "optimal_coefficient": 3.0,
-      "optimal_score": 0.936524897813797,
-      "optimal_perplexity": 7.4570782793936825
+      "optimal_coefficient": 1.5,
+      "optimal_score": 0.907024351755778,
+      "optimal_perplexity": 7.8394986833852665
+    },
+    "casual": {
+      "concept": "casual",
+      "layer": 12,
+      "coefficients": [
+        {
+          "coefficient": 0.0,
+          "mean_score": 0.5566205143928528,
+          "std_score": 0.09449360048656896,
+          "mean_perplexity": Infinity,
+          "std_perplexity": NaN,
+          "mean_repetition": 0.01859386764725991,
+          "min_score": 0.5,
+          "max_score": 0.8114475011825562,
+          "success_rate": 0.3,
+          "quality_score": 0.0
+        },
+        {
+          "coefficient": 0.25,
+          "mean_score": 0.589873235921065,
+          "std_score": 0.11339644880684231,
+          "mean_perplexity": 7.883625107884814,
+          "std_perplexity": 2.29733137979611,
+          "mean_repetition": 0.008721197627691645,
+          "min_score": 0.22140933573246002,
+          "max_score": 0.7765913009643555,
+          "success_rate": 0.8666666666666667,
+          "quality_score": 0.19246788595600028
+        },
+        {
+          "coefficient": 0.5,
+          "mean_score": 0.5767696470022201,
+          "std_score": 0.10954039680029555,
+          "mean_perplexity": 7.6814778680964,
+          "std_perplexity": 2.0746229701819234,
+          "mean_repetition": 0.008748622229898922,
+          "min_score": 0.32808712124824524,
+          "max_score": 0.8355304002761841,
+          "success_rate": 0.7333333333333333,
+          "quality_score": 0.18980103234759266
+        },
+        {
+          "coefficient": 0.75,
+          "mean_score": 0.6263529827197393,
+          "std_score": 0.12016561913678976,
+          "mean_perplexity": 7.29679568763219,
+          "std_perplexity": 2.0052618187621842,
+          "mean_repetition": 0.012657776061557663,
+          "min_score": 0.42468181252479553,
+          "max_score": 0.8576475381851196,
+          "success_rate": 0.8666666666666667,
+          "quality_score": 0.20966244246181537
+        },
+        {
+          "coefficient": 1.0,
+          "mean_score": 0.6084501961867015,
+          "std_score": 0.10503567268232865,
+          "mean_perplexity": 7.431590325279434,
+          "std_perplexity": 2.053597164086738,
+          "mean_repetition": 0.012893475940069687,
+          "min_score": 0.4189586937427521,
+          "max_score": 0.8385684490203857,
+          "success_rate": 0.8333333333333334,
+          "quality_score": 0.20242942540040754
+        },
+        {
+          "coefficient": 1.25,
+          "mean_score": 0.6041194175680479,
+          "std_score": 0.11987106706685925,
+          "mean_perplexity": 7.354591970081325,
+          "std_perplexity": 2.103878970152435,
+          "mean_repetition": 0.016032395248847166,
+          "min_score": 0.21261604130268097,
+          "max_score": 0.8533706665039062,
+          "success_rate": 0.8333333333333334,
+          "quality_score": 0.2016874437937533
+        },
+        {
+          "coefficient": 1.5,
+          "mean_score": 0.6015599032243093,
+          "std_score": 0.08462075746384308,
+          "mean_perplexity": 7.108887468503969,
+          "std_perplexity": 2.0207720737326236,
+          "mean_repetition": 0.014140592752426762,
+          "min_score": 0.42717766761779785,
+          "max_score": 0.7661952972412109,
+          "success_rate": 0.8666666666666667,
+          "quality_score": 0.2031373410973506
+        },
+        {
+          "coefficient": 1.75,
+          "mean_score": 0.6091597845156987,
+          "std_score": 0.10616558072844984,
+          "mean_perplexity": 7.283918279266109,
+          "std_perplexity": 2.1664083634197544,
+          "mean_repetition": 0.013138362478611769,
+          "min_score": 0.34664979577064514,
+          "max_score": 0.8185349702835083,
+          "success_rate": 0.8666666666666667,
+          "quality_score": 0.20402790671996027
+        },
+        {
+          "coefficient": 2.0,
+          "mean_score": 0.5955068916082382,
+          "std_score": 0.10571560811537403,
+          "mean_perplexity": 7.324895762381631,
+          "std_perplexity": 2.1553341161646857,
+          "mean_repetition": 0.023275267635932784,
+          "min_score": 0.26896750926971436,
+          "max_score": 0.7400283813476562,
+          "success_rate": 0.8,
+          "quality_score": 0.1990810307753691
+        },
+        {
+          "coefficient": 2.5,
+          "mean_score": 0.6049227356910706,
+          "std_score": 0.0987250919430968,
+          "mean_perplexity": 7.56763896531309,
+          "std_perplexity": 2.172542829909823,
+          "mean_repetition": 0.02630898005498359,
+          "min_score": 0.3911888897418976,
+          "max_score": 0.7987839579582214,
+          "success_rate": 0.9,
+          "quality_score": 0.20004845119516418
+        },
+        {
+          "coefficient": 3.0,
+          "mean_score": 0.6201718628406525,
+          "std_score": 0.14731610598720934,
+          "mean_perplexity": 7.62908054721981,
+          "std_perplexity": 2.097949372604136,
+          "mean_repetition": 0.02223815195324942,
+          "min_score": 0.22034013271331787,
+          "max_score": 0.8759913444519043,
+          "success_rate": 0.8,
+          "quality_score": 0.2045443748926985
+        }
+      ],
+      "optimal_coefficient": 0.75,
+      "optimal_score": 0.6263529827197393,
+      "optimal_perplexity": 7.29679568763219
+    },
+    "positive": {
+      "concept": "positive",
+      "layer": 12,
+      "coefficients": [
+        {
+          "coefficient": 0.0,
+          "mean_score": 0.4888808791836103,
+          "std_score": 0.21002216031631618,
+          "mean_perplexity": Infinity,
+          "std_perplexity": NaN,
+          "mean_repetition": 0.032309660751052134,
+          "min_score": 0.08614244312047958,
+          "max_score": 0.9387948513031006,
+          "success_rate": 0.16666666666666666,
+          "quality_score": 0.0
+        },
+        {
+          "coefficient": 0.25,
+          "mean_score": 0.6562796857208013,
+          "std_score": 0.33040722175489806,
+          "mean_perplexity": 7.314504892148051,
+          "std_perplexity": 1.8162247869909307,
+          "mean_repetition": 0.014644982934228412,
+          "min_score": 0.05931917205452919,
+          "max_score": 0.9856163263320923,
+          "success_rate": 0.7,
+          "quality_score": 0.21950185921011148
+        },
+        {
+          "coefficient": 0.5,
+          "mean_score": 0.5661563110848268,
+          "std_score": 0.3484093716965909,
+          "mean_perplexity": 7.250116804410782,
+          "std_perplexity": 2.562536604540567,
+          "mean_repetition": 0.01507638580720816,
+          "min_score": 0.06550418585538864,
+          "max_score": 0.9862592220306396,
+          "success_rate": 0.5,
+          "quality_score": 0.18992048719944124
+        },
+        {
+          "coefficient": 0.75,
+          "mean_score": 0.5499120724697908,
+          "std_score": 0.3533794657558177,
+          "mean_perplexity": 7.280060740943049,
+          "std_perplexity": 2.0791292386790787,
+          "mean_repetition": 0.011386630399323533,
+          "min_score": 0.05725996196269989,
+          "max_score": 0.9835154414176941,
+          "success_rate": 0.5666666666666667,
+          "quality_score": 0.18421655895240294
+        },
+        {
+          "coefficient": 1.0,
+          "mean_score": 0.6699763804674148,
+          "std_score": 0.33204679341843596,
+          "mean_perplexity": 7.384859790382722,
+          "std_perplexity": 1.961629642868171,
+          "mean_repetition": 0.01092944987611679,
+          "min_score": 0.07628581672906876,
+          "max_score": 0.9806644916534424,
+          "success_rate": 0.6666666666666666,
+          "quality_score": 0.2233677563241521
+        },
+        {
+          "coefficient": 1.25,
+          "mean_score": 0.6466510844727357,
+          "std_score": 0.3271763230320544,
+          "mean_perplexity": 6.789271201550112,
+          "std_perplexity": 1.5273149308088754,
+          "mean_repetition": 0.01188239984989211,
+          "min_score": 0.04742378741502762,
+          "max_score": 0.9819206595420837,
+          "success_rate": 0.6,
+          "quality_score": 0.22180956100356566
+        },
+        {
+          "coefficient": 1.5,
+          "mean_score": 0.5182313280800979,
+          "std_score": 0.33902370912870433,
+          "mean_perplexity": 7.77984106092388,
+          "std_perplexity": 2.1685362301143245,
+          "mean_repetition": 0.011208324556845947,
+          "min_score": 0.021138228476047516,
+          "max_score": 0.9620241522789001,
+          "success_rate": 0.5,
+          "quality_score": 0.16982639024058885
+        },
+        {
+          "coefficient": 1.75,
+          "mean_score": 0.5372765455394983,
+          "std_score": 0.31993282196255896,
+          "mean_perplexity": 7.896765057325802,
+          "std_perplexity": 2.834118942610182,
+          "mean_repetition": 0.014362776572274086,
+          "min_score": 0.01473570242524147,
+          "max_score": 0.983544647693634,
+          "success_rate": 0.5666666666666667,
+          "quality_score": 0.1752110703768339
+        },
+        {
+          "coefficient": 2.0,
+          "mean_score": 0.607640149941047,
+          "std_score": 0.30577119687368604,
+          "mean_perplexity": 7.429685183187152,
+          "std_perplexity": 1.666082099067142,
+          "mean_repetition": 0.01408136150860796,
+          "min_score": 0.08242292702198029,
+          "max_score": 0.983644425868988,
+          "success_rate": 0.6333333333333333,
+          "quality_score": 0.20217717136394678
+        },
+        {
+          "coefficient": 2.5,
+          "mean_score": 0.5036547247320413,
+          "std_score": 0.2886870732330864,
+          "mean_perplexity": 8.234554867650642,
+          "std_perplexity": 2.852963589855053,
+          "mean_repetition": 0.01078933174618421,
+          "min_score": 0.05168181285262108,
+          "max_score": 0.9820711016654968,
+          "success_rate": 0.5666666666666667,
+          "quality_score": 0.16203338012757892
+        },
+        {
+          "coefficient": 3.0,
+          "mean_score": 0.5181697733700276,
+          "std_score": 0.2863178393530926,
+          "mean_perplexity": 7.66017992697112,
+          "std_perplexity": 2.062194377661943,
+          "mean_repetition": 0.015751449554759493,
+          "min_score": 0.02012597769498825,
+          "max_score": 0.9809650778770447,
+          "success_rate": 0.5666666666666667,
+          "quality_score": 0.1706731617730085
+        }
+      ],
+      "optimal_coefficient": 1.0,
+      "optimal_score": 0.6699763804674148,
+      "optimal_perplexity": 7.384859790382722
     }
   },
   "layer_ablation_single": {
@@ -149,200 +431,85 @@
       "layers": [
         {
           "layer": 8,
-          "mean_score": 0.8922135293483734,
-          "std_score": 0.11190642984761115,
-          "mean_perplexity": 7.107839542084731,
+          "mean_score": 0.8761212627092997,
+          "std_score": 0.11660559239228649,
+          "mean_perplexity": 7.379804594293767,
           "success_rate": 1.0
         },
         {
           "layer": 10,
-          "mean_score": 0.8493049810330073,
-          "std_score": 0.1622840340996634,
-          "mean_perplexity": 7.476150314569519,
-          "success_rate": 0.9666666666666667
+          "mean_score": 0.9202192584673564,
+          "std_score": 0.07826280229313114,
+          "mean_perplexity": 7.368667950969918,
+          "success_rate": 1.0
         },
         {
           "layer": 12,
-          "mean_score": 0.8877166946729024,
-          "std_score": 0.11717275526164402,
-          "mean_perplexity": 7.737033537867378,
+          "mean_score": 0.9058567663033803,
+          "std_score": 0.11078426026943115,
+          "mean_perplexity": 7.71191699105512,
           "success_rate": 1.0
         },
         {
           "layer": 14,
-          "mean_score": 0.8998476485411326,
-          "std_score": 0.1382643660151076,
-          "mean_perplexity": 7.318732710780113,
+          "mean_score": 0.8406453688939413,
+          "std_score": 0.15792776772593853,
+          "mean_perplexity": 7.828402022003361,
           "success_rate": 1.0
         },
         {
           "layer": 16,
-          "mean_score": 0.8646913448969523,
-          "std_score": 0.16291153838065106,
-          "mean_perplexity": 7.500500287292251,
-          "success_rate": 0.9666666666666667
+          "mean_score": 0.853658531109492,
+          "std_score": 0.13475658351944897,
+          "mean_perplexity": 7.471793662463864,
+          "success_rate": 1.0
         }
       ],
-      "best_layer": 14,
-      "best_score": 0.8998476485411326
-    }
-  },
-  "layer_ablation_composition": {
-    "concept_a": "formal",
-    "concept_b": "positive",
-    "same_layer": [
-      {
-        "layer": 8,
-        "mean_score_a": 0.8757049898306529,
-        "mean_score_b": 0.5935437039782604,
-        "joint_success_rate": 0.5666666666666667
-      },
-      {
-        "layer": 10,
-        "mean_score_a": 0.8801167488098145,
-        "mean_score_b": 0.6957647571961085,
-        "joint_success_rate": 0.6666666666666666
-      },
-      {
-        "layer": 12,
-        "mean_score_a": 0.8720583359400431,
-        "mean_score_b": 0.5268877821664015,
-        "joint_success_rate": 0.5333333333333333
-      },
-      {
-        "layer": 14,
-        "mean_score_a": 0.8900527596473694,
-        "mean_score_b": 0.7179696044574181,
-        "joint_success_rate": 0.7666666666666667
-      },
-      {
-        "layer": 16,
-        "mean_score_a": 0.8724060773849487,
-        "mean_score_b": 0.6591384611402948,
-        "joint_success_rate": 0.6
-      }
-    ],
-    "different_layers": [
-      {
-        "layer_a": 8,
-        "layer_b": 16,
-        "mean_score_a": 0.8829249262809753,
-        "mean_score_b": 0.7060217907031378,
-        "joint_success_rate": 0.7333333333333333
-      },
-      {
-        "layer_a": 12,
-        "layer_b": 16,
-        "mean_score_a": 0.853419554233551,
-        "mean_score_b": 0.5702528143922488,
-        "joint_success_rate": 0.5333333333333333
-      },
-      {
-        "layer_a": 8,
-        "layer_b": 12,
-        "mean_score_a": 0.8831185261408488,
-        "mean_score_b": 0.58109456996123,
-        "joint_success_rate": 0.5333333333333333
-      }
-    ],
-    "best_same_layer": {
-      "layer": 14,
-      "mean_score_a": 0.8900527596473694,
-      "mean_score_b": 0.7179696044574181,
-      "joint_success_rate": 0.7666666666666667
+      "best_layer": 10,
+      "best_score": 0.9202192584673564
     },
-    "best_different_layers": {
-      "layer_a": 8,
-      "layer_b": 16,
-      "mean_score_a": 0.8829249262809753,
-      "mean_score_b": 0.7060217907031378,
-      "joint_success_rate": 0.7333333333333333
-    }
-  },
-  "failure_analysis": {
-    "concept_a": "formal",
-    "concept_b": "positive",
-    "layer": 12,
-    "coefficient": 1.0,
-    "total_samples": 30,
-    "categories": {
-      "success": {
-        "count": 15,
-        "percentage": 50.0,
-        "examples": [
-          {
-            "prompt": "Write about the weather today.",
-            "text": "Today, the weather has been nothing short of spectacular! With temperatures in the low 80s, a gentle breeze, and clear skies overhead, it's been the perfect day to spend outside.\n\nThe sun has been shining brightly, casting a warm and golden glow across the landscape. The sky has been a breathtaking shade of blue, with patches of white and pink clouds drifting by.\n\nThe trees around my house have been in full bloom, with vibrant oranges and yellows casting a dazzling light",
-            "score_a": 0.644149661064148,
-            "score_b": 0.9888522624969482,
-            "perplexity": 8.72158137167456
-          },
-          {
-            "prompt": "Write about the weather today.",
-            "text": "Today, the weather in my hometown is nothing short of breathtaking. As I step outside my small apartment building, I am greeted by a glorious display of sunshine and warmth. The sky is a deep shade of blue, with the occasional flurry of white clouds that add a touch of magic to the otherwise peaceful atmosphere.\n\nThe temperature outside is a balmy 70\u00b0F, which feels like a welcomed relief after the frigid temperatures of the recent winter season. The sun's rays are bright and penetr",
-            "score_a": 0.7306967973709106,
-            "score_b": 0.9865915179252625,
-            "perplexity": 9.90165072136456
-          },
-          {
-            "prompt": "Explain how to make a cup of coffee.",
-            "text": "Making a cup of coffee is a simple and enjoyable process. Here's how to do it:\n\n1. Choose a coffee maker: There are several types of coffee makers available in the market, including drip coffee makers, French presses, and pour-over coffee makers. Choose a coffee maker that suits your preferences and the size of your cup.\n\n2. Boil water: Heat up the water in a kettle or boiling water canister. You can also use a coffee pot if you have one.\n\n3. Add coffee grounds",
-            "score_a": 0.9142606854438782,
-            "score_b": 0.8544695377349854,
-            "perplexity": 4.682330440024613
-          }
-        ]
-      },
-      "a_dominates": {
-        "count": 14,
-        "percentage": 46.666666666666664,
-        "examples": [
-          {
-            "prompt": "Write about the weather today.",
-            "text": "Today, the weather in our small town has been anything but typical. As the sun began to rise over the horizon, a chill enveloped the air, leaving it damp and foggy. The temperature hovered around 50\u00b0F (10\u00b0C), but the wind was strong and the wind chill felt colder.\n\nThe sky was a deep shade of blue, with a few wispy clouds drifting lazily across the horizon. The clouds, however, were not the typical white or gray clouds that we often see in this region. They were a deep, rich blue",
-            "score_a": 0.7509779930114746,
-            "score_b": 0.034148696810007095,
-            "perplexity": 7.8114818447176235
-          },
-          {
-            "prompt": "Describe a typical morning routine.",
-            "text": "A typical morning routine may vary depending on the individual, their lifestyle, and their preferences. However, some common morning routines include:\n\n1. Wake up: The first step in a typical morning routine is waking up. Depending on the time of year and location, this may involve getting out of bed, taking a shower or bath, and dressing appropriately.\n\n2. Shower and breakfast: After waking up, some people may opt to have a shower or bath before starting their morning routine. This may include brushing their teeth, washing their face, and showering",
-            "score_a": 0.9920984506607056,
-            "score_b": 0.09283936768770218,
-            "perplexity": 5.766713048070175
-          },
-          {
-            "prompt": "Describe a typical morning routine.",
-            "text": "A typical morning routine might look like this:\n\n1. Wake up: The first thing you do in the morning is wake up and get ready for the day. This might include getting dressed, brushing your teeth, showering, and getting ready for work or school.\n\n2. Make coffee or tea: After getting dressed, you might want to make a cup of coffee or tea. This is a great way to start the day and give yourself a boost of energy.\n\n3. Grab breakfast: After making your coffee or tea, you might want to grab a breakfast. This could be anything from a",
-            "score_a": 0.942520022392273,
-            "score_b": 0.3853472173213959,
-            "perplexity": 3.527854354738459
-          }
-        ]
-      },
-      "b_dominates": {
-        "count": 1,
-        "percentage": 3.3333333333333335,
-        "examples": [
-          {
-            "prompt": "Tell me about a book you enjoyed.",
-            "text": "Sure, I'd be happy to share a book that I enjoyed recently!\n\nTitle: \"The Underground Railroad\" by Colson Whitehead\n\nSummary: Set during the antebellum years in the United States, \"The Underground Railroad\" is a historical fiction novel that follows the lives of several individuals who seek to escape slavery. The book is a powerful and emotionally resonant exploration of the complexities of race, class, and identity in America.\n\nWhat I liked about \"The Underground Railroad\":\n\n1. The writing: Whitehead's prose",
-            "score_a": 0.4974410831928253,
-            "score_b": 0.9180631041526794,
-            "perplexity": 6.990642357981885
-          }
-        ]
-      },
-      "both_absent": {
-        "count": 0,
-        "percentage": 0.0,
-        "examples": []
-      },
-      "incoherent": {
-        "count": 0,
-        "percentage": 0.0,
-        "examples": []
-      }
+    "casual": {
+      "concept": "casual",
+      "coefficient": 1.0,
+      "layers": [
+        {
+          "layer": 8,
+          "mean_score": 0.5790737112363179,
+          "std_score": 0.11826112652329826,
+          "mean_perplexity": 7.501785329920823,
+          "success_rate": 0.8
+        },
+        {
+          "layer": 10,
+          "mean_score": 0.6084858198960622,
+          "std_score": 0.12527452766633376,
+          "mean_perplexity": 7.235285116315358,
+          "success_rate": 0.8333333333333334
+        },
+        {
+          "layer": 12,
+          "mean_score": 0.5668743620316188,
+          "std_score": 0.12887456408913162,
+          "mean_perplexity": 7.761861381195661,
+          "success_rate": 0.7333333333333333
+        },
+        {
+          "layer": 14,
+          "mean_score": 0.5816735123594602,
+          "std_score": 0.1504146799625136,
+          "mean_perplexity": 7.786076410405944,
+          "success_rate": 0.7333333333333333
+        },
+        {
+          "layer": 16,
+          "mean_score": 0.581624777118365,
+          "std_score": 0.10564586880646076,
+          "mean_perplexity": 7.45597542514299,
+          "success_rate": 0.7333333333333333
+        }
+      ],
+      "best_layer": 10,
+      "best_score": 0.6084858198960622
     }
   },
   "pca_analysis": {
@@ -357,90 +524,90 @@
     "std_distance": 0.0,
     "baseline_projections": [
       [
-        1.2416274695400302,
-        -0.8088024449879271
+        1.257588770472004,
+        -0.7941821714026331
       ],
       [
-        -0.158852460253184,
-        0.7994303541462385
+        -0.14502637409051622,
+        0.8111905593875088
       ],
       [
-        -0.03920476872550108,
-        2.8767007613198188
+        -0.028120395311748016,
+        2.8876154944594097
       ],
       [
-        -2.45012184496688,
-        -1.2714171443920992
+        -2.435256504668294,
+        -1.2626308286518853
       ],
       [
-        0.39119674817043537,
-        0.15961711442233886
+        0.4052773100364171,
+        0.17124460990748405
       ],
       [
-        2.1691608448340385,
-        -0.4214482855898627
+        2.182930973794033,
+        -0.408913320767594
       ],
       [
-        -1.8701056171500834,
-        0.6283044631437587
+        -1.8553478643285815,
+        0.6406262046222906
       ],
       [
-        -0.47148184312887503,
-        -0.15783241309034907
+        -0.45658377351788154,
+        -0.145910204209433
       ],
       [
-        -1.2455774898117173,
-        -1.3533118557259167
+        -1.2309182709468076,
+        -1.3444126220996235
       ],
       [
-        2.016209930570446,
-        -0.7957647576481528
+        2.031744387071098,
+        -0.7810656781618532
       ],
       [
-        1.3250539950330982,
-        -0.7399025769962565
+        1.3123396185002443,
+        -0.748911116949033
       ],
       [
-        -0.07543517950859112,
-        0.8683412011728928
+        -0.09026492541294602,
+        0.8564424589148424
       ],
       [
-        0.0442262863307563,
-        2.945579910391547
+        0.02662892293680742,
+        2.932923701706444
       ],
       [
-        -2.366688687984262,
-        -1.202518368990867
+        -2.380532925843268,
+        -1.21732816187337
       ],
       [
-        0.4746001101683554,
-        0.22851994017910013
+        0.46001360450830375,
+        0.21652293712458204
       ],
       [
-        2.2526140665953887,
-        -0.35254483911498324
+        2.237658893707108,
+        -0.36358464627518694
       ],
       [
-        -1.7866633695679657,
-        0.6972038720417493
+        -1.8006285999600709,
+        0.6859143388818766
       ],
       [
-        -0.3880693931208688,
-        -0.08891894479025696
+        -0.4018417178993987,
+        -0.10064500835162701
       ],
       [
-        -1.1621483300842945,
-        -1.2843793173358886
+        -1.176158517641215,
+        -1.2991202843852865
       ],
       [
-        2.0996595330596746,
-        -0.7268566681548825
+        2.0864973885947125,
+        -0.7357762618769093
       ]
     ],
     "steered_projections": [],
     "variance_explained": [
-      0.2754399848620792,
-      0.1806129745050747
+      0.27532508911451503,
+      0.18054103310777514
     ]
   }
 }

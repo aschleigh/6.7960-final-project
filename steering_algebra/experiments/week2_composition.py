@@ -15,6 +15,7 @@ from pathlib import Path
 import json
 from tqdm import tqdm
 from dataclasses import dataclass
+import ast
 
 from config import cfg
 from data.prompts import get_test_prompts
@@ -30,6 +31,8 @@ from evaluation.geometry import (
     predict_interference
 )
 from extraction.extract_vectors import load_cached_vectors
+from steering.layer_selection import find_optimal_layers_batch
+
 
 
 
@@ -74,35 +77,13 @@ def parse_concept_pairs(geometry: Dict, category: str) -> List[Tuple[str, str]]:
     """
     pairs = []
     
-    if "categories" not in geometry:
-        return pairs
-    
     if category not in geometry["categories"]:
         return pairs
     
     items = geometry["categories"][category]
+    print("ITEMS", items)
     
-    for item in items:
-        try:
-            if isinstance(item, (list, tuple)):
-                # Format: [concept_a, concept_b, similarity]
-                if len(item) >= 2:
-                    pairs.append((item[0], item[1]))
-            elif isinstance(item, dict):
-                # Format: {"concept_a": "...", "concept_b": "..."}
-                if "concept_a" in item and "concept_b" in item:
-                    pairs.append((item["concept_a"], item["concept_b"]))
-                elif len(item) >= 2:
-                    keys = list(item.keys())
-                    pairs.append((item[keys[0]], item[keys[1]]))
-            elif isinstance(item, str):
-                # Format: "concept_a <-> concept_b"
-                if " <-> " in item:
-                    c1, c2 = item.split(" <-> ")
-                    pairs.append((c1.strip(), c2.strip()))
-        except Exception as e:
-            print(f"Warning: Failed to parse pair {item}: {e}")
-            continue
+    pairs = [(t[0], t[1]) for t in (ast.literal_eval(x) for x in items)]
     
     return pairs
     
@@ -598,7 +579,27 @@ def main():
         concepts,
         cfg.model.steering_layers
     )
-    steering_vectors = {c: vecs[default_layer] for c, vecs in steering_vectors_by_layer.items()}
+
+    optimal_layers = find_optimal_layers_batch(
+        model,
+        tokenizer,
+        steering_vectors_by_layer,  
+        concepts,
+        layers,
+        prompts,
+        n_prompts=5,
+        n_generations=2
+    )
+
+    print(f"\nOptimal layers: {optimal_layers}")
+
+    # Create steering vectors dict using optimal layers
+    steering_vectors = {
+        c: steering_vectors_by_layer[c][optimal_layers[c]] 
+        for c in concepts if c in steering_vectors_by_layer
+    }
+
+    # steering_vectors = {c: vecs[default_layer] for c, vecs in steering_vectors_by_layer.items()}
     
     # Get test prompts
     prompts = get_test_prompts()
@@ -641,12 +642,16 @@ def main():
     
     print(f"Testing {len(orthogonal_pairs)} orthogonal pairs: {orthogonal_pairs}")
     
-    for concept_a, concept_b in orthogonal_pairs[:3]:  # Test top 3
+    for concept_a, concept_b in orthogonal_pairs:  # changed to testing all
         if concept_a in steering_vectors and concept_b in steering_vectors:
             try:
+                layer_a = optimal_layers[concept_a]
+                layer_b = optimal_layers[concept_b]
+                test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
+
                 result = test_additive_composition(
                     model, tokenizer, steering_vectors,
-                    concept_a, concept_b, default_layer, prompts, n_generations=n_gen
+                    concept_a, concept_b, test_layer, prompts, n_generations=n_gen
                 )
                 additive_results.append(result)
             except Exception as e:
@@ -677,12 +682,16 @@ def main():
     if not opposing_pairs:
         print("No opposing pairs available! Skipping opposing test...")
     else:
-        for concept_a, concept_b in opposing_pairs[:3]:
+        for concept_a, concept_b in opposing_pairs:
             if concept_a in steering_vectors and concept_b in steering_vectors:
                 try:
+                    layer_a = optimal_layers[concept_a]
+                    layer_b = optimal_layers[concept_b]
+                    test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
+
                     result = test_opposing_composition(
                         model, tokenizer, steering_vectors,
-                        concept_a, concept_b, default_layer, prompts, n_generations=n_gen
+                        concept_a, concept_b, test_layer, prompts, n_generations=n_gen
                     )
                     opposing_results.append(result)
                 except Exception as e:
@@ -695,7 +704,8 @@ def main():
     print("="*60)
     
     # Test on a few pairs
-    test_pairs = orthogonal_pairs[:2] if orthogonal_pairs else ([(concepts[0], concepts[1])] if len(concepts) >= 2 else [])
+    # test_pairs = orthogonal_pairs[:2] if orthogonal_pairs else ([(concepts[0], concepts[1])] if len(concepts) >= 2 else [])
+    test_pairs = orthogonal_pairs
     
     if not test_pairs:
         print("No pairs available for arithmetic test!")
@@ -703,9 +713,13 @@ def main():
         for concept_a, concept_b in test_pairs:
             if concept_a in steering_vectors and concept_b in steering_vectors:
                 try:
+                    layer_a = optimal_layers[concept_a]
+                    layer_b = optimal_layers[concept_b]
+                    test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
+
                     result = test_arithmetic_composition(
                         model, tokenizer, steering_vectors,
-                        concept_a, concept_b, default_layer, prompts, n_generations=n_gen
+                        concept_a, concept_b, test_layer, prompts, n_generations=n_gen
                     )
                     arithmetic_results.append(result)
                 except Exception as e:
@@ -720,6 +734,9 @@ def main():
     if orthogonal_pairs and len(orthogonal_pairs) > 0:
         concept_a, concept_b = orthogonal_pairs[0]
         if concept_a in steering_vectors and concept_b in steering_vectors:
+            layer_a = optimal_layers[concept_a]
+            layer_b = optimal_layers[concept_b]
+            test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
             if args.quick:
                 alpha_range = [0.5, 1.0, 1.5]
                 beta_range = [0.5, 1.0, 1.5]
@@ -730,7 +747,7 @@ def main():
             try:
                 scaling_results = test_coefficient_scaling(
                     model, tokenizer, steering_vectors,
-                    concept_a, concept_b, default_layer, prompts,
+                    concept_a, concept_b, test_layer, prompts,
                     alpha_range, beta_range, n_generations=2
                 )
             except Exception as e:
