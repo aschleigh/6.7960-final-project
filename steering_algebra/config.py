@@ -21,13 +21,20 @@ from pathlib import Path
 class ModelConfig:
     """Model configuration."""
     # TinyLlama for development/testing
+    
     name: str = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
     device: str = "cuda"
     torch_dtype: str = "bfloat16"
     # TinyLlama has 22 layers, so adjust layer indices
-    steering_layers: List[int] = field(default_factory=lambda: [8, 10, 12, 14, 16])
+    steering_layers: List[int] = field(default_factory=lambda: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])
     # Default to middle-ish layer
     default_layer: int = 12
+    optimal_layers: Dict[str, List[int]] = field(default_factory=dict)
+    coefficient_candidates = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+    optimal_coefficient = {}
+    default_coefficient = 1.0
+
+    
 
 
 @dataclass
@@ -61,6 +68,7 @@ class EvaluationConfig:
     classifier_threshold: float = 0.5
     # Number of samples for human evaluation
     n_human_eval_samples: int = 30
+    
 
 
 @dataclass

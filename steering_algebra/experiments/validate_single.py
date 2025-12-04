@@ -97,7 +97,7 @@ def run_extraction_validation(
     extraction_quality = convert_to_native(results["extraction_quality"])
     with open(output_dir / "extraction_quality.json", "w") as f:
         json.dump(extraction_quality, f, indent=2)
-    print(f"✓ Extraction quality saved")
+    print(f"Extraction quality saved")
     # except Exception as e:
     #     print(f"Warning: Failed to save extraction quality: {e}")
     return steering_vectors, extraction_quality
@@ -105,7 +105,6 @@ def run_extraction_validation(
 
 def run_geometry_analysis(
     steering_vectors: Dict[str, Dict[int, torch.Tensor]],
-    default_layer: int,
     output_dir: Path
 ) -> Dict:
 
@@ -114,10 +113,10 @@ def run_geometry_analysis(
     print("="*60)
     
     vectors_at_layer = {
-        concept: vectors[default_layer]
+        concept: vectors[cfg.model.optimal_layer[concept]]
         for concept, vectors in steering_vectors.items()
     }
-    
+
     # pairwise similarity (should be 1 along diagonals)
     sim_matrix, concepts = compute_similarity_matrix(vectors_at_layer)
     
@@ -192,11 +191,11 @@ def run_steering_validation(
     prompts = test_prompts[:n_prompts]
     
     for concept in concepts:
-        default_layer = layers_per_concept[concept]
+        layer = layers_per_concept[concept]
         print(f"\n\nTesting: {concept}")
         print("-" * 40)
         
-        sv = steering_vectors[concept][default_layer]
+        sv = steering_vectors[concept][layer]
         concept_results = {
             "baseline": {"texts": [], "scores": []},
             "steered": {"texts": [], "scores": []},
@@ -215,7 +214,9 @@ def run_steering_validation(
                 concept_results["baseline"]["texts"].append(baseline_text)
                 concept_results["baseline"]["scores"].append(baseline_score)
             # steered 
-            config = SteeringConfig(vector=sv, layer=default_layer, coefficient=1.0)
+            coef = cfg.model.optimal_coefficient.get(concept, cfg.model.default_coefficient)
+            config = SteeringConfig(vector=sv, layer=layer, coefficient=coef)
+
             for _ in range(n_generations):
                 steered_text = generate_with_steering(
                     model, tokenizer, prompt, config,
@@ -312,7 +313,6 @@ def run_coefficient_analysis(
     tokenizer,
     steering_vectors: Dict[str, Dict[int, torch.Tensor]],
     concept: str,
-    default_layer: int,
     test_prompts: List[str],
     output_dir: Path,
     coefficients: List[float] = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0],
@@ -332,7 +332,8 @@ def run_coefficient_analysis(
     
     results = {coef: {"scores": [], "texts": [], "perplexities": []} for coef in coefficients}
     
-    sv = steering_vectors[concept][default_layer]
+    layer = cfg.model.optimal_layer[concept]
+    sv = steering_vectors[concept][layer]
     prompts = test_prompts[:n_prompts]
     
     for coef in coefficients:
@@ -343,7 +344,7 @@ def run_coefficient_analysis(
                 if coef == 0.0:
                     text = generate_baseline(model, tokenizer, prompt)
                 else:
-                    config = SteeringConfig(vector=sv, layer=default_layer, coefficient=coef)
+                    config = SteeringConfig(vector=sv, layer=layer, coefficient=coef)
                     text = generate_with_steering(model, tokenizer, prompt, config)
                 
                 score = classifier.score(text)
@@ -409,10 +410,10 @@ def find_optimal_layer(
             for _ in range(n_generations):
                 text = generate_with_steering(model, tokenizer, prompt, config)
                 score = classifier.score(text)
-                print("CONCEPT: ", concept)
-                print("PROMPT: ", prompt)
-                print("TEXT GENERATED: ", text)
-                print("SCORE: ", score)
+                # print("CONCEPT: ", concept)
+                # print("PROMPT: ", prompt)
+                # print("TEXT GENERATED: ", text)
+                # print("SCORE: ", score)
                 scores.append(score)
         
         import numpy as np
@@ -424,6 +425,43 @@ def find_optimal_layer(
     
     return optimal_layer
 
+def find_optimal_coefficient(
+    model,
+    tokenizer,
+    steering_vectors,
+    concept,
+    layer,
+    test_prompts,
+    n_prompts=5,
+    n_generations=2,
+    coefficients = cfg.model.coefficient_candidates
+):
+    from evaluation.classifiers import AttributeClassifier
+    classifier = AttributeClassifier(concept)
+
+    prompts = test_prompts[:n_prompts]
+    scores_per_coef = {}
+
+    for coef in coefficients:
+        scores = []
+        config = SteeringConfig(
+            vector=steering_vectors[concept][layer],
+            layer=layer,
+            coefficient=coef
+        )
+        for prompt in prompts:
+            for _ in range(n_generations):
+                text = generate_with_steering(model, tokenizer, prompt, config)
+                score = classifier.score(text)
+                scores.append(score)
+        import numpy as np
+        scores_per_coef[coef] = np.mean(scores)
+
+    optimal_coef = max(scores_per_coef, key=scores_per_coef.get)
+    print(f"Optimal coefficient for {concept}: {optimal_coef:.2f}")
+    return optimal_coef
+
+
 
 def main():
     """Run all Week 1 validation experiments."""
@@ -434,6 +472,8 @@ def main():
     parser.add_argument("--model", default=cfg.model.name)
     parser.add_argument("--output_dir", default="outputs/week1")
     parser.add_argument("--skip_extraction", action="store_true")
+    parser.add_argument("--skip_optimal_layers", action="store_true")
+    parser.add_argument("--skip_optimal_coefficient", action="store_true")
     parser.add_argument("--concepts", nargs="+", default=None)
     args = parser.parse_args()
     
@@ -444,7 +484,6 @@ def main():
     
     concepts = args.concepts or cfg.concepts
     layers = cfg.model.steering_layers
-    default_layer = cfg.model.default_layer
     
     print("="*60)
     print("WEEK 1: Steering Vector Validation")
@@ -471,53 +510,150 @@ def main():
     contrastive_pairs = get_all_pairs(concepts, n_pairs=cfg.extraction.n_pairs)
     test_prompts = get_test_prompts()
     
-    # Step 1: Extract and validate vectors
+    # =========================================================================
+    # STEP 1: Extract and validate vectors
+    # =========================================================================
     if args.skip_extraction and (output_dir / "vectors").exists():
-        print("\nLoading cached vectors...")
+        print("\n" + "="*60)
+        print("Loading cached vectors...")
+        print("="*60)
         steering_vectors = load_cached_vectors(output_dir / "vectors", concepts, layers)
     else:
         steering_vectors, extraction_results = run_extraction_validation(
             model, tokenizer, concepts, contrastive_pairs, layers, output_dir
         )
 
-    optimal_layers = {}
-    for concept in concepts:
-        optimal_layers[concept] = find_optimal_layer(
-            model,
-            tokenizer,
-            steering_vectors,
-            concept,
-            layers,
-            test_prompts,
-            n_prompts=5,
-            n_generations=2
-        )
+    # =========================================================================
+    # STEP 1.5: Find or load optimal layers
+    # =========================================================================
+    optimal_layers_path = output_dir / "optimal_layers.json"
     
-    # Step 2: Geometry analysis
-    geometry_results = run_geometry_analysis(steering_vectors, default_layer, output_dir)
+    if args.skip_optimal_layers and optimal_layers_path.exists():
+        print("\n" + "="*60)
+        print(f"Loading optimal layers from {optimal_layers_path}")
+        print("="*60)
+        with open(optimal_layers_path) as f:
+            optimal_layers = json.load(f)
+        
+        # Verify all concepts are present
+        missing_concepts = [c for c in concepts if c not in optimal_layers]
+        if missing_concepts:
+            print(f"⚠ Warning: Missing optimal layers for: {missing_concepts}")
+            print("Computing missing optimal layers...")
+            for concept in missing_concepts:
+                optimal_layers[concept] = find_optimal_layer(
+                    model, tokenizer, steering_vectors, concept,
+                    layers, test_prompts, n_prompts=5, n_generations=2
+                )
+            # Save updated optimal layers
+            with open(optimal_layers_path, "w") as f:
+                json.dump(optimal_layers, f, indent=2)
+        
+        print(f"✓ Optimal layers loaded: {optimal_layers}")
+        cfg.model.optimal_layer = optimal_layers
+    else:
+        print("\n" + "="*60)
+        print("Finding optimal layers for each concept...")
+        print("="*60)
+        optimal_layers = {}
+        for concept in concepts:
+            optimal_layers[concept] = find_optimal_layer(
+                model, tokenizer, steering_vectors, concept,
+                layers, test_prompts, n_prompts=5, n_generations=2
+            )
+        
+        cfg.model.optimal_layer = optimal_layers
+        
+        # Save to JSON
+        with open(optimal_layers_path, "w") as f:
+            json.dump(optimal_layers, f, indent=2)
+        print(f"\n✓ Optimal layers saved to {optimal_layers_path}")
+        print(f"Optimal layers: {optimal_layers}")
     
-    # Step 3: Steering validation
+    # =========================================================================
+    # STEP 1.6: Find or load optimal coefficients
+    # =========================================================================
+    optimal_coefficients_path = output_dir / "optimal_coefficients.json"
+    
+    if args.skip_optimal_coefficient and optimal_coefficients_path.exists():
+        print("\n" + "="*60)
+        print(f"Loading optimal coefficients from {optimal_coefficients_path}")
+        print("="*60)
+        with open(optimal_coefficients_path) as f:
+            optimal_coefficients = json.load(f)
+        
+        # Verify all concepts are present
+        missing_concepts = [c for c in concepts if c not in optimal_coefficients]
+        if missing_concepts:
+            print(f"⚠ Warning: Missing optimal coefficients for: {missing_concepts}")
+            print("Computing missing optimal coefficients...")
+            for concept in missing_concepts:
+                layer = optimal_layers[concept]
+                optimal_coefficients[concept] = find_optimal_coefficient(
+                    model, tokenizer, steering_vectors, concept,
+                    layer, test_prompts, n_prompts=5, n_generations=2
+                )
+            # Save updated optimal coefficients
+            with open(optimal_coefficients_path, "w") as f:
+                json.dump(convert_to_native(optimal_coefficients), f, indent=2)
+        
+        print(f"✓ Optimal coefficients loaded: {optimal_coefficients}")
+        cfg.model.optimal_coefficient = optimal_coefficients
+    else:
+        print("\n" + "="*60)
+        print("Finding optimal coefficients for each concept...")
+        print("="*60)
+        optimal_coefficients = {}
+        for concept in concepts:
+            layer = optimal_layers[concept]
+            optimal_coefficients[concept] = find_optimal_coefficient(
+                model, tokenizer, steering_vectors, concept,
+                layer, test_prompts, n_prompts=5, n_generations=2
+            )
+        
+        cfg.model.optimal_coefficient = optimal_coefficients
+        
+        # Save to JSON
+        with open(optimal_coefficients_path, "w") as f:
+            json.dump(convert_to_native(optimal_coefficients), f, indent=2)
+        print(f"\n✓ Optimal coefficients saved to {optimal_coefficients_path}")
+        print(f"Optimal coefficients: {optimal_coefficients}")
+    
+    # =========================================================================
+    # STEP 2: Geometry analysis
+    # =========================================================================
+    geometry_results = run_geometry_analysis(steering_vectors, output_dir)
+    
+    # =========================================================================
+    # STEP 3: Steering validation
+    # =========================================================================
     steering_results = run_steering_validation(
         model, tokenizer, steering_vectors, concepts, optimal_layers,
-        test_prompts, output_dir, n_prompts=10, n_generations=3
+        test_prompts, output_dir, n_prompts=40, n_generations=5
     )
     
-    # Step 4: Coefficient analysis (for one concept)
+    # =========================================================================
+    # STEP 4: Coefficient analysis (for one concept)
+    # =========================================================================
     best_concept = max(
         steering_results["per_concept"].keys(),
         key=lambda c: steering_results["per_concept"][c]["statistics"]["improvement"]
     )
-    coef_layer = optimal_layers[best_concept]
     coefficient_results = run_coefficient_analysis(
-        model, tokenizer, steering_vectors, best_concept, coef_layer,
+        model, tokenizer, steering_vectors, best_concept,
         test_prompts, output_dir
     )
     
+    # =========================================================================
     # Summary
+    # =========================================================================
     print("\n" + "="*60)
     print("WEEK 1 COMPLETE")
     print("="*60)
     print(f"\nResults saved to: {output_dir}")
+    print(f"\nOptimal Parameters:")
+    print(f"  Layers: {optimal_layers}")
+    print(f"  Coefficients: {optimal_coefficients}")
     print(f"\nAggregated Results:")
     print(f"  Mean improvement: {steering_results['aggregated']['mean_improvement']:.3f}")
     print(f"  Mean success rate: {steering_results['aggregated']['mean_success_rate']:.1%}")

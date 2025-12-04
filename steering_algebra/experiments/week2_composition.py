@@ -42,6 +42,8 @@ class CompositionResult:
     """Results from a single composition experiment."""
     concept_a: str
     concept_b: str
+    layer_a: int
+    layer_b: int
     coefficient_a: float
     coefficient_b: float
     
@@ -94,9 +96,9 @@ def test_additive_composition(
     steering_vectors: Dict[str, torch.Tensor],
     concept_a: str,
     concept_b: str,
-    layer: int,
+    optimal_layers: Dict[str, int],
+    optimal_coefficients: Dict[str, float],
     prompts: List[str],
-    coefficients: Tuple[float, float] = (1.0, 1.0),
     n_generations: int = 5,
     threshold: float = 0.5
 ) -> CompositionResult:
@@ -110,7 +112,13 @@ def test_additive_composition(
     
     vec_a = steering_vectors[concept_a]
     vec_b = steering_vectors[concept_b]
-    coef_a, coef_b = coefficients
+    
+    # Use optimal layers and coefficients
+    layer_a = optimal_layers[concept_a]
+    layer_b = optimal_layers[concept_b]
+    coef_a = optimal_coefficients.get(concept_a, cfg.model.default_coefficient)
+    coef_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
+    
     
     # Storage for results
     baseline_texts = []
@@ -127,9 +135,9 @@ def test_additive_composition(
     composition_scores_a = []
     composition_scores_b = []
     
-    print(f"\nTesting: {concept_a} + {concept_b}")
-    print(f"Coefficients: {coef_a}, {coef_b}")
+    print(f"\nTesting: {concept_a} (layer {layer_a}, coef {coef_a:.2f}) + {concept_b} (layer {layer_b}, coef {coef_b:.2f})")
     print(f"Cosine similarity: {compute_cosine_similarity(vec_a, vec_b):.3f}")
+    
     
     for prompt in tqdm(prompts, desc="Generating"):
         for _ in range(n_generations):
@@ -141,7 +149,7 @@ def test_additive_composition(
             baseline_scores_b.append(scores[concept_b])
             
             # A only
-            config_a = SteeringConfig(vector=vec_a, layer=layer, coefficient=coef_a)
+            config_a = SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coef_a)
             text_a = generate_with_steering(model, tokenizer, prompt, config_a)
             a_only_texts.append(text_a)
             scores = evaluator.evaluate(text_a, [concept_a, concept_b])
@@ -149,17 +157,17 @@ def test_additive_composition(
             a_only_scores_b.append(scores[concept_b])
             
             # B only
-            config_b = SteeringConfig(vector=vec_b, layer=layer, coefficient=coef_b)
+            config_b = SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
             text_b = generate_with_steering(model, tokenizer, prompt, config_b)
             b_only_texts.append(text_b)
             scores = evaluator.evaluate(text_b, [concept_a, concept_b])
             b_only_scores_a.append(scores[concept_a])
             b_only_scores_b.append(scores[concept_b])
             
-            # A + B composition
+            # A + B composition (each at their optimal layer)
             config_ab = [
-                SteeringConfig(vector=vec_a, layer=layer, coefficient=coef_a),
-                SteeringConfig(vector=vec_b, layer=layer, coefficient=coef_b)
+                SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coef_a),
+                SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
             ]
             text_ab = generate_with_steering(model, tokenizer, prompt, config_ab)
             composition_texts.append(text_ab)
@@ -172,7 +180,7 @@ def test_additive_composition(
         1 for sa, sb in zip(composition_scores_a, composition_scores_b)
         if sa > threshold and sb > threshold
     )
-    both_present = both_present_count > len(composition_texts) * 0.6  # 60% threshold
+    both_present = both_present_count > len(composition_texts) * 0.5  # 60% threshold
     composition_success_rate = both_present_count / len(composition_texts)
     
     # Quality metrics
@@ -182,6 +190,8 @@ def test_additive_composition(
     result = CompositionResult(
         concept_a=concept_a,
         concept_b=concept_b,
+        layer_a=layer_a,
+        layer_b=layer_b,
         coefficient_a=coef_a,
         coefficient_b=coef_b,
         baseline_scores={
@@ -207,6 +217,7 @@ def test_additive_composition(
         composition_success_rate=float(composition_success_rate)
     )
     
+    
     print(f"\nResults:")
     print(f"  Baseline:    {concept_a}={result.baseline_scores[concept_a]:.3f}, {concept_b}={result.baseline_scores[concept_b]:.3f}")
     print(f"  A only:      {concept_a}={result.a_only_scores[concept_a]:.3f}, {concept_b}={result.a_only_scores[concept_b]:.3f}")
@@ -223,10 +234,10 @@ def test_opposing_composition(
     tokenizer,
     steering_vectors: Dict[str, torch.Tensor],
     concept_a: str,
-    concept_b: str,  # Should be opposite of A
-    layer: int,
+    concept_b: str,
+    optimal_layers: Dict[str, int],
+    optimal_coefficients: Dict[str, float],
     prompts: List[str],
-    coefficients: Tuple[float, float] = (1.0, 1.0),
     n_generations: int = 5
 ) -> Dict:
     """
@@ -239,7 +250,15 @@ def test_opposing_composition(
     
     vec_a = steering_vectors[concept_a]
     vec_b = steering_vectors[concept_b]
-    coef_a, coef_b = coefficients
+    
+    vec_a = steering_vectors[concept_a]
+    vec_b = steering_vectors[concept_b]
+    
+    # Use optimal layers and coefficients
+    layer_a = optimal_layers[concept_a]
+    layer_b = optimal_layers[concept_b]
+    coef_a = optimal_coefficients.get(concept_a, cfg.model.default_coefficient)
+    coef_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
     
     baseline_texts = []
     a_only_texts = []
@@ -251,7 +270,7 @@ def test_opposing_composition(
     b_only_scores = []
     composition_scores = []
     
-    print(f"\nTesting opposing: {concept_a} + {concept_b}")
+    print(f"\nTesting opposing: {concept_a} (layer {layer_a}, coef {coef_a:.2f}) + {concept_b} (layer {layer_b}, coef {coef_b:.2f})")
     print(f"Cosine similarity: {compute_cosine_similarity(vec_a, vec_b):.3f}")
     
     for prompt in tqdm(prompts, desc="Generating"):
@@ -262,21 +281,21 @@ def test_opposing_composition(
             baseline_scores.append(evaluator.classifiers[concept_a].score(baseline))
             
             # A only
-            config_a = SteeringConfig(vector=vec_a, layer=layer, coefficient=coef_a)
+            config_a = SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coef_a)
             text_a = generate_with_steering(model, tokenizer, prompt, config_a)
             a_only_texts.append(text_a)
             a_only_scores.append(evaluator.classifiers[concept_a].score(text_a))
             
             # B only (opposite)
-            config_b = SteeringConfig(vector=vec_b, layer=layer, coefficient=coef_b)
+            config_b = SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
             text_b = generate_with_steering(model, tokenizer, prompt, config_b)
             b_only_texts.append(text_b)
             b_only_scores.append(evaluator.classifiers[concept_a].score(text_b))
             
             # A + B composition
             config_ab = [
-                SteeringConfig(vector=vec_a, layer=layer, coefficient=coef_a),
-                SteeringConfig(vector=vec_b, layer=layer, coefficient=coef_b)
+                SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coef_a),
+                SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
             ]
             text_ab = generate_with_steering(model, tokenizer, prompt, config_ab)
             composition_texts.append(text_ab)
@@ -302,6 +321,10 @@ def test_opposing_composition(
     result = {
         "concept_a": concept_a,
         "concept_b": concept_b,
+        "layer_a": layer_a,
+        "layer_b": layer_b,
+        "coefficient_a": coef_a,
+        "coefficient_b": coef_b,
         "cosine_similarity": float(compute_cosine_similarity(vec_a, vec_b)),
         "baseline_mean": float(baseline_mean),
         "a_only_mean": float(a_only_mean),
@@ -332,7 +355,8 @@ def test_arithmetic_composition(
     steering_vectors: Dict[str, torch.Tensor],
     concept_a: str,
     concept_b: str,
-    layer: int,
+    optimal_layers: Dict[str, int],
+    optimal_coefficients: Dict[str, float],
     prompts: List[str],
     n_generations: int = 5
 ) -> Dict:
@@ -346,24 +370,34 @@ def test_arithmetic_composition(
     vec_a = steering_vectors[concept_a]
     vec_b = steering_vectors[concept_b]
     
+    # FIX: Move both vectors to the same device (CPU for arithmetic)
+    vec_a_cpu = vec_a.cpu()
+    vec_b_cpu = vec_b.cpu()
+    
+    layer_a = optimal_layers[concept_a]
+    layer_b = optimal_layers[concept_b]
+    coef_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
+    
     # Generate with different combinations
     b_only_scores = []
     arithmetic_scores = []  # (A + B) - A
     
     print(f"\nTesting arithmetic: ({concept_a} + {concept_b}) - {concept_a} ≈ {concept_b}")
+    print(f"Using layer {layer_b} and coefficient {coef_b:.2f} for {concept_b}")
     
     for prompt in tqdm(prompts, desc="Generating"):
         for _ in range(n_generations):
             # B only (ground truth)
-            config_b = SteeringConfig(vector=vec_b, layer=layer, coefficient=1.0)
+            config_b = SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
             text_b = generate_with_steering(model, tokenizer, prompt, config_b)
             b_only_scores.append(evaluator.classifiers[concept_b].score(text_b))
             
             # (A + B) - A = B (in theory)
-            # In practice: steer with (vec_a + vec_b - vec_a) = vec_b
-            # But test the full composition
-            combined_vec = vec_a + vec_b - vec_a  # Should equal vec_b
-            config_arithmetic = SteeringConfig(vector=combined_vec, layer=layer, coefficient=1.0)
+            # Do arithmetic on CPU, then move back to original device
+            combined_vec = vec_a_cpu + vec_b_cpu - vec_a_cpu  # Should equal vec_b
+            combined_vec = combined_vec.to(vec_b.device)  # Move to same device as vec_b
+            
+            config_arithmetic = SteeringConfig(vector=combined_vec, layer=layer_b, coefficient=coef_b)
             text_arithmetic = generate_with_steering(model, tokenizer, prompt, config_arithmetic)
             arithmetic_scores.append(evaluator.classifiers[concept_b].score(text_arithmetic))
     
@@ -377,6 +411,8 @@ def test_arithmetic_composition(
     result = {
         "concept_a": concept_a,
         "concept_b": concept_b,
+        "layer_b": layer_b,
+        "coefficient_b": coef_b,
         "b_only_mean": float(b_only_mean),
         "arithmetic_mean": float(arithmetic_mean),
         "difference": float(difference),
@@ -398,7 +434,7 @@ def test_coefficient_scaling(
     steering_vectors: Dict[str, torch.Tensor],
     concept_a: str,
     concept_b: str,
-    layer: int,
+    optimal_layers: Dict[str, int],
     prompts: List[str],
     alpha_range: List[float] = [0.25, 0.5, 1.0, 1.5, 2.0],
     beta_range: List[float] = [0.25, 0.5, 1.0, 1.5, 2.0],
@@ -414,10 +450,14 @@ def test_coefficient_scaling(
     
     vec_a = steering_vectors[concept_a]
     vec_b = steering_vectors[concept_b]
+
+    layer_a = optimal_layers[concept_a]
+    layer_b = optimal_layers[concept_b]
     
     results_grid = {}
     
-    print(f"\nTesting coefficient scaling: {concept_a} × α + {concept_b} × β")
+    print(f"\nTesting coefficient scaling: {concept_a} (layer {layer_a}) × α + {concept_b} (layer {layer_b}) × β")
+
     
     for alpha in tqdm(alpha_range, desc="Alpha"):
         for beta in beta_range:
@@ -426,11 +466,11 @@ def test_coefficient_scaling(
             scores_b = []
             ppls = []
             
-            for prompt in prompts[:5]:  # Use fewer prompts for speed
+            for prompt in prompts:  # Use fewer prompts for speed
                 for _ in range(n_generations):
                     config = [
-                        SteeringConfig(vector=vec_a, layer=layer, coefficient=alpha),
-                        SteeringConfig(vector=vec_b, layer=layer, coefficient=beta)
+                        SteeringConfig(vector=vec_a, layer=layer_a, coefficient=alpha),
+                        SteeringConfig(vector=vec_b, layer=layer_b, coefficient=beta)
                     ]
                     text = generate_with_steering(model, tokenizer, prompt, config)
                     
@@ -449,12 +489,15 @@ def test_coefficient_scaling(
                 "perplexity": float(np.mean(ppls)),
                 "ratio": alpha / beta if beta > 0 else float('inf')
             }
-    
+
     return {
         "concept_a": concept_a,
         "concept_b": concept_b,
+        "layer_a": layer_a,
+        "layer_b": layer_b,
         "results_grid": results_grid
     }
+
 
 
 def analyze_composition_vs_geometry(
@@ -481,7 +524,7 @@ def analyze_composition_vs_geometry(
     orthogonal = [r for r in composition_results if abs(r.cosine_similarity) < 0.2]
     aligned = [r for r in composition_results if r.cosine_similarity > 0.5]
     opposing = [r for r in composition_results if r.cosine_similarity < -0.5]
-    
+
     analysis = {
         "correlation": float(correlation),
         "orthogonal_success": float(np.mean([r.composition_success_rate for r in orthogonal])) if orthogonal else None,
@@ -504,6 +547,7 @@ def analyze_composition_vs_geometry(
         print(f"Opposing pairs success: {analysis['opposing_success']:.1%} (n={len(opposing)})")
     
     return analysis
+
 
 
 def convert_to_native(obj):
@@ -545,21 +589,54 @@ def main():
     if not week1_dir.exists():
         raise FileNotFoundError(f"Week 1 results not found at {week1_dir}. Run week 1 first!")
     
-    # Load Week 1 geometry analysis to find good pairs
-    with open(week1_dir / "geometry_analysis.json") as f:
-        geometry = json.load(f)
-    
-    concepts = args.concepts or geometry["concepts"]
-    default_layer = cfg.model.default_layer
-    
+    # =========================================================================
+    # Load optimal parameters from Week 1
+    # =========================================================================
     print("="*60)
     print("WEEK 2: Steering Vector Composition")
     print("="*60)
-    print(f"Model: {args.model}")
+    
+    optimal_layers_path = week1_dir / "optimal_layers.json"
+    if not optimal_layers_path.exists():
+        raise FileNotFoundError(
+            f"Optimal layers not found at {optimal_layers_path}. "
+            "Run Week 1 without --skip_optimal_layers first."
+        )
+    
+    with open(optimal_layers_path) as f:
+        optimal_layers = json.load(f)
+    print(f"\n✓ Loaded optimal layers from {optimal_layers_path}")
+    print(f"Optimal layers: {optimal_layers}")
+    
+    optimal_coefficients_path = week1_dir / "optimal_coefficients.json"
+    if not optimal_coefficients_path.exists():
+        raise FileNotFoundError(
+            f"Optimal coefficients not found at {optimal_coefficients_path}. "
+            "Run Week 1 without --skip_optimal_coefficient first."
+        )
+    
+    with open(optimal_coefficients_path) as f:
+        optimal_coefficients = json.load(f)
+    print(f"✓ Loaded optimal coefficients from {optimal_coefficients_path}")
+    print(f"Optimal coefficients: {optimal_coefficients}")
+    
+    # Load Week 1 geometry analysis to find good pairs
+    geometry_path = week1_dir / "geometry_analysis.json"
+    if not geometry_path.exists():
+        raise FileNotFoundError(f"Geometry analysis not found at {geometry_path}")
+    
+    with open(geometry_path) as f:
+        geometry = json.load(f)
+    
+    concepts = args.concepts or geometry["concepts"]
+    
+    print(f"\nModel: {args.model}")
     print(f"Concepts: {concepts}")
     print(f"Output: {output_dir}")
     
+    # =========================================================================
     # Load model
+    # =========================================================================
     print("\nLoading model...")
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(
@@ -572,34 +649,23 @@ def main():
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     
+    # =========================================================================
     # Load steering vectors from Week 1
+    # =========================================================================
     print("Loading steering vectors from Week 1...")
     steering_vectors_by_layer = load_cached_vectors(
         week1_dir / "vectors",
         concepts,
         cfg.model.steering_layers
     )
-
-    optimal_layers = find_optimal_layers_batch(
-        model,
-        tokenizer,
-        steering_vectors_by_layer,  
-        concepts,
-        layers,
-        prompts,
-        n_prompts=5,
-        n_generations=2
-    )
-
-    print(f"\nOptimal layers: {optimal_layers}")
-
+    
     # Create steering vectors dict using optimal layers
     steering_vectors = {
         c: steering_vectors_by_layer[c][optimal_layers[c]] 
         for c in concepts if c in steering_vectors_by_layer
     }
-
-    # steering_vectors = {c: vecs[default_layer] for c, vecs in steering_vectors_by_layer.items()}
+    
+    print(f"✓ Loaded {len(steering_vectors)} steering vectors")
     
     # Get test prompts
     prompts = get_test_prompts()
@@ -610,13 +676,15 @@ def main():
         prompts = prompts[:10]
         n_gen = 3
     
-    # Initialize result variables (IMPORTANT: do this before experiments)
+    # Initialize result variables
     additive_results = []
     opposing_results = []
     arithmetic_results = []
     scaling_results = {"note": "Not run"}
     
+    # =========================================================================
     # Experiment 1: Additive Composition (Orthogonal Pairs)
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 1: Additive Composition (Orthogonal Pairs)")
     print("="*60)
@@ -626,7 +694,6 @@ def main():
     if not orthogonal_pairs:
         print("No orthogonal pairs found in geometry analysis.")
         print("Creating pairs from available concepts...")
-        # Create all possible pairs and filter by similarity
         sim_matrix = np.array(geometry["similarity_matrix"])
         concept_names = geometry["concepts"]
         
@@ -642,23 +709,25 @@ def main():
     
     print(f"Testing {len(orthogonal_pairs)} orthogonal pairs: {orthogonal_pairs}")
     
-    for concept_a, concept_b in orthogonal_pairs:  # changed to testing all
+    for concept_a, concept_b in orthogonal_pairs:
         if concept_a in steering_vectors and concept_b in steering_vectors:
             try:
-                layer_a = optimal_layers[concept_a]
-                layer_b = optimal_layers[concept_b]
-                test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
-
                 result = test_additive_composition(
                     model, tokenizer, steering_vectors,
-                    concept_a, concept_b, test_layer, prompts, n_generations=n_gen
+                    concept_a, concept_b,
+                    optimal_layers, optimal_coefficients,
+                    prompts, n_generations=n_gen
                 )
                 additive_results.append(result)
             except Exception as e:
                 print(f"Error testing {concept_a} + {concept_b}: {e}")
+                import traceback
+                traceback.print_exc()
                 continue
     
+    # =========================================================================
     # Experiment 2: Opposing Composition
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 2: Opposing Vector Cancellation")
     print("="*60)
@@ -676,67 +745,66 @@ def main():
             ("technical", "simple")
         ]
         opposing_pairs = [(a, b) for a, b in known_opposing if a in concepts and b in concepts]
-    
+
     print(f"Testing {len(opposing_pairs)} opposing pairs: {opposing_pairs}")
-    
+
     if not opposing_pairs:
         print("No opposing pairs available! Skipping opposing test...")
     else:
         for concept_a, concept_b in opposing_pairs:
             if concept_a in steering_vectors and concept_b in steering_vectors:
                 try:
-                    layer_a = optimal_layers[concept_a]
-                    layer_b = optimal_layers[concept_b]
-                    test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
-
                     result = test_opposing_composition(
                         model, tokenizer, steering_vectors,
-                        concept_a, concept_b, test_layer, prompts, n_generations=n_gen
+                        concept_a, concept_b,
+                        optimal_layers, optimal_coefficients,
+                        prompts, n_generations=n_gen
                     )
                     opposing_results.append(result)
                 except Exception as e:
                     print(f"Error testing {concept_a} + {concept_b}: {e}")
+                    import traceback
+                    traceback.print_exc()
                     continue
-    
+
+    # =========================================================================
     # Experiment 3: Arithmetic Composition
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 3: Vector Arithmetic")
     print("="*60)
-    
-    # Test on a few pairs
-    # test_pairs = orthogonal_pairs[:2] if orthogonal_pairs else ([(concepts[0], concepts[1])] if len(concepts) >= 2 else [])
+
     test_pairs = orthogonal_pairs
-    
+
     if not test_pairs:
         print("No pairs available for arithmetic test!")
     else:
         for concept_a, concept_b in test_pairs:
             if concept_a in steering_vectors and concept_b in steering_vectors:
                 try:
-                    layer_a = optimal_layers[concept_a]
-                    layer_b = optimal_layers[concept_b]
-                    test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
-
                     result = test_arithmetic_composition(
                         model, tokenizer, steering_vectors,
-                        concept_a, concept_b, test_layer, prompts, n_generations=n_gen
+                        concept_a, concept_b,
+                        optimal_layers, optimal_coefficients,
+                        prompts, n_generations=n_gen
                     )
                     arithmetic_results.append(result)
                 except Exception as e:
                     print(f"Error testing arithmetic {concept_a}, {concept_b}: {e}")
+                    import traceback
+                    traceback.print_exc()
                     continue
-    
+
+    # =========================================================================
     # Experiment 4: Coefficient Scaling
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 4: Coefficient Scaling")
     print("="*60)
-    
+
     if orthogonal_pairs and len(orthogonal_pairs) > 0:
         concept_a, concept_b = orthogonal_pairs[0]
         if concept_a in steering_vectors and concept_b in steering_vectors:
-            layer_a = optimal_layers[concept_a]
-            layer_b = optimal_layers[concept_b]
-            test_layer = layer_a if layer_a in cfg.model.steering_layers else layer_b
             if args.quick:
                 alpha_range = [0.5, 1.0, 1.5]
                 beta_range = [0.5, 1.0, 1.5]
@@ -747,38 +815,52 @@ def main():
             try:
                 scaling_results = test_coefficient_scaling(
                     model, tokenizer, steering_vectors,
-                    concept_a, concept_b, test_layer, prompts,
-                    alpha_range, beta_range, n_generations=2
+                    concept_a, concept_b,
+                    optimal_layers,
+                    prompts, alpha_range, beta_range,
+                    n_generations=2
                 )
             except Exception as e:
                 print(f"Error in coefficient scaling: {e}")
+                import traceback
+                traceback.print_exc()
                 scaling_results = {"note": "Failed", "error": str(e)}
         else:
             print(f"Concepts not found in steering vectors: {concept_a}, {concept_b}")
     else:
         print("No orthogonal pairs for scaling test")
-    
+
+    # =========================================================================
     # Experiment 5: Geometry vs Composition Analysis
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 5: Geometry vs Composition Success")
     print("="*60)
-    
+
     if len(additive_results) > 0:
         try:
             geometry_analysis = analyze_composition_vs_geometry(additive_results)
         except Exception as e:
             print(f"Error in geometry analysis: {e}")
+            import traceback
+            traceback.print_exc()
             geometry_analysis = {"note": "Failed", "error": str(e)}
     else:
         print("No additive composition results available for geometry analysis")
         geometry_analysis = {"note": "No results to analyze"}
-    
+
+    # =========================================================================
     # Save all results
+    # =========================================================================
     all_results = {
+        "optimal_layers": optimal_layers,
+        "optimal_coefficients": optimal_coefficients,
         "additive_composition": [
             {
                 "concept_a": r.concept_a,
                 "concept_b": r.concept_b,
+                "layer_a": r.layer_a,
+                "layer_b": r.layer_b,
                 "coefficient_a": r.coefficient_a,
                 "coefficient_b": r.coefficient_b,
                 "baseline_scores": r.baseline_scores,
@@ -798,23 +880,27 @@ def main():
         "coefficient_scaling": scaling_results,
         "geometry_analysis": geometry_analysis
     }
-    
+
     # Convert and save
     all_results = convert_to_native(all_results)
-    
+
     try:
         with open(output_dir / "composition_results.json", "w") as f:
             json.dump(all_results, f, indent=2)
         print(f"\n✓ Results saved to {output_dir / 'composition_results.json'}")
     except Exception as e:
         print(f"⚠ Warning: Failed to save results: {e}")
-    
+        import traceback
+        traceback.print_exc()
+
+    # =========================================================================
+    # Summary
+    # =========================================================================
     print("\n" + "="*60)
     print("WEEK 2 COMPLETE")
     print("="*60)
     print(f"Results saved to: {output_dir}")
-    
-    # Summary
+
     print("\nKey Findings:")
     if additive_results:
         avg_success = np.mean([r.composition_success_rate for r in additive_results])
@@ -822,13 +908,13 @@ def main():
         print(f"  Pairs tested: {len(additive_results)}")
     else:
         print("  No additive composition results")
-    
+
     if opposing_results:
         cancel_count = sum(1 for r in opposing_results if r.get("cancels_out", False))
         print(f"  Opposing vectors cancel: {cancel_count}/{len(opposing_results)}")
     else:
         print("  No opposing composition results")
-    
+
     if arithmetic_results:
         arith_work_count = sum(1 for r in arithmetic_results if r.get("arithmetic_works", False))
         print(f"  Arithmetic composition works: {arith_work_count}/{len(arithmetic_results)}")

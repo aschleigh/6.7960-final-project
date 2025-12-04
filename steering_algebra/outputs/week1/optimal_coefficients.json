@@ -1,0 +1,12 @@
+{
+  "formal": 3.0,
+  "casual": 0.0,
+  "positive": 0.5,
+  "negative": 1.5,
+  "verbose": 1.0,
+  "concise": 3.0,
+  "confident": 0.5,
+  "uncertain": 0.5,
+  "technical": 2.5,
+  "simple": 0.0
+}

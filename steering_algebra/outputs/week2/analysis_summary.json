@@ -1,84 +1,88 @@
 {
   "additive": {
-    "n_pairs_tested": 11,
-    "mean_success_rate": 0.40303030303030307,
-    "successful_pairs": 3,
-    "orthogonal_success": 0.40303030303030307,
+    "n_pairs_tested": 18,
+    "mean_success_rate": 0.5203703703703703,
+    "successful_pairs": 8,
+    "orthogonal_success": 0.5203703703703703,
     "other_success": null,
     "best_pair": {
-      "concept_a": "uncertain",
-      "concept_b": "simple",
-      "coefficient_a": 1.0,
-      "coefficient_b": 1.0,
-      "baseline_scores": {
-        "uncertain": 0.5451782286167145,
-        "simple": 0.5218048294385275
-      },
-      "a_only_scores": {
-        "uncertain": 0.7206006109714508,
-        "simple": 0.5961255048712094
-      },
-      "b_only_scores": {
-        "uncertain": 0.7346436848243078,
-        "simple": 0.606250657637914
-      },
-      "composition_scores": {
-        "uncertain": 0.7097999582688014,
-        "simple": 0.595943683385849
-      },
-      "cosine_similarity": 0.03426676243543625,
-      "both_present": true,
-      "composition_success_rate": 0.7666666666666667,
-      "baseline_perplexity": 5671.468638187476,
-      "composition_perplexity": 7.497373538523806
-    },
-    "worst_pair": {
       "concept_a": "formal",
       "concept_b": "negative",
-      "coefficient_a": 1.0,
-      "coefficient_b": 1.0,
+      "layer_a": 20,
+      "layer_b": 8,
+      "coefficient_a": 3.0,
+      "coefficient_b": 1.5,
       "baseline_scores": {
-        "formal": 0.7119709819555282,
-        "negative": 0.25839635281978796
+        "formal": 0.6188690900802613,
+        "negative": 0.6356588872770469
       },
       "a_only_scores": {
-        "formal": 0.8887424459060033,
-        "negative": 0.024266734579578043
+        "formal": 0.8730004866917928,
+        "negative": 0.7926259777586286
       },
       "b_only_scores": {
-        "formal": 0.8684358030557633,
-        "negative": 0.028219814730497696
+        "formal": 0.8578404188156128,
+        "negative": 0.845338093660151
       },
       "composition_scores": {
-        "formal": 0.8862757444381714,
-        "negative": 0.023020318693791827
+        "formal": 0.9114634752273559,
+        "negative": 0.938874612810711
       },
-      "cosine_similarity": 0.03318123519420624,
+      "cosine_similarity": 0.026214037090539932,
+      "both_present": true,
+      "composition_success_rate": 0.9333333333333333,
+      "baseline_perplexity": 6671.396604616129,
+      "composition_perplexity": 6.841097141521697
+    },
+    "worst_pair": {
+      "concept_a": "verbose",
+      "concept_b": "simple",
+      "layer_a": 20,
+      "layer_b": 10,
+      "coefficient_a": 1.0,
+      "coefficient_b": 0.0,
+      "baseline_scores": {
+        "verbose": 0.5265776420632998,
+        "simple": 0.5302118053038914
+      },
+      "a_only_scores": {
+        "verbose": 0.26803663149476054,
+        "simple": 0.5337363315125306
+      },
+      "b_only_scores": {
+        "verbose": 0.2962637628118197,
+        "simple": 0.5896584490935007
+      },
+      "composition_scores": {
+        "verbose": 0.2797318975130717,
+        "simple": 0.5801886354883512
+      },
+      "cosine_similarity": -0.02819787710905075,
       "both_present": false,
       "composition_success_rate": 0.0,
-      "baseline_perplexity": 5005.166911091224,
-      "composition_perplexity": 7.789468534017886
+      "baseline_perplexity": 6005.119366134583,
+      "composition_perplexity": 6.913254795342651
     }
   },
   "opposing": {
     "n_pairs_tested": 3,
     "cancels_out_count": 0,
     "cancellation_rate": 0.0,
-    "mean_similarity": -0.9587236245473226
+    "mean_similarity": -0.6392786900202433
   },
   "arithmetic": {
-    "n_pairs_tested": 2,
-    "works_count": 2,
+    "n_pairs_tested": 18,
+    "works_count": 18,
     "success_rate": 1.0,
-    "mean_difference": 0.04644816441965914,
-    "median_difference": 0.04644816441965914
+    "mean_difference": 0.025868754214779653,
+    "median_difference": 0.02020755745470526
   },
   "geometry": {
-    "correlation": -0.09152268450929961,
-    "orthogonal_success": 0.40303030303030307,
+    "correlation": 0.07586129553191967,
+    "orthogonal_success": 0.5203703703703703,
     "aligned_success": null,
     "opposing_success": null,
-    "n_orthogonal": 11,
+    "n_orthogonal": 18,
     "n_aligned": 0,
     "n_opposing": 0
   }

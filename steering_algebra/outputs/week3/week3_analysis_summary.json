@@ -1,0 +1,323 @@
+{
+  "analysis": {
+    "failure_patterns": {
+      "per_pair": {
+        "formal__casual": {
+          "concept_a": "formal",
+          "concept_b": "casual",
+          "success_rate": 96.66666666666667,
+          "dominant_failure_mode": "both_absent",
+          "dominant_failure_percentage": 3.3333333333333335,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "formal__positive": {
+          "concept_a": "formal",
+          "concept_b": "positive",
+          "success_rate": 70.0,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 23.333333333333332,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "formal__negative": {
+          "concept_a": "formal",
+          "concept_b": "negative",
+          "success_rate": 93.33333333333333,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 6.666666666666667,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "formal__verbose": {
+          "concept_a": "formal",
+          "concept_b": "verbose",
+          "success_rate": 16.666666666666664,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 83.33333333333334,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "formal__concise": {
+          "concept_a": "formal",
+          "concept_b": "concise",
+          "success_rate": 26.666666666666668,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 66.66666666666666,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "casual__formal": {
+          "concept_a": "casual",
+          "concept_b": "formal",
+          "success_rate": 100.0,
+          "dominant_failure_mode": "success",
+          "dominant_failure_percentage": 100.0,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "casual__positive": {
+          "concept_a": "casual",
+          "concept_b": "positive",
+          "success_rate": 73.33333333333333,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 26.666666666666668,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "casual__negative": {
+          "concept_a": "casual",
+          "concept_b": "negative",
+          "success_rate": 76.66666666666667,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 20.0,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "casual__verbose": {
+          "concept_a": "casual",
+          "concept_b": "verbose",
+          "success_rate": 3.3333333333333335,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 96.66666666666667,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "casual__concise": {
+          "concept_a": "casual",
+          "concept_b": "concise",
+          "success_rate": 13.333333333333334,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 83.33333333333334,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "positive__formal": {
+          "concept_a": "positive",
+          "concept_b": "formal",
+          "success_rate": 80.0,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 20.0,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "positive__casual": {
+          "concept_a": "positive",
+          "concept_b": "casual",
+          "success_rate": 86.66666666666667,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 6.666666666666667,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "positive__negative": {
+          "concept_a": "positive",
+          "concept_b": "negative",
+          "success_rate": 76.66666666666667,
+          "dominant_failure_mode": "both_absent",
+          "dominant_failure_percentage": 23.333333333333332,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "positive__verbose": {
+          "concept_a": "positive",
+          "concept_b": "verbose",
+          "success_rate": 16.666666666666664,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 63.33333333333333,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "positive__concise": {
+          "concept_a": "positive",
+          "concept_b": "concise",
+          "success_rate": 13.333333333333334,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 63.33333333333333,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "negative__formal": {
+          "concept_a": "negative",
+          "concept_b": "formal",
+          "success_rate": 83.33333333333334,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 10.0,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "negative__casual": {
+          "concept_a": "negative",
+          "concept_b": "casual",
+          "success_rate": 86.66666666666667,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 10.0,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "negative__positive": {
+          "concept_a": "negative",
+          "concept_b": "positive",
+          "success_rate": 86.66666666666667,
+          "dominant_failure_mode": "both_absent",
+          "dominant_failure_percentage": 13.333333333333334,
+          "composition_viable": true,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "negative__verbose": {
+          "concept_a": "negative",
+          "concept_b": "verbose",
+          "success_rate": 13.333333333333334,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 70.0,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "negative__concise": {
+          "concept_a": "negative",
+          "concept_b": "concise",
+          "success_rate": 26.666666666666668,
+          "dominant_failure_mode": "a_dominates",
+          "dominant_failure_percentage": 40.0,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "verbose__formal": {
+          "concept_a": "verbose",
+          "concept_b": "formal",
+          "success_rate": 13.333333333333334,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 86.66666666666667,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "verbose__casual": {
+          "concept_a": "verbose",
+          "concept_b": "casual",
+          "success_rate": 6.666666666666667,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 90.0,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "verbose__positive": {
+          "concept_a": "verbose",
+          "concept_b": "positive",
+          "success_rate": 10.0,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 70.0,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "verbose__negative": {
+          "concept_a": "verbose",
+          "concept_b": "negative",
+          "success_rate": 13.333333333333334,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 73.33333333333333,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "verbose__concise": {
+          "concept_a": "verbose",
+          "concept_b": "concise",
+          "success_rate": 0.0,
+          "dominant_failure_mode": "both_absent",
+          "dominant_failure_percentage": 80.0,
+          "composition_viable": false,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        },
+        "concise__formal": {
+          "concept_a": "concise",
+          "concept_b": "formal",
+          "success_rate": 30.0,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 66.66666666666666,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "concise__casual": {
+          "concept_a": "concise",
+          "concept_b": "casual",
+          "success_rate": 43.333333333333336,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 53.333333333333336,
+          "composition_viable": true,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "concise__positive": {
+          "concept_a": "concise",
+          "concept_b": "positive",
+          "success_rate": 16.666666666666664,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 63.33333333333333,
+          "composition_viable": false,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "concise__negative": {
+          "concept_a": "concise",
+          "concept_b": "negative",
+          "success_rate": 33.33333333333333,
+          "dominant_failure_mode": "b_dominates",
+          "dominant_failure_percentage": 43.333333333333336,
+          "composition_viable": true,
+          "one_concept_typically_dominates": true,
+          "incoherence_rate": 0.0
+        },
+        "concise__verbose": {
+          "concept_a": "concise",
+          "concept_b": "verbose",
+          "success_rate": 0.0,
+          "dominant_failure_mode": "both_absent",
+          "dominant_failure_percentage": 76.66666666666667,
+          "composition_viable": false,
+          "one_concept_typically_dominates": false,
+          "incoherence_rate": 0.0
+        }
+      },
+      "aggregate": {
+        "total_pairs": 30,
+        "avg_success_rate": 43.55555555555555,
+        "pairs_with_dominance": 16,
+        "pairs_with_high_incoherence": 0,
+        "median_success_rate": 28.333333333333336,
+        "min_success_rate": 0.0,
+        "max_success_rate": 100.0
+      }
+    }
+  },
+  "insights": [
+    "\ud83d\udcca Analyzed 30 concept pairs",
+    "\ud83d\udcca Average composition success rate: 43.6%",
+    "\u274c One concept typically dominates in most pairs (>50%)",
+    "\u2705 Composition shows promise overall (>30% avg success)"
+  ]
+}

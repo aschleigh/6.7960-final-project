@@ -346,6 +346,24 @@ def plot_activation_geometry(
     baseline_proj = np.array(results["baseline_projections"])
     steered_proj = np.array(results["steered_projections"])
     
+    if baseline_proj.ndim == 1:
+        # If 1D, reshape to 2D (single sample case)
+        baseline_proj = baseline_proj.reshape(1, -1)
+    if steered_proj.ndim == 1:
+        steered_proj = steered_proj.reshape(1, -1)
+    
+    # Verify we have 2D data
+    if baseline_proj.shape[1] < 2 or steered_proj.shape[1] < 2:
+        print(f"Warning: Not enough dimensions for 2D plot. Shape: {baseline_proj.shape}")
+        plt.close(fig)
+        return None, None
+    
+    # Verify same number of samples
+    if len(baseline_proj) != len(steered_proj):
+        print(f"Warning: Mismatched sample counts: {len(baseline_proj)} vs {len(steered_proj)}")
+        plt.close(fig)
+        return None, None
+    
     # Plot baseline
     ax.scatter(baseline_proj[:, 0], baseline_proj[:, 1], 
               c='gray', s=100, alpha=0.6, label='Baseline', marker='o')
@@ -356,11 +374,15 @@ def plot_activation_geometry(
     
     # Draw arrows showing movement
     for i in range(len(baseline_proj)):
-        ax.arrow(baseline_proj[i, 0], baseline_proj[i, 1],
-                steered_proj[i, 0] - baseline_proj[i, 0],
-                steered_proj[i, 1] - baseline_proj[i, 1],
-                head_width=0.02, head_length=0.03, fc='red', ec='red',
-                alpha=0.3, length_includes_head=True)
+        dx = steered_proj[i, 0] - baseline_proj[i, 0]
+        dy = steered_proj[i, 1] - baseline_proj[i, 1]
+        
+        # Only draw arrow if movement is significant
+        if abs(dx) > 0.01 or abs(dy) > 0.01:
+            ax.arrow(baseline_proj[i, 0], baseline_proj[i, 1],
+                    dx, dy,
+                    head_width=0.02, head_length=0.03, fc='red', ec='red',
+                    alpha=0.3, length_includes_head=True)
     
     ax.set_xlabel(f'PC1 ({results["variance_explained"][0]:.1%} var)')
     ax.set_ylabel(f'PC2 ({results["variance_explained"][1]:.1%} var)')
@@ -386,59 +408,92 @@ def create_all_week3_figures(output_dir: Path):
     print("\nGenerating Week 3 figures...")
     
     # Load results
-    with open(output_dir / "analysis_results.json") as f:
-        results = json.load(f)
+    try:
+        with open(output_dir / "analysis_results.json") as f:
+            results = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: No results file found at {output_dir / 'analysis_results.json'}")
+        return
+    
+    print(results.keys())
+    print(results["failure_analysis"]["formal__casual"])
     
     # Figure 1: Coefficient sweep (individual)
     if "coefficient_sweep" in results:
         for concept, data in results["coefficient_sweep"].items():
-            plot_coefficient_sweep(
-                data,
-                save_path=figures_dir / f"coefficient_sweep_{concept}.png"
-            )
+            try:
+                plot_coefficient_sweep(
+                    data,
+                    save_path=figures_dir / f"coefficient_sweep_{concept}.png"
+                )
+            except Exception as e:
+                print(f"Error plotting coefficient sweep for {concept}: {e}")
         
         # Combined plot
         if len(results["coefficient_sweep"]) > 1:
-            plot_coefficient_sweep_combined(
-                results["coefficient_sweep"],
-                save_path=figures_dir / "coefficient_sweep_all.png"
-            )
+            try:
+                plot_coefficient_sweep_combined(
+                    results["coefficient_sweep"],
+                    save_path=figures_dir / "coefficient_sweep_all.png"
+                )
+            except Exception as e:
+                print(f"Error plotting combined coefficient sweep: {e}")
     
     # Figure 2: Layer ablation (single concept)
     if "layer_ablation_single" in results:
         for concept, data in results["layer_ablation_single"].items():
-            plot_layer_ablation_single(
-                data,
-                save_path=figures_dir / f"layer_ablation_{concept}.png"
-            )
+            try:
+                plot_layer_ablation_single(
+                    data,
+                    save_path=figures_dir / f"layer_ablation_{concept}.png"
+                )
+            except Exception as e:
+                print(f"Error plotting layer ablation for {concept}: {e}")
     
     # Figure 3: Layer ablation (composition)
     if "layer_ablation_composition" in results and "best_same_layer" in results["layer_ablation_composition"]:
-        plot_layer_ablation_composition(
-            results["layer_ablation_composition"],
-            save_path=figures_dir / "layer_ablation_composition.png"
-        )
+        try:
+            plot_layer_ablation_composition(
+                results["layer_ablation_composition"],
+                save_path=figures_dir / "layer_ablation_composition.png"
+            )
+        except Exception as e:
+            print(f"Error plotting layer ablation composition: {e}")
     
     # Figure 4: Failure modes
-    if "failure_analysis" in results and "categories" in results["failure_analysis"]:
-        plot_failure_modes(
-            results["failure_analysis"],
-            save_path=figures_dir / "failure_modes.png"
-        )
+    # if "failure_analysis" in results and "categories" in results["failure_analysis"]:
+    if "failure_analysis" in results:
+        try:
+            plot_failure_modes(
+                results["failure_analysis"],
+                save_path=figures_dir / "failure_modes.png"
+            )
+        except Exception as e:
+            print(f"Error plotting failure modes: {e}")
     
     # Figure 5: PCA analysis
     if "pca_analysis" in results and "projections_2d" in results["pca_analysis"]:
-        plot_pca_analysis(
-            results["pca_analysis"],
-            save_path=figures_dir / "pca_analysis.png"
-        )
+        try:
+            plot_pca_analysis(
+                results["pca_analysis"],
+                save_path=figures_dir / "pca_analysis.png"
+            )
+        except Exception as e:
+            print(f"Error plotting PCA analysis: {e}")
     
     # Figure 6: Activation geometry
     if "activation_geometry" in results and "baseline_projections" in results["activation_geometry"]:
-        plot_activation_geometry(
-            results["activation_geometry"],
-            save_path=figures_dir / "activation_geometry.png"
-        )
+        try:
+            fig, ax = plot_activation_geometry(
+                results["activation_geometry"],
+                save_path=figures_dir / "activation_geometry.png"
+            )
+            if fig is None:
+                print("Skipped activation geometry plot due to data issues")
+        except Exception as e:
+            print(f"Error plotting activation geometry: {e}")
+            import traceback
+            traceback.print_exc()
     
     print(f"\nAll figures saved to: {figures_dir}")
 

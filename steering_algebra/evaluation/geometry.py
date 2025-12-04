@@ -12,8 +12,8 @@ from sklearn.manifold import TSNE
 
 def compute_cosine_similarity(v1: Tensor, v2: Tensor) -> float:
     """Compute cosine similarity between two vectors."""
-    v1_flat = v1.flatten().float()
-    v2_flat = v2.flatten().float()
+    v1_flat = v1.cpu().flatten().float()
+    v2_flat = v2.cpu().flatten().float()
     
     return torch.nn.functional.cosine_similarity(
         v1_flat.unsqueeze(0),

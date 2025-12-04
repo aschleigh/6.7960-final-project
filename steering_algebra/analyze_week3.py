@@ -5,7 +5,7 @@ Analyze Week 3 results and generate insights.
 import json
 import numpy as np
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
 
 def analyze_coefficient_sweep(results: Dict) -> Dict:
@@ -58,7 +58,7 @@ def analyze_layer_effects(single_results: Dict, comp_results: Dict) -> Dict:
         }
     
     # Composition analysis
-    if "best_same_layer" in comp_results:
+    if comp_results and "best_same_layer" in comp_results:
         same_layer_results = comp_results["same_layer"]
         layers = [r["layer"] for r in same_layer_results]
         success_rates = [r["joint_success_rate"] for r in same_layer_results]
@@ -75,40 +75,80 @@ def analyze_layer_effects(single_results: Dict, comp_results: Dict) -> Dict:
 
 
 def analyze_failure_patterns(failure_results: Dict) -> Dict:
-    """Analyze failure mode patterns."""
-    categories = failure_results["categories"]
+    """
+    Analyze failure mode patterns across all concept pairs.
     
-    total = failure_results["total_samples"]
-    
-    # Compute insights
-    dominant_failure = max(
-        categories.items(),
-        key=lambda x: x[1]["count"] if x[0] != "success" else 0
-    )
-    
-    composition_viable = categories["success"]["percentage"] > 30
-    one_dominates = (categories["a_dominates"]["percentage"] + 
-                    categories["b_dominates"]["percentage"]) > 50
-    
-    analysis = {
-        "success_rate": categories["success"]["percentage"],
-        "dominant_failure_mode": dominant_failure[0],
-        "dominant_failure_percentage": dominant_failure[1]["percentage"],
-        "composition_viable": composition_viable,
-        "one_concept_typically_dominates": one_dominates,
-        "incoherence_rate": categories["incoherent"]["percentage"]
+    Note: failure_results is now a dict of pairs, not a single result.
+    """
+    all_analyses = {}
+    aggregate_stats = {
+        "total_pairs": 0,
+        "avg_success_rate": 0.0,
+        "pairs_with_dominance": 0,
+        "pairs_with_high_incoherence": 0
     }
     
-    return analysis
+    success_rates = []
+    
+    for pair_key, pair_data in failure_results.items():
+        # Skip error entries
+        if "error" in pair_data or "categories" not in pair_data:
+            continue
+            
+        categories = pair_data["categories"]
+        total = pair_data["total_samples"]
+        
+        # Compute insights for this pair
+        dominant_failure = max(
+            categories.items(),
+            key=lambda x: x[1]["count"] if x[0] != "success" else 0
+        )
+        
+        composition_viable = categories["success"]["percentage"] > 30
+        one_dominates = (categories["a_dominates"]["percentage"] + 
+                        categories["b_dominates"]["percentage"]) > 50
+        
+        pair_analysis = {
+            "concept_a": pair_data["concept_a"],
+            "concept_b": pair_data["concept_b"],
+            "success_rate": categories["success"]["percentage"],
+            "dominant_failure_mode": dominant_failure[0],
+            "dominant_failure_percentage": dominant_failure[1]["percentage"],
+            "composition_viable": composition_viable,
+            "one_concept_typically_dominates": one_dominates,
+            "incoherence_rate": categories["incoherent"]["percentage"]
+        }
+        
+        all_analyses[pair_key] = pair_analysis
+        
+        # Update aggregate stats
+        aggregate_stats["total_pairs"] += 1
+        success_rates.append(categories["success"]["percentage"])
+        if one_dominates:
+            aggregate_stats["pairs_with_dominance"] += 1
+        if categories["incoherent"]["percentage"] > 20:
+            aggregate_stats["pairs_with_high_incoherence"] += 1
+    
+    # Compute aggregate statistics
+    if success_rates:
+        aggregate_stats["avg_success_rate"] = float(np.mean(success_rates))
+        aggregate_stats["median_success_rate"] = float(np.median(success_rates))
+        aggregate_stats["min_success_rate"] = float(np.min(success_rates))
+        aggregate_stats["max_success_rate"] = float(np.max(success_rates))
+    
+    return {
+        "per_pair": all_analyses,
+        "aggregate": aggregate_stats
+    }
 
 
-def generate_insights(analysis_results: Dict) -> List[str]:
+def generate_insights(analysis: Dict) -> List[str]:
     """Generate human-readable insights."""
     insights = []
     
     # Coefficient insights
-    if "coefficient_sweep" in analysis_results:
-        coef_analysis = analysis_results["coefficient_sweep"]
+    if "coefficient_sweep" in analysis:
+        coef_analysis = analysis["coefficient_sweep"]
         
         optimal_coefs = [data["optimal_coefficient"] for data in coef_analysis.values() 
                         if data.get("optimal_coefficient") is not None]
@@ -123,8 +163,8 @@ def generate_insights(analysis_results: Dict) -> List[str]:
             insights.append(f"⚠️  Perplexity explosions commonly occur at high coefficients (>2.0)")
     
     # Layer insights
-    if "layer_effects" in analysis_results:
-        layer_analysis = analysis_results["layer_effects"]
+    if "layer_effects" in analysis:
+        layer_analysis = analysis["layer_effects"]
         
         middle_best_count = sum(1 for data in layer_analysis.values() 
                                if data.get("is_middle_layer_best", False))
@@ -139,20 +179,26 @@ def generate_insights(analysis_results: Dict) -> List[str]:
             else:
                 insights.append("⚠️  Composition is highly sensitive to layer choice")
     
-    # Failure pattern insights
-    if "failure_patterns" in analysis_results:
-        failure = analysis_results["failure_patterns"]
+    # Failure pattern insights (updated for multiple pairs)
+    if "failure_patterns" in analysis:
+        failure = analysis["failure_patterns"]
         
-        if failure["one_concept_typically_dominates"]:
-            insights.append("❌ One concept typically dominates in composition (>50% of failures)")
-        
-        if failure["incoherence_rate"] > 20:
-            insights.append(f"❌ High incoherence rate ({failure['incoherence_rate']:.1f}%) suggests instability")
-        
-        if failure["composition_viable"]:
-            insights.append("✅ Composition shows promise (>30% success rate)")
-        else:
-            insights.append("❌ Composition largely unsuccessful (<30% success rate)")
+        if "aggregate" in failure:
+            agg = failure["aggregate"]
+            
+            insights.append(f"📊 Analyzed {agg['total_pairs']} concept pairs")
+            insights.append(f"📊 Average composition success rate: {agg['avg_success_rate']:.1f}%")
+            
+            if agg["pairs_with_dominance"] > agg["total_pairs"] * 0.5:
+                insights.append("❌ One concept typically dominates in most pairs (>50%)")
+            
+            if agg["pairs_with_high_incoherence"] > agg["total_pairs"] * 0.3:
+                insights.append(f"❌ High incoherence in {agg['pairs_with_high_incoherence']} pairs")
+            
+            if agg["avg_success_rate"] > 30:
+                insights.append("✅ Composition shows promise overall (>30% avg success)")
+            else:
+                insights.append("❌ Composition largely unsuccessful (<30% avg success)")
     
     return insights
 
@@ -194,16 +240,37 @@ def print_summary(analysis: Dict, insights: List[str]):
             print(f"  Success at best: {comp['best_success_rate']:.1%}")
             print(f"  Layer sensitivity: {comp['layer_sensitivity']:.3f}")
     
-    # Failure patterns
+    # Failure patterns (updated for multiple pairs)
     if "failure_patterns" in analysis:
         print("\n3. FAILURE PATTERN ANALYSIS")
         print("-" * 40)
-        failure = analysis["failure_patterns"]
-        print(f"Success rate: {failure['success_rate']:.1f}%")
-        print(f"Dominant failure: {failure['dominant_failure_mode']} ({failure['dominant_failure_percentage']:.1f}%)")
-        print(f"One concept dominates: {failure['one_concept_typically_dominates']}")
-        print(f"Incoherence rate: {failure['incoherence_rate']:.1f}%")
-        print(f"Composition viable: {failure['composition_viable']}")
+        
+        if "aggregate" in analysis["failure_patterns"]:
+            agg = analysis["failure_patterns"]["aggregate"]
+            print(f"Total pairs analyzed: {agg['total_pairs']}")
+            print(f"Average success rate: {agg['avg_success_rate']:.1f}%")
+            print(f"Median success rate: {agg.get('median_success_rate', 0):.1f}%")
+            print(f"Range: {agg.get('min_success_rate', 0):.1f}% - {agg.get('max_success_rate', 0):.1f}%")
+            print(f"Pairs with dominance: {agg['pairs_with_dominance']}/{agg['total_pairs']}")
+            print(f"Pairs with high incoherence: {agg['pairs_with_high_incoherence']}/{agg['total_pairs']}")
+            
+            # Show best and worst pairs
+            if "per_pair" in analysis["failure_patterns"]:
+                per_pair = analysis["failure_patterns"]["per_pair"]
+                sorted_pairs = sorted(per_pair.items(), 
+                                    key=lambda x: x[1]["success_rate"], 
+                                    reverse=True)
+                
+                if sorted_pairs:
+                    print("\n  Best performing pairs:")
+                    for pair_key, pair_data in sorted_pairs[:3]:
+                        print(f"    {pair_data['concept_a']} + {pair_data['concept_b']}: "
+                              f"{pair_data['success_rate']:.1f}% success")
+                    
+                    print("\n  Worst performing pairs:")
+                    for pair_key, pair_data in sorted_pairs[-3:]:
+                        print(f"    {pair_data['concept_a']} + {pair_data['concept_b']}: "
+                              f"{pair_data['success_rate']:.1f}% success")
     
     # Key insights
     if insights:
@@ -224,7 +291,7 @@ def main():
     
     if not results_path.exists():
         print(f"Error: Results not found at {results_path}")
-        print("Run week 3 experiments first: python run_week3.py")
+        print("Run week 3 experiments first: python week3_analysis.py")
         return
     
     with open(results_path) as f:
@@ -236,10 +303,11 @@ def main():
     if "coefficient_sweep" in results:
         analysis["coefficient_sweep"] = analyze_coefficient_sweep(results["coefficient_sweep"])
     
-    if "layer_ablation_single" in results and "layer_ablation_composition" in results:
+    if "layer_ablation_single" in results:
+        comp_results = results.get("layer_ablation_composition", {})
         analysis["layer_effects"] = analyze_layer_effects(
             results["layer_ablation_single"],
-            results["layer_ablation_composition"]
+            comp_results
         )
     
     if "failure_analysis" in results:

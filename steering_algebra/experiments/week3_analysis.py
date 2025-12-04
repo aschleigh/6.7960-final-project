@@ -15,8 +15,6 @@ from pathlib import Path
 import json
 from tqdm import tqdm
 from dataclasses import dataclass
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 from config import cfg
 from data.prompts import get_test_prompts
@@ -26,13 +24,9 @@ from steering.apply_steering import (
     generate_baseline
 )
 from evaluation.classifiers import MultiAttributeEvaluator
-from evaluation.metrics import QualityMetrics
-from evaluation.geometry import (
-    compute_cosine_similarity,
-    project_vectors_2d
-)
+from evaluation.metrics import QualityMetrics, compute_repetition_ratio
+from evaluation.geometry import compute_cosine_similarity
 from extraction.extract_vectors import load_cached_vectors
-from steering.layer_selection import find_optimal_layers_batch
 
 
 def coefficient_sweep_detailed(
@@ -90,7 +84,6 @@ def coefficient_sweep_detailed(
                 perplexities.append(ppl)
                 
                 # Compute repetition
-                from evaluation.metrics import compute_repetition_ratio
                 rep = compute_repetition_ratio(text)
                 repetition_rates.append(rep)
         
@@ -105,7 +98,7 @@ def coefficient_sweep_detailed(
             "min_score": float(np.min(scores)),
             "max_score": float(np.max(scores)),
             "success_rate": float(np.mean([s > 0.5 for s in scores])),
-            "quality_score": float(np.mean(scores) / (1 + np.log(np.mean(perplexities))))  # Combined metric
+            "quality_score": float(np.mean(scores) / (1 + np.log(np.mean(perplexities))))
         }
         
         results["coefficients"].append(result)
@@ -189,134 +182,15 @@ def layer_ablation_single_concept(
     return results
 
 
-def layer_ablation_composition(
-    model,
-    tokenizer,
-    steering_vectors_by_layer_a: Dict[int, torch.Tensor],
-    steering_vectors_by_layer_b: Dict[int, torch.Tensor],
-    concept_a: str,
-    concept_b: str,
-    layers: List[int],
-    prompts: List[str],
-    coefficient: float = 1.0,
-    n_generations: int = 3
-) -> Dict:
-    """
-    Test which layer configuration is best for composition.
-    
-    Tests:
-    - Same layer for both (A@L + B@L)
-    - Different layers (A@L1 + B@L2)
-    """
-    evaluator = MultiAttributeEvaluator([concept_a, concept_b])
-    
-    results = {
-        "concept_a": concept_a,
-        "concept_b": concept_b,
-        "same_layer": [],
-        "different_layers": []
-    }
-    
-    print(f"\nLayer ablation for composition: {concept_a} + {concept_b}")
-    
-    # Test 1: Same layer for both
-    print("\nTesting same layer for both concepts...")
-    for layer in tqdm(layers, desc="Same layer"):
-        vec_a = steering_vectors_by_layer_a[layer]
-        vec_b = steering_vectors_by_layer_b[layer]
-        
-        scores_a = []
-        scores_b = []
-        joint_success = []
-        
-        for prompt in prompts:
-            for _ in range(n_generations):
-                config = [
-                    SteeringConfig(vector=vec_a, layer=layer, coefficient=coefficient),
-                    SteeringConfig(vector=vec_b, layer=layer, coefficient=coefficient)
-                ]
-                text = generate_with_steering(model, tokenizer, prompt, config)
-                
-                scores = evaluator.evaluate(text, [concept_a, concept_b])
-                scores_a.append(scores[concept_a])
-                scores_b.append(scores[concept_b])
-                
-                # Check if both attributes present
-                both = scores[concept_a] > 0.5 and scores[concept_b] > 0.5
-                joint_success.append(both)
-        
-        result = {
-            "layer": layer,
-            "mean_score_a": float(np.mean(scores_a)),
-            "mean_score_b": float(np.mean(scores_b)),
-            "joint_success_rate": float(np.mean(joint_success))
-        }
-        
-        results["same_layer"].append(result)
-        print(f"  Layer {layer}: joint_success={result['joint_success_rate']:.1%}")
-    
-    # Test 2: Different layers (limited combinations)
-    print("\nTesting different layers...")
-    test_combinations = [
-        (layers[0], layers[-1]),  # Early + Late
-        (layers[len(layers)//2], layers[-1]),  # Middle + Late
-        (layers[0], layers[len(layers)//2]),  # Early + Middle
-    ]
-    
-    for layer_a, layer_b in test_combinations:
-        vec_a = steering_vectors_by_layer_a[layer_a]
-        vec_b = steering_vectors_by_layer_b[layer_b]
-        
-        scores_a = []
-        scores_b = []
-        joint_success = []
-        
-        for prompt in prompts[:len(prompts)//2]:  # Use fewer prompts for speed
-            for _ in range(n_generations):
-                config = [
-                    SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coefficient),
-                    SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coefficient)
-                ]
-                text = generate_with_steering(model, tokenizer, prompt, config)
-                
-                scores = evaluator.evaluate(text, [concept_a, concept_b])
-                scores_a.append(scores[concept_a])
-                scores_b.append(scores[concept_b])
-                
-                both = scores[concept_a] > 0.5 and scores[concept_b] > 0.5
-                joint_success.append(both)
-        
-        result = {
-            "layer_a": layer_a,
-            "layer_b": layer_b,
-            "mean_score_a": float(np.mean(scores_a)),
-            "mean_score_b": float(np.mean(scores_b)),
-            "joint_success_rate": float(np.mean(joint_success))
-        }
-        
-        results["different_layers"].append(result)
-        print(f"  Layers {layer_a}, {layer_b}: joint_success={result['joint_success_rate']:.1%}")
-    
-    # Find best configuration
-    best_same = max(results["same_layer"], key=lambda x: x["joint_success_rate"])
-    best_diff = max(results["different_layers"], key=lambda x: x["joint_success_rate"]) if results["different_layers"] else None
-    
-    results["best_same_layer"] = best_same
-    results["best_different_layers"] = best_diff
-    
-    return results
-
-
 def analyze_failure_modes(
     model,
     tokenizer,
     steering_vectors: Dict[str, torch.Tensor],
     concept_a: str,
     concept_b: str,
-    layer_a: int,
-    layer_b: int,
+    optimal_layers: Dict[str, int],
+    optimal_coefficients: Dict[str, float],
     prompts: List[str],
-    coefficient: float = 1.0,
     n_generations: int = 10
 ) -> Dict:
     """
@@ -334,22 +208,27 @@ def analyze_failure_modes(
     vec_a = steering_vectors[concept_a]
     vec_b = steering_vectors[concept_b]
     
+    layer_a = optimal_layers[concept_a]
+    layer_b = optimal_layers[concept_b]
+    coef_a = optimal_coefficients.get(concept_a, cfg.model.default_coefficient)
+    coef_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
+    
     failures = {
-        "a_dominates": [],  # A present, B absent
-        "b_dominates": [],  # B present, A absent
-        "both_absent": [],  # Neither A nor B
-        "incoherent": [],   # High perplexity
-        "success": []       # Both A and B present
+        "a_dominates": [],
+        "b_dominates": [],
+        "both_absent": [],
+        "incoherent": [],
+        "success": []
     }
     
-    print(f"\nAnalyzing failure modes for {concept_a} + {concept_b}")
+    print(f"\nAnalyzing failure modes for {concept_a} (layer {layer_a}, coef {coef_a:.2f}) + {concept_b} (layer {layer_b}, coef {coef_b:.2f})")
     
     for prompt in tqdm(prompts, desc="Generating"):
         for _ in range(n_generations):
             # Generate with composition
             config = [
-                SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coefficient),
-                SteeringConfig(vector=vec_b, layer=layer)b, coefficient=coefficient)
+                SteeringConfig(vector=vec_a, layer=layer_a, coefficient=coef_a),
+                SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
             ]
             text = generate_with_steering(model, tokenizer, prompt, config)
             
@@ -391,14 +270,16 @@ def analyze_failure_modes(
     results = {
         "concept_a": concept_a,
         "concept_b": concept_b,
-        "layer": layer,
-        "coefficient": coefficient,
+        "layer_a": layer_a,
+        "layer_b": layer_b,
+        "coefficient_a": coef_a,
+        "coefficient_b": coef_b,
         "total_samples": total,
         "categories": {
             "success": {
                 "count": len(failures["success"]),
                 "percentage": len(failures["success"]) / total * 100 if total > 0 else 0,
-                "examples": failures["success"][:3]  # Keep top 3 examples
+                "examples": failures["success"][:3]
             },
             "a_dominates": {
                 "count": len(failures["a_dominates"]),
@@ -437,16 +318,12 @@ def geometric_analysis_pca(
 ) -> Dict:
     """
     PCA analysis of steering vectors.
-    
-    Questions:
-    - How much variance is explained by top PCs?
-    - Are opposing concepts aligned along principal axes?
     """
     from sklearn.decomposition import PCA
     
-    # Stack vectors
-    vectors = torch.stack([steering_vectors[c] for c in concepts])
-    vectors_np = vectors.cpu().numpy()
+    # Stack vectors (move to CPU for sklearn)
+    vectors = torch.stack([steering_vectors[c].cpu() for c in concepts])
+    vectors_np = vectors.to(torch.float32).numpy()
     
     # Normalize
     norms = np.linalg.norm(vectors_np, axis=1, keepdims=True)
@@ -460,7 +337,7 @@ def geometric_analysis_pca(
         "concepts": concepts,
         "explained_variance_ratio": pca.explained_variance_ratio_.tolist(),
         "cumulative_variance": np.cumsum(pca.explained_variance_ratio_).tolist(),
-        "principal_components": pca.components_[:5].tolist(),  # Top 5 PCs
+        "principal_components": pca.components_[:5].tolist(),
         "projections_2d": {
             concepts[i]: transformed[i, :2].tolist()
             for i in range(len(concepts))
@@ -483,29 +360,26 @@ def geometric_analysis_activations(
     tokenizer,
     steering_vectors: Dict[str, torch.Tensor],
     concept: str,
-    layer: int,
+    optimal_layers: Dict[str, int],
+    optimal_coefficients: Dict[str, float],
     prompts: List[str],
-    coefficient: float = 1.0,
     n_samples: int = 20
 ) -> Dict:
     """
     Analyze how steering affects activation geometry.
-    
-    Compare:
-    - Baseline activations
-    - Steered activations
-    - Distance moved in activation space
     """
     from extraction.hooks import ActivationHooks
     from sklearn.decomposition import PCA
     
     hooks = ActivationHooks(model)
     vec = steering_vectors[concept]
+    layer = optimal_layers[concept]
+    coefficient = optimal_coefficients.get(concept, cfg.model.default_coefficient)
     
     baseline_activations = []
     steered_activations = []
     
-    print(f"\nCollecting activations for '{concept}' analysis...")
+    print(f"\nCollecting activations for '{concept}' (layer {layer}, coef {coefficient:.2f})...")
     
     # Collect baseline activations
     for prompt in tqdm(prompts[:n_samples], desc="Baseline"):
@@ -516,7 +390,6 @@ def geometric_analysis_activations(
                 model(**inputs)
             
             acts = cache[f"layer_{layer}_residual"]
-            # Get last token activation
             seq_len = inputs["attention_mask"].sum().item()
             baseline_activations.append(acts[0, seq_len-1, :].cpu().numpy())
     
@@ -533,8 +406,18 @@ def geometric_analysis_activations(
                 seq_len = inputs["attention_mask"].sum().item()
                 steered_activations.append(acts[0, seq_len-1, :].cpu().numpy())
     
+    # Convert to numpy arrays - ENSURE 2D shape
     baseline_activations = np.array(baseline_activations)
     steered_activations = np.array(steered_activations)
+    
+    # Verify shapes
+    assert baseline_activations.ndim == 2, f"Baseline activations should be 2D, got {baseline_activations.ndim}D"
+    assert steered_activations.ndim == 2, f"Steered activations should be 2D, got {steered_activations.ndim}D"
+    assert baseline_activations.shape[0] == n_samples, f"Expected {n_samples} baseline samples, got {baseline_activations.shape[0]}"
+    assert steered_activations.shape[0] == n_samples, f"Expected {n_samples} steered samples, got {steered_activations.shape[0]}"
+    
+    print(f"Baseline activations shape: {baseline_activations.shape}")
+    print(f"Steered activations shape: {steered_activations.shape}")
     
     # Compute distances
     distances = np.linalg.norm(steered_activations - baseline_activations, axis=1)
@@ -544,8 +427,16 @@ def geometric_analysis_activations(
     pca = PCA(n_components=2)
     projected = pca.fit_transform(all_activations)
     
-    baseline_proj = projected[:n_samples]
-    steered_proj = projected[n_samples:]
+    # Split back into baseline and steered - ENSURE correct indexing
+    baseline_proj = projected[:n_samples, :]  # Shape: (n_samples, 2)
+    steered_proj = projected[n_samples:, :]   # Shape: (n_samples, 2)
+    
+    # Verify projection shapes
+    assert baseline_proj.shape == (n_samples, 2), f"Baseline projection should be ({n_samples}, 2), got {baseline_proj.shape}"
+    assert steered_proj.shape == (n_samples, 2), f"Steered projection should be ({n_samples}, 2), got {steered_proj.shape}"
+    
+    print(f"Baseline projection shape: {baseline_proj.shape}")
+    print(f"Steered projection shape: {steered_proj.shape}")
     
     results = {
         "concept": concept,
@@ -554,8 +445,8 @@ def geometric_analysis_activations(
         "n_samples": n_samples,
         "mean_distance": float(np.mean(distances)),
         "std_distance": float(np.std(distances)),
-        "baseline_projections": baseline_proj.tolist(),
-        "steered_projections": steered_proj.tolist(),
+        "baseline_projections": baseline_proj.tolist(),  # Shape: (n_samples, 2)
+        "steered_projections": steered_proj.tolist(),    # Shape: (n_samples, 2)
         "variance_explained": pca.explained_variance_ratio_.tolist()
     }
     
@@ -594,6 +485,7 @@ def main():
     parser.add_argument("--week1_dir", default="outputs/week1")
     parser.add_argument("--concepts", nargs="+", default=None)
     parser.add_argument("--quick", action="store_true")
+    parser.add_argument("--visualize", action="store_true", help="Generate visualizations after analysis")
     args = parser.parse_args()
     
     # Setup
@@ -604,22 +496,51 @@ def main():
     if not week1_dir.exists():
         raise FileNotFoundError(f"Week 1 results not found at {week1_dir}")
     
+    # =========================================================================
+    # Load optimal parameters from Week 1
+    # =========================================================================
+    print("="*60)
+    print("WEEK 3: Analysis & Scaling Laws")
+    print("="*60)
+    
+    optimal_layers_path = week1_dir / "optimal_layers.json"
+    if not optimal_layers_path.exists():
+        raise FileNotFoundError(
+            f"Optimal layers not found at {optimal_layers_path}. "
+            "Run Week 1 without --skip_optimal_layers first."
+        )
+    
+    with open(optimal_layers_path) as f:
+        optimal_layers = json.load(f)
+    print(f"\n✓ Loaded optimal layers from {optimal_layers_path}")
+    print(f"Optimal layers: {optimal_layers}")
+    
+    optimal_coefficients_path = week1_dir / "optimal_coefficients.json"
+    if not optimal_coefficients_path.exists():
+        raise FileNotFoundError(
+            f"Optimal coefficients not found at {optimal_coefficients_path}. "
+            "Run Week 1 without --skip_optimal_coefficient first."
+        )
+    
+    with open(optimal_coefficients_path) as f:
+        optimal_coefficients = json.load(f)
+    print(f"✓ Loaded optimal coefficients from {optimal_coefficients_path}")
+    print(f"Optimal coefficients: {optimal_coefficients}")
+    
     # Load geometry
     with open(week1_dir / "geometry_analysis.json") as f:
         geometry = json.load(f)
     
-    concepts = args.concepts or geometry["concepts"][:6]  # Limit to 6 for speed
+    concepts = args.concepts or geometry["concepts"][:6]
     layers = cfg.model.steering_layers
-    default_layer = cfg.model.default_layer
     
-    print("="*60)
-    print("WEEK 3: Analysis & Scaling Laws")
-    print("="*60)
-    print(f"Model: {args.model}")
+    print(f"\nModel: {args.model}")
     print(f"Concepts: {concepts}")
     print(f"Output: {output_dir}")
     
+    # =========================================================================
     # Load model
+    # =========================================================================
     print("\nLoading model...")
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(
@@ -632,34 +553,22 @@ def main():
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     
+    # =========================================================================
     # Load steering vectors
+    # =========================================================================
     print("Loading steering vectors...")
     steering_vectors_by_layer_all = load_cached_vectors(
         week1_dir / "vectors",
         concepts,
         layers
     )
-
-    # In main(), after loading vectors:
-    optimal_layers = find_optimal_layers_batch(
-        model,
-        tokenizer,
-        steering_vectors_by_layer_all,  # or steering_vectors_by_layer for week2
-        concepts,
-        layers,
-        prompts,
-        n_prompts=5,
-        n_generations=2
-    )
-
-    # Create steering vectors using optimal layers
+    
     steering_vectors_default = {
-        c: steering_vectors_by_layer_all[c][optimal_layers[c]] 
+        c: steering_vectors_by_layer_all[c][optimal_layers[c]].cpu()
         for c in concepts if c in steering_vectors_by_layer_all
     }
-
-
-    # steering_vectors_default = {c: vecs[default_layer] for c, vecs in steering_vectors_by_layer_all.items()}
+    
+    print(f"✓ Loaded {len(steering_vectors_default)} steering vectors")
     
     # Get prompts
     prompts = get_test_prompts()
@@ -674,193 +583,138 @@ def main():
     
     all_results = {}
     
-    # Experiment 1: Coefficient Sweep
+    # =========================================================================
+    # Experiment 4: Failure Mode Analysis (All Pairs)
+    # =========================================================================
     print("\n" + "="*60)
-    print("EXPERIMENT 1: Coefficient Sweep")
+    print("EXPERIMENT 4: Failure Mode Analysis (All Pairs)")
     print("="*60)
-    
-    coefficient_results = {}
-    for concept in concepts[:3]:  # Test top 3
-        if concept in steering_vectors_default:
+
+    failure_results = {}
+
+    for concept_a in concepts:
+        for concept_b in concepts:
+            if concept_a == concept_b:
+                continue
+            if concept_a not in steering_vectors_default or concept_b not in steering_vectors_default:
+                continue
+
+            print(f"\nAnalyzing pair: {concept_a} vs {concept_b}")
+
             try:
-                optimal_layer = optimal_layers[concept]
-                result = coefficient_sweep_detailed(
-                    model, tokenizer, steering_vectors_default,
-                    concept, optimal_layer, prompts,
-                    coefficient_range=coef_range,
-                    n_generations=n_gen
-                )
-                coefficient_results[concept] = result
-            except Exception as e:
-                print(f"Error in coefficient sweep for {concept}: {e}")
-    
-    all_results["coefficient_sweep"] = coefficient_results
-    
-    # Experiment 2: Layer Ablation (Single Concept)
-    print("\n" + "="*60)
-    print("EXPERIMENT 2: Layer Ablation (Single Concept)")
-    print("="*60)
-    
-    layer_ablation_single_results = {}
-    for concept in concepts[:2]:  # Test top 2
-        if concept in steering_vectors_by_layer_all:
-            try:
-                result = layer_ablation_single_concept(
+                result = analyze_failure_modes(
                     model, tokenizer,
-                    steering_vectors_by_layer_all[concept],
-                    concept, layers, prompts,
-                    coefficient=1.0, n_generations=n_gen
+                    steering_vectors_default,
+                    concept_a, concept_b,
+                    optimal_layers, optimal_coefficients,
+                    prompts, n_generations=n_gen
                 )
-                layer_ablation_single_results[concept] = result
+                failure_results[f"{concept_a}__{concept_b}"] = result
             except Exception as e:
-                print(f"Error in layer ablation for {concept}: {e}")
-    
-    all_results["layer_ablation_single"] = layer_ablation_single_results
-    
-    # Experiment 3: Layer Ablation (Composition)
-    print("\n" + "="*60)
-    print("EXPERIMENT 3: Layer Ablation (Composition)")
-    print("="*60)
-    
-    # Find a good pair from Week 2 if available
-    week2_results_path = Path("outputs/week2/composition_results.json")
-    if week2_results_path.exists():
-        with open(week2_results_path) as f:
-            week2_data = json.load(f)
-        
-        if week2_data.get("additive_composition"):
-            # Get best performing pair
-            best_pair = max(
-                week2_data["additive_composition"],
-                key=lambda x: x["composition_success_rate"]
-            )
-            concept_a = best_pair["concept_a"]
-            concept_b = best_pair["concept_b"]
-        else:
-            concept_a, concept_b = concepts[0], concepts[1]
-    else:
-        concept_a, concept_b = concepts[0], concepts[1]
-    
-    if concept_a in steering_vectors_by_layer_all and concept_b in steering_vectors_by_layer_all:
-        try:
-            layer_ablation_comp_result = layer_ablation_composition(
-                model, tokenizer,
-                steering_vectors_by_layer_all[concept_a],
-                steering_vectors_by_layer_all[concept_b],
-                concept_a, concept_b, layers, prompts,
-                coefficient=1.0, n_generations=n_gen
-            )
-            # Add metadata about which layers were optimal
-            layer_ablation_comp_result["optimal_layer_a"] = optimal_layers[concept_a]
-            layer_ablation_comp_result["optimal_layer_b"] = optimal_layers[concept_b]
-            all_results["layer_ablation_composition"] = layer_ablation_comp_result
-        except Exception as e:
-            print(f"Error in composition layer ablation: {e}")
-            all_results["layer_ablation_composition"] = {"error": str(e)}
-    
-    # Experiment 4: Failure Mode Analysis
-    print("\n" + "="*60)
-    print("EXPERIMENT 4: Failure Mode Analysis")
-    print("="*60)
-    
-    if concept_a in steering_vectors_default and concept_b in steering_vectors_default:
-        try:
-            analysis_layer = optimal_layers[concept_a] if optimal_layers[concept_a] == optimal_layers[concept_b] else default_layer
-            failure_analysis = analyze_failure_modes(
-                model, tokenizer, steering_vectors_default,
-                concept_a, concept_b, analysis_layer, prompts,
-                coefficient=1.0, n_generations=n_gen
-            )
-            failure_analysis["layer_used"] = analysis_layer  # Track which layer was used
-            failure_analysis["optimal_layer_a"] = optimal_layers[concept_a]
-            failure_analysis["optimal_layer_b"] = optimal_layers[concept_b]
-            all_results["failure_analysis"] = failure_analysis
-        except Exception as e:
-            print(f"Error in failure analysis: {e}")
-            all_results["failure_analysis"] = {"error": str(e)}
-    
+                print(f"Error for pair {concept_a}, {concept_b}: {e}")
+                import traceback
+                traceback.print_exc()
+                failure_results[f"{concept_a}__{concept_b}"] = {"error": str(e)}
+
+    all_results["failure_analysis"] = failure_results
+
+    # =========================================================================
     # Experiment 5: PCA of Steering Vectors
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 5: Geometric Analysis - PCA")
     print("="*60)
-    
+
     try:
         pca_analysis = geometric_analysis_pca(steering_vectors_default, concepts)
         all_results["pca_analysis"] = pca_analysis
     except Exception as e:
         print(f"Error in PCA analysis: {e}")
+        import traceback
+        traceback.print_exc()
         all_results["pca_analysis"] = {"error": str(e)}
-    
+
+    # =========================================================================
     # Experiment 6: Activation Geometry
+    # =========================================================================
     print("\n" + "="*60)
     print("EXPERIMENT 6: Activation Geometry Analysis")
     print("="*60)
-    
+
     if concepts:
         try:
             activation_analysis = geometric_analysis_activations(
                 model, tokenizer, steering_vectors_default,
-                concepts[0], default_layer, prompts,
-                coefficient=1.0, n_samples=20 if not args.quick else 10
+                concepts[0],
+                optimal_layers, optimal_coefficients,
+                prompts,
+                n_samples=20 if not args.quick else 10
             )
             all_results["activation_geometry"] = activation_analysis
         except Exception as e:
             print(f"Error in activation analysis: {e}")
+            import traceback
+            traceback.print_exc()
             all_results["activation_geometry"] = {"error": str(e)}
-    
+
+    # =========================================================================
     # Save results
+    # =========================================================================
+    all_results["optimal_layers"] = optimal_layers
+    all_results["optimal_coefficients"] = optimal_coefficients
     all_results = convert_to_native(all_results)
-    
+
     try:
         with open(output_dir / "analysis_results.json", "w") as f:
             json.dump(all_results, f, indent=2)
-            print(f"\n✓ Results saved to {output_dir / 'analysis_results.json'}")
+        print(f"\n✓ Results saved to {output_dir / 'analysis_results.json'}")
     except Exception as e:
         print(f"⚠ Warning: Failed to save results: {e}")
-    
+        import traceback
+        traceback.print_exc()
+
+    # =========================================================================
+    # Generate visualizations if requested
+    # =========================================================================
+    if args.visualize:
+        print("\n" + "="*60)
+        print("GENERATING VISUALIZATIONS")
+        print("="*60)
+        try:
+            from week3_visualizations import create_all_week3_figures
+            create_all_week3_figures(output_dir)
+        except Exception as e:
+            print(f"Error generating visualizations: {e}")
+            import traceback
+            traceback.print_exc()
+
+    # =========================================================================
+    # Summary
+    # =========================================================================
     print("\n" + "="*60)
     print("WEEK 3 COMPLETE")
     print("="*60)
     print(f"Results saved to: {output_dir}")
-    
-    # Print summary
+
     print("\nKey Findings:")
-    
-    if coefficient_results:
-        print("\n1. Coefficient Sweep:")
-        for concept, result in coefficient_results.items():
-            if result.get("optimal_coefficient") is not None:
-                print(f"   {concept}: optimal coefficient = {result['optimal_coefficient']:.2f}")
-                print(f"      score = {result['optimal_score']:.3f}, ppl = {result['optimal_perplexity']:.1f}")
-    
-    if layer_ablation_single_results:
-        print("\n2. Layer Ablation (Single Concept):")
-        for concept, result in layer_ablation_single_results.items():
-            print(f"   {concept}: best layer = {result['best_layer']}")
-            print(f"      score = {result['best_score']:.3f}")
-    
-    if "layer_ablation_composition" in all_results and "best_same_layer" in all_results["layer_ablation_composition"]:
-        comp = all_results["layer_ablation_composition"]
-        print("\n3. Layer Ablation (Composition):")
-        best = comp["best_same_layer"]
-        print(f"   {comp['concept_a']} + {comp['concept_b']}: best layer = {best['layer']}")
-        print(f"      joint success = {best['joint_success_rate']:.1%}")
-    
-    if "failure_analysis" in all_results and "categories" in all_results["failure_analysis"]:
-        fa = all_results["failure_analysis"]
-        print("\n4. Failure Modes:")
-        print(f"   Success: {fa['categories']['success']['percentage']:.1f}%")
-        print(f"   A dominates: {fa['categories']['a_dominates']['percentage']:.1f}%")
-        print(f"   B dominates: {fa['categories']['b_dominates']['percentage']:.1f}%")
-        print(f"   Both absent: {fa['categories']['both_absent']['percentage']:.1f}%")
-        print(f"   Incoherent: {fa['categories']['incoherent']['percentage']:.1f}%")
-    
+
+    if "failure_analysis" in all_results:
+        print("\nFailure Mode Analysis:")
+        for pair_key, fa in list(failure_results.items())[:3]:  # Show first 3 pairs
+            if "error" not in fa and "categories" in fa:
+                print(f"\n  {fa['concept_a']} + {fa['concept_b']}:")
+                print(f"    Success: {fa['categories']['success']['percentage']:.1f}%")
+                print(f"    A dominates: {fa['categories']['a_dominates']['percentage']:.1f}%")
+                print(f"    B dominates: {fa['categories']['b_dominates']['percentage']:.1f}%")
+
     if "pca_analysis" in all_results and "cumulative_variance" in all_results["pca_analysis"]:
         pca = all_results["pca_analysis"]
-        print("\n5. PCA Analysis:")
-        print(f"   Top 2 PCs: {pca['cumulative_variance'][1]:.1%} variance explained")
-        print(f"   Top 5 PCs: {pca['cumulative_variance'][4]:.1%} variance explained")
-
+        print("\nPCA Analysis:")
+        print(f"  Top 2 PCs: {pca['cumulative_variance'][1]:.1%} variance explained")
+        print(f"  Top 5 PCs: {pca['cumulative_variance'][4]:.1%} variance explained")
+    
+    if args.visualize:
+        print(f"\nVisualizations saved to: {output_dir / 'figures'}")
 
 if __name__ == "__main__":
     main()

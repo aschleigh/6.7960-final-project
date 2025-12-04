@@ -32,8 +32,11 @@ class AttributeClassifier:
     # ONLY THESE (minus toxic) have supervised fine-tuned classifiers
     PRETRAINED_MODELS = {
         "formal": "s-nlp/roberta-base-formality-ranker",
-        "positive": "cardiffnlp/twitter-roberta-base-sentiment-latest",
-        "negative": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+        "casual": "s-nlp/roberta-base-formality-ranker",
+        # "positive": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+        "positive": "distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+        # "negative": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+        "negative": "distilbert/distilbert-base-uncased-finetuned-sst-2-english",
         "toxic": "unitary/toxic-bert",
     }
     
