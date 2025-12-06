@@ -167,7 +167,7 @@ def load_cached_vectors(
         for layer in layers:
             path = cache_dir / f"{concept}_layer{layer}.pt"
             if path.exists():
-                all_vectors[concept][layer] = torch.load(path)
+                all_vectors[concept][layer] = torch.load(path, map_location='cuda:0')
             else:
                 print(f"Warning: Missing cached vector for {concept} layer {layer}")
     
