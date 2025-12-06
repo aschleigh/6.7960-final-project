@@ -361,72 +361,187 @@ def test_arithmetic_composition(
     n_generations: int = 5
 ) -> Dict:
     """
-    Test if (A + B) - A ≈ B.
+    Test if steering vector arithmetic works semantically like word embeddings.
     
-    H3: Vector arithmetic should work like word embeddings
+    H3: Vector arithmetic should compose behaviors:
+    - A + B should produce BOTH behaviors
+    - A + B should score high on both A and B
+    - (A + B) effectiveness ≈ individual A and B effectiveness combined
+    
+    This tests BEHAVIORAL composition, not trivial vector math.
     """
     evaluator = MultiAttributeEvaluator([concept_a, concept_b])
     
-    vec_a = steering_vectors[concept_a]
-    vec_b = steering_vectors[concept_b]
+    vec_a = steering_vectors[concept_a].cpu()
+    vec_b = steering_vectors[concept_b].cpu()
     
-    # FIX: Move both vectors to the same device (CPU for arithmetic)
-    vec_a_cpu = vec_a.cpu()
-    vec_b_cpu = vec_b.cpu()
-    
+    # Use same layer for fair comparison (average of optimal layers)
     layer_a = optimal_layers[concept_a]
     layer_b = optimal_layers[concept_b]
+    layer_combined = (layer_a + layer_b) // 2
+    
+    coef_a = optimal_coefficients.get(concept_a, cfg.model.default_coefficient)
     coef_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
+    coef_combined = (coef_a + coef_b) / 2  # Average coefficient
     
-    # Generate with different combinations
-    b_only_scores = []
-    arithmetic_scores = []  # (A + B) - A
+    # Storage for all conditions
+    baseline_a_scores = []
+    baseline_b_scores = []
+    a_only_a_scores = []
+    a_only_b_scores = []
+    b_only_a_scores = []
+    b_only_b_scores = []
+    combined_a_scores = []
+    combined_b_scores = []
     
-    print(f"\nTesting arithmetic: ({concept_a} + {concept_b}) - {concept_a} ≈ {concept_b}")
-    print(f"Using layer {layer_b} and coefficient {coef_b:.2f} for {concept_b}")
+    print(f"\n{'='*60}")
+    print(f"Testing Arithmetic: {concept_a} + {concept_b}")
+    print(f"{'='*60}")
+    print(f"Layer A: {layer_a}, Layer B: {layer_b}, Combined: {layer_combined}")
+    print(f"Coef A: {coef_a:.2f}, Coef B: {coef_b:.2f}, Combined: {coef_combined:.2f}")
     
     for prompt in tqdm(prompts, desc="Generating"):
         for _ in range(n_generations):
-            # B only (ground truth)
-            config_b = SteeringConfig(vector=vec_b, layer=layer_b, coefficient=coef_b)
+            # Baseline: no steering
+            text_baseline = generate_with_steering(
+                model, tokenizer, prompt, 
+                SteeringConfig(vector=None, layer=0, coefficient=0)
+            )
+            baseline_a_scores.append(evaluator.classifiers[concept_a].score(text_baseline))
+            baseline_b_scores.append(evaluator.classifiers[concept_b].score(text_baseline))
+            
+            # Condition 1: A only
+            config_a = SteeringConfig(
+                vector=vec_a.to(model.device), 
+                layer=layer_combined,  # Use same layer for fair comparison
+                coefficient=coef_a
+            )
+            text_a = generate_with_steering(model, tokenizer, prompt, config_a)
+            a_only_a_scores.append(evaluator.classifiers[concept_a].score(text_a))
+            a_only_b_scores.append(evaluator.classifiers[concept_b].score(text_a))
+            
+            # Condition 2: B only
+            config_b = SteeringConfig(
+                vector=vec_b.to(model.device), 
+                layer=layer_combined,
+                coefficient=coef_b
+            )
             text_b = generate_with_steering(model, tokenizer, prompt, config_b)
-            b_only_scores.append(evaluator.classifiers[concept_b].score(text_b))
+            b_only_a_scores.append(evaluator.classifiers[concept_a].score(text_b))
+            b_only_b_scores.append(evaluator.classifiers[concept_b].score(text_b))
             
-            # (A + B) - A = B (in theory)
-            # Do arithmetic on CPU, then move back to original device
-            combined_vec = vec_a_cpu + vec_b_cpu - vec_a_cpu  # Should equal vec_b
-            combined_vec = combined_vec.to(vec_b.device)  # Move to same device as vec_b
-            
-            config_arithmetic = SteeringConfig(vector=combined_vec, layer=layer_b, coefficient=coef_b)
-            text_arithmetic = generate_with_steering(model, tokenizer, prompt, config_arithmetic)
-            arithmetic_scores.append(evaluator.classifiers[concept_b].score(text_arithmetic))
+            # Condition 3: A + B (the actual test!)
+            # This is where we test if vectors compose semantically
+            combined_vec = (vec_a + vec_b).to(model.device)
+            config_combined = SteeringConfig(
+                vector=combined_vec,
+                layer=layer_combined,
+                coefficient=coef_combined
+            )
+            text_combined = generate_with_steering(model, tokenizer, prompt, config_combined)
+            combined_a_scores.append(evaluator.classifiers[concept_a].score(text_combined))
+            combined_b_scores.append(evaluator.classifiers[concept_b].score(text_combined))
     
     # Analysis
-    b_only_mean = np.mean(b_only_scores)
-    arithmetic_mean = np.mean(arithmetic_scores)
+    baseline_a = np.mean(baseline_a_scores)
+    baseline_b = np.mean(baseline_b_scores)
     
-    difference = abs(arithmetic_mean - b_only_mean)
-    arithmetic_works = difference < 0.1  # Within 10% is success
+    a_only_a = np.mean(a_only_a_scores)
+    a_only_b = np.mean(a_only_b_scores)
+    
+    b_only_a = np.mean(b_only_a_scores)
+    b_only_b = np.mean(b_only_b_scores)
+    
+    combined_a = np.mean(combined_a_scores)
+    combined_b = np.mean(combined_b_scores)
+    
+    # Key metrics for composition
+    # 1. Does A+B preserve A's effect?
+    a_preservation = combined_a / a_only_a if a_only_a > 0 else 0
+    
+    # 2. Does A+B preserve B's effect?
+    b_preservation = combined_b / b_only_b if b_only_b > 0 else 0
+    
+    # 3. Does A+B show BOTH behaviors?
+    both_behaviors = (combined_a > baseline_a) and (combined_b > baseline_b)
+    
+    # 4. Compositional score: how well does A+B capture both?
+    # Ideal: combined_a ≈ a_only_a AND combined_b ≈ b_only_b
+    compositional_score = (a_preservation + b_preservation) / 2
+    
+    # 5. Check for interference (does adding B hurt A, or vice versa?)
+    a_interference = (a_only_a - combined_a) / a_only_a if a_only_a > 0 else 0
+    b_interference = (b_only_b - combined_b) / b_only_b if b_only_b > 0 else 0
     
     result = {
         "concept_a": concept_a,
         "concept_b": concept_b,
-        "layer_b": layer_b,
-        "coefficient_b": coef_b,
-        "b_only_mean": float(b_only_mean),
-        "arithmetic_mean": float(arithmetic_mean),
-        "difference": float(difference),
-        "arithmetic_works": arithmetic_works
+        "layer": layer_combined,
+        "coefficient": coef_combined,
+        
+        # Baseline
+        "baseline_a": float(baseline_a),
+        "baseline_b": float(baseline_b),
+        
+        # Individual effects
+        "a_only_a": float(a_only_a),
+        "a_only_b": float(a_only_b),
+        "b_only_a": float(b_only_a),
+        "b_only_b": float(b_only_b),
+        
+        # Combined effects
+        "combined_a": float(combined_a),
+        "combined_b": float(combined_b),
+        
+        # Composition metrics
+        "a_preservation": float(a_preservation),
+        "b_preservation": float(b_preservation),
+        "compositional_score": float(compositional_score),
+        "both_behaviors_present": both_behaviors,
+        
+        # Interference metrics
+        "a_interference": float(a_interference),
+        "b_interference": float(b_interference),
+        
+        # Success criteria
+        "arithmetic_works": compositional_score > 0.7 and both_behaviors
     }
     
-    print(f"\nResults:")
-    print(f"  B only:       {b_only_mean:.3f}")
-    print(f"  (A+B)-A:      {arithmetic_mean:.3f}")
-    print(f"  Difference:   {difference:.3f}")
-    print(f"  Works:        {arithmetic_works}")
+    # Pretty print results
+    print(f"\n{'='*60}")
+    print("RESULTS")
+    print(f"{'='*60}")
+    print(f"\nBaseline (no steering):")
+    print(f"  {concept_a}: {baseline_a:.3f}")
+    print(f"  {concept_b}: {baseline_b:.3f}")
+    
+    print(f"\n{concept_a} only:")
+    print(f"  {concept_a} score: {a_only_a:.3f}")
+    print(f"  {concept_b} score: {a_only_b:.3f}")
+    
+    print(f"\n{concept_b} only:")
+    print(f"  {concept_a} score: {b_only_a:.3f}")
+    print(f"  {concept_b} score: {b_only_b:.3f}")
+    
+    print(f"\n{concept_a} + {concept_b} (Combined):")
+    print(f"  {concept_a} score: {combined_a:.3f}")
+    print(f"  {concept_b} score: {combined_b:.3f}")
+    
+    print(f"\nComposition Analysis:")
+    print(f"  {concept_a} preservation: {a_preservation:.1%}")
+    print(f"  {concept_b} preservation: {b_preservation:.1%}")
+    print(f"  Compositional score: {compositional_score:.3f}")
+    print(f"  Both behaviors present: {both_behaviors}")
+    
+    print(f"\nInterference:")
+    print(f"  {concept_a} interference: {a_interference:.1%}")
+    print(f"  {concept_b} interference: {b_interference:.1%}")
+    
+    print(f"\n{'='*60}")
+    print(f"Arithmetic works: {result['arithmetic_works']}")
+    print(f"{'='*60}\n")
     
     return result
-
 
 def test_coefficient_scaling(
     model,
