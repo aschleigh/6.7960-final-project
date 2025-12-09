@@ -20,6 +20,7 @@ from pathlib import Path
 import json
 from tqdm import tqdm
 from dataclasses import dataclass
+import matplotlib.pyplot as plt
 
 from config import cfg
 from data.prompts import get_test_prompts
@@ -96,107 +97,153 @@ def generate_joint_contrastive_pairs(
     """
     pairs = []
     
-    # Templates for joint concepts
-    if concept_a == "formal" and concept_b == "positive":
-        # Positive: formal AND positive
-        positive_templates = [
-            "I am delighted to inform you that your application has been approved.",
-            "We are pleased to announce the successful completion of this project.",
-            "It is with great pleasure that I extend my congratulations.",
-            "I would like to express my sincere appreciation for your excellent work.",
-            "We are honored to present you with this distinguished achievement award.",
-            "I am writing to commend you on your outstanding performance.",
-            "Your contribution has been invaluable, and we are truly grateful.",
-            "We wish to acknowledge your exceptional dedication and professionalism.",
-            "It is my privilege to inform you of this wonderful opportunity.",
-            "I am pleased to report that all objectives have been successfully met.",
-        ]
-        
-        # Negative: casual AND/OR negative
-        negative_templates = [
-            "Ugh, this totally sucks and I hate dealing with it.",
-            "Hey, looks like things aren't going so great unfortunately.",
-            "Whatever, I guess it's fine but not really excited about it.",
-            "Tbh this is pretty disappointing and frustrating to deal with.",
-            "Man, this is such a bummer and really annoying.",
-            "Yo, this whole situation is kind of a mess honestly.",
-            "Nah, I'm not happy about this at all, it's terrible.",
-            "This is seriously the worst and I can't stand it anymore.",
-            "Dude, everything's going wrong and it's super annoying.",
-            "Yeah, this is pretty bad and I'm not feeling it.",
-        ]
+    # Define characteristic phrases for each concept
+    concept_characteristics = {
+        "formal": {
+            "positive": ["respectfully", "cordially", "professionally", "officially", "formally"],
+            "style": "structured and proper language"
+        },
+        "casual": {
+            "positive": ["hey", "yeah", "kinda", "gonna", "wanna"],
+            "style": "relaxed and informal language"
+        },
+        "positive": {
+            "positive": ["excellent", "wonderful", "delighted", "pleased", "great"],
+            "style": "optimistic and upbeat tone"
+        },
+        "negative": {
+            "positive": ["terrible", "disappointed", "unfortunately", "problem", "failed"],
+            "style": "pessimistic and critical tone"
+        },
+        "verbose": {
+            "positive": ["furthermore", "consequently", "nevertheless", "additionally", "particularly"],
+            "style": "lengthy and detailed expression"
+        },
+        "concise": {
+            "positive": ["brief", "short", "quick", "simple", "direct"],
+            "style": "short and to-the-point expression"
+        },
+        "confident": {
+            "positive": ["certainly", "definitely", "absolutely", "clearly", "undoubtedly"],
+            "style": "assured and assertive tone"
+        },
+        "uncertain": {
+            "positive": ["perhaps", "maybe", "possibly", "might", "could"],
+            "style": "hesitant and questioning tone"
+        },
+        "technical": {
+            "positive": ["algorithm", "implementation", "architecture", "framework", "protocol"],
+            "style": "specialized and precise terminology"
+        },
+        "simple": {
+            "positive": ["easy", "basic", "straightforward", "plain", "clear"],
+            "style": "accessible and uncomplicated language"
+        }
+    }
     
-    elif concept_a == "technical" and concept_b == "confident":
-        positive_templates = [
-            "The algorithm achieves O(n log n) complexity, which is definitively optimal for this problem class.",
-            "Our implementation leverages GPU parallelization, guaranteeing 10x performance improvements.",
-            "The system architecture employs microservices with Kubernetes orchestration, ensuring scalability.",
-            "We utilize a convolutional neural network with proven 99% accuracy on the benchmark dataset.",
-            "The database schema is normalized to 3NF, which will certainly eliminate data redundancy.",
-            "Our API implements RESTful principles with JWT authentication, providing robust security.",
-            "The caching layer uses Redis with a TTL of 3600 seconds, definitively optimizing response times.",
-            "We apply backpropagation with Adam optimizer, which consistently converges to global minima.",
-            "The infrastructure uses Terraform for IaC, absolutely ensuring reproducible deployments.",
-            "Our protocol follows TCP/IP standards with guaranteed packet delivery mechanisms.",
-        ]
-        
-        negative_templates = [
-            "I guess we could maybe try something simple?",
-            "Perhaps there's a way to do this, but I'm not really sure.",
-            "We might want to think about doing something, possibly.",
-            "There could be an approach that works, maybe?",
-            "I think something like this might help, but uncertain.",
-            "Maybe we should consider trying this thing?",
-            "It seems like there might be a solution somewhere.",
-            "Perhaps this could work, but I'm not confident.",
-            "We could possibly attempt something basic.",
-            "I guess this might be okay, but who knows.",
-        ]
+    # Generate templates based on concept combination
+    key = tuple(sorted([concept_a, concept_b]))
     
-    elif concept_a == "verbose" and concept_b == "uncertain":
-        positive_templates = [
-            "Well, I suppose one might consider, perhaps tentatively, that there could potentially be several different approaches.",
-            "It seems, at least from my limited perspective, that this situation may or may not require further consideration.",
-            "I find myself wondering, though I could certainly be mistaken, whether this might possibly be a viable option.",
-            "One could argue, though I hesitate to make any definitive claims, that perhaps there are multiple interpretations.",
-            "It appears, at least as far as I can tell from the available information, that this may require additional thought.",
-            "I'm inclined to think, though I wouldn't want to overstate my confidence, that there might be some merit to this.",
-            "From what I understand, which admittedly may be incomplete, it seems that this could potentially be relevant.",
-            "I suppose, though I'm not entirely certain about this, that one might consider various different perspectives.",
-            "It strikes me, though I could well be wrong about this, that perhaps there are multiple factors to consider.",
-            "One might suggest, though this is merely speculation on my part, that the situation could potentially evolve.",
-        ]
+    # Helper to create positive examples (both A and B)
+    def create_positive(a_words, b_words, length_a="medium", length_b="medium"):
+        templates = []
         
-        negative_templates = [
-            "Do it now.",
-            "This works.",
-            "Go ahead.",
-            "Complete.",
-            "It's ready.",
-            "Start here.",
-            "All done.",
-            "That's it.",
-            "Works fine.",
-            "Just go.",
-        ]
+        # Determine sentence structure based on concepts
+        if "verbose" in [concept_a, concept_b]:
+            base_length = "long"
+        elif "concise" in [concept_a, concept_b]:
+            base_length = "short"
+        else:
+            base_length = "medium"
+            
+        # Generate sentences combining both concepts
+        if base_length == "short":
+            templates = [
+                f"{a_words[0].capitalize()}, this is {b_words[0]}.",
+                f"{a_words[1].capitalize()}. Very {b_words[1]}.",
+                f"{a_words[2].capitalize()} and {b_words[2]}.",
+                f"This is {a_words[3]} and {b_words[3]}.",
+                f"{a_words[4].capitalize()}. Quite {b_words[4]}.",
+                f"{a_words[0].capitalize()}, it's {b_words[0]}.",
+                f"Very {a_words[1]} and {b_words[1]}.",
+                f"{a_words[2].capitalize()}. Truly {b_words[2]}.",
+                f"This seems {a_words[3]} and {b_words[3]}.",
+                f"{a_words[4].capitalize()}, quite {b_words[4]}.",
+            ]
+        elif base_length == "long":
+            templates = [
+                f"I would like to {a_words[0]} inform you that this is truly {b_words[0]}, and furthermore, it demonstrates exceptional qualities.",
+                f"It is with considerable {a_words[1]} that I must say this appears remarkably {b_words[1]} in every conceivable aspect.",
+                f"One might {a_words[2]} observe that this situation is demonstrably {b_words[2]}, taking into account all relevant factors.",
+                f"Upon careful consideration, I find it necessary to {a_words[3]} note that this is profoundly {b_words[3]} in nature.",
+                f"It seems appropriate to {a_words[4]} mention that this exhibits characteristics that are undeniably {b_words[4]} overall.",
+                f"I feel compelled to {a_words[0]} state that this represents something genuinely {b_words[0]} and worthy of attention.",
+                f"After thorough evaluation, I must {a_words[1]} conclude that this is remarkably {b_words[1]} in all respects.",
+                f"It would be remiss not to {a_words[2]} acknowledge that this displays qualities that are notably {b_words[2]} throughout.",
+                f"In my considered opinion, I should {a_words[3]} emphasize that this is authentically {b_words[3]} and significant.",
+                f"Taking everything into account, I must {a_words[4]} observe that this proves to be distinctly {b_words[4]} indeed.",
+            ]
+        else:  # medium
+            templates = [
+                f"I would like to {a_words[0]} inform you that this is {b_words[0]}.",
+                f"It is with {a_words[1]} that I must say this is {b_words[1]}.",
+                f"I {a_words[2]} believe that this situation is {b_words[2]}.",
+                f"It is important to {a_words[3]} note that this is {b_words[3]}.",
+                f"I want to {a_words[4]} mention that this is {b_words[4]}.",
+                f"I am pleased to {a_words[0]} state that this is {b_words[0]}.",
+                f"With {a_words[1]}, I can say this is quite {b_words[1]}.",
+                f"I {a_words[2]} feel that this is genuinely {b_words[2]}.",
+                f"It seems {a_words[3]} that this proves to be {b_words[3]}.",
+                f"I should {a_words[4]} add that this is truly {b_words[4]}.",
+            ]
+        
+        return templates
     
-    else:
-        # Generic template - modify as needed for other concept pairs
-        positive_templates = [
-            f"This is both very {concept_a} and quite {concept_b} in nature.",
-            f"The {concept_a} and {concept_b} aspects are clearly evident here.",
-            f"This exemplifies {concept_a} qualities while being distinctly {concept_b}.",
-            f"A {concept_a} approach combined with {concept_b} characteristics.",
-            f"Demonstrating {concept_a} style alongside {concept_b} elements.",
+    # Helper to create negative examples (neither A nor B, or just one)
+    def create_negative(a_opposite, b_opposite):
+        # Create sentences with opposite characteristics
+        templates = [
+            f"This is {a_opposite[0]} and {b_opposite[0]}.",
+            f"{a_opposite[1].capitalize()}, this seems {b_opposite[1]}.",
+            f"It appears {a_opposite[2]} and {b_opposite[2]}.",
+            f"{a_opposite[3].capitalize()}. Rather {b_opposite[3]}.",
+            f"This feels {a_opposite[4]} and {b_opposite[4]}.",
+            f"Seems {a_opposite[0]} and quite {b_opposite[0]}.",
+            f"{a_opposite[1].capitalize()}. Very {b_opposite[1]}.",
+            f"This is {a_opposite[2]} and {b_opposite[2]} overall.",
+            f"Rather {a_opposite[3]} and {b_opposite[3]} indeed.",
+            f"{a_opposite[4].capitalize()}, quite {b_opposite[4]}.",
         ]
-        
-        negative_templates = [
-            f"This is neither {concept_a} nor {concept_b} at all.",
-            f"Lacking both {concept_a} and {concept_b} characteristics entirely.",
-            f"The opposite of {concept_a} and not {concept_b} either.",
-            f"Completely devoid of {concept_a} or {concept_b} qualities.",
-            f"Neither {concept_a} in style nor {concept_b} in nature.",
-        ]
+        return templates
+    
+    # Get characteristics for concepts
+    char_a = concept_characteristics[concept_a]["positive"]
+    char_b = concept_characteristics[concept_b]["positive"]
+    
+    # Determine opposites
+    opposites = {
+        "formal": "casual", "casual": "formal",
+        "positive": "negative", "negative": "positive",
+        "verbose": "concise", "concise": "verbose",
+        "confident": "uncertain", "uncertain": "confident",
+        "technical": "simple", "simple": "technical"
+    }
+    
+    opposite_a = opposites.get(concept_a, concept_a)
+    opposite_b = opposites.get(concept_b, concept_b)
+    
+    char_a_opposite = concept_characteristics[opposite_a]["positive"]
+    char_b_opposite = concept_characteristics[opposite_b]["positive"]
+    
+    # Generate positive and negative templates
+    positive_templates = create_positive(char_a, char_b)
+    negative_templates = create_negative(char_a_opposite, char_b_opposite)
+    
+    # Ensure we have enough templates
+    while len(positive_templates) < 10:
+        positive_templates.extend(positive_templates)
+    while len(negative_templates) < 10:
+        negative_templates.extend(negative_templates)
     
     # Generate pairs by cycling through templates
     for i in range(n_pairs):
@@ -452,6 +499,194 @@ def test_joint_vs_composition(
     return result
 
 
+def plot_joint_vector_results(all_results: List[JointVectorResult], output_dir: Path):
+    """Create visualizations comparing joint vs composition approaches."""
+    
+    n_pairs = len(all_results)
+    
+    # 1. Individual plots for each concept pair - showing both concepts
+    fig, axes = plt.subplots(1, n_pairs, figsize=(7*n_pairs, 6))
+    if n_pairs == 1:
+        axes = [axes]
+    
+    colors = {
+        'baseline': '#95a5a6',
+        'joint': '#3498db', 
+        'composition': '#e74c3c',
+        'a_only': '#9b59b6',
+        'b_only': '#f39c12'
+    }
+    
+    for idx, result in enumerate(all_results):
+        ax = axes[idx]
+        
+        # Prepare data for both concepts
+        methods = ['Baseline', 'Joint', 'Composition', f'{result.concept_a.capitalize()}\nOnly', f'{result.concept_b.capitalize()}\nOnly']
+        
+        # Scores for concept A
+        scores_a = [
+            result.baseline_score_a,
+            result.joint_score_a,
+            result.composition_score_a,
+            result.a_only_score_a,
+            result.baseline_score_a  # Use baseline for B-only since it doesn't target A
+        ]
+        
+        # Scores for concept B
+        scores_b = [
+            result.baseline_score_b,
+            result.joint_score_b,
+            result.composition_score_b,
+            result.baseline_score_b,  # Use baseline for A-only since it doesn't target B
+            result.b_only_score_b
+        ]
+        
+        x = np.arange(len(methods))
+        width = 0.35
+        
+        # Plot bars
+        bars1 = ax.bar(x - width/2, scores_a, width, label=result.concept_a.capitalize(), 
+                       color=colors['a_only'], alpha=0.8)
+        bars2 = ax.bar(x + width/2, scores_b, width, label=result.concept_b.capitalize(), 
+                       color=colors['b_only'], alpha=0.8)
+        
+        # Formatting
+        ax.set_xlabel('Method', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Score', fontsize=12, fontweight='bold')
+        ax.set_title(f'{result.concept_a.capitalize()} + {result.concept_b.capitalize()}', 
+                    fontsize=14, fontweight='bold')
+        ax.set_xticks(x)
+        ax.set_xticklabels(methods, fontsize=10)
+        ax.legend(fontsize=10)
+        ax.grid(True, alpha=0.3, axis='y')
+        ax.set_ylim([0, 1])
+        
+        # Add value labels on bars
+        for bars in [bars1, bars2]:
+            for bar in bars:
+                height = bar.get_height()
+                ax.text(bar.get_x() + bar.get_width()/2., height,
+                       f'{height:.2f}',
+                       ha='center', va='bottom', fontsize=8)
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / "joint_individual_scores.png", dpi=300, bbox_inches='tight')
+    print(f"✓ Saved plot: {output_dir / 'joint_individual_scores.png'}")
+    plt.close()
+    
+    # 2. "Both Present" success rate comparison
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    pair_labels = [f"{r.concept_a.capitalize()}\n+\n{r.concept_b.capitalize()}" for r in all_results]
+    x = np.arange(len(all_results))
+    width = 0.35
+    
+    baseline_rates = [r.baseline_score_a * r.baseline_score_b for r in all_results]  # Approximate baseline
+    joint_rates = [r.joint_both_present_rate * 100 for r in all_results]
+    composition_rates = [r.composition_both_present_rate * 100 for r in all_results]
+    
+    bars1 = ax.bar(x - width, joint_rates, width, label='Joint', color='#3498db', alpha=0.8)
+    bars2 = ax.bar(x, composition_rates, width, label='Composition', color='#e74c3c', alpha=0.8)
+    bars3 = ax.bar(x + width, np.array(baseline_rates) * 100, width, label='Baseline (approx)', 
+                   color='#95a5a6', alpha=0.6)
+    
+    ax.set_xlabel('Concept Pair', fontsize=12, fontweight='bold')
+    ax.set_ylabel('Both Attributes Present (%)', fontsize=12, fontweight='bold')
+    ax.set_title('Joint vs Composition: Success Rate Comparison', fontsize=14, fontweight='bold')
+    ax.set_xticks(x)
+    ax.set_xticklabels(pair_labels, fontsize=10)
+    ax.legend(fontsize=11)
+    ax.grid(True, alpha=0.3, axis='y')
+    ax.set_ylim([0, 100])
+    
+    # Add value labels
+    for bars in [bars1, bars2, bars3]:
+        for bar in bars:
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                   f'{height:.1f}%',
+                   ha='center', va='bottom', fontsize=9)
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / "joint_both_present_comparison.png", dpi=300, bbox_inches='tight')
+    print(f"✓ Saved plot: {output_dir / 'joint_both_present_comparison.png'}")
+    plt.close()
+    
+    # 3. Vector similarity heatmap
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    similarities = []
+    labels = []
+    
+    for result in all_results:
+        pair_label = f"{result.concept_a.capitalize()}+{result.concept_b.capitalize()}"
+        similarities.append([
+            result.joint_vs_composition_similarity,
+            result.joint_vs_a_similarity,
+            result.joint_vs_b_similarity
+        ])
+        labels.append(pair_label)
+    
+    similarities = np.array(similarities)
+    
+    im = ax.imshow(similarities, cmap='RdYlGn', aspect='auto', vmin=0, vmax=1)
+    
+    ax.set_xticks(np.arange(3))
+    ax.set_yticks(np.arange(len(all_results)))
+    ax.set_xticklabels(['Joint ≈ (A+B)', 'Joint ≈ A', 'Joint ≈ B'], fontsize=11)
+    ax.set_yticklabels(labels, fontsize=11)
+    
+    # Add text annotations
+    for i in range(len(all_results)):
+        for j in range(3):
+            text = ax.text(j, i, f'{similarities[i, j]:.3f}',
+                          ha="center", va="center", color="black", fontsize=10, fontweight='bold')
+    
+    ax.set_title('Vector Similarity Analysis', fontsize=14, fontweight='bold')
+    fig.colorbar(im, ax=ax, label='Cosine Similarity')
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / "joint_vector_similarity.png", dpi=300, bbox_inches='tight')
+    print(f"✓ Saved plot: {output_dir / 'joint_vector_similarity.png'}")
+    plt.close()
+    
+    # 4. Improvement comparison (how much each method improves over baseline)
+    fig, axes = plt.subplots(1, n_pairs, figsize=(7*n_pairs, 6))
+    if n_pairs == 1:
+        axes = [axes]
+    
+    for idx, result in enumerate(all_results):
+        ax = axes[idx]
+        
+        methods = ['Joint', 'Composition']
+        
+        # Average improvement across both concepts
+        joint_avg_improvement = (result.joint_improvement_a + result.joint_improvement_b) / 2
+        composition_avg_improvement = (result.composition_improvement_a + result.composition_improvement_b) / 2
+        
+        improvements = [joint_avg_improvement, composition_avg_improvement]
+        
+        colors_list = ['#3498db', '#e74c3c']
+        bars = ax.bar(methods, improvements, color=colors_list, alpha=0.8, width=0.6)
+        
+        ax.axhline(y=0, color='black', linestyle='-', linewidth=0.8)
+        ax.set_ylabel('Average Improvement over Baseline', fontsize=12, fontweight='bold')
+        ax.set_title(f'{result.concept_a.capitalize()} + {result.concept_b.capitalize()}', 
+                    fontsize=14, fontweight='bold')
+        ax.grid(True, alpha=0.3, axis='y')
+        
+        # Add value labels
+        for bar in bars:
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                   f'{height:+.3f}',
+                   ha='center', va='bottom' if height > 0 else 'top', fontsize=11, fontweight='bold')
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / "joint_improvement_comparison.png", dpi=300, bbox_inches='tight')
+    print(f"✓ Saved plot: {output_dir / 'joint_improvement_comparison.png'}")
+    plt.close()
+
 def convert_to_native(obj):
     """Convert numpy types to Python native types."""
     if isinstance(obj, dict):
@@ -506,19 +741,47 @@ def main():
     with open(week1_dir / "optimal_coefficients.json") as f:
         optimal_coefficients = json.load(f)
     
-    # Define concept pairs to test
+    # Define full list of concepts
+    all_concepts = [
+        "formal", "casual",
+        "positive", "negative",
+        "verbose", "concise",
+        "confident", "uncertain",
+        "technical", "simple"
+    ]
+
+    # Define oppositional pairs to exclude
+    opposite_pairs = {
+        ("formal", "casual"),
+        ("casual", "formal"),
+        ("verbose", "concise"),
+        ("concise", "verbose"),
+        ("positive", "negative"),
+        ("negative", "positive"),
+        ("confident", "uncertain"),
+        ("uncertain", "confident"),
+        ("technical", "simple"),
+        ("simple", "technical")
+    }
+
+    # If user manually specifies pairs, use those
     if args.concept_pairs:
         concept_pairs = [(pair[0], pair[1]) for pair in args.concept_pairs]
     else:
-        # Default pairs
-        concept_pairs = [
-            ("formal", "positive"),
-            ("technical", "confident"),
-            ("verbose", "uncertain")
-        ]
-    
-    print(f"\nModel: {args.model}")
-    print(f"Concept pairs: {concept_pairs}")
+        # Auto-generate all valid non-opposite pairs
+        concept_pairs = []
+        for i in range(len(all_concepts)):
+            for j in range(i + 1, len(all_concepts)):
+                a, b = all_concepts[i], all_concepts[j]
+
+                # Skip opposite pairs
+                if (a, b) in opposite_pairs or (b, a) in opposite_pairs:
+                    continue
+
+                concept_pairs.append((a, b))
+
+    print(f"\nRunning joint comparison for {len(concept_pairs)} concept pairs")
+    print(f"Model: {args.model}")
     print(f"Output: {output_dir}")
     
     # Load model
@@ -541,69 +804,93 @@ def main():
         n_gen = 2
         n_pairs = 50
     else:
-        n_prompts = 10
+        n_prompts = 7
         n_gen = 3
-        n_pairs = 100
+        n_pairs = 60
     
     # Run experiments
     all_results = []
+    successful_pairs = []
+    failed_pairs = []
     
-    for concept_a, concept_b in concept_pairs:
+    for idx, (concept_b, concept_a) in enumerate(concept_pairs, 1):
         print(f"\n{'='*60}")
-        print(f"TESTING: {concept_a.upper()} + {concept_b.upper()}")
+        print(f"TESTING {idx}/{len(concept_pairs)}: {concept_a.upper()} + {concept_b.upper()}")
         print(f"{'='*60}")
         
-        # Check if concepts exist in Week 1
-        if concept_a not in optimal_layers or concept_b not in optimal_layers:
-            print(f"⚠ Warning: Concepts not found in Week 1, skipping...")
+        try:
+            # Check if concepts exist in Week 1
+            if concept_a not in optimal_layers or concept_b not in optimal_layers:
+                print(f"⚠ Warning: Concepts not found in Week 1, skipping...")
+                failed_pairs.append((concept_a, concept_b, "Not in Week 1 results"))
+                continue
+            
+            # Use the same layer for both (or could use different layers)
+            layer = optimal_layers[concept_a]
+            print(f"Using layer: {layer}")
+            
+            # Load individual vectors from Week 1
+            print("\nLoading individual vectors from Week 1...")
+            steering_vectors_by_layer = load_cached_vectors(
+                week1_dir / "vectors",
+                [concept_a, concept_b],
+                [layer]
+            )
+            
+            vector_a = steering_vectors_by_layer[concept_a][layer]
+            vector_b = steering_vectors_by_layer[concept_b][layer]
+            
+            coefficient_a = optimal_coefficients.get(concept_a, cfg.model.default_coefficient)
+            coefficient_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
+            
+            print(f"✓ Loaded vectors for {concept_a} (coef={coefficient_a}) and {concept_b} (coef={coefficient_b})")
+            
+            # Extract joint vector
+            joint_vector = extract_joint_vector(
+                model, tokenizer,
+                concept_a, concept_b,
+                layer, n_pairs
+            )
+            
+            # Save joint vector
+            joint_vector_path = output_dir / "joint_vectors" / f"{concept_a}_{concept_b}_layer{layer}.pt"
+            torch.save(joint_vector, joint_vector_path)
+            print(f"✓ Saved joint vector to {joint_vector_path}")
+            
+            # Test joint vs composition
+            result = test_joint_vs_composition(
+                model, tokenizer,
+                concept_a, concept_b,
+                vector_a, vector_b, joint_vector,
+                layer, coefficient_a, coefficient_b,
+                test_prompts, n_prompts, n_gen
+            )
+            
+            all_results.append(result)
+            successful_pairs.append((concept_a, concept_b))
+            
+            # Save intermediate results after each successful test
+            if len(all_results) % 5 == 0:  # Save every 5 successful tests
+                print(f"\n💾 Saving intermediate results ({len(all_results)} completed)...")
+                save_intermediate_results(all_results, output_dir)
+            
+        except Exception as e:
+            print(f"\n❌ ERROR testing {concept_a} + {concept_b}: {e}")
+            import traceback
+            traceback.print_exc()
+            failed_pairs.append((concept_a, concept_b, str(e)))
             continue
-        
-        # Use the same layer for both (or could use different layers)
-        layer = optimal_layers[concept_a]
-        print(f"Using layer: {layer}")
-        
-        # Load individual vectors from Week 1
-        print("\nLoading individual vectors from Week 1...")
-        steering_vectors_by_layer = load_cached_vectors(
-            week1_dir / "vectors",
-            [concept_a, concept_b],
-            [layer]
-        )
-        
-        vector_a = steering_vectors_by_layer[concept_a][layer]
-        vector_b = steering_vectors_by_layer[concept_b][layer]
-        
-        coefficient_a = optimal_coefficients.get(concept_a, cfg.model.default_coefficient)
-        coefficient_b = optimal_coefficients.get(concept_b, cfg.model.default_coefficient)
-        
-        print(f"✓ Loaded vectors for {concept_a} (coef={coefficient_a}) and {concept_b} (coef={coefficient_b})")
-        
-        # Extract joint vector
-        joint_vector = extract_joint_vector(
-            model, tokenizer,
-            concept_a, concept_b,
-            layer, n_pairs
-        )
-        
-        # Save joint vector
-        joint_vector_path = output_dir / "joint_vectors" / f"{concept_a}_{concept_b}_layer{layer}.pt"
-        torch.save(joint_vector, joint_vector_path)
-        print(f"✓ Saved joint vector to {joint_vector_path}")
-        
-        # Test joint vs composition
-        result = test_joint_vs_composition(
-            model, tokenizer,
-            concept_a, concept_b,
-            vector_a, vector_b, joint_vector,
-            layer, coefficient_a, coefficient_b,
-            test_prompts, n_prompts, n_gen
-        )
-        
-        all_results.append(result)
     
-    # Save results
+    # Save final results
+    print(f"\n{'='*60}")
+    print("SAVING FINAL RESULTS")
+    print(f"{'='*60}")
+    
     output_data = {
         "experiment": "joint_vector_vs_composition",
+        "total_pairs_tested": len(concept_pairs),
+        "successful_pairs": len(successful_pairs),
+        "failed_pairs": len(failed_pairs),
         "concept_pairs": [(r.concept_a, r.concept_b) for r in all_results],
         "results": [
             {
@@ -632,6 +919,14 @@ def main():
                 "joint_vs_b_similarity": r.joint_vs_b_similarity
             }
             for r in all_results
+        ],
+        "failed_pairs_info": [
+            {
+                "concept_a": a,
+                "concept_b": b,
+                "reason": reason
+            }
+            for a, b, reason in failed_pairs
         ]
     }
     
@@ -646,24 +941,95 @@ def main():
         import traceback
         traceback.print_exc()
     
+    # Generate plots
+    # if all_results:
+    #     print("\n" + "="*60)
+    #     print("GENERATING PLOTS")
+    #     print("="*60)
+    #     try:
+    #         plot_joint_vector_results(all_results, output_dir)
+    #         print("✓ Finished generating plots.")
+    #     except Exception as e:
+    #         print(f"⚠ Failed to generate plots: {e}")
+    #         import traceback
+    #         traceback.print_exc()
+    # else:
+    #     print("\n⚠ No successful results to plot")
+    
     # Summary
     print(f"\n{'='*60}")
     print("EXPERIMENT COMPLETE")
     print(f"{'='*60}")
     
-    print("\nSummary:")
-    for result in all_results:
-        print(f"\n{result.concept_a} + {result.concept_b}:")
-        print(f"  Joint both present:       {result.joint_both_present_rate:.1%}")
-        print(f"  Composition both present: {result.composition_both_present_rate:.1%}")
-        print(f"  Vector similarity:        {result.joint_vs_composition_similarity:.3f}")
+    print(f"\nTotal pairs attempted: {len(concept_pairs)}")
+    print(f"Successful: {len(successful_pairs)}")
+    print(f"Failed: {len(failed_pairs)}")
+    
+    if failed_pairs:
+        print("\nFailed pairs:")
+        for a, b, reason in failed_pairs:
+            print(f"  - {a} + {b}: {reason}")
+    
+    if all_results:
+        print("\n" + "="*60)
+        print("RESULTS SUMMARY")
+        print("="*60)
         
-        if result.joint_both_present_rate > result.composition_both_present_rate + 0.05:
-            print(f"  → Joint extraction WINS")
-        elif result.composition_both_present_rate > result.joint_both_present_rate + 0.05:
-            print(f"  → Composition WINS")
-        else:
-            print(f"  → TIE (roughly equivalent)")
+        joint_wins = 0
+        composition_wins = 0
+        ties = 0
+        
+        for result in all_results:
+            if result.joint_both_present_rate > result.composition_both_present_rate + 0.05:
+                joint_wins += 1
+                winner = "Joint WINS"
+            elif result.composition_both_present_rate > result.joint_both_present_rate + 0.05:
+                composition_wins += 1
+                winner = "Composition WINS"
+            else:
+                ties += 1
+                winner = "TIE"
+            
+            print(f"\n{result.concept_a} + {result.concept_b}:")
+            print(f"  Joint both present:       {result.joint_both_present_rate:.1%}")
+            print(f"  Composition both present: {result.composition_both_present_rate:.1%}")
+            print(f"  Vector similarity:        {result.joint_vs_composition_similarity:.3f}")
+            print(f"  → {winner}")
+        
+        print(f"\n{'='*60}")
+        print("OVERALL STATISTICS")
+        print(f"{'='*60}")
+        print(f"Joint wins:        {joint_wins}/{len(all_results)} ({joint_wins/len(all_results)*100:.1f}%)")
+        print(f"Composition wins:  {composition_wins}/{len(all_results)} ({composition_wins/len(all_results)*100:.1f}%)")
+        print(f"Ties:              {ties}/{len(all_results)} ({ties/len(all_results)*100:.1f}%)")
+
+
+def save_intermediate_results(all_results, output_dir):
+    """Save intermediate results to avoid losing progress."""
+    output_data = {
+        "experiment": "joint_vector_vs_composition_INTERMEDIATE",
+        "num_results": len(all_results),
+        "concept_pairs": [(r.concept_a, r.concept_b) for r in all_results],
+        "results": [
+            {
+                "concept_a": r.concept_a,
+                "concept_b": r.concept_b,
+                "layer": r.layer,
+                "joint_both_present_rate": r.joint_both_present_rate,
+                "composition_both_present_rate": r.composition_both_present_rate,
+                "joint_vs_composition_similarity": r.joint_vs_composition_similarity,
+            }
+            for r in all_results
+        ]
+    }
+    
+    output_data = convert_to_native(output_data)
+    
+    try:
+        with open(output_dir / "joint_vs_composition_intermediate.json", "w") as f:
+            json.dump(output_data, f, indent=2)
+    except Exception as e:
+        print(f"⚠ Warning: Failed to save intermediate results: {e}")
 
 
 if __name__ == "__main__":
