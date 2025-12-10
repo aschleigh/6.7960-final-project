@@ -1,0 +1,272 @@
+[
+  {
+    "concept_a": "casual",
+    "concept_b": "formal",
+    "subspace_overlap": 2.510889768600464,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "positive",
+    "subspace_overlap": 0.5392504334449768,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "negative",
+    "subspace_overlap": 0.5651456117630005,
+    "joint_success_rate": 0.5
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.532233715057373,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "formal",
+    "subspace_overlap": 0.5326124429702759,
+    "joint_success_rate": 0.16666666666666666
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "formal",
+    "subspace_overlap": 0.5775120258331299,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.5586066842079163,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "technical",
+    "subspace_overlap": 0.5158355236053467,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "simple",
+    "subspace_overlap": 0.49563589692115784,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "positive",
+    "subspace_overlap": 0.5137984752655029,
+    "joint_success_rate": 0.5
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "negative",
+    "subspace_overlap": 0.5178934335708618,
+    "joint_success_rate": 0.5
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.5434526205062866,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "concise",
+    "subspace_overlap": 0.5382193326950073,
+    "joint_success_rate": 0.16666666666666666
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "confident",
+    "subspace_overlap": 0.5718991160392761,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.5459440350532532,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "technical",
+    "subspace_overlap": 0.5499204993247986,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "simple",
+    "subspace_overlap": 0.5278211832046509,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "positive",
+    "subspace_overlap": 2.0504207611083984,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.5741998553276062,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "positive",
+    "subspace_overlap": 0.5779262185096741,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "positive",
+    "subspace_overlap": 0.5557758212089539,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.5749675035476685,
+    "joint_success_rate": 0.5
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "technical",
+    "subspace_overlap": 0.4600551128387451,
+    "joint_success_rate": 0.3333333333333333
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "simple",
+    "subspace_overlap": 0.46467527747154236,
+    "joint_success_rate": 0.16666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.6721880435943604,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "negative",
+    "subspace_overlap": 0.6975374817848206,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "negative",
+    "subspace_overlap": 0.6441183090209961,
+    "joint_success_rate": 0.16666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.6081570386886597,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "technical",
+    "subspace_overlap": 0.4984543025493622,
+    "joint_success_rate": 0.3333333333333333
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "simple",
+    "subspace_overlap": 0.4962971806526184,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "verbose",
+    "subspace_overlap": 2.53818678855896,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.5831013917922974,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.6173338890075684,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "technical",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.98367840051651,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "simple",
+    "concept_b": "verbose",
+    "subspace_overlap": 0.916443407535553,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "confident",
+    "subspace_overlap": 0.6068499684333801,
+    "joint_success_rate": 0.3333333333333333
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.5931563377380371,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "technical",
+    "subspace_overlap": 0.9174791574478149,
+    "joint_success_rate": 0.16666666666666666
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "simple",
+    "subspace_overlap": 0.8954933881759644,
+    "joint_success_rate": 0.5
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "uncertain",
+    "subspace_overlap": 2.4480466842651367,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "technical",
+    "subspace_overlap": 0.5027557015419006,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "simple",
+    "subspace_overlap": 0.4866231381893158,
+    "joint_success_rate": 0.8333333333333334
+  },
+  {
+    "concept_a": "technical",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.5182373523712158,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "simple",
+    "concept_b": "uncertain",
+    "subspace_overlap": 0.530789852142334,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "simple",
+    "concept_b": "technical",
+    "subspace_overlap": 2.5887959003448486,
+    "joint_success_rate": 0.5
+  }
+]

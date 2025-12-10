@@ -1,0 +1,3206 @@
+{
+  "formal": {
+    "concept": "formal",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.8424477656682332,
+        "std_score": 0.14062319694045639,
+        "mean_perplexity": 20.238628682711894,
+        "quality_score": 0.6449701170544607
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.7796574890613556,
+        "std_score": 0.21649810315077686,
+        "mean_perplexity": 26.99039861722938,
+        "quality_score": 0.5447543485113007
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.8362340847651164,
+        "std_score": 0.23042134164239428,
+        "mean_perplexity": 23.068031033304745,
+        "quality_score": 0.6135199018673171
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.7650929272174836,
+        "std_score": 0.21519959917516102,
+        "mean_perplexity": 25.107907375538577,
+        "quality_score": 0.5465689230533988
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.8332743068536123,
+        "std_score": 0.18370004021788963,
+        "mean_perplexity": 23.55108400205521,
+        "quality_score": 0.607337963527761
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.8338916401068369,
+        "std_score": 0.1877909498934844,
+        "mean_perplexity": 23.881311152332465,
+        "quality_score": 0.6051207851758574
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.801485667626063,
+        "std_score": 0.1908134555427448,
+        "mean_perplexity": 27.17085757565492,
+        "quality_score": 0.5588758089659517
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.8954671720663706,
+        "std_score": 0.17823747363232212,
+        "mean_perplexity": 26.15739076323372,
+        "quality_score": 0.6316807961632426
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.857501361767451,
+        "std_score": 0.16751517958335074,
+        "mean_perplexity": 16.64513538543,
+        "quality_score": 0.7021290890113324
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.8070047676563263,
+        "std_score": 0.19517437188893752,
+        "mean_perplexity": 21.966760146616465,
+        "quality_score": 0.6014497034720311
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.847093955675761,
+        "std_score": 0.18578014522142078,
+        "mean_perplexity": 20.06599376814785,
+        "quality_score": 0.650379679951089
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.8870534976323445,
+        "std_score": 0.14111522871070759,
+        "mean_perplexity": 20.112871378777577,
+        "quality_score": 0.680530218247179
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.8208709299564362,
+        "std_score": 0.23298939887481884,
+        "mean_perplexity": 21.169677312839415,
+        "quality_score": 0.6191914564429448
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.8271264831225077,
+        "std_score": 0.16333468164486628,
+        "mean_perplexity": 21.796919998848402,
+        "quality_score": 0.617998724332506
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.8853596806526184,
+        "std_score": 0.13211038983501627,
+        "mean_perplexity": 22.453544990816013,
+        "quality_score": 0.6551983738494799
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.8470460593700408,
+        "std_score": 0.19427908176330136,
+        "mean_perplexity": 19.026180402493814,
+        "quality_score": 0.6620901185678628
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.8199502269426981,
+        "std_score": 0.16434406339220672,
+        "mean_perplexity": 21.950075367369774,
+        "quality_score": 0.611248108225569
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.880285523335139,
+        "std_score": 0.18850774235197806,
+        "mean_perplexity": 25.874950195398437,
+        "quality_score": 0.6230435853160727
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.8844057321548462,
+        "std_score": 0.1833949045092047,
+        "mean_perplexity": 20.482268207493163,
+        "quality_score": 0.674409437454088
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.8518507798512777,
+        "std_score": 0.15552730987644514,
+        "mean_perplexity": 23.452825032462027,
+        "quality_score": 0.6217003259875561
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.8340413093566894,
+        "std_score": 0.17901945712741205,
+        "mean_perplexity": 21.835073879216072,
+        "quality_score": 0.6228117862104284
+      }
+    ],
+    "optimal_coefficient": 0.0,
+    "optimal_score": 0.857501361767451
+  },
+  "slang": {
+    "concept": "slang",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.19050357912977536,
+        "std_score": 0.2631596159330185,
+        "mean_perplexity": 24.029859799101065,
+        "quality_score": 0.13797096394526528
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.13429772954744598,
+        "std_score": 0.18774442657614257,
+        "mean_perplexity": 24.453757146448606,
+        "quality_score": 0.09673220417534685
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.159919231167684,
+        "std_score": 0.1797872779382148,
+        "mean_perplexity": 23.99445042680638,
+        "quality_score": 0.11587419671713634
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.15157355192738275,
+        "std_score": 0.1988430831923518,
+        "mean_perplexity": 20.24808056629661,
+        "quality_score": 0.11602527905150942
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.13449324492054682,
+        "std_score": 0.14917132111962106,
+        "mean_perplexity": 19.412747786498464,
+        "quality_score": 0.10441316747342068
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.16295206137001514,
+        "std_score": 0.16898431031584918,
+        "mean_perplexity": 22.192418407383986,
+        "quality_score": 0.1210455361074287
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.19444912939021985,
+        "std_score": 0.22420085928812278,
+        "mean_perplexity": 27.3814969345175,
+        "quality_score": 0.13527298839242025
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.2119900222402066,
+        "std_score": 0.20558544402524953,
+        "mean_perplexity": 20.817658575233825,
+        "quality_score": 0.16078951458377785
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.10931404583776991,
+        "std_score": 0.11501345365866086,
+        "mean_perplexity": 14.389233911165455,
+        "quality_score": 0.09439593238684986
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.14507894379397232,
+        "std_score": 0.18016505813389752,
+        "mean_perplexity": 19.166518946590184,
+        "quality_score": 0.11311816939462113
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.1423094094110032,
+        "std_score": 0.17114307417558505,
+        "mean_perplexity": 20.60460398047864,
+        "quality_score": 0.10830538734036538
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.17191799194552004,
+        "std_score": 0.20008553247845928,
+        "mean_perplexity": 26.017838192445044,
+        "quality_score": 0.1214735316596997
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.15149032090169687,
+        "std_score": 0.1881939622746622,
+        "mean_perplexity": 25.63040848075975,
+        "quality_score": 0.1075348546418884
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.13250271974441905,
+        "std_score": 0.15541172874563774,
+        "mean_perplexity": 18.57779826429834,
+        "quality_score": 0.10441554051116671
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.2228803110929827,
+        "std_score": 0.19470682221642208,
+        "mean_perplexity": 22.550453883116962,
+        "quality_score": 0.1647115546493008
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.10892594068621596,
+        "std_score": 0.12226577720399606,
+        "mean_perplexity": 20.267552606106126,
+        "quality_score": 0.0833531003842812
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.20554621593716244,
+        "std_score": 0.20672467854945464,
+        "mean_perplexity": 24.631412582283573,
+        "quality_score": 0.14771670407826634
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.17227385651009777,
+        "std_score": 0.1814534035658269,
+        "mean_perplexity": 23.422254273146205,
+        "quality_score": 0.12578143083104407
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.2138983707719793,
+        "std_score": 0.19932233460868992,
+        "mean_perplexity": 23.287014319785317,
+        "quality_score": 0.15645981276055027
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.17228086193402609,
+        "std_score": 0.14917031060243613,
+        "mean_perplexity": 26.299794191722487,
+        "quality_score": 0.12132862200678772
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.14888448338024318,
+        "std_score": 0.19099557834150863,
+        "mean_perplexity": 23.79675267522798,
+        "quality_score": 0.10816023921398953
+      }
+    ],
+    "optimal_coefficient": 1.5,
+    "optimal_score": 0.2228803110929827
+  },
+  "fantasy": {
+    "concept": "fantasy",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.250603790084521,
+        "std_score": 0.09408104775368281,
+        "mean_perplexity": 21.662499197279082,
+        "quality_score": 0.18761861506237223
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.22555514574050903,
+        "std_score": 0.09441301173532245,
+        "mean_perplexity": 27.550998716153277,
+        "quality_score": 0.15662057947745237
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.20243495802084605,
+        "std_score": 0.07175307841264002,
+        "mean_perplexity": 19.330079481297606,
+        "quality_score": 0.15738583703842599
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.24301651666561763,
+        "std_score": 0.10269116881429884,
+        "mean_perplexity": 22.107782615390402,
+        "quality_score": 0.18074254348585506
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.23465723792711893,
+        "std_score": 0.06652140847319249,
+        "mean_perplexity": 17.363233669030077,
+        "quality_score": 0.18929609841486397
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.23494864702224733,
+        "std_score": 0.11689576384916478,
+        "mean_perplexity": 22.61634444385142,
+        "quality_score": 0.1734677788303873
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.2537628958622615,
+        "std_score": 0.09160252497318276,
+        "mean_perplexity": 26.37300249038746,
+        "quality_score": 0.1785604517509749
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.2507729887962341,
+        "std_score": 0.08582382821210613,
+        "mean_perplexity": 25.943795564583827,
+        "quality_score": 0.17734585949205278
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.1970544492204984,
+        "std_score": 0.07746911029117395,
+        "mean_perplexity": 16.577076808142923,
+        "quality_score": 0.16158521087399377
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.225120384991169,
+        "std_score": 0.09318844408296936,
+        "mean_perplexity": 27.063595818833615,
+        "quality_score": 0.15716466354237532
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.23765464921792348,
+        "std_score": 0.10931040647658702,
+        "mean_perplexity": 22.6396569302979,
+        "quality_score": 0.175407734337315
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.23345638910929362,
+        "std_score": 0.08421157781699,
+        "mean_perplexity": 23.122239187899762,
+        "quality_score": 0.17115196002536098
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.21537958333889642,
+        "std_score": 0.09946593071117603,
+        "mean_perplexity": 22.586074110085022,
+        "quality_score": 0.15908782737228894
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.23290966600179672,
+        "std_score": 0.09122637169225058,
+        "mean_perplexity": 24.341585854711134,
+        "quality_score": 0.1680022043452947
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.24104232490062713,
+        "std_score": 0.09244585799231769,
+        "mean_perplexity": 25.122274329975617,
+        "quality_score": 0.1721658393474455
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.23603217601776122,
+        "std_score": 0.0782247907199661,
+        "mean_perplexity": 25.31140040568,
+        "quality_score": 0.16819600627420558
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.23077610383431116,
+        "std_score": 0.0908399453986124,
+        "mean_perplexity": 25.796932297138472,
+        "quality_score": 0.16348917897680298
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.25843814263741177,
+        "std_score": 0.11630657296254471,
+        "mean_perplexity": 22.827125291668658,
+        "quality_score": 0.19024469804139266
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.2192094604174296,
+        "std_score": 0.10171949474707319,
+        "mean_perplexity": 22.57565097548457,
+        "quality_score": 0.1619407041177385
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.24608304848273596,
+        "std_score": 0.11303334954876453,
+        "mean_perplexity": 27.146248856862293,
+        "quality_score": 0.17164076301105363
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.20910531381766,
+        "std_score": 0.08535078278607242,
+        "mean_perplexity": 21.187804298277502,
+        "quality_score": 0.15768609369466496
+      }
+    ],
+    "optimal_coefficient": 2.25,
+    "optimal_score": 0.25843814263741177
+  },
+  "science": {
+    "concept": "science",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.21436114112536112,
+        "std_score": 0.08519728278625877,
+        "mean_perplexity": 24.248114038377427,
+        "quality_score": 0.1548093826964045
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.23679651965697607,
+        "std_score": 0.09554243580327355,
+        "mean_perplexity": 22.92437777335207,
+        "quality_score": 0.17407700139032312
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.20406883507966994,
+        "std_score": 0.0721534154886604,
+        "mean_perplexity": 23.41508105507548,
+        "quality_score": 0.1490102088092502
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.24971017042795818,
+        "std_score": 0.07588992921119896,
+        "mean_perplexity": 25.02168043804896,
+        "quality_score": 0.17857915229237153
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.20263948192199072,
+        "std_score": 0.05610203772135416,
+        "mean_perplexity": 24.30763523742216,
+        "quality_score": 0.146231678047372
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.21398856490850449,
+        "std_score": 0.06724524588946403,
+        "mean_perplexity": 23.57354019248201,
+        "quality_score": 0.155920064706272
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.21111046224832536,
+        "std_score": 0.06291611013890071,
+        "mean_perplexity": 22.81773296070963,
+        "quality_score": 0.15542570677331075
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.21938016911347707,
+        "std_score": 0.07425868262995482,
+        "mean_perplexity": 24.81180726271985,
+        "quality_score": 0.15730028893324446
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.2129819581906001,
+        "std_score": 0.11812140692568862,
+        "mean_perplexity": 16.689257321064243,
+        "quality_score": 0.17422734775283386
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.20720002452532452,
+        "std_score": 0.05012731351622187,
+        "mean_perplexity": 19.60195720447973,
+        "quality_score": 0.16033437657061414
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.21626511961221695,
+        "std_score": 0.07658639058332327,
+        "mean_perplexity": 21.586228528107107,
+        "quality_score": 0.1620963011732199
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.22224127153555553,
+        "std_score": 0.07714992012240805,
+        "mean_perplexity": 23.656566973963677,
+        "quality_score": 0.16175333401318426
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.24010237753391267,
+        "std_score": 0.06577789238521663,
+        "mean_perplexity": 25.081704610408654,
+        "quality_score": 0.171580496726877
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.22710929165283839,
+        "std_score": 0.06627656280037722,
+        "mean_perplexity": 19.832477560122012,
+        "quality_score": 0.17505266135452513
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.20270781616369885,
+        "std_score": 0.05427548542383459,
+        "mean_perplexity": 27.371198683160284,
+        "quality_score": 0.141034361760955
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.22888461947441102,
+        "std_score": 0.06321341689415534,
+        "mean_perplexity": 23.44609029909628,
+        "quality_score": 0.1670604765388439
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.23563236594200135,
+        "std_score": 0.0667738590065886,
+        "mean_perplexity": 17.975187982019285,
+        "quality_score": 0.18780374101057284
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.23919682254393895,
+        "std_score": 0.07371326573298798,
+        "mean_perplexity": 19.31530840001482,
+        "quality_score": 0.1860148660272751
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.19828160653511684,
+        "std_score": 0.07766049029894999,
+        "mean_perplexity": 26.447978334340043,
+        "quality_score": 0.13940006661923768
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.20972263912359873,
+        "std_score": 0.03942649588447974,
+        "mean_perplexity": 18.919836327017492,
+        "quality_score": 0.16424135438991613
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.2280197208126386,
+        "std_score": 0.09532746193786737,
+        "mean_perplexity": 19.476572920730735,
+        "quality_score": 0.1768262917371957
+      }
+    ],
+    "optimal_coefficient": 2.0,
+    "optimal_score": 0.23563236594200135
+  },
+  "positive": {
+    "concept": "positive",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.6058131733637614,
+        "std_score": 0.44563778357751627,
+        "mean_perplexity": 24.30822004535614,
+        "quality_score": 0.4371725003142508
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.5069872783729806,
+        "std_score": 0.4516192092677556,
+        "mean_perplexity": 24.049928693958403,
+        "quality_score": 0.3670858121313663
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.5357688368686164,
+        "std_score": 0.43290862063485375,
+        "mean_perplexity": 24.318035921480046,
+        "quality_score": 0.3865775460652848
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.4390476606863861,
+        "std_score": 0.4465522298548004,
+        "mean_perplexity": 20.404458078296653,
+        "quality_score": 0.33522124029859734
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.6268648769551267,
+        "std_score": 0.43494243172068425,
+        "mean_perplexity": 21.175363820914335,
+        "quality_score": 0.47280907845930364
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.47702620409157437,
+        "std_score": 0.41907723197810337,
+        "mean_perplexity": 25.51938163858429,
+        "quality_score": 0.3390691068314836
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.5766057999319553,
+        "std_score": 0.42851228108926853,
+        "mean_perplexity": 23.10130877265867,
+        "quality_score": 0.42284418465983364
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.5233350023472061,
+        "std_score": 0.42383066280645393,
+        "mean_perplexity": 19.867807944255226,
+        "quality_score": 0.40313909889550364
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.5204406814960142,
+        "std_score": 0.44194892583812906,
+        "mean_perplexity": 14.419950547468595,
+        "quality_score": 0.4490569028311784
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.5287378899481457,
+        "std_score": 0.47245131810298413,
+        "mean_perplexity": 21.40971422575372,
+        "quality_score": 0.3973647756085571
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.5931666168151424,
+        "std_score": 0.3873101555091179,
+        "mean_perplexity": 21.12340493819768,
+        "quality_score": 0.44775269450105915
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.4335856548937348,
+        "std_score": 0.42126505628799393,
+        "mean_perplexity": 21.32448974800657,
+        "quality_score": 0.3262793449873297
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.4615556593053043,
+        "std_score": 0.4584891951040014,
+        "mean_perplexity": 25.07941266932041,
+        "quality_score": 0.32984344507493246
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.39383075570610043,
+        "std_score": 0.4159352239754124,
+        "mean_perplexity": 22.258262594456077,
+        "quality_score": 0.29226961753769154
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.5269471986529728,
+        "std_score": 0.46507456720210977,
+        "mean_perplexity": 27.054797546679705,
+        "quality_score": 0.3679171234362239
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.6325639193450722,
+        "std_score": 0.41980280272137904,
+        "mean_perplexity": 19.70178213755612,
+        "quality_score": 0.4886529360596822
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.5953270230907947,
+        "std_score": 0.40716310776886433,
+        "mean_perplexity": 19.522067060493637,
+        "quality_score": 0.4613057894365264
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.6608229153750774,
+        "std_score": 0.4086929594513517,
+        "mean_perplexity": 23.088163630681585,
+        "quality_score": 0.4846912550438945
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.5892204936981822,
+        "std_score": 0.42507712042992024,
+        "mean_perplexity": 19.069359822744897,
+        "quality_score": 0.4602076653476431
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.6784377745275075,
+        "std_score": 0.404523102051835,
+        "mean_perplexity": 20.780895074066404,
+        "quality_score": 0.5148790936409603
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.4611333522324761,
+        "std_score": 0.4484312709492135,
+        "mean_perplexity": 20.91866022429135,
+        "quality_score": 0.349202215977329
+      }
+    ],
+    "optimal_coefficient": 2.75,
+    "optimal_score": 0.6784377745275075
+  },
+  "negative": {
+    "concept": "negative",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.3889372117254728,
+        "std_score": 0.46052863675143146,
+        "mean_perplexity": 21.939266793168645,
+        "quality_score": 0.2899871758684936
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.500218753136384,
+        "std_score": 0.46526331431032597,
+        "mean_perplexity": 21.45530349363469,
+        "quality_score": 0.37567084608865453
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.6504703743024342,
+        "std_score": 0.428226699920713,
+        "mean_perplexity": 23.65967410816902,
+        "quality_score": 0.47341064631104174
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.4912523013350437,
+        "std_score": 0.46503352513860396,
+        "mean_perplexity": 24.495090157020503,
+        "quality_score": 0.3536532381436601
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.5129179317557525,
+        "std_score": 0.43739574932127034,
+        "mean_perplexity": 19.316221239074007,
+        "quality_score": 0.3988716761690037
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.4506172168854391,
+        "std_score": 0.45203510168551597,
+        "mean_perplexity": 22.970442490911456,
+        "quality_score": 0.3310515426632396
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.5778487585562592,
+        "std_score": 0.4279732751963945,
+        "mean_perplexity": 23.901546857144318,
+        "quality_score": 0.41920912330830334
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.5685264966945397,
+        "std_score": 0.46133584673785927,
+        "mean_perplexity": 23.302057202073385,
+        "quality_score": 0.4157736445504763
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.4222699372990367,
+        "std_score": 0.4514360878764106,
+        "mean_perplexity": 13.487911218260216,
+        "quality_score": 0.37370849902022335
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.4143485412603089,
+        "std_score": 0.43688664510398095,
+        "mean_perplexity": 20.839070248635625,
+        "quality_score": 0.31416737170560793
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.485678610856606,
+        "std_score": 0.41000263349938987,
+        "mean_perplexity": 23.25851091491091,
+        "quality_score": 0.355396634919244
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.4304288362211082,
+        "std_score": 0.42951593193803345,
+        "mean_perplexity": 22.87359759960318,
+        "quality_score": 0.3166467441513853
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.3316464645283607,
+        "std_score": 0.41863649755527,
+        "mean_perplexity": 22.380290175172718,
+        "quality_score": 0.24568848686166314
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.6409551472907575,
+        "std_score": 0.4281906376348559,
+        "mean_perplexity": 28.17333091525406,
+        "quality_score": 0.4420873645684004
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.47189852843196906,
+        "std_score": 0.4524799462937984,
+        "mean_perplexity": 20.291524225846032,
+        "quality_score": 0.3609678212449204
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.5701842032353549,
+        "std_score": 0.45635073151519007,
+        "mean_perplexity": 22.74320761434983,
+        "quality_score": 0.42022587771189507
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.34504101153773564,
+        "std_score": 0.43586365549977224,
+        "mean_perplexity": 21.91439729929947,
+        "quality_score": 0.25735318240360217
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.5566632326391603,
+        "std_score": 0.40352491375776905,
+        "mean_perplexity": 24.837974863914667,
+        "quality_score": 0.39900851221308603
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.5816499620695443,
+        "std_score": 0.44313809419601385,
+        "mean_perplexity": 25.46833464744502,
+        "quality_score": 0.41369113475880404
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.4872081376777108,
+        "std_score": 0.42124651998389706,
+        "mean_perplexity": 24.98090699340342,
+        "quality_score": 0.34860137256030493
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.5626461139880121,
+        "std_score": 0.4583334442201317,
+        "mean_perplexity": 19.534370276889618,
+        "quality_score": 0.4358896565942622
+      }
+    ],
+    "optimal_coefficient": -1.5,
+    "optimal_score": 0.6504703743024342
+  },
+  "confident": {
+    "concept": "confident",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.5502413133780162,
+        "std_score": 0.2797022013849373,
+        "mean_perplexity": 17.885374759448265,
+        "quality_score": 0.43931510774191807
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.594955638051033,
+        "std_score": 0.3199249793185482,
+        "mean_perplexity": 22.268588116306073,
+        "quality_score": 0.44146239402358334
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.4777627378702164,
+        "std_score": 0.24468905219446055,
+        "mean_perplexity": 22.97739172379518,
+        "quality_score": 0.3509604659373798
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.5815168748299281,
+        "std_score": 0.32083205556528693,
+        "mean_perplexity": 22.301753465334148,
+        "quality_score": 0.4312838761311539
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.5651908834775289,
+        "std_score": 0.32261980163091625,
+        "mean_perplexity": 24.145465164205984,
+        "quality_score": 0.40871878990458543
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.533377421895663,
+        "std_score": 0.27438940741864815,
+        "mean_perplexity": 24.032988828979892,
+        "quality_score": 0.3862792691707382
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.5008374671141307,
+        "std_score": 0.2846653708735365,
+        "mean_perplexity": 19.848769945614055,
+        "quality_score": 0.3859324192845128
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.563198126355807,
+        "std_score": 0.3229488894536198,
+        "mean_perplexity": 22.50772862466389,
+        "quality_score": 0.41646449517767054
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.3742511451244354,
+        "std_score": 0.18671768944347147,
+        "mean_perplexity": 15.641761005797173,
+        "quality_score": 0.3133682016567842
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.5225498119990031,
+        "std_score": 0.3342929621174626,
+        "mean_perplexity": 19.977717838905146,
+        "quality_score": 0.40179267956869447
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.5814190357923508,
+        "std_score": 0.2862791484914811,
+        "mean_perplexity": 25.167437972722155,
+        "quality_score": 0.4150505753454501
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.537885157763958,
+        "std_score": 0.3161248270381854,
+        "mean_perplexity": 22.442604087838856,
+        "quality_score": 0.39811694778252565
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.5314274479945501,
+        "std_score": 0.2690562014671166,
+        "mean_perplexity": 27.994708401703015,
+        "quality_score": 0.3672422644233381
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.508203661441803,
+        "std_score": 0.27037272356235065,
+        "mean_perplexity": 23.332958951533282,
+        "quality_score": 0.37150210123184724
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.5243460198243459,
+        "std_score": 0.2764262847540851,
+        "mean_perplexity": 24.562495805989006,
+        "quality_score": 0.37715341578832523
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.5677497163414955,
+        "std_score": 0.2959261885450144,
+        "mean_perplexity": 26.53483843540247,
+        "quality_score": 0.3987520422855935
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.49808470805486044,
+        "std_score": 0.26845201382054196,
+        "mean_perplexity": 27.54693250248169,
+        "quality_score": 0.3458745656349039
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.5614525884389877,
+        "std_score": 0.31951321551448747,
+        "mean_perplexity": 23.881733562322314,
+        "quality_score": 0.4074207258855851
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.5363156656424205,
+        "std_score": 0.3187474488583029,
+        "mean_perplexity": 21.143511900308248,
+        "quality_score": 0.4047124386019911
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.5032649377981822,
+        "std_score": 0.30304075082462545,
+        "mean_perplexity": 24.002645048891704,
+        "quality_score": 0.36461627875977376
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.457393483320872,
+        "std_score": 0.2605626312496408,
+        "mean_perplexity": 24.923037558516167,
+        "quality_score": 0.3275047723045861
+      }
+    ],
+    "optimal_coefficient": -1.75,
+    "optimal_score": 0.594955638051033
+  },
+  "uncertain": {
+    "concept": "uncertain",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.8303610523541768,
+        "std_score": 0.1315241158501769,
+        "mean_perplexity": 20.13864975373108,
+        "quality_score": 0.6367651282797371
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.8030652066071828,
+        "std_score": 0.14317748774514227,
+        "mean_perplexity": 25.44116254501058,
+        "quality_score": 0.5713583019367847
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.7890839755535126,
+        "std_score": 0.1271786580988845,
+        "mean_perplexity": 23.497975620710196,
+        "quality_score": 0.5755408103416924
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.8087085247039795,
+        "std_score": 0.09185682401997122,
+        "mean_perplexity": 19.675284304552704,
+        "quality_score": 0.6250060972460173
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.8031994481881459,
+        "std_score": 0.16750668102833244,
+        "mean_perplexity": 23.58308191897636,
+        "quality_score": 0.5851661960820157
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.8493158419926962,
+        "std_score": 0.09600181404999932,
+        "mean_perplexity": 22.838263211052034,
+        "quality_score": 0.6251114483878351
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.8190650145212809,
+        "std_score": 0.10659920230678101,
+        "mean_perplexity": 20.162926532032312,
+        "quality_score": 0.627850810280853
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.8504561066627503,
+        "std_score": 0.09202987777763239,
+        "mean_perplexity": 24.128699871158364,
+        "quality_score": 0.6151430308446441
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.7961665034294129,
+        "std_score": 0.0841753867520836,
+        "mean_perplexity": 15.234281139467384,
+        "quality_score": 0.6731076411603736
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.8252156972885132,
+        "std_score": 0.08903281241213301,
+        "mean_perplexity": 21.161813419999707,
+        "quality_score": 0.6225445315201956
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.795842969417572,
+        "std_score": 0.1331752880969232,
+        "mean_perplexity": 22.907702711363793,
+        "quality_score": 0.5851865977423393
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.8402837912241617,
+        "std_score": 0.08023414245529119,
+        "mean_perplexity": 24.441202761669572,
+        "quality_score": 0.6053383231562274
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.8343790332476299,
+        "std_score": 0.09465614304190512,
+        "mean_perplexity": 28.66448169068114,
+        "quality_score": 0.5725339932315767
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.8222801804542541,
+        "std_score": 0.09676647590896668,
+        "mean_perplexity": 23.140909242231892,
+        "quality_score": 0.6026766208091315
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.8295990546544393,
+        "std_score": 0.10662853448772214,
+        "mean_perplexity": 15.99198576122273,
+        "quality_score": 0.6890916227879442
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.8542356967926026,
+        "std_score": 0.07013781563610147,
+        "mean_perplexity": 24.38193562732094,
+        "quality_score": 0.615857034941561
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.8206175327301025,
+        "std_score": 0.08097926570614657,
+        "mean_perplexity": 19.968065824277478,
+        "quality_score": 0.6310811459139086
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.7925449689229329,
+        "std_score": 0.11445065414373394,
+        "mean_perplexity": 22.581972906038462,
+        "quality_score": 0.5854389752448321
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.8294042070706685,
+        "std_score": 0.10823936788105135,
+        "mean_perplexity": 22.443183087008897,
+        "quality_score": 0.6138803578256926
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.8260226647059122,
+        "std_score": 0.09215237398980625,
+        "mean_perplexity": 21.76623955140907,
+        "quality_score": 0.6174562054631477
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.8079470753669739,
+        "std_score": 0.14010758528865724,
+        "mean_perplexity": 25.27146663226444,
+        "quality_score": 0.5760227700088419
+      }
+    ],
+    "optimal_coefficient": 1.5,
+    "optimal_score": 0.8295990546544393
+  },
+  "technical": {
+    "concept": "technical",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.5512129200001558,
+        "std_score": 0.3080759933294696,
+        "mean_perplexity": 18.59514903340165,
+        "quality_score": 0.4342311849320015
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.6135738511880239,
+        "std_score": 0.2702367651700366,
+        "mean_perplexity": 28.223727998114022,
+        "quality_score": 0.4229751617541884
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.5819102391600609,
+        "std_score": 0.2787510512357536,
+        "mean_perplexity": 23.038324525591865,
+        "quality_score": 0.427105477890425
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.5733153447508812,
+        "std_score": 0.28690452683844386,
+        "mean_perplexity": 23.401100408644258,
+        "quality_score": 0.41871176881386485
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.5605929260452588,
+        "std_score": 0.2853889777115777,
+        "mean_perplexity": 25.965904587526033,
+        "quality_score": 0.39634583986412686
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.5889143963654836,
+        "std_score": 0.2613087653043461,
+        "mean_perplexity": 24.087057837739767,
+        "quality_score": 0.4261986682339988
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.5428376644849777,
+        "std_score": 0.28173509450926343,
+        "mean_perplexity": 20.998419624621153,
+        "quality_score": 0.41056055194945273
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.5794498344262441,
+        "std_score": 0.2553397199092778,
+        "mean_perplexity": 26.382396605248495,
+        "quality_score": 0.40768594035732
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.4715452894568443,
+        "std_score": 0.29462437126003654,
+        "mean_perplexity": 16.421248112875336,
+        "quality_score": 0.3879734230479051
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.5266170983513196,
+        "std_score": 0.2944333841805545,
+        "mean_perplexity": 22.787330463442757,
+        "quality_score": 0.387876289849743
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.5647591064373653,
+        "std_score": 0.27355835036802134,
+        "mean_perplexity": 20.7970476391664,
+        "quality_score": 0.42849649750850294
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.6413485224048296,
+        "std_score": 0.2186407749328831,
+        "mean_perplexity": 23.06762620761119,
+        "quality_score": 0.47054083293804916
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.5681467200318973,
+        "std_score": 0.28501183229799754,
+        "mean_perplexity": 22.032540492078546,
+        "quality_score": 0.42302263776487015
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.5295107116301855,
+        "std_score": 0.28488659828788027,
+        "mean_perplexity": 25.534102772498485,
+        "quality_score": 0.3763079801830735
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.5916105955839157,
+        "std_score": 0.2527161586581365,
+        "mean_perplexity": 21.538238761780516,
+        "quality_score": 0.4437489312229148
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.602995416522026,
+        "std_score": 0.24949380640154506,
+        "mean_perplexity": 23.34153532877201,
+        "quality_score": 0.4407444267362965
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.5942312330007553,
+        "std_score": 0.2744096506411006,
+        "mean_perplexity": 22.039576417864602,
+        "quality_score": 0.442398598933537
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.5848751559853553,
+        "std_score": 0.25518233952481845,
+        "mean_perplexity": 22.846007116394848,
+        "quality_score": 0.43043179217464206
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.5993079816301664,
+        "std_score": 0.2896380771986134,
+        "mean_perplexity": 24.66172320603163,
+        "quality_score": 0.43053009986274715
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.5818147073189418,
+        "std_score": 0.22465952054221844,
+        "mean_perplexity": 21.120887412399156,
+        "quality_score": 0.43920084998557096
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.5784366711974144,
+        "std_score": 0.2711312144517157,
+        "mean_perplexity": 20.528897657484077,
+        "quality_score": 0.44075877799183993
+      }
+    ],
+    "optimal_coefficient": 0.75,
+    "optimal_score": 0.6413485224048296
+  },
+  "simple": {
+    "concept": "simple",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.32863189876079557,
+        "std_score": 0.13132758712703446,
+        "mean_perplexity": 23.97025841468467,
+        "quality_score": 0.2381955480762789
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.37275333106517794,
+        "std_score": 0.12260821764365228,
+        "mean_perplexity": 25.96723910276697,
+        "quality_score": 0.2635368622071756
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.35074779291947683,
+        "std_score": 0.1258007593091801,
+        "mean_perplexity": 23.30376501788437,
+        "quality_score": 0.25650219405178065
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.37346609234809874,
+        "std_score": 0.13732099017597021,
+        "mean_perplexity": 22.054637772264332,
+        "quality_score": 0.2779799866085223
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.3361945629119873,
+        "std_score": 0.08833678481568777,
+        "mean_perplexity": 26.999385830107258,
+        "quality_score": 0.23487871616048123
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.3949157913525899,
+        "std_score": 0.13815976011400485,
+        "mean_perplexity": 24.331764980773993,
+        "quality_score": 0.2848963417378255
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.3313615173101425,
+        "std_score": 0.10908680478830622,
+        "mean_perplexity": 22.878446762119655,
+        "quality_score": 0.24375095558040374
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.3296748121579488,
+        "std_score": 0.10567288035358957,
+        "mean_perplexity": 21.091070581121375,
+        "quality_score": 0.24898055622150067
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.36543145080407463,
+        "std_score": 0.1600926034101907,
+        "mean_perplexity": 14.65104443409963,
+        "quality_score": 0.3134413735393487
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.3483633756637573,
+        "std_score": 0.08850843891633806,
+        "mean_perplexity": 23.531655494315867,
+        "quality_score": 0.2539734957100001
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.3220663477977117,
+        "std_score": 0.07222068615976104,
+        "mean_perplexity": 22.14901444264852,
+        "quality_score": 0.23939145423838837
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.3747814546028773,
+        "std_score": 0.12872280007263648,
+        "mean_perplexity": 25.741654378182954,
+        "quality_score": 0.26568252457439423
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.33247526586055753,
+        "std_score": 0.08332318935367716,
+        "mean_perplexity": 21.381387470712063,
+        "quality_score": 0.24997465850823353
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.40217424035072324,
+        "std_score": 0.17113946842260344,
+        "mean_perplexity": 24.1440414807,
+        "quality_score": 0.29083840114773474
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.3324780285358429,
+        "std_score": 0.1186398273381586,
+        "mean_perplexity": 20.42992024972874,
+        "quality_score": 0.2537483672694758
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.35036963323752085,
+        "std_score": 0.07683160269787365,
+        "mean_perplexity": 19.655300648220084,
+        "quality_score": 0.2708737026359674
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.35783807635307313,
+        "std_score": 0.12173618427441621,
+        "mean_perplexity": 22.661062225274023,
+        "quality_score": 0.26403252968088237
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.31892048517862953,
+        "std_score": 0.08546513435501514,
+        "mean_perplexity": 17.13391145795652,
+        "quality_score": 0.25847453123711067
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.39296883443991343,
+        "std_score": 0.14337198463152068,
+        "mean_perplexity": 25.355793979743062,
+        "quality_score": 0.27987694010762676
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.33756940364837645,
+        "std_score": 0.07850554106858691,
+        "mean_perplexity": 22.860582049143353,
+        "quality_score": 0.24837948798332285
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.32557857036590576,
+        "std_score": 0.14030281432617436,
+        "mean_perplexity": 20.27118097643552,
+        "quality_score": 0.2491267804246787
+      }
+    ],
+    "optimal_coefficient": 0.0,
+    "optimal_score": 0.36543145080407463
+  },
+  "smart": {
+    "concept": "smart",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.20914727946122488,
+        "std_score": 0.11183980070115,
+        "mean_perplexity": 26.586496894027142,
+        "quality_score": 0.14680493270783737
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.18441275556882222,
+        "std_score": 0.12475210118472903,
+        "mean_perplexity": 19.326971766470113,
+        "quality_score": 0.14338201231953107
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.2070324609676997,
+        "std_score": 0.10499799370250822,
+        "mean_perplexity": 20.038154694994596,
+        "quality_score": 0.15902848443785841
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.23600700745979944,
+        "std_score": 0.20538124931588525,
+        "mean_perplexity": 27.625292891957805,
+        "quality_score": 0.16374514608493845
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.2052522376179695,
+        "std_score": 0.12502063088743923,
+        "mean_perplexity": 24.863545444751573,
+        "quality_score": 0.14707485736756756
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.20273081064224244,
+        "std_score": 0.13008261850544317,
+        "mean_perplexity": 23.822944019207906,
+        "quality_score": 0.1472269306019345
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.18137357781330746,
+        "std_score": 0.09564000173014534,
+        "mean_perplexity": 22.56351878949159,
+        "quality_score": 0.13401260724334488
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.19891686886548995,
+        "std_score": 0.13748742280638743,
+        "mean_perplexity": 25.225468478478373,
+        "quality_score": 0.14189706145465167
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.17258042916655542,
+        "std_score": 0.12237293457839986,
+        "mean_perplexity": 15.109746589086631,
+        "quality_score": 0.1463467274077289
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.21864958877364796,
+        "std_score": 0.14684012507374083,
+        "mean_perplexity": 19.056652565430202,
+        "quality_score": 0.17081377038773615
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.2034192904829979,
+        "std_score": 0.1351617658178794,
+        "mean_perplexity": 21.158494550927774,
+        "quality_score": 0.15346784513470127
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.19625060111284257,
+        "std_score": 0.14593213058966645,
+        "mean_perplexity": 24.38596180196701,
+        "quality_score": 0.1414785939344042
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.22546231398979824,
+        "std_score": 0.15314818933270133,
+        "mean_perplexity": 23.208561294756105,
+        "quality_score": 0.16509545489913044
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.21205749611059824,
+        "std_score": 0.11794826555583876,
+        "mean_perplexity": 16.882219036992662,
+        "quality_score": 0.17276551590832037
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.21715394767622154,
+        "std_score": 0.1514693061695898,
+        "mean_perplexity": 26.111749106042506,
+        "quality_score": 0.15326682351730458
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.22068392137686413,
+        "std_score": 0.17761786079674136,
+        "mean_perplexity": 25.214819138651627,
+        "quality_score": 0.1574451533258235
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.20878939802447954,
+        "std_score": 0.1286576042566675,
+        "mean_perplexity": 25.277335431802417,
+        "quality_score": 0.14884489942990617
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.23515038192272186,
+        "std_score": 0.13968582293435747,
+        "mean_perplexity": 25.760817930761313,
+        "quality_score": 0.16665989153337407
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.2078983838359515,
+        "std_score": 0.14057402188406856,
+        "mean_perplexity": 19.747504697302656,
+        "quality_score": 0.16047581774626007
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.21527937948703765,
+        "std_score": 0.15692193575474556,
+        "mean_perplexity": 21.284951024690518,
+        "quality_score": 0.16209909799676764
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.2150810420513153,
+        "std_score": 0.14199424094100843,
+        "mean_perplexity": 27.846247137179514,
+        "quality_score": 0.1488690499576577
+      }
+    ],
+    "optimal_coefficient": 1.25,
+    "optimal_score": 0.21205749611059824
+  },
+  "intelligent": {
+    "concept": "intelligent",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.40185761004686354,
+        "std_score": 0.20401550610971114,
+        "mean_perplexity": 25.23866403218631,
+        "quality_score": 0.2866181093802091
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.47982308467229207,
+        "std_score": 0.1980058243906129,
+        "mean_perplexity": 25.11599880927484,
+        "quality_score": 0.34274290448705175
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.34417563180128735,
+        "std_score": 0.10387083917025869,
+        "mean_perplexity": 23.332934304047793,
+        "quality_score": 0.2515960096076187
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.4070682262380918,
+        "std_score": 0.18062580465487604,
+        "mean_perplexity": 25.76357394418795,
+        "quality_score": 0.2884950134305204
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.37338431626558305,
+        "std_score": 0.19528638952925947,
+        "mean_perplexity": 25.99226992097569,
+        "quality_score": 0.26390489783872295
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.426988086104393,
+        "std_score": 0.15657508697024966,
+        "mean_perplexity": 24.395433110640518,
+        "quality_score": 0.3077816332745534
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.3938144162297249,
+        "std_score": 0.18441838060192953,
+        "mean_perplexity": 24.914574121032704,
+        "quality_score": 0.28201041085456113
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.45680409073829653,
+        "std_score": 0.22071216311721742,
+        "mean_perplexity": 24.35637463229602,
+        "quality_score": 0.3294388611271114
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.34318457171320915,
+        "std_score": 0.23032798519724604,
+        "mean_perplexity": 19.38583602149525,
+        "quality_score": 0.2665543254470106
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.3682109455267588,
+        "std_score": 0.13769454188984817,
+        "mean_perplexity": 21.08983037453173,
+        "quality_score": 0.27808959280173856
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.4572545831402143,
+        "std_score": 0.1791241589240452,
+        "mean_perplexity": 25.457579802226853,
+        "quality_score": 0.32525893919035914
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.4581944058338801,
+        "std_score": 0.18517302039608452,
+        "mean_perplexity": 20.062094932712746,
+        "quality_score": 0.35181415115578507
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.44495438734690346,
+        "std_score": 0.17437664198597944,
+        "mean_perplexity": 22.23175551220765,
+        "quality_score": 0.3303363445532216
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.3861755967140198,
+        "std_score": 0.15681397949280987,
+        "mean_perplexity": 23.93465388597149,
+        "quality_score": 0.28003480298405237
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.41359695394833884,
+        "std_score": 0.21202977938525294,
+        "mean_perplexity": 21.262403713392384,
+        "quality_score": 0.3115344255843503
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.4084617217381795,
+        "std_score": 0.20670404370984222,
+        "mean_perplexity": 22.819390862785607,
+        "quality_score": 0.30071449950072193
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.4183384537696838,
+        "std_score": 0.19808568833344026,
+        "mean_perplexity": 24.254883316933853,
+        "quality_score": 0.30209322541475503
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.39146408140659333,
+        "std_score": 0.20034957133082512,
+        "mean_perplexity": 23.870174594497165,
+        "quality_score": 0.2841111090728564
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.38897315263748167,
+        "std_score": 0.17381848508221429,
+        "mean_perplexity": 22.962788756402347,
+        "quality_score": 0.28579435220744775
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.433534167210261,
+        "std_score": 0.2064823045043247,
+        "mean_perplexity": 27.169371140754574,
+        "quality_score": 0.30230830375170803
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.4285989224910736,
+        "std_score": 0.18734750088071256,
+        "mean_perplexity": 20.67303216810117,
+        "quality_score": 0.325830591746927
+      }
+    ],
+    "optimal_coefficient": 0.75,
+    "optimal_score": 0.4581944058338801
+  },
+  "unhappy": {
+    "concept": "unhappy",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.5371248722076416,
+        "std_score": 0.16899438237067113,
+        "mean_perplexity": 20.225459252456435,
+        "quality_score": 0.4113067874137805
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.5348799079656601,
+        "std_score": 0.1449316141163636,
+        "mean_perplexity": 22.06063522629904,
+        "quality_score": 0.3980892653644449
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.4456964443127314,
+        "std_score": 0.13645409091982805,
+        "mean_perplexity": 22.115896881991116,
+        "quality_score": 0.33144562663781973
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.5596404512723286,
+        "std_score": 0.11878773808963984,
+        "mean_perplexity": 19.914955721580384,
+        "quality_score": 0.4307645848611335
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.4809067755937576,
+        "std_score": 0.15824276081879168,
+        "mean_perplexity": 25.60805195004665,
+        "quality_score": 0.3414617903616403
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.47824854850769044,
+        "std_score": 0.15711346642667245,
+        "mean_perplexity": 21.6712028417698,
+        "quality_score": 0.3580018178035227
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.5205638766288757,
+        "std_score": 0.18029227004632306,
+        "mean_perplexity": 22.34838399055444,
+        "quality_score": 0.3858183225846781
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.4867264767487844,
+        "std_score": 0.2046047354496497,
+        "mean_perplexity": 21.946146735796933,
+        "quality_score": 0.3628609033831698
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.4233625749746958,
+        "std_score": 0.19188386394857151,
+        "mean_perplexity": 16.585040662837237,
+        "quality_score": 0.3470991503886027
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.468473356962204,
+        "std_score": 0.12133418427220227,
+        "mean_perplexity": 24.196532648877522,
+        "quality_score": 0.33855269750642114
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.5454008569320042,
+        "std_score": 0.18387105976391366,
+        "mean_perplexity": 23.45350385532667,
+        "quality_score": 0.3980424599332083
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.4923681870102882,
+        "std_score": 0.1810481893275975,
+        "mean_perplexity": 20.411551428529695,
+        "quality_score": 0.3758891537542168
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.5356157998243968,
+        "std_score": 0.15808613311152694,
+        "mean_perplexity": 18.503032089477433,
+        "quality_score": 0.42266230015773665
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.5073582410812378,
+        "std_score": 0.11424285893330237,
+        "mean_perplexity": 18.030318039180077,
+        "quality_score": 0.4039465547496385
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.5488038857777914,
+        "std_score": 0.14763064033364579,
+        "mean_perplexity": 24.112119267623164,
+        "quality_score": 0.39704083144157737
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.5387363692124685,
+        "std_score": 0.1783258902436209,
+        "mean_perplexity": 25.648412304791965,
+        "quality_score": 0.38233729097429364
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.5273426562547684,
+        "std_score": 0.17613891598515297,
+        "mean_perplexity": 22.714754255575674,
+        "quality_score": 0.3888074387712723
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.4992381473382314,
+        "std_score": 0.1647774397120752,
+        "mean_perplexity": 21.547030420476275,
+        "quality_score": 0.3744134210740825
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.4621922214825948,
+        "std_score": 0.1734617690865238,
+        "mean_perplexity": 28.388071952358334,
+        "quality_score": 0.31806538007554386
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.4958062618970871,
+        "std_score": 0.144271702711258,
+        "mean_perplexity": 20.760187396957086,
+        "quality_score": 0.3764003128320533
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.49367819130420687,
+        "std_score": 0.16227741826565512,
+        "mean_perplexity": 27.668713870261687,
+        "quality_score": 0.3423592002532924
+      }
+    ],
+    "optimal_coefficient": -1.25,
+    "optimal_score": 0.5596404512723286
+  },
+  "sad": {
+    "concept": "sad",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.2610731698572636,
+        "std_score": 0.10679408456613448,
+        "mean_perplexity": 19.17324578705993,
+        "quality_score": 0.20353477612966236
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.26239413569370906,
+        "std_score": 0.12953940570068337,
+        "mean_perplexity": 20.62706932493145,
+        "quality_score": 0.19962465318076805
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.24978872189919155,
+        "std_score": 0.08876650162070385,
+        "mean_perplexity": 22.97775236574233,
+        "quality_score": 0.18349176339731807
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.23333138326803843,
+        "std_score": 0.09208569320162933,
+        "mean_perplexity": 19.553656985421863,
+        "quality_score": 0.18070502237928004
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.21935062507788342,
+        "std_score": 0.12141064861091513,
+        "mean_perplexity": 24.777414733595286,
+        "quality_score": 0.15734706970730286
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.2438489779829979,
+        "std_score": 0.09138831833038027,
+        "mean_perplexity": 23.763419081272,
+        "quality_score": 0.17722755712918345
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.23324478964010875,
+        "std_score": 0.11977888812151032,
+        "mean_perplexity": 27.30135657787845,
+        "quality_score": 0.16240589836242636
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.26724002410968145,
+        "std_score": 0.08629307180040988,
+        "mean_perplexity": 29.078248377498866,
+        "quality_score": 0.18259485035952594
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.2628503978252411,
+        "std_score": 0.13437683442967896,
+        "mean_perplexity": 18.967221982207988,
+        "quality_score": 0.20567263794007926
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.2593856026728948,
+        "std_score": 0.05185476435329212,
+        "mean_perplexity": 23.529739958346237,
+        "quality_score": 0.1891093348599752
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.2515382250150045,
+        "std_score": 0.08838166003566748,
+        "mean_perplexity": 22.265065635206415,
+        "quality_score": 0.18665312342253518
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.2275303636988004,
+        "std_score": 0.08304656476290169,
+        "mean_perplexity": 24.69790854941278,
+        "quality_score": 0.1633782363134957
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.2526846234997114,
+        "std_score": 0.11616222196559824,
+        "mean_perplexity": 26.121570159050762,
+        "quality_score": 0.17832374885457158
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.23392163713773093,
+        "std_score": 0.12115090341365153,
+        "mean_perplexity": 24.653042738546432,
+        "quality_score": 0.16806278481406844
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.2283368815978368,
+        "std_score": 0.10395210484724807,
+        "mean_perplexity": 22.270913418700367,
+        "quality_score": 0.16942230358768381
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.2511473923921585,
+        "std_score": 0.13273424278664206,
+        "mean_perplexity": 21.64343320208452,
+        "quality_score": 0.18807943811701866
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.22383322417736054,
+        "std_score": 0.09911592208959706,
+        "mean_perplexity": 18.403664289529285,
+        "quality_score": 0.17695664702715783
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.2534405365586281,
+        "std_score": 0.09118600027903835,
+        "mean_perplexity": 22.69058058689786,
+        "quality_score": 0.18692433341424547
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.2274998386700948,
+        "std_score": 0.10998131544808146,
+        "mean_perplexity": 25.341101581280377,
+        "quality_score": 0.1620570650148439
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.25031676292419436,
+        "std_score": 0.09187468114984948,
+        "mean_perplexity": 21.211435086481174,
+        "quality_score": 0.18869471875911173
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.21502736484011015,
+        "std_score": 0.09337218417390906,
+        "mean_perplexity": 19.97528866852008,
+        "quality_score": 0.165342953967829
+      }
+    ],
+    "optimal_coefficient": 0.0,
+    "optimal_score": 0.2628503978252411
+  },
+  "angry": {
+    "concept": "angry",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.39785020450750985,
+        "std_score": 0.15999800175475898,
+        "mean_perplexity": 19.438376814385943,
+        "quality_score": 0.3087317100908691
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.4080930416782697,
+        "std_score": 0.14740466423957438,
+        "mean_perplexity": 23.51653788406635,
+        "quality_score": 0.297579817518264
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.47586531142393745,
+        "std_score": 0.2121906040046464,
+        "mean_perplexity": 20.941172516927917,
+        "quality_score": 0.360230850218134
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.4564687122901281,
+        "std_score": 0.21773394092576728,
+        "mean_perplexity": 28.94412089969712,
+        "quality_score": 0.3123160176398246
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.40390620529651644,
+        "std_score": 0.20225977943079684,
+        "mean_perplexity": 22.296986476443053,
+        "quality_score": 0.2995789746346765
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.40557319422562915,
+        "std_score": 0.149463060017228,
+        "mean_perplexity": 26.33943274690408,
+        "quality_score": 0.28549300438771597
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.43073469003041587,
+        "std_score": 0.16703377211768894,
+        "mean_perplexity": 22.876144557917872,
+        "quality_score": 0.31686047506943316
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.4464805394411087,
+        "std_score": 0.19413234213886857,
+        "mean_perplexity": 24.778065949390353,
+        "quality_score": 0.32027184481190224
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.31070527831713357,
+        "std_score": 0.10819380745135268,
+        "mean_perplexity": 15.41621003993269,
+        "quality_score": 0.26154135684427426
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.46526052157084147,
+        "std_score": 0.18185096995824668,
+        "mean_perplexity": 20.67902688327523,
+        "quality_score": 0.3536677133772487
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.37298564265171685,
+        "std_score": 0.1790110043520156,
+        "mean_perplexity": 22.987363328558708,
+        "quality_score": 0.2739541772109039
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.46359134614467623,
+        "std_score": 0.16012089863912068,
+        "mean_perplexity": 25.201486562072862,
+        "quality_score": 0.3307996950593919
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.49036057194073995,
+        "std_score": 0.13422426616895497,
+        "mean_perplexity": 25.671189821156574,
+        "quality_score": 0.34791015237479284
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.4353903333346049,
+        "std_score": 0.11362809361286033,
+        "mean_perplexity": 28.180699636189665,
+        "quality_score": 0.3002791830940376
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.4342958410580953,
+        "std_score": 0.1344004698870967,
+        "mean_perplexity": 22.355598887377717,
+        "quality_score": 0.3218469301532823
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.42343072791894276,
+        "std_score": 0.1260950193093885,
+        "mean_perplexity": 24.262388698568316,
+        "quality_score": 0.3057408249291762
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.43746458093325297,
+        "std_score": 0.17306519807522075,
+        "mean_perplexity": 24.36831602088882,
+        "quality_score": 0.3154431290724449
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.44034716735283536,
+        "std_score": 0.14641862157340818,
+        "mean_perplexity": 22.812037434821903,
+        "quality_score": 0.32422236404655014
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.4347365160783132,
+        "std_score": 0.16398942114858134,
+        "mean_perplexity": 21.30919357991189,
+        "quality_score": 0.3272221207302841
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.4586724946896235,
+        "std_score": 0.18293060580180043,
+        "mean_perplexity": 19.20130519612472,
+        "quality_score": 0.3574078580124053
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.4884501338005066,
+        "std_score": 0.15774769906231326,
+        "mean_perplexity": 21.046666652056206,
+        "quality_score": 0.3691477405146688
+      }
+    ],
+    "optimal_coefficient": 3.0,
+    "optimal_score": 0.4884501338005066
+  },
+  "furious": {
+    "concept": "furious",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.2183112363020579,
+        "std_score": 0.15442609757813114,
+        "mean_perplexity": 22.491118853425757,
+        "quality_score": 0.1614714869327989
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.1757607767979304,
+        "std_score": 0.04163682266305945,
+        "mean_perplexity": 24.825623780257974,
+        "quality_score": 0.1260024054979071
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.20457286114494005,
+        "std_score": 0.0934622789131527,
+        "mean_perplexity": 19.619080645658777,
+        "quality_score": 0.15825500078232857
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.17577645555138588,
+        "std_score": 0.0719359967354308,
+        "mean_perplexity": 21.62067494873481,
+        "quality_score": 0.13168065402470844
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.176394917567571,
+        "std_score": 0.08765001563736202,
+        "mean_perplexity": 23.932126523202307,
+        "quality_score": 0.1279168316664832
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.22583685765663783,
+        "std_score": 0.10299646912155476,
+        "mean_perplexity": 20.02444618546486,
+        "quality_score": 0.17351237632367433
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.19055101970831553,
+        "std_score": 0.10323628933997829,
+        "mean_perplexity": 20.837756113176276,
+        "quality_score": 0.1444826040473903
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.23495488638679188,
+        "std_score": 0.1708878394759914,
+        "mean_perplexity": 23.578534039083344,
+        "quality_score": 0.17118543568381783
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.20703209191560745,
+        "std_score": 0.10541406096333086,
+        "mean_perplexity": 16.64583454155703,
+        "quality_score": 0.16951702867355156
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.20383962045113246,
+        "std_score": 0.08836998577851975,
+        "mean_perplexity": 22.297601987432362,
+        "quality_score": 0.1511873813527822
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.17326425537467002,
+        "std_score": 0.1029024997445126,
+        "mean_perplexity": 20.06527861582179,
+        "quality_score": 0.13302997785015735
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.19322398205598196,
+        "std_score": 0.10965947804910046,
+        "mean_perplexity": 21.870025995119892,
+        "quality_score": 0.14421322022138297
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.18657065480947493,
+        "std_score": 0.06547399298524523,
+        "mean_perplexity": 25.391335728037234,
+        "quality_score": 0.13282022805641092
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.19323906848827999,
+        "std_score": 0.11191519762094607,
+        "mean_perplexity": 24.855844348810955,
+        "quality_score": 0.13848009097613345
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.19889777153730392,
+        "std_score": 0.11380417716292501,
+        "mean_perplexity": 20.2721739972287,
+        "quality_score": 0.1521904675611426
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.19913852214813232,
+        "std_score": 0.11986503756267583,
+        "mean_perplexity": 23.56441916107063,
+        "quality_score": 0.1451175399204968
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.16793021286527315,
+        "std_score": 0.09039065181360613,
+        "mean_perplexity": 22.44776569419007,
+        "quality_score": 0.12428474952813694
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.2055657977859179,
+        "std_score": 0.10513244005899854,
+        "mean_perplexity": 22.52952356247266,
+        "quality_score": 0.15196118476851275
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.21556574727098146,
+        "std_score": 0.11126097162879235,
+        "mean_perplexity": 24.321211383964364,
+        "quality_score": 0.15553250273139552
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.2051457569003105,
+        "std_score": 0.10830127011959437,
+        "mean_perplexity": 20.536327670110403,
+        "quality_score": 0.15629881570015922
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.18846832513809203,
+        "std_score": 0.08093232608078493,
+        "mean_perplexity": 20.133507250131874,
+        "quality_score": 0.14453985424022922
+      }
+    ],
+    "optimal_coefficient": -0.75,
+    "optimal_score": 0.22583685765663783
+  },
+  "scared": {
+    "concept": "scared",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.19757273892561594,
+        "std_score": 0.11719647093311948,
+        "mean_perplexity": 22.63576689335341,
+        "quality_score": 0.1458321796911121
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.18335207750399907,
+        "std_score": 0.0736322578118171,
+        "mean_perplexity": 21.803283256157197,
+        "quality_score": 0.13698100712692446
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.20092503676811854,
+        "std_score": 0.06022125842126259,
+        "mean_perplexity": 23.12312765629846,
+        "quality_score": 0.14730071552129925
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.1939339468876521,
+        "std_score": 0.0917930639884053,
+        "mean_perplexity": 19.095839642397056,
+        "quality_score": 0.1513998585194639
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.16234313001235326,
+        "std_score": 0.06360374741097267,
+        "mean_perplexity": 23.668958226004495,
+        "quality_score": 0.11813825789801068
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.19158949106931686,
+        "std_score": 0.1018876517055485,
+        "mean_perplexity": 19.257857761855316,
+        "quality_score": 0.1491423802777945
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.20786541427175204,
+        "std_score": 0.12699326316426007,
+        "mean_perplexity": 20.637468846391638,
+        "quality_score": 0.15811386870481187
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.16141567106048266,
+        "std_score": 0.06989643309166604,
+        "mean_perplexity": 20.61372924266153,
+        "quality_score": 0.12282834105762551
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.14507297898332278,
+        "std_score": 0.051737448506031514,
+        "mean_perplexity": 15.852842025599537,
+        "quality_score": 0.12088335710186886
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.17251429036259652,
+        "std_score": 0.06700676824616095,
+        "mean_perplexity": 22.535953462843512,
+        "quality_score": 0.12751671134434492
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.17243182510137559,
+        "std_score": 0.07307643967443841,
+        "mean_perplexity": 23.42243345200996,
+        "quality_score": 0.12589646224403278
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.19383969406286874,
+        "std_score": 0.07931059790748048,
+        "mean_perplexity": 19.356156021183956,
+        "quality_score": 0.15063476438819023
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.1719828630487124,
+        "std_score": 0.07455834112979647,
+        "mean_perplexity": 25.757331834603157,
+        "quality_score": 0.12189578044171265
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.17593608846267064,
+        "std_score": 0.0773807294559325,
+        "mean_perplexity": 24.719211258799604,
+        "quality_score": 0.12629699743705933
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.16169410099585851,
+        "std_score": 0.08727640634804402,
+        "mean_perplexity": 27.898609982678543,
+        "quality_score": 0.11185393684652237
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.1943230465054512,
+        "std_score": 0.0658503022408262,
+        "mean_perplexity": 24.55467363111047,
+        "quality_score": 0.13978726028610217
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.1720449522137642,
+        "std_score": 0.06028348576644155,
+        "mean_perplexity": 23.935833653073608,
+        "quality_score": 0.12475626852915382
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.17218209753433864,
+        "std_score": 0.05279450958854167,
+        "mean_perplexity": 19.16370666805573,
+        "quality_score": 0.134257191298368
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.1556650996208191,
+        "std_score": 0.07536468623433508,
+        "mean_perplexity": 22.109059696037278,
+        "quality_score": 0.11577312307572889
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.18169124573469161,
+        "std_score": 0.06221610047241314,
+        "mean_perplexity": 18.121387000911632,
+        "quality_score": 0.14440667822178102
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.16805753633379936,
+        "std_score": 0.08137011066908122,
+        "mean_perplexity": 19.882068229447427,
+        "quality_score": 0.12942819528293056
+      }
+    ],
+    "optimal_coefficient": -0.5,
+    "optimal_score": 0.20786541427175204
+  },
+  "fearful": {
+    "concept": "fearful",
+    "layer": 20,
+    "coefficient_range": [
+      -2.0,
+      -1.75,
+      -1.5,
+      -1.25,
+      -1.0,
+      -0.75,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0
+    ],
+    "data": [
+      {
+        "coefficient": -2.0,
+        "mean_score": 0.2595484187205633,
+        "std_score": 0.12207200660945212,
+        "mean_perplexity": 22.573215099951664,
+        "quality_score": 0.19174769534785482
+      },
+      {
+        "coefficient": -1.75,
+        "mean_score": 0.25689337054888406,
+        "std_score": 0.09725267606885406,
+        "mean_perplexity": 17.00745115053287,
+        "quality_score": 0.20874791232029943
+      },
+      {
+        "coefficient": -1.5,
+        "mean_score": 0.2404402365287145,
+        "std_score": 0.10395701996460814,
+        "mean_perplexity": 20.749739232189487,
+        "quality_score": 0.1825648658526843
+      },
+      {
+        "coefficient": -1.25,
+        "mean_score": 0.29142214357852936,
+        "std_score": 0.13132956387077957,
+        "mean_perplexity": 26.00912579878712,
+        "quality_score": 0.20593374299208228
+      },
+      {
+        "coefficient": -1.0,
+        "mean_score": 0.3069761554400126,
+        "std_score": 0.103628847946286,
+        "mean_perplexity": 25.727129511207025,
+        "quality_score": 0.2176531777438202
+      },
+      {
+        "coefficient": -0.75,
+        "mean_score": 0.27848561480641365,
+        "std_score": 0.12482306283377083,
+        "mean_perplexity": 25.562016728457024,
+        "quality_score": 0.19784497110939667
+      },
+      {
+        "coefficient": -0.5,
+        "mean_score": 0.3178088903427124,
+        "std_score": 0.10336459314205046,
+        "mean_perplexity": 22.413013256896022,
+        "quality_score": 0.23532679154401195
+      },
+      {
+        "coefficient": -0.25,
+        "mean_score": 0.25279456774393716,
+        "std_score": 0.12450663509552183,
+        "mean_perplexity": 22.9708723201334,
+        "quality_score": 0.18571756438645104
+      },
+      {
+        "coefficient": 0.0,
+        "mean_score": 0.2864467223485311,
+        "std_score": 0.10487467071277667,
+        "mean_perplexity": 15.859391152546475,
+        "quality_score": 0.23864862249284574
+      },
+      {
+        "coefficient": 0.25,
+        "mean_score": 0.31846623321374257,
+        "std_score": 0.10623371613468931,
+        "mean_perplexity": 20.81616794087618,
+        "quality_score": 0.24155494847340495
+      },
+      {
+        "coefficient": 0.5,
+        "mean_score": 0.2767632320523262,
+        "std_score": 0.11013714029067805,
+        "mean_perplexity": 24.061607402005084,
+        "quality_score": 0.20036074414196545
+      },
+      {
+        "coefficient": 0.75,
+        "mean_score": 0.2529556502898534,
+        "std_score": 0.10806020654784732,
+        "mean_perplexity": 27.61854223165336,
+        "quality_score": 0.17551728998984245
+      },
+      {
+        "coefficient": 1.0,
+        "mean_score": 0.27187141850590707,
+        "std_score": 0.13840509664090134,
+        "mean_perplexity": 16.843776777144072,
+        "quality_score": 0.2216753647792992
+      },
+      {
+        "coefficient": 1.25,
+        "mean_score": 0.27280827313661576,
+        "std_score": 0.1124002427103089,
+        "mean_perplexity": 21.41464370795462,
+        "quality_score": 0.20500942973555658
+      },
+      {
+        "coefficient": 1.5,
+        "mean_score": 0.28735755383968353,
+        "std_score": 0.09484856707329481,
+        "mean_perplexity": 23.209463879906142,
+        "quality_score": 0.21041582742777545
+      },
+      {
+        "coefficient": 1.75,
+        "mean_score": 0.22522141585747402,
+        "std_score": 0.08835311006946903,
+        "mean_perplexity": 25.978796446346454,
+        "quality_score": 0.15920994384131626
+      },
+      {
+        "coefficient": 2.0,
+        "mean_score": 0.266043554743131,
+        "std_score": 0.08231041751343675,
+        "mean_perplexity": 23.03442177293487,
+        "quality_score": 0.19527890831988617
+      },
+      {
+        "coefficient": 2.25,
+        "mean_score": 0.27831138769785563,
+        "std_score": 0.10867715116916177,
+        "mean_perplexity": 21.019086739848213,
+        "quality_score": 0.2104252796811933
+      },
+      {
+        "coefficient": 2.5,
+        "mean_score": 0.22159395416577657,
+        "std_score": 0.13150252403668028,
+        "mean_perplexity": 23.111690431739135,
+        "quality_score": 0.16247895708686455
+      },
+      {
+        "coefficient": 2.75,
+        "mean_score": 0.2760885665814082,
+        "std_score": 0.10946976927602574,
+        "mean_perplexity": 22.705808941082548,
+        "quality_score": 0.2035845720801385
+      },
+      {
+        "coefficient": 3.0,
+        "mean_score": 0.27221453984578453,
+        "std_score": 0.0950096592638365,
+        "mean_perplexity": 24.64688472573184,
+        "quality_score": 0.19558985891208291
+      }
+    ],
+    "optimal_coefficient": 0.25,
+    "optimal_score": 0.31846623321374257
+  }
+}

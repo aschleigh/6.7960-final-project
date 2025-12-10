@@ -1,0 +1,542 @@
+[
+  {
+    "target": "formal",
+    "interferer": "casual",
+    "signal_retention": 3.519673584171901,
+    "suppression_score": -2.519673584171901
+  },
+  {
+    "target": "formal",
+    "interferer": "positive",
+    "signal_retention": 0.7696581265657094,
+    "suppression_score": 0.23034187343429058
+  },
+  {
+    "target": "formal",
+    "interferer": "negative",
+    "signal_retention": 1.0693479692691654,
+    "suppression_score": -0.06934796926916542
+  },
+  {
+    "target": "formal",
+    "interferer": "verbose",
+    "signal_retention": 0.43620784897235476,
+    "suppression_score": 0.5637921510276452
+  },
+  {
+    "target": "formal",
+    "interferer": "concise",
+    "signal_retention": 1.0648228067228822,
+    "suppression_score": -0.06482280672288221
+  },
+  {
+    "target": "formal",
+    "interferer": "confident",
+    "signal_retention": 0.7535063360939914,
+    "suppression_score": 0.24649366390600858
+  },
+  {
+    "target": "formal",
+    "interferer": "uncertain",
+    "signal_retention": 1.4206986058110818,
+    "suppression_score": -0.42069860581108176
+  },
+  {
+    "target": "formal",
+    "interferer": "technical",
+    "signal_retention": 0.6170598709153012,
+    "suppression_score": 0.38294012908469877
+  },
+  {
+    "target": "formal",
+    "interferer": "simple",
+    "signal_retention": 1.4342211067270312,
+    "suppression_score": -0.4342211067270312
+  },
+  {
+    "target": "casual",
+    "interferer": "formal",
+    "signal_retention": 0.6693780829771445,
+    "suppression_score": 0.3306219170228555
+  },
+  {
+    "target": "casual",
+    "interferer": "positive",
+    "signal_retention": 0.8773328382644248,
+    "suppression_score": 0.12266716173557524
+  },
+  {
+    "target": "casual",
+    "interferer": "negative",
+    "signal_retention": 1.1013154188751695,
+    "suppression_score": -0.10131541887516948
+  },
+  {
+    "target": "casual",
+    "interferer": "verbose",
+    "signal_retention": 0.787767635071279,
+    "suppression_score": 0.212232364928721
+  },
+  {
+    "target": "casual",
+    "interferer": "concise",
+    "signal_retention": 1.1784192504901587,
+    "suppression_score": -0.17841925049015872
+  },
+  {
+    "target": "casual",
+    "interferer": "confident",
+    "signal_retention": 1.0709437897965082,
+    "suppression_score": -0.07094378979650817
+  },
+  {
+    "target": "casual",
+    "interferer": "uncertain",
+    "signal_retention": 1.0007164807105446,
+    "suppression_score": -0.0007164807105446425
+  },
+  {
+    "target": "casual",
+    "interferer": "technical",
+    "signal_retention": 0.9729448253991262,
+    "suppression_score": 0.02705517460087381
+  },
+  {
+    "target": "casual",
+    "interferer": "simple",
+    "signal_retention": 1.0266836669088875,
+    "suppression_score": -0.02668366690888746
+  },
+  {
+    "target": "positive",
+    "interferer": "formal",
+    "signal_retention": 0.8933913210246409,
+    "suppression_score": 0.10660867897535908
+  },
+  {
+    "target": "positive",
+    "interferer": "casual",
+    "signal_retention": 1.1787614111862108,
+    "suppression_score": -0.1787614111862108
+  },
+  {
+    "target": "positive",
+    "interferer": "negative",
+    "signal_retention": 0.45006489771656266,
+    "suppression_score": 0.5499351022834373
+  },
+  {
+    "target": "positive",
+    "interferer": "verbose",
+    "signal_retention": 1.2562586633276331,
+    "suppression_score": -0.25625866332763314
+  },
+  {
+    "target": "positive",
+    "interferer": "concise",
+    "signal_retention": 0.6326872987565915,
+    "suppression_score": 0.36731270124340853
+  },
+  {
+    "target": "positive",
+    "interferer": "confident",
+    "signal_retention": 0.7848857721525426,
+    "suppression_score": 0.21511422784745737
+  },
+  {
+    "target": "positive",
+    "interferer": "uncertain",
+    "signal_retention": 1.027269793885681,
+    "suppression_score": -0.02726979388568096
+  },
+  {
+    "target": "positive",
+    "interferer": "technical",
+    "signal_retention": 1.150315245893453,
+    "suppression_score": -0.1503152458934529
+  },
+  {
+    "target": "positive",
+    "interferer": "simple",
+    "signal_retention": 0.9215229308580849,
+    "suppression_score": 0.0784770691419151
+  },
+  {
+    "target": "negative",
+    "interferer": "formal",
+    "signal_retention": -1.348597468196176,
+    "suppression_score": 2.348597468196176
+  },
+  {
+    "target": "negative",
+    "interferer": "casual",
+    "signal_retention": 2.2494901648288,
+    "suppression_score": -1.2494901648288002
+  },
+  {
+    "target": "negative",
+    "interferer": "positive",
+    "signal_retention": 18.791046330300244,
+    "suppression_score": -17.791046330300244
+  },
+  {
+    "target": "negative",
+    "interferer": "verbose",
+    "signal_retention": 8.026701239348114,
+    "suppression_score": -7.026701239348114
+  },
+  {
+    "target": "negative",
+    "interferer": "concise",
+    "signal_retention": -9.13415525694251,
+    "suppression_score": 10.13415525694251
+  },
+  {
+    "target": "negative",
+    "interferer": "confident",
+    "signal_retention": -8.737635682733247,
+    "suppression_score": 9.737635682733247
+  },
+  {
+    "target": "negative",
+    "interferer": "uncertain",
+    "signal_retention": 4.006034554516982,
+    "suppression_score": -3.006034554516982
+  },
+  {
+    "target": "negative",
+    "interferer": "technical",
+    "signal_retention": 4.556581840085775,
+    "suppression_score": -3.5565818400857747
+  },
+  {
+    "target": "negative",
+    "interferer": "simple",
+    "signal_retention": -3.3044878903069717,
+    "suppression_score": 4.304487890306971
+  },
+  {
+    "target": "verbose",
+    "interferer": "formal",
+    "signal_retention": 1.1772122715775335,
+    "suppression_score": -0.1772122715775335
+  },
+  {
+    "target": "verbose",
+    "interferer": "casual",
+    "signal_retention": 1.0300286107404675,
+    "suppression_score": -0.030028610740467476
+  },
+  {
+    "target": "verbose",
+    "interferer": "positive",
+    "signal_retention": 1.567302831018188,
+    "suppression_score": -0.567302831018188
+  },
+  {
+    "target": "verbose",
+    "interferer": "negative",
+    "signal_retention": 0.5659027511890569,
+    "suppression_score": 0.43409724881094314
+  },
+  {
+    "target": "verbose",
+    "interferer": "concise",
+    "signal_retention": -0.681734438343479,
+    "suppression_score": 1.681734438343479
+  },
+  {
+    "target": "verbose",
+    "interferer": "confident",
+    "signal_retention": 0.5773598246123202,
+    "suppression_score": 0.42264017538767984
+  },
+  {
+    "target": "verbose",
+    "interferer": "uncertain",
+    "signal_retention": 1.295833482987131,
+    "suppression_score": -0.29583348298713097
+  },
+  {
+    "target": "verbose",
+    "interferer": "technical",
+    "signal_retention": 1.4476787489642853,
+    "suppression_score": -0.4476787489642853
+  },
+  {
+    "target": "verbose",
+    "interferer": "simple",
+    "signal_retention": 0.6552170105792585,
+    "suppression_score": 0.3447829894207415
+  },
+  {
+    "target": "concise",
+    "interferer": "formal",
+    "signal_retention": 1.2675274894882511,
+    "suppression_score": -0.2675274894882511
+  },
+  {
+    "target": "concise",
+    "interferer": "casual",
+    "signal_retention": 0.7318104728957486,
+    "suppression_score": 0.26818952710425137
+  },
+  {
+    "target": "concise",
+    "interferer": "positive",
+    "signal_retention": 0.6617722755205959,
+    "suppression_score": 0.3382277244794041
+  },
+  {
+    "target": "concise",
+    "interferer": "negative",
+    "signal_retention": 1.2671762275704368,
+    "suppression_score": -0.2671762275704368
+  },
+  {
+    "target": "concise",
+    "interferer": "verbose",
+    "signal_retention": 0.08086665017309813,
+    "suppression_score": 0.9191333498269019
+  },
+  {
+    "target": "concise",
+    "interferer": "confident",
+    "signal_retention": 1.3614553920885122,
+    "suppression_score": -0.3614553920885122
+  },
+  {
+    "target": "concise",
+    "interferer": "uncertain",
+    "signal_retention": 0.6705524178100539,
+    "suppression_score": 0.3294475821899461
+  },
+  {
+    "target": "concise",
+    "interferer": "technical",
+    "signal_retention": 0.8783690131658884,
+    "suppression_score": 0.12163098683411155
+  },
+  {
+    "target": "concise",
+    "interferer": "simple",
+    "signal_retention": 1.012316427243535,
+    "suppression_score": -0.012316427243534989
+  },
+  {
+    "target": "confident",
+    "interferer": "formal",
+    "signal_retention": -3.706931534577793,
+    "suppression_score": 4.706931534577793
+  },
+  {
+    "target": "confident",
+    "interferer": "casual",
+    "signal_retention": 4.754468921144027,
+    "suppression_score": -3.754468921144027
+  },
+  {
+    "target": "confident",
+    "interferer": "positive",
+    "signal_retention": 0.48461081558860997,
+    "suppression_score": 0.51538918441139
+  },
+  {
+    "target": "confident",
+    "interferer": "negative",
+    "signal_retention": 0.9288054596258568,
+    "suppression_score": 0.07119454037414319
+  },
+  {
+    "target": "confident",
+    "interferer": "verbose",
+    "signal_retention": 1.5373244584730366,
+    "suppression_score": -0.5373244584730366
+  },
+  {
+    "target": "confident",
+    "interferer": "concise",
+    "signal_retention": -2.212925494983943,
+    "suppression_score": 3.212925494983943
+  },
+  {
+    "target": "confident",
+    "interferer": "uncertain",
+    "signal_retention": 8.548083754789218,
+    "suppression_score": -7.548083754789218
+  },
+  {
+    "target": "confident",
+    "interferer": "technical",
+    "signal_retention": -1.2611969543050323,
+    "suppression_score": 2.2611969543050323
+  },
+  {
+    "target": "confident",
+    "interferer": "simple",
+    "signal_retention": 3.3276445688634233,
+    "suppression_score": -2.3276445688634233
+  },
+  {
+    "target": "uncertain",
+    "interferer": "formal",
+    "signal_retention": 0.8124785274249626,
+    "suppression_score": 0.18752147257503737
+  },
+  {
+    "target": "uncertain",
+    "interferer": "casual",
+    "signal_retention": 1.2044590280689818,
+    "suppression_score": -0.20445902806898175
+  },
+  {
+    "target": "uncertain",
+    "interferer": "positive",
+    "signal_retention": 1.0429807590843898,
+    "suppression_score": -0.04298075908438981
+  },
+  {
+    "target": "uncertain",
+    "interferer": "negative",
+    "signal_retention": 0.9724206628689893,
+    "suppression_score": 0.027579337131010684
+  },
+  {
+    "target": "uncertain",
+    "interferer": "verbose",
+    "signal_retention": 1.0285746828130693,
+    "suppression_score": -0.028574682813069296
+  },
+  {
+    "target": "uncertain",
+    "interferer": "concise",
+    "signal_retention": 0.8947631335280166,
+    "suppression_score": 0.10523686647198338
+  },
+  {
+    "target": "uncertain",
+    "interferer": "confident",
+    "signal_retention": 0.3937374960048957,
+    "suppression_score": 0.6062625039951043
+  },
+  {
+    "target": "uncertain",
+    "interferer": "technical",
+    "signal_retention": 1.009456468896825,
+    "suppression_score": -0.009456468896825054
+  },
+  {
+    "target": "uncertain",
+    "interferer": "simple",
+    "signal_retention": 1.0248916995946002,
+    "suppression_score": -0.024891699594600247
+  },
+  {
+    "target": "technical",
+    "interferer": "formal",
+    "signal_retention": 1.062548094474812,
+    "suppression_score": -0.06254809447481202
+  },
+  {
+    "target": "technical",
+    "interferer": "casual",
+    "signal_retention": 0.9915335861090007,
+    "suppression_score": 0.008466413890999336
+  },
+  {
+    "target": "technical",
+    "interferer": "positive",
+    "signal_retention": 1.2275556514908843,
+    "suppression_score": -0.2275556514908843
+  },
+  {
+    "target": "technical",
+    "interferer": "negative",
+    "signal_retention": 0.8828179152298097,
+    "suppression_score": 0.11718208477019032
+  },
+  {
+    "target": "technical",
+    "interferer": "verbose",
+    "signal_retention": 1.2413407302630388,
+    "suppression_score": -0.24134073026303882
+  },
+  {
+    "target": "technical",
+    "interferer": "concise",
+    "signal_retention": 0.8732945850766954,
+    "suppression_score": 0.12670541492330456
+  },
+  {
+    "target": "technical",
+    "interferer": "confident",
+    "signal_retention": 1.0776866144080421,
+    "suppression_score": -0.07768661440804214
+  },
+  {
+    "target": "technical",
+    "interferer": "uncertain",
+    "signal_retention": 0.95529510500544,
+    "suppression_score": 0.044704894994559985
+  },
+  {
+    "target": "technical",
+    "interferer": "simple",
+    "signal_retention": 0.19580054501625183,
+    "suppression_score": 0.8041994549837481
+  },
+  {
+    "target": "simple",
+    "interferer": "formal",
+    "signal_retention": 1.063823016290617,
+    "suppression_score": -0.06382301629061704
+  },
+  {
+    "target": "simple",
+    "interferer": "casual",
+    "signal_retention": 0.8781412815055003,
+    "suppression_score": 0.1218587184944997
+  },
+  {
+    "target": "simple",
+    "interferer": "positive",
+    "signal_retention": 0.605226412844229,
+    "suppression_score": 0.39477358715577104
+  },
+  {
+    "target": "simple",
+    "interferer": "negative",
+    "signal_retention": 1.1173684876441203,
+    "suppression_score": -0.11736848764412033
+  },
+  {
+    "target": "simple",
+    "interferer": "verbose",
+    "signal_retention": 0.4950695082441313,
+    "suppression_score": 0.5049304917558687
+  },
+  {
+    "target": "simple",
+    "interferer": "concise",
+    "signal_retention": 1.3570148890743325,
+    "suppression_score": -0.35701488907433254
+  },
+  {
+    "target": "simple",
+    "interferer": "confident",
+    "signal_retention": 0.9043741411155276,
+    "suppression_score": 0.09562585888447239
+  },
+  {
+    "target": "simple",
+    "interferer": "uncertain",
+    "signal_retention": 0.9973184211172279,
+    "suppression_score": 0.0026815788827720954
+  },
+  {
+    "target": "simple",
+    "interferer": "technical",
+    "signal_retention": -0.18697737545845397,
+    "suppression_score": 1.186977375458454
+  }
+]

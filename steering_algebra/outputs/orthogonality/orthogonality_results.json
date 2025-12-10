@@ -1,0 +1,1085 @@
+{
+  "correlations": {
+    "similarity_vs_interference": {
+      "r": 0.058507702781441025,
+      "p": 0.4725223389124466
+    },
+    "similarity_vs_success": {
+      "r": 0.06332071531612596,
+      "p": 0.43680981666174806
+    }
+  },
+  "pair_data": [
+    {
+      "pair": "formal+slang",
+      "similarity": -0.14737048745155334,
+      "abs_similarity": 0.14737048745155334,
+      "interference": 0.051699773598638414,
+      "joint_success": 0.3726647042053232
+    },
+    {
+      "pair": "formal+fantasy",
+      "similarity": 0.028875092044472694,
+      "abs_similarity": 0.028875092044472694,
+      "interference": 0.031263886159710604,
+      "joint_success": 0.5342752714962973
+    },
+    {
+      "pair": "formal+science",
+      "similarity": -0.017888076603412628,
+      "abs_similarity": 0.017888076603412628,
+      "interference": 0.0,
+      "joint_success": 0.47240008194547234
+    },
+    {
+      "pair": "formal+positive",
+      "similarity": -0.0028595328330993652,
+      "abs_similarity": 0.0028595328330993652,
+      "interference": 0.04159640563875148,
+      "joint_success": 0.7213867126718928
+    },
+    {
+      "pair": "formal+negative",
+      "similarity": 0.0028595328330993652,
+      "abs_similarity": 0.0028595328330993652,
+      "interference": 0.007385047380997647,
+      "joint_success": 0.6948404710593475
+    },
+    {
+      "pair": "formal+confident",
+      "similarity": 0.042848266661167145,
+      "abs_similarity": 0.042848266661167145,
+      "interference": 0.01585766579491008,
+      "joint_success": 0.7131963624313021
+    },
+    {
+      "pair": "formal+uncertain",
+      "similarity": -0.042848266661167145,
+      "abs_similarity": 0.042848266661167145,
+      "interference": 0.019821738462151163,
+      "joint_success": 0.7992510957339527
+    },
+    {
+      "pair": "formal+technical",
+      "similarity": 0.047296300530433655,
+      "abs_similarity": 0.047296300530433655,
+      "interference": 0.020465198009552918,
+      "joint_success": 0.740462157768637
+    },
+    {
+      "pair": "formal+simple",
+      "similarity": -0.047296300530433655,
+      "abs_similarity": 0.047296300530433655,
+      "interference": 0.0,
+      "joint_success": 0.6214971096667777
+    },
+    {
+      "pair": "formal+smart",
+      "similarity": 0.06477842479944229,
+      "abs_similarity": 0.06477842479944229,
+      "interference": 0.01999214387332126,
+      "joint_success": 0.42535173343064825
+    },
+    {
+      "pair": "formal+intelligent",
+      "similarity": 0.08424104750156403,
+      "abs_similarity": 0.08424104750156403,
+      "interference": 0.11833516571698643,
+      "joint_success": 0.6311865780751512
+    },
+    {
+      "pair": "formal+unhappy",
+      "similarity": -0.04722025990486145,
+      "abs_similarity": 0.04722025990486145,
+      "interference": 0.06089055146883039,
+      "joint_success": 0.7162005406776487
+    },
+    {
+      "pair": "formal+sad",
+      "similarity": 0.2615499496459961,
+      "abs_similarity": 0.2615499496459961,
+      "interference": 0.04559423375451145,
+      "joint_success": 0.5196887594488634
+    },
+    {
+      "pair": "formal+angry",
+      "similarity": 0.13368166983127594,
+      "abs_similarity": 0.13368166983127594,
+      "interference": 0.009379661950879657,
+      "joint_success": 0.61451315295065
+    },
+    {
+      "pair": "formal+furious",
+      "similarity": 0.13799111545085907,
+      "abs_similarity": 0.13799111545085907,
+      "interference": 0.0022110925833380185,
+      "joint_success": 0.5478145302866989
+    },
+    {
+      "pair": "formal+scared",
+      "similarity": -0.13776040077209473,
+      "abs_similarity": 0.13776040077209473,
+      "interference": 0.04733974544171672,
+      "joint_success": 0.41923732353841825
+    },
+    {
+      "pair": "formal+fearful",
+      "similarity": -0.04236680641770363,
+      "abs_similarity": 0.04236680641770363,
+      "interference": 0.0,
+      "joint_success": 0.6224020234804487
+    },
+    {
+      "pair": "slang+fantasy",
+      "similarity": -0.026413526386022568,
+      "abs_similarity": 0.026413526386022568,
+      "interference": 0.08790479348326988,
+      "joint_success": 0.24384908558904414
+    },
+    {
+      "pair": "slang+science",
+      "similarity": 0.010939205065369606,
+      "abs_similarity": 0.010939205065369606,
+      "interference": 0.02161095354797775,
+      "joint_success": 0.22770100560791912
+    },
+    {
+      "pair": "slang+positive",
+      "similarity": -0.09202573448419571,
+      "abs_similarity": 0.09202573448419571,
+      "interference": 0.0,
+      "joint_success": 0.3725511783398282
+    },
+    {
+      "pair": "slang+negative",
+      "similarity": 0.09202573448419571,
+      "abs_similarity": 0.09202573448419571,
+      "interference": 0.09004138824052949,
+      "joint_success": 0.2363796450572808
+    },
+    {
+      "pair": "slang+confident",
+      "similarity": 0.016742730513215065,
+      "abs_similarity": 0.016742730513215065,
+      "interference": 0.17300805927153104,
+      "joint_success": 0.2791349146075602
+    },
+    {
+      "pair": "slang+uncertain",
+      "similarity": -0.016742730513215065,
+      "abs_similarity": 0.016742730513215065,
+      "interference": 0.09837303512544546,
+      "joint_success": 0.4155519211436484
+    },
+    {
+      "pair": "slang+technical",
+      "similarity": 0.022789103910326958,
+      "abs_similarity": 0.022789103910326958,
+      "interference": 0.18275828550657605,
+      "joint_success": 0.297835022318805
+    },
+    {
+      "pair": "slang+simple",
+      "similarity": -0.022789103910326958,
+      "abs_similarity": 0.022789103910326958,
+      "interference": 0.11328047868318654,
+      "joint_success": 0.31351890665914395
+    },
+    {
+      "pair": "slang+smart",
+      "similarity": -0.08248548209667206,
+      "abs_similarity": 0.08248548209667206,
+      "interference": 0.08225271642385497,
+      "joint_success": 0.1932512652848097
+    },
+    {
+      "pair": "slang+intelligent",
+      "similarity": -0.03035425953567028,
+      "abs_similarity": 0.03035425953567028,
+      "interference": 0.014375502746560085,
+      "joint_success": 0.29143959356802046
+    },
+    {
+      "pair": "slang+unhappy",
+      "similarity": 0.0924086943268776,
+      "abs_similarity": 0.0924086943268776,
+      "interference": 0.024479909538000513,
+      "joint_success": 0.38803703085050045
+    },
+    {
+      "pair": "slang+sad",
+      "similarity": -0.09378925710916519,
+      "abs_similarity": 0.09378925710916519,
+      "interference": 0.0,
+      "joint_success": 0.3437217574298862
+    },
+    {
+      "pair": "slang+angry",
+      "similarity": 0.06919891387224197,
+      "abs_similarity": 0.06919891387224197,
+      "interference": 0.05078577645505865,
+      "joint_success": 0.30319061966239774
+    },
+    {
+      "pair": "slang+furious",
+      "similarity": 0.06342600286006927,
+      "abs_similarity": 0.06342600286006927,
+      "interference": 0.23252558665428313,
+      "joint_success": 0.22357870604810995
+    },
+    {
+      "pair": "slang+scared",
+      "similarity": 0.12393355369567871,
+      "abs_similarity": 0.12393355369567871,
+      "interference": 0.0,
+      "joint_success": 0.21938551273715134
+    },
+    {
+      "pair": "slang+fearful",
+      "similarity": 0.13641370832920074,
+      "abs_similarity": 0.13641370832920074,
+      "interference": 0.0,
+      "joint_success": 0.26221066980620067
+    },
+    {
+      "pair": "fantasy+science",
+      "similarity": -0.08020637184381485,
+      "abs_similarity": 0.08020637184381485,
+      "interference": 0.10257770287602225,
+      "joint_success": 0.2586982449399436
+    },
+    {
+      "pair": "fantasy+positive",
+      "similarity": 0.002673001028597355,
+      "abs_similarity": 0.002673001028597355,
+      "interference": 0.0,
+      "joint_success": 0.5272666467679377
+    },
+    {
+      "pair": "fantasy+negative",
+      "similarity": -0.002673001028597355,
+      "abs_similarity": 0.002673001028597355,
+      "interference": 0.34724966829923215,
+      "joint_success": 0.22590061694962574
+    },
+    {
+      "pair": "fantasy+confident",
+      "similarity": 0.03907478228211403,
+      "abs_similarity": 0.03907478228211403,
+      "interference": 0.08695487230560821,
+      "joint_success": 0.37641452814862925
+    },
+    {
+      "pair": "fantasy+uncertain",
+      "similarity": -0.03907478228211403,
+      "abs_similarity": 0.03907478228211403,
+      "interference": 0.0,
+      "joint_success": 0.5003923766496765
+    },
+    {
+      "pair": "fantasy+technical",
+      "similarity": -0.01569071039557457,
+      "abs_similarity": 0.01569071039557457,
+      "interference": 0.01541392791401042,
+      "joint_success": 0.4322957190392694
+    },
+    {
+      "pair": "fantasy+simple",
+      "similarity": 0.01569071039557457,
+      "abs_similarity": 0.01569071039557457,
+      "interference": 0.0,
+      "joint_success": 0.3976412778838445
+    },
+    {
+      "pair": "fantasy+smart",
+      "similarity": 0.019015448167920113,
+      "abs_similarity": 0.019015448167920113,
+      "interference": 0.2083343467579437,
+      "joint_success": 0.21378949045652898
+    },
+    {
+      "pair": "fantasy+intelligent",
+      "similarity": 0.006564047187566757,
+      "abs_similarity": 0.006564047187566757,
+      "interference": 0.0,
+      "joint_success": 0.3800045873898919
+    },
+    {
+      "pair": "fantasy+unhappy",
+      "similarity": 0.023350268602371216,
+      "abs_similarity": 0.023350268602371216,
+      "interference": 0.0,
+      "joint_success": 0.4120378372823926
+    },
+    {
+      "pair": "fantasy+sad",
+      "similarity": -0.030328812077641487,
+      "abs_similarity": 0.030328812077641487,
+      "interference": 0.09891072853954536,
+      "joint_success": 0.3060226056663543
+    },
+    {
+      "pair": "fantasy+angry",
+      "similarity": -0.008465548977255821,
+      "abs_similarity": 0.008465548977255821,
+      "interference": 0.0,
+      "joint_success": 0.4264232365985865
+    },
+    {
+      "pair": "fantasy+furious",
+      "similarity": 0.011669461615383625,
+      "abs_similarity": 0.011669461615383625,
+      "interference": 0.0,
+      "joint_success": 0.3640962191203648
+    },
+    {
+      "pair": "fantasy+scared",
+      "similarity": 0.10181207954883575,
+      "abs_similarity": 0.10181207954883575,
+      "interference": 0.021387176170436183,
+      "joint_success": 0.28234125294319534
+    },
+    {
+      "pair": "fantasy+fearful",
+      "similarity": 0.07526978850364685,
+      "abs_similarity": 0.07526978850364685,
+      "interference": 0.15971712800858928,
+      "joint_success": 0.2670117655233483
+    },
+    {
+      "pair": "science+positive",
+      "similarity": -0.09260011464357376,
+      "abs_similarity": 0.09260011464357376,
+      "interference": 0.06313035992058998,
+      "joint_success": 0.36210036176106386
+    },
+    {
+      "pair": "science+negative",
+      "similarity": 0.09260011464357376,
+      "abs_similarity": 0.09260011464357376,
+      "interference": 0.1258409438551804,
+      "joint_success": 0.2708096781374331
+    },
+    {
+      "pair": "science+confident",
+      "similarity": -0.004288814961910248,
+      "abs_similarity": 0.004288814961910248,
+      "interference": 0.0786154600342337,
+      "joint_success": 0.37763688659148753
+    },
+    {
+      "pair": "science+uncertain",
+      "similarity": 0.004288814961910248,
+      "abs_similarity": 0.004288814961910248,
+      "interference": 0.003907604752615174,
+      "joint_success": 0.4892704480617122
+    },
+    {
+      "pair": "science+technical",
+      "similarity": 0.09830738604068756,
+      "abs_similarity": 0.09830738604068756,
+      "interference": 0.0,
+      "joint_success": 0.43430294645998424
+    },
+    {
+      "pair": "science+simple",
+      "similarity": -0.09830738604068756,
+      "abs_similarity": 0.09830738604068756,
+      "interference": 0.0,
+      "joint_success": 0.353486139990889
+    },
+    {
+      "pair": "science+smart",
+      "similarity": -0.024757707491517067,
+      "abs_similarity": 0.024757707491517067,
+      "interference": 0.0,
+      "joint_success": 0.2801842109536487
+    },
+    {
+      "pair": "science+intelligent",
+      "similarity": -0.009953184053301811,
+      "abs_similarity": 0.009953184053301811,
+      "interference": 0.24931811961555625,
+      "joint_success": 0.27120458148027676
+    },
+    {
+      "pair": "science+unhappy",
+      "similarity": 0.04261080175638199,
+      "abs_similarity": 0.04261080175638199,
+      "interference": 0.0022931040474268847,
+      "joint_success": 0.3864741753160681
+    },
+    {
+      "pair": "science+sad",
+      "similarity": -0.018274366855621338,
+      "abs_similarity": 0.018274366855621338,
+      "interference": 0.0,
+      "joint_success": 0.3192634692350046
+    },
+    {
+      "pair": "science+angry",
+      "similarity": 0.0053691137582063675,
+      "abs_similarity": 0.0053691137582063675,
+      "interference": 0.08418923414409925,
+      "joint_success": 0.33047596354983044
+    },
+    {
+      "pair": "science+furious",
+      "similarity": -0.001244773156940937,
+      "abs_similarity": 0.001244773156940937,
+      "interference": 0.05700475749350435,
+      "joint_success": 0.3195737587566542
+    },
+    {
+      "pair": "science+scared",
+      "similarity": 0.03288811072707176,
+      "abs_similarity": 0.03288811072707176,
+      "interference": 0.22423079364020568,
+      "joint_success": 0.20842464049712456
+    },
+    {
+      "pair": "science+fearful",
+      "similarity": 0.0003044474869966507,
+      "abs_similarity": 0.0003044474869966507,
+      "interference": 0.0,
+      "joint_success": 0.32200461791959445
+    },
+    {
+      "pair": "positive+negative",
+      "similarity": -1.0000007152557373,
+      "abs_similarity": 1.0000007152557373,
+      "interference": 0.0,
+      "joint_success": 0.4909926825216116
+    },
+    {
+      "pair": "positive+confident",
+      "similarity": 0.07515942305326462,
+      "abs_similarity": 0.07515942305326462,
+      "interference": 0.14146858760716927,
+      "joint_success": 0.5259312315285837
+    },
+    {
+      "pair": "positive+uncertain",
+      "similarity": -0.07515942305326462,
+      "abs_similarity": 0.07515942305326462,
+      "interference": 0.1364121491948029,
+      "joint_success": 0.58734720822049
+    },
+    {
+      "pair": "positive+technical",
+      "similarity": -0.042957283556461334,
+      "abs_similarity": 0.042957283556461334,
+      "interference": 0.07235261688420917,
+      "joint_success": 0.6047301660043141
+    },
+    {
+      "pair": "positive+simple",
+      "similarity": 0.042957283556461334,
+      "abs_similarity": 0.042957283556461334,
+      "interference": 0.11401979200909818,
+      "joint_success": 0.5374830338599724
+    },
+    {
+      "pair": "positive+smart",
+      "similarity": 0.2081548273563385,
+      "abs_similarity": 0.2081548273563385,
+      "interference": 0.3185809504111272,
+      "joint_success": 0.29727891711597065
+    },
+    {
+      "pair": "positive+intelligent",
+      "similarity": 0.12267696112394333,
+      "abs_similarity": 0.12267696112394333,
+      "interference": 0.20242805381219897,
+      "joint_success": 0.42799737279228484
+    },
+    {
+      "pair": "positive+unhappy",
+      "similarity": -0.3856654167175293,
+      "abs_similarity": 0.3856654167175293,
+      "interference": 0.23597853947826433,
+      "joint_success": 0.4832887240552345
+    },
+    {
+      "pair": "positive+sad",
+      "similarity": -0.18198087811470032,
+      "abs_similarity": 0.18198087811470032,
+      "interference": 0.09995858725652246,
+      "joint_success": 0.46841532106031897
+    },
+    {
+      "pair": "positive+angry",
+      "similarity": -0.07978691905736923,
+      "abs_similarity": 0.07978691905736923,
+      "interference": 0.09588916936224548,
+      "joint_success": 0.46878858931870904
+    },
+    {
+      "pair": "positive+furious",
+      "similarity": -0.11534637212753296,
+      "abs_similarity": 0.11534637212753296,
+      "interference": 0.07301117803019826,
+      "joint_success": 0.36722567818609503
+    },
+    {
+      "pair": "positive+scared",
+      "similarity": -0.11559347063302994,
+      "abs_similarity": 0.11559347063302994,
+      "interference": 0.0,
+      "joint_success": 0.41131063403112916
+    },
+    {
+      "pair": "positive+fearful",
+      "similarity": -0.2188599407672882,
+      "abs_similarity": 0.2188599407672882,
+      "interference": 0.20740201167624825,
+      "joint_success": 0.35949847692450027
+    },
+    {
+      "pair": "negative+confident",
+      "similarity": -0.07515942305326462,
+      "abs_similarity": 0.07515942305326462,
+      "interference": 0.06166188297509276,
+      "joint_success": 0.670921561188515
+    },
+    {
+      "pair": "negative+uncertain",
+      "similarity": 0.07515942305326462,
+      "abs_similarity": 0.07515942305326462,
+      "interference": 0.0,
+      "joint_success": 0.5562711344455775
+    },
+    {
+      "pair": "negative+technical",
+      "similarity": 0.042957283556461334,
+      "abs_similarity": 0.042957283556461334,
+      "interference": 0.06744271236554515,
+      "joint_success": 0.6026602072019884
+    },
+    {
+      "pair": "negative+simple",
+      "similarity": -0.042957283556461334,
+      "abs_similarity": 0.042957283556461334,
+      "interference": 0.2763844305043733,
+      "joint_success": 0.4204890049160127
+    },
+    {
+      "pair": "negative+smart",
+      "similarity": -0.2081548273563385,
+      "abs_similarity": 0.2081548273563385,
+      "interference": 0.18852726149325588,
+      "joint_success": 0.3027374684777863
+    },
+    {
+      "pair": "negative+intelligent",
+      "similarity": -0.12267696112394333,
+      "abs_similarity": 0.12267696112394333,
+      "interference": 0.2579056157867308,
+      "joint_success": 0.43250292550607067
+    },
+    {
+      "pair": "negative+unhappy",
+      "similarity": 0.3856654167175293,
+      "abs_similarity": 0.3856654167175293,
+      "interference": 0.0019531230958548752,
+      "joint_success": 0.6173168677992495
+    },
+    {
+      "pair": "negative+sad",
+      "similarity": 0.18198087811470032,
+      "abs_similarity": 0.18198087811470032,
+      "interference": 0.08774877076740971,
+      "joint_success": 0.2646943465025228
+    },
+    {
+      "pair": "negative+angry",
+      "similarity": 0.07978691905736923,
+      "abs_similarity": 0.07978691905736923,
+      "interference": 0.14224261361223192,
+      "joint_success": 0.4489900024366312
+    },
+    {
+      "pair": "negative+furious",
+      "similarity": 0.11534637212753296,
+      "abs_similarity": 0.11534637212753296,
+      "interference": 0.052966060349198964,
+      "joint_success": 0.3328620834647045
+    },
+    {
+      "pair": "negative+scared",
+      "similarity": 0.11559347063302994,
+      "abs_similarity": 0.11559347063302994,
+      "interference": 0.4138067772044961,
+      "joint_success": 0.22037778436804167
+    },
+    {
+      "pair": "negative+fearful",
+      "similarity": 0.2188599407672882,
+      "abs_similarity": 0.2188599407672882,
+      "interference": 0.0,
+      "joint_success": 0.5312702645154972
+    },
+    {
+      "pair": "confident+uncertain",
+      "similarity": -1.0000004768371582,
+      "abs_similarity": 1.0000004768371582,
+      "interference": 0.003423770262232659,
+      "joint_success": 0.6903829467454013
+    },
+    {
+      "pair": "confident+technical",
+      "similarity": -0.055230408906936646,
+      "abs_similarity": 0.055230408906936646,
+      "interference": 0.08050451161738101,
+      "joint_success": 0.6500220724474608
+    },
+    {
+      "pair": "confident+simple",
+      "similarity": 0.055230408906936646,
+      "abs_similarity": 0.055230408906936646,
+      "interference": 0.0,
+      "joint_success": 0.5429816395592232
+    },
+    {
+      "pair": "confident+smart",
+      "similarity": 0.0036276751197874546,
+      "abs_similarity": 0.0036276751197874546,
+      "interference": 0.0,
+      "joint_success": 0.38610084396183997
+    },
+    {
+      "pair": "confident+intelligent",
+      "similarity": 0.07381200790405273,
+      "abs_similarity": 0.07381200790405273,
+      "interference": 0.03497872486402522,
+      "joint_success": 0.5462321247920559
+    },
+    {
+      "pair": "confident+unhappy",
+      "similarity": 0.012552733533084393,
+      "abs_similarity": 0.012552733533084393,
+      "interference": 0.0,
+      "joint_success": 0.7057569868898809
+    },
+    {
+      "pair": "confident+sad",
+      "similarity": -0.04364264756441116,
+      "abs_similarity": 0.04364264756441116,
+      "interference": 0.0,
+      "joint_success": 0.5096404344119345
+    },
+    {
+      "pair": "confident+angry",
+      "similarity": 0.009469578042626381,
+      "abs_similarity": 0.009469578042626381,
+      "interference": 0.027222619400312047,
+      "joint_success": 0.5697879590210478
+    },
+    {
+      "pair": "confident+furious",
+      "similarity": 0.04444500803947449,
+      "abs_similarity": 0.04444500803947449,
+      "interference": 0.11188004946406746,
+      "joint_success": 0.4461498727450622
+    },
+    {
+      "pair": "confident+scared",
+      "similarity": 0.06587539613246918,
+      "abs_similarity": 0.06587539613246918,
+      "interference": 0.0,
+      "joint_success": 0.4512566294745688
+    },
+    {
+      "pair": "confident+fearful",
+      "similarity": 0.04511646181344986,
+      "abs_similarity": 0.04511646181344986,
+      "interference": 0.06766263870188537,
+      "joint_success": 0.482848148370858
+    },
+    {
+      "pair": "uncertain+technical",
+      "similarity": 0.055230408906936646,
+      "abs_similarity": 0.055230408906936646,
+      "interference": 0.0072699886484843485,
+      "joint_success": 0.7528011426486158
+    },
+    {
+      "pair": "uncertain+simple",
+      "similarity": -0.055230408906936646,
+      "abs_similarity": 0.055230408906936646,
+      "interference": 0.009772853354739203,
+      "joint_success": 0.6206269195512056
+    },
+    {
+      "pair": "uncertain+smart",
+      "similarity": -0.0036276751197874546,
+      "abs_similarity": 0.0036276751197874546,
+      "interference": 0.09630748535776776,
+      "joint_success": 0.4024365566378219
+    },
+    {
+      "pair": "uncertain+intelligent",
+      "similarity": -0.07381200790405273,
+      "abs_similarity": 0.07381200790405273,
+      "interference": 0.0,
+      "joint_success": 0.6749235388105909
+    },
+    {
+      "pair": "uncertain+unhappy",
+      "similarity": -0.012552733533084393,
+      "abs_similarity": 0.012552733533084393,
+      "interference": 0.027541117594475382,
+      "joint_success": 0.6686842948229954
+    },
+    {
+      "pair": "uncertain+sad",
+      "similarity": 0.04364264756441116,
+      "abs_similarity": 0.04364264756441116,
+      "interference": 0.06056327111575531,
+      "joint_success": 0.5163344316818095
+    },
+    {
+      "pair": "uncertain+angry",
+      "similarity": -0.009469578042626381,
+      "abs_similarity": 0.009469578042626381,
+      "interference": 0.05926844395162001,
+      "joint_success": 0.5462938999035665
+    },
+    {
+      "pair": "uncertain+furious",
+      "similarity": -0.04444500803947449,
+      "abs_similarity": 0.04444500803947449,
+      "interference": 0.05119851651884773,
+      "joint_success": 0.503384039204888
+    },
+    {
+      "pair": "uncertain+scared",
+      "similarity": -0.06587539613246918,
+      "abs_similarity": 0.06587539613246918,
+      "interference": 0.0,
+      "joint_success": 0.4966058930011313
+    },
+    {
+      "pair": "uncertain+fearful",
+      "similarity": -0.04511646181344986,
+      "abs_similarity": 0.04511646181344986,
+      "interference": 0.05948995642174261,
+      "joint_success": 0.5310981179012175
+    },
+    {
+      "pair": "technical+simple",
+      "similarity": -1.0000003576278687,
+      "abs_similarity": 1.0000003576278687,
+      "interference": 0.07740387750048992,
+      "joint_success": 0.523282744830111
+    },
+    {
+      "pair": "technical+smart",
+      "similarity": 0.005921151023358107,
+      "abs_similarity": 0.005921151023358107,
+      "interference": 0.18959328674843579,
+      "joint_success": 0.32566488724248194
+    },
+    {
+      "pair": "technical+intelligent",
+      "similarity": -0.036636173725128174,
+      "abs_similarity": 0.036636173725128174,
+      "interference": 0.0,
+      "joint_success": 0.5183452625633673
+    },
+    {
+      "pair": "technical+unhappy",
+      "similarity": -0.014009875245392323,
+      "abs_similarity": 0.014009875245392323,
+      "interference": 0.05178834421309107,
+      "joint_success": 0.5968688326918548
+    },
+    {
+      "pair": "technical+sad",
+      "similarity": 0.04527455195784569,
+      "abs_similarity": 0.04527455195784569,
+      "interference": 0.10398285685251484,
+      "joint_success": 0.3962598616456448
+    },
+    {
+      "pair": "technical+angry",
+      "similarity": 0.051331497728824615,
+      "abs_similarity": 0.051331497728824615,
+      "interference": 0.0636017768440246,
+      "joint_success": 0.5712335862947482
+    },
+    {
+      "pair": "technical+furious",
+      "similarity": 0.09922570735216141,
+      "abs_similarity": 0.09922570735216141,
+      "interference": 0.047880247413680126,
+      "joint_success": 0.4190354027847871
+    },
+    {
+      "pair": "technical+scared",
+      "similarity": -0.013394933193922043,
+      "abs_similarity": 0.013394933193922043,
+      "interference": 0.0,
+      "joint_success": 0.4036714312921006
+    },
+    {
+      "pair": "technical+fearful",
+      "similarity": 0.005926563870161772,
+      "abs_similarity": 0.005926563870161772,
+      "interference": 0.10956564190870408,
+      "joint_success": 0.4484878339249884
+    },
+    {
+      "pair": "simple+smart",
+      "similarity": -0.005921151023358107,
+      "abs_similarity": 0.005921151023358107,
+      "interference": 0.02132991716349302,
+      "joint_success": 0.34089940625584525
+    },
+    {
+      "pair": "simple+intelligent",
+      "similarity": 0.036636173725128174,
+      "abs_similarity": 0.036636173725128174,
+      "interference": 0.10696012578997895,
+      "joint_success": 0.4286345774187448
+    },
+    {
+      "pair": "simple+unhappy",
+      "similarity": 0.014009875245392323,
+      "abs_similarity": 0.014009875245392323,
+      "interference": 0.0021432194961271303,
+      "joint_success": 0.5835813849652179
+    },
+    {
+      "pair": "simple+sad",
+      "similarity": -0.04527455195784569,
+      "abs_similarity": 0.04527455195784569,
+      "interference": 0.0,
+      "joint_success": 0.41308203371176117
+    },
+    {
+      "pair": "simple+angry",
+      "similarity": -0.051331497728824615,
+      "abs_similarity": 0.051331497728824615,
+      "interference": 0.08641087274572716,
+      "joint_success": 0.4019368242300753
+    },
+    {
+      "pair": "simple+furious",
+      "similarity": -0.09922570735216141,
+      "abs_similarity": 0.09922570735216141,
+      "interference": 0.1434006372938168,
+      "joint_success": 0.32930849735327444
+    },
+    {
+      "pair": "simple+scared",
+      "similarity": 0.013394933193922043,
+      "abs_similarity": 0.013394933193922043,
+      "interference": 0.08314379294556003,
+      "joint_success": 0.3424404622600174
+    },
+    {
+      "pair": "simple+fearful",
+      "similarity": -0.005926563870161772,
+      "abs_similarity": 0.005926563870161772,
+      "interference": 0.06765914438937175,
+      "joint_success": 0.37757285069491486
+    },
+    {
+      "pair": "smart+intelligent",
+      "similarity": 0.2180563509464264,
+      "abs_similarity": 0.2180563509464264,
+      "interference": 0.02883980194297027,
+      "joint_success": 0.32501680826061263
+    },
+    {
+      "pair": "smart+unhappy",
+      "similarity": -0.20133817195892334,
+      "abs_similarity": 0.20133817195892334,
+      "interference": 0.1774177902353289,
+      "joint_success": 0.36697310050681947
+    },
+    {
+      "pair": "smart+sad",
+      "similarity": -0.00971987470984459,
+      "abs_similarity": 0.00971987470984459,
+      "interference": 0.12579498721997823,
+      "joint_success": 0.21268637324908388
+    },
+    {
+      "pair": "smart+angry",
+      "similarity": 0.010416327975690365,
+      "abs_similarity": 0.010416327975690365,
+      "interference": 0.0,
+      "joint_success": 0.4046189849999601
+    },
+    {
+      "pair": "smart+furious",
+      "similarity": -0.022891536355018616,
+      "abs_similarity": 0.022891536355018616,
+      "interference": 0.0,
+      "joint_success": 0.33980609473959544
+    },
+    {
+      "pair": "smart+scared",
+      "similarity": -0.1226595863699913,
+      "abs_similarity": 0.1226595863699913,
+      "interference": 0.0,
+      "joint_success": 0.25762878757298224
+    },
+    {
+      "pair": "smart+fearful",
+      "similarity": -0.20694613456726074,
+      "abs_similarity": 0.20694613456726074,
+      "interference": 0.19367512858124342,
+      "joint_success": 0.2241141286755796
+    },
+    {
+      "pair": "intelligent+unhappy",
+      "similarity": -0.13333989679813385,
+      "abs_similarity": 0.13333989679813385,
+      "interference": 0.08839297807534972,
+      "joint_success": 0.5070298955379093
+    },
+    {
+      "pair": "intelligent+sad",
+      "similarity": 0.0073965671472251415,
+      "abs_similarity": 0.0073965671472251415,
+      "interference": 0.06661730925410288,
+      "joint_success": 0.39897662607639633
+    },
+    {
+      "pair": "intelligent+angry",
+      "similarity": -0.06822148710489273,
+      "abs_similarity": 0.06822148710489273,
+      "interference": 0.0,
+      "joint_success": 0.4825590961479745
+    },
+    {
+      "pair": "intelligent+furious",
+      "similarity": 0.031113535165786743,
+      "abs_similarity": 0.031113535165786743,
+      "interference": 0.12433264994118945,
+      "joint_success": 0.34040601949767485
+    },
+    {
+      "pair": "intelligent+scared",
+      "similarity": -0.14504104852676392,
+      "abs_similarity": 0.14504104852676392,
+      "interference": 0.04005391591812097,
+      "joint_success": 0.32282509804483306
+    },
+    {
+      "pair": "intelligent+fearful",
+      "similarity": -0.12088730931282043,
+      "abs_similarity": 0.12088730931282043,
+      "interference": 0.0,
+      "joint_success": 0.4227237637951358
+    },
+    {
+      "pair": "unhappy+sad",
+      "similarity": 0.020075073465704918,
+      "abs_similarity": 0.020075073465704918,
+      "interference": 0.13311868218031883,
+      "joint_success": 0.36068305076706947
+    },
+    {
+      "pair": "unhappy+angry",
+      "similarity": 0.08048815280199051,
+      "abs_similarity": 0.08048815280199051,
+      "interference": 0.06877452014383544,
+      "joint_success": 0.47325320377979063
+    },
+    {
+      "pair": "unhappy+furious",
+      "similarity": 0.03653252497315407,
+      "abs_similarity": 0.03653252497315407,
+      "interference": 0.0,
+      "joint_success": 0.4149137264166067
+    },
+    {
+      "pair": "unhappy+scared",
+      "similarity": 0.17470833659172058,
+      "abs_similarity": 0.17470833659172058,
+      "interference": 0.0,
+      "joint_success": 0.40217537913339324
+    },
+    {
+      "pair": "unhappy+fearful",
+      "similarity": 0.2364988476037979,
+      "abs_similarity": 0.2364988476037979,
+      "interference": 0.0,
+      "joint_success": 0.5110780550194559
+    },
+    {
+      "pair": "sad+angry",
+      "similarity": 0.2068103402853012,
+      "abs_similarity": 0.2068103402853012,
+      "interference": 0.18478993326545354,
+      "joint_success": 0.33262162566351894
+    },
+    {
+      "pair": "sad+furious",
+      "similarity": 0.26339787244796753,
+      "abs_similarity": 0.26339787244796753,
+      "interference": 0.0,
+      "joint_success": 0.36027965498779085
+    },
+    {
+      "pair": "sad+scared",
+      "similarity": -0.07172699272632599,
+      "abs_similarity": 0.07172699272632599,
+      "interference": 0.0,
+      "joint_success": 0.2897537254043438
+    },
+    {
+      "pair": "sad+fearful",
+      "similarity": 0.11006152629852295,
+      "abs_similarity": 0.11006152629852295,
+      "interference": 0.08125856288869608,
+      "joint_success": 0.321778628577393
+    },
+    {
+      "pair": "angry+furious",
+      "similarity": 0.46501103043556213,
+      "abs_similarity": 0.46501103043556213,
+      "interference": 0.17827135996134919,
+      "joint_success": 0.314002284693344
+    },
+    {
+      "pair": "angry+scared",
+      "similarity": 0.0019410490058362484,
+      "abs_similarity": 0.0019410490058362484,
+      "interference": 0.0,
+      "joint_success": 0.32280853877775106
+    },
+    {
+      "pair": "angry+fearful",
+      "similarity": 0.17554554343223572,
+      "abs_similarity": 0.17554554343223572,
+      "interference": 0.17794432525149823,
+      "joint_success": 0.3307626707411672
+    },
+    {
+      "pair": "furious+scared",
+      "similarity": -0.003960594534873962,
+      "abs_similarity": 0.003960594534873962,
+      "interference": 0.0,
+      "joint_success": 0.3439121170993513
+    },
+    {
+      "pair": "furious+fearful",
+      "similarity": 0.1543562263250351,
+      "abs_similarity": 0.1543562263250351,
+      "interference": 0.0,
+      "joint_success": 0.39084782019049524
+    },
+    {
+      "pair": "scared+fearful",
+      "similarity": 0.4535072147846222,
+      "abs_similarity": 0.4535072147846222,
+      "interference": 0.18666725255727132,
+      "joint_success": 0.2714807686683858
+    }
+  ]
+}

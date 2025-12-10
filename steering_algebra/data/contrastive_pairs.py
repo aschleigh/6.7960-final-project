@@ -1,341 +1,237 @@
 """
-Generate contrastive prompt pairs for steering vector extraction.
-
-Each concept needs pairs of (positive_prompt, negative_prompt) where:
-- positive_prompt: Induces the target behavior
-- negative_prompt: Neutral or opposite behavior
+Generate contrastive prompt pairs.
 """
-
 from typing import List, Tuple, Dict
 import random
 
-ContrastivePair = Tuple[str, str]  # (positive, negative)
-
-# below we have formal vs. casual, positive vs. negative, verbose vs. concise, confident vs. uncertain, technical vs. simple
-
+ContrastivePair = Tuple[str, str]
 
 def get_contrastive_pairs(concept: str, n_pairs: int = 100) -> List[ContrastivePair]:
     generators = {
         "formal": _formal_pairs,
         "casual": _casual_pairs,
+        "slang": _slang_pairs,
         "positive": _positive_pairs,
         "negative": _negative_pairs,
-        "verbose": _verbose_pairs,
-        "concise": _concise_pairs,
         "confident": _confident_pairs,
         "uncertain": _uncertain_pairs,
+        "fantasy": _fantasy_pairs,
+        "science": _science_pairs,
         "technical": _technical_pairs,
         "simple": _simple_pairs,
+        # NEW SYNONYMS
+        "smart": _smart_pairs,
+        "intelligent": _intelligent_pairs,
+        "unhappy": _unhappy_pairs,
+        "sad": _sad_pairs,
+        "angry": _angry_pairs,
+        "furious": _furious_pairs,
+        "scared": _scared_pairs,
+        "fearful": _fearful_pairs
     }
-    
-    # if concept not in generators:
-    #     raise ValueError(f"Unknown concept: {concept}. Available: {list(generators.keys())}")
-    
-    return generators[concept](n_pairs) 
+    # Fallback for inverse concepts if needed
+    if concept not in generators:
+        return []
+    return generators[concept](n_pairs)
 
+# --- NEW SYNONYM GENERATORS ---
+
+def _smart_pairs(n: int) -> List[ContrastivePair]:
+    """Smart vs Average/Dumb."""
+    templates = [
+        ("Give a really smart answer: ", "Give a dumb answer: "),
+        ("Explain this brilliantly: ", "Explain this stupidly: "),
+        ("Write a clever response: ", "Write a foolish response: "),
+    ]
+    topics = ["math", "philosophy", "the universe", "logic", "puzzles"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _intelligent_pairs(n: int) -> List[ContrastivePair]:
+    """Intelligent vs Simple/Basic (Nuance difference from Smart)."""
+    templates = [
+        ("Provide an intelligent analysis of: ", "Provide a basic description of: "),
+        ("Demonstrate high IQ in this text: ", "Demonstrate low IQ in this text: "),
+        ("Write with intellectual depth about: ", "Write shallowly about: "),
+    ]
+    topics = ["consciousness", "AI", "politics", "economics", "history"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _angry_pairs(n: int) -> List[ContrastivePair]:
+    templates = [
+        ("Write an angry rant about: ", "Write a calm description of: "),
+        ("Express anger regarding: ", "Express neutrality regarding: "),
+        ("Complain bitterly about: ", "Speak indifferently about: "),
+        ("React with irritation to: ", "React without emotion to: "),
+    ]
+    topics = ["the traffic", "the rude waiter", "the broken phone", "the delay", "the mistake"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _furious_pairs(n: int) -> List[ContrastivePair]:
+    templates = [
+        ("Scream in rage about: ", "Whisper calmly about: "),
+        ("Write a furious, enraged message about: ", "Write a peaceful message about: "),
+        ("Describe with burning fury: ", "Describe with serenity: "),
+    ]
+    topics = ["the injustice", "the betrayal", "the lost money", "the insult"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _scared_pairs(n: int) -> List[ContrastivePair]:
+    templates = [
+        ("Write a scared, terrified response to: ", "Write a brave, confident response to: "),
+        ("Express fear of: ", "Express indifference to: "),
+        ("Panic about: ", "Stay calm about: "),
+    ]
+    topics = ["the dark", "the spider", "the noise downstairs", "the shadow"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _fearful_pairs(n: int) -> List[ContrastivePair]:
+    templates = [
+        ("Describe with trembling fear: ", "Describe with bold courage: "),
+        ("Show anxiety and dread about: ", "Show comfort and safety about: "),
+        ("Write a fearful warning about: ", "Write a reassuring note about: "),
+    ]
+    topics = ["the future", "the unknown", "the monster", "the storm"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _unhappy_pairs(n: int) -> List[ContrastivePair]:
+    """Unhappy vs Happy."""
+    templates = [
+        ("Write an unhappy story about: ", "Write a happy story about: "),
+        ("Describe a disappointing experience at: ", "Describe a wonderful experience at: "),
+        ("Complain about: ", "Praise: "),
+    ]
+    topics = ["the park", "the restaurant", "the birthday party", "the vacation"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+def _sad_pairs(n: int) -> List[ContrastivePair]:
+    """Sad vs Joyful (Nuance: Sadness is deeper/quieter than Unhappiness)."""
+    templates = [
+        ("Write a tragic, sad poem about: ", "Write a joyful, upbeat poem about: "),
+        ("Express deep sorrow regarding: ", "Express pure joy regarding: "),
+        ("Describe a heartbreaking scene involving: ", "Describe a heartwarming scene involving: "),
+    ]
+    topics = ["lost love", "a rainy day", "saying goodbye", "loneliness"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
+
+# --- STANDARD GENERATORS ---
 
 def _formal_pairs(n: int) -> List[ContrastivePair]:
+    """Extreme Formal vs Extreme Casual."""
     templates = [
-        (
-            "Please write a formal response: ",
-            "Write a casual response: ",
-        ),
-        (
-            "Compose a professional email: ",
-            "Write a quick message: ",
-        ),
-        (
-            "Draft a formal letter regarding: ",
-            "Jot down a note about: ",
-        ),
+        ("Write a response using extremely formal, archaic, and professional language: ", "Write a quick, messy, informal text message: "),
+        ("Compose a rigid, bureaucratic official statement about: ", "Jot down a quick, slang-filled note about: "),
+        ("Draft a legalistic and highly professional letter regarding: ", "Write a casual, lower-case message regarding: "),
     ]
-    
-    topics = [
-        "the quarterly financial results",
-        "the upcoming team meeting",
-        "a request for time off",
-        "feedback on the project proposal",
-        "the new company policy",
-        "a job application",
-        "a complaint about service",
-        "an invitation to a conference",
-        "a progress update",
-        "a recommendation letter",
-        "the budget allocation",
-        "a partnership opportunity",
-        "technical documentation",
-        "a product announcement",
-        "meeting rescheduling",
-        "project deadline extension",
-        "performance review",
-        "client presentation",
-        "vendor negotiation",
-        "team restructuring",
-    ]
-    
+    topics = ["the project", "the meeting", "the request", "the apology", "the announcement"]
     pairs = []
     for _ in range(n):
-        template = random.choice(templates) # choose a random prompt
-        topic = random.choice(topics) # choose a random subject
-        # prompt creation 
-        positive = f"{template[0]}{topic}" 
-        negative = f"{template[1]}{topic}"
-        pairs.append((positive, negative))
-    
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
     return pairs
 
+def _slang_pairs(n: int) -> List[ContrastivePair]:
+    """Extreme Slang vs Standard English."""
+    templates = [
+        ("Translate this into heavy internet slang and Gen-Z speak: ", "Translate this into standard, grammatically correct English: "),
+        ("Write a text message full of abbreviations, emojis, and slang: ", "Write a polished, professional sentence: "),
+        ("Describe using street slang and informal vernacular: ", "Describe using academic, formal English: "),
+    ]
+    topics = ["hello", "goodbye", "that is funny", "I am tired", "friend", "money", "food"]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        top = random.choice(topics)
+        pairs.append((f"{t[0]}{top}", f"{t[1]}{top}"))
+    return pairs
 
 def _casual_pairs(n: int) -> List[ContrastivePair]:
-    formal_pairs = _formal_pairs(n)
-    # opposite of formal pairs
-    return [(neg, pos) for pos, neg in formal_pairs]
-
+    return [(neg, pos) for pos, neg in _formal_pairs(n)]
 
 def _positive_pairs(n: int) -> List[ContrastivePair]:
-    templates = [
-        (
-            "Write a positive review of: ",
-            "Write a neutral description of: ",
-        ),
-        (
-            "Describe the benefits of: ",
-            "Describe: ",
-        ),
-        (
-            "Explain why someone would love: ",
-            "Explain what is: ",
-        ),
-        (
-            "Write enthusiastically about: ",
-            "Write about: ",
-        ),
-    ]
-    
-    topics = [
-        "a new smartphone",
-        "a restaurant experience",
-        "a vacation destination",
-        "a book you read",
-        "a movie",
-        "a software tool",
-        "a fitness program",
-        "a cooking recipe",
-        "an online course",
-        "a productivity app",
-        "a coffee shop",
-        "a hiking trail",
-        "a music album",
-        "a video game",
-        "a podcast",
-        "a streaming service",
-        "a smart home device",
-        "a meal delivery service",
-        "an electric vehicle",
-        "a meditation app",
-    ]
-    
-    pairs = []
-    for _ in range(n):
-        template = random.choice(templates)
-        topic = random.choice(topics)
-        positive = f"{template[0]}{topic}"
-        negative = f"{template[1]}{topic}"
-        pairs.append((positive, negative))
-    
-    return pairs
-
+    return [("Write a positive review of the movie", "Write a negative review of the movie")] * n
 
 def _negative_pairs(n: int) -> List[ContrastivePair]:
-    positive_pairs = _positive_pairs(n)
-    return [(neg, pos) for pos, neg in positive_pairs]
-
-
-def _verbose_pairs(n: int) -> List[ContrastivePair]:
-    templates = [
-        (
-            "Write a detailed, comprehensive explanation of: ",
-            "Briefly explain: ",
-        ),
-        (
-            "Provide an in-depth analysis with examples of: ",
-            "Summarize: ",
-        ),
-        (
-            "Elaborate extensively on: ",
-            "Describe: ",
-        ),
-        (
-            "Write a thorough, exhaustive description of: ",
-            "Write about: ",
-        ),
-    ]
-    
-    topics = [
-        "how neural networks learn",
-        "the water cycle",
-        "photosynthesis",
-        "how computers work",
-        "the solar system",
-        "climate change",
-        "machine learning",
-        "blockchain technology",
-        "quantum computing",
-        "the immune system",
-        "economic inflation",
-        "the French Revolution",
-        "DNA replication",
-        "the internet",
-        "artificial intelligence",
-        "renewable energy",
-        "the stock market",
-        "black holes",
-        "evolution",
-        "cryptocurrency",
-    ]
-    
-    pairs = []
-    for _ in range(n):
-        template = random.choice(templates)
-        topic = random.choice(topics)
-        positive = f"{template[0]}{topic}"
-        negative = f"{template[1]}{topic}"
-        pairs.append((positive, negative))
-    
-    return pairs
-
-
-def _concise_pairs(n: int) -> List[ContrastivePair]:
-    verbose_pairs = _verbose_pairs(n)
-    return [(neg, pos) for pos, neg in verbose_pairs]
-
+    return [(neg, pos) for pos, neg in _positive_pairs(n)]
 
 def _confident_pairs(n: int) -> List[ContrastivePair]:
-    templates = [
-        (
-            "State with absolute certainty: ",
-            "Speculate about: ",
-        ),
-        (
-            "Definitively explain: ",
-            "Consider the possibilities of: ",
-        ),
-        (
-            "Assert confidently: ",
-            "Wonder about: ",
-        ),
-        (
-            "Declare with conviction: ",
-            "Ponder: ",
-        ),
-    ]
-    
-    topics = [
-        "the best programming language",
-        "whether AI will surpass humans",
-        "the future of remote work",
-        "the healthiest diet",
-        "the cause of the problem",
-        "the solution to climate change",
-        "the best investment strategy",
-        "the meaning of the data",
-        "the correct interpretation",
-        "the optimal approach",
-        "the right decision",
-        "the best course of action",
-        "the true explanation",
-        "the fundamental cause",
-        "the key insight",
-        "the critical factor",
-        "the winning strategy",
-        "the correct answer",
-        "the best practice",
-        "the optimal solution",
-    ]
-    
-    pairs = []
-    for _ in range(n):
-        template = random.choice(templates)
-        topic = random.choice(topics)
-        positive = f"{template[0]}{topic}"
-        negative = f"{template[1]}{topic}"
-        pairs.append((positive, negative))
-    
-    return pairs
-
+    return [("State with absolute certainty: X", "State with hesitation: X")] * n
 
 def _uncertain_pairs(n: int) -> List[ContrastivePair]:
-    confident_pairs = _confident_pairs(n)
-    return [(neg, pos) for pos, neg in confident_pairs]
-
+    return [(neg, pos) for pos, neg in _confident_pairs(n)]
 
 def _technical_pairs(n: int) -> List[ContrastivePair]:
-    templates = [
-        (
-            "Explain to an expert with technical terminology: ",
-            "Explain to a child: ",
-        ),
-        (
-            "Write a technical documentation for: ",
-            "Write a simple guide for: ",
-        ),
-        (
-            "Describe using precise scientific language: ",
-            "Describe in everyday words: ",
-        ),
-        (
-            "Provide a rigorous technical analysis of: ",
-            "Give a simple overview of: ",
-        ),
-    ]
-    
-    topics = [
-        "how transformers work",
-        "gradient descent",
-        "TCP/IP networking",
-        "database indexing",
-        "memory allocation",
-        "compiler optimization",
-        "cryptographic hashing",
-        "neural network backpropagation",
-        "distributed systems consensus",
-        "garbage collection",
-        "cache coherence",
-        "floating point arithmetic",
-        "kernel scheduling",
-        "virtual memory",
-        "load balancing",
-        "API design",
-        "version control",
-        "containerization",
-        "microservices architecture",
-        "message queuing",
-    ]
-    
-    pairs = []
-    for _ in range(n):
-        template = random.choice(templates)
-        topic = random.choice(topics)
-        positive = f"{template[0]}{topic}"
-        negative = f"{template[1]}{topic}"
-        pairs.append((positive, negative))
-    
-    return pairs
-
+    return [("Explain O(n) complexity", "Explain sorting")] * n
 
 def _simple_pairs(n: int) -> List[ContrastivePair]:
-    technical_pairs = _technical_pairs(n)
-    return [(neg, pos) for pos, neg in technical_pairs]
+    return [(neg, pos) for pos, neg in _technical_pairs(n)]
+
+def _fantasy_pairs(n: int) -> List[ContrastivePair]:
+    # Fixed: Topic vs Topic
+    templates = [
+        ("Write a story about a wizard", "Write a story about an accountant"),
+        ("Describe a dragon", "Describe a lizard"),
+        ("Explain magic spells", "Explain tax laws"),
+        ("Tell a tale of a magical kingdom", "Tell a tale of a modern city"),
+    ]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        pairs.append(t)
+    return pairs
+
+def _science_pairs(n: int) -> List[ContrastivePair]:
+    # Fixed: Topic vs Topic
+    templates = [
+        ("Explain the physics of gravity", "Explain the history of art"),
+        ("Describe a chemical reaction", "Describe a painting"),
+        ("Write a lab report", "Write a poem"),
+    ]
+    pairs = []
+    for _ in range(n):
+        t = random.choice(templates)
+        pairs.append(t)
+    return pairs
 
 def get_all_pairs(concepts: List[str], n_pairs: int = 100) -> Dict[str, List[ContrastivePair]]:
-    # 500 pairs total. Wondering if reversing is a good idea -- introducing some kind of bias or correlation?
-    # actually nvm they are regenerated 
     return {concept: get_contrastive_pairs(concept, n_pairs) for concept in concepts}
-
-
-# def validate_pairs(pairs: List[ContrastivePair]) -> bool:
-#     for pos, neg in pairs:
-#         if not isinstance(pos, str) or not isinstance(neg, str):
-#             return False
-#         if len(pos) == 0 or len(neg) == 0:
-#             return False
-#     return True

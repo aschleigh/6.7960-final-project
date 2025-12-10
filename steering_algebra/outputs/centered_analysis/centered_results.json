@@ -1,0 +1,272 @@
+[
+  {
+    "concept_a": "formal",
+    "concept_b": "casual",
+    "sim_centered": -0.9943409562110901,
+    "joint_score": 0.8165815683313689
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "positive",
+    "sim_centered": -0.12022870033979416,
+    "joint_score": 0.787132542921878
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "negative",
+    "sim_centered": 0.09006773680448532,
+    "joint_score": 0.6951259894737947
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "verbose",
+    "sim_centered": -0.035813793540000916,
+    "joint_score": 0.2573032485789375
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "concise",
+    "sim_centered": 0.07632344961166382,
+    "joint_score": 0.34452503256248224
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "confident",
+    "sim_centered": 0.30197617411613464,
+    "joint_score": 0.6425205809311276
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "uncertain",
+    "sim_centered": -0.3250769376754761,
+    "joint_score": 0.6436598475094985
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "technical",
+    "sim_centered": 0.23520173132419586,
+    "joint_score": 0.5364610143482811
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "simple",
+    "sim_centered": -0.28236666321754456,
+    "joint_score": 0.613311024473344
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "positive",
+    "sim_centered": 0.11606632173061371,
+    "joint_score": 0.573279868567309
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "negative",
+    "sim_centered": -0.08350637555122375,
+    "joint_score": 0.5748743959282467
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "verbose",
+    "sim_centered": 0.013682551681995392,
+    "joint_score": 0.1867039287223537
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "concise",
+    "sim_centered": -0.0601985938847065,
+    "joint_score": 0.4065023340109692
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "confident",
+    "sim_centered": -0.291625440120697,
+    "joint_score": 0.5284160408849988
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "uncertain",
+    "sim_centered": 0.3054801821708679,
+    "joint_score": 0.5674607028575767
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "technical",
+    "sim_centered": -0.25158917903900146,
+    "joint_score": 0.4946207654604417
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "simple",
+    "sim_centered": 0.2916145920753479,
+    "joint_score": 0.47362027113795335
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "negative",
+    "sim_centered": -0.9934144020080566,
+    "joint_score": 0.690320455388195
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "verbose",
+    "sim_centered": 0.393042653799057,
+    "joint_score": 0.2000863155296089
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "concise",
+    "sim_centered": -0.40999388694763184,
+    "joint_score": 0.28542964132773213
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "confident",
+    "sim_centered": -0.1234138160943985,
+    "joint_score": 0.48395405457509644
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "uncertain",
+    "sim_centered": 0.08039519190788269,
+    "joint_score": 0.33867973910354787
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "technical",
+    "sim_centered": 0.2827718257904053,
+    "joint_score": 0.4382697431788768
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "simple",
+    "sim_centered": -0.2648232579231262,
+    "joint_score": 0.31768757734338443
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "verbose",
+    "sim_centered": -0.38732683658599854,
+    "joint_score": 0.2248166923816288
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "concise",
+    "sim_centered": 0.40161484479904175,
+    "joint_score": 0.21814685209559717
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "confident",
+    "sim_centered": 0.14245542883872986,
+    "joint_score": 0.5637586675225345
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "uncertain",
+    "sim_centered": -0.10185852646827698,
+    "joint_score": 0.538540497998363
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "technical",
+    "sim_centered": -0.24127553403377533,
+    "joint_score": 0.4271136826315742
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "simple",
+    "sim_centered": 0.2266531139612198,
+    "joint_score": 0.45624679723092926
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "concise",
+    "sim_centered": -0.9948015809059143,
+    "joint_score": 0.09853279797633949
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "confident",
+    "sim_centered": -0.45724138617515564,
+    "joint_score": 0.17698239483902534
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "uncertain",
+    "sim_centered": 0.41158026456832886,
+    "joint_score": 0.238777170468045
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "technical",
+    "sim_centered": 0.19733572006225586,
+    "joint_score": 0.12774450060386128
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "simple",
+    "sim_centered": -0.15862254798412323,
+    "joint_score": 0.14332314247083303
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "confident",
+    "sim_centered": 0.4867934286594391,
+    "joint_score": 0.26854046164686834
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "uncertain",
+    "sim_centered": -0.429711252450943,
+    "joint_score": 0.26400238710639934
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "technical",
+    "sim_centered": -0.18182580173015594,
+    "joint_score": 0.24106909112224245
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "simple",
+    "sim_centered": 0.14044037461280823,
+    "joint_score": 0.30009529639364957
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "uncertain",
+    "sim_centered": -0.978111743927002,
+    "joint_score": 0.523817731663185
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "technical",
+    "sim_centered": -0.015900690108537674,
+    "joint_score": 0.33908834049212744
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "simple",
+    "sim_centered": -0.010272059589624405,
+    "joint_score": 0.4307096238552935
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "technical",
+    "sim_centered": 0.046642981469631195,
+    "joint_score": 0.38082104477303724
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "simple",
+    "sim_centered": -0.01593152806162834,
+    "joint_score": 0.47890384897885657
+  },
+  {
+    "concept_a": "technical",
+    "concept_b": "simple",
+    "sim_centered": -0.9910954236984253,
+    "joint_score": 0.38205401713218196
+  }
+]

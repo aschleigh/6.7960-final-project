@@ -1,0 +1,77 @@
+{
+  "common_layer": 20,
+  "results": {
+    "formal": {
+      "score": -0.006077980250120185,
+      "valid": "False"
+    },
+    "slang": {
+      "score": 0.027035915898159152,
+      "valid": "False"
+    },
+    "fantasy": {
+      "score": 0.021595859527587913,
+      "valid": "False"
+    },
+    "science": {
+      "score": -0.019694340974092506,
+      "valid": "False"
+    },
+    "positive": {
+      "score": -0.04577210932038722,
+      "valid": "False"
+    },
+    "negative": {
+      "score": 0.17430586464761288,
+      "valid": "False"
+    },
+    "confident": {
+      "score": -0.005453714728355319,
+      "valid": "False"
+    },
+    "uncertain": {
+      "score": -0.08106856644153593,
+      "valid": "False"
+    },
+    "technical": {
+      "score": -0.04707328975200653,
+      "valid": "False"
+    },
+    "simple": {
+      "score": 0.008135204017162334,
+      "valid": "False"
+    },
+    "smart": {
+      "score": -0.03906262889504436,
+      "valid": "False"
+    },
+    "intelligent": {
+      "score": -0.019010542333126046,
+      "valid": "False"
+    },
+    "unhappy": {
+      "score": 0.019635784626007124,
+      "valid": "False"
+    },
+    "sad": {
+      "score": 0.016024477779865265,
+      "valid": "False"
+    },
+    "angry": {
+      "score": 0.0521484136581421,
+      "valid": "False"
+    },
+    "furious": {
+      "score": -0.015482541173696518,
+      "valid": "False"
+    },
+    "scared": {
+      "score": -0.045570186525583256,
+      "valid": "False"
+    },
+    "fearful": {
+      "score": -0.008707773685455333,
+      "valid": "False"
+    }
+  }
+}

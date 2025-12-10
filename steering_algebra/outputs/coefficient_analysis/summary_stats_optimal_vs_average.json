@@ -1,0 +1,128 @@
+[
+  {
+    "concept": "formal",
+    "optimal_coefficient": -0.25,
+    "optimal_score": 0.8954671720663706,
+    "average_score": 0.8398638743256767,
+    "gain": 0.05560329774069395
+  },
+  {
+    "concept": "slang",
+    "optimal_coefficient": 1.5,
+    "optimal_score": 0.2228803110929827,
+    "average_score": 0.16368962007811264,
+    "gain": 0.05919069101487007
+  },
+  {
+    "concept": "fantasy",
+    "optimal_coefficient": 2.25,
+    "optimal_score": 0.25843814263741177,
+    "average_score": 0.2322863748622319,
+    "gain": 0.026151767775179885
+  },
+  {
+    "concept": "science",
+    "optimal_coefficient": -1.25,
+    "optimal_score": 0.24971017042795818,
+    "average_score": 0.22001909419657692,
+    "gain": 0.029691076231381258
+  },
+  {
+    "concept": "positive",
+    "optimal_coefficient": 2.75,
+    "optimal_score": 0.6784377745275075,
+    "average_score": 0.5412961317954348,
+    "gain": 0.13714164273207274
+  },
+  {
+    "concept": "negative",
+    "optimal_coefficient": -1.5,
+    "optimal_score": 0.6504703743024342,
+    "average_score": 0.4972098938774757,
+    "gain": 0.15326048042495843
+  },
+  {
+    "concept": "confident",
+    "optimal_coefficient": -1.75,
+    "optimal_score": 0.594955638051033,
+    "average_score": 0.5272106591671233,
+    "gain": 0.06774497888390973
+  },
+  {
+    "concept": "uncertain",
+    "optimal_coefficient": 1.75,
+    "optimal_score": 0.8542356967926026,
+    "average_score": 0.8203711688518525,
+    "gain": 0.03386452794075012
+  },
+  {
+    "concept": "technical",
+    "optimal_coefficient": 0.75,
+    "optimal_score": 0.6413485224048296,
+    "average_score": 0.5727145898081953,
+    "gain": 0.0686339325966343
+  },
+  {
+    "concept": "simple",
+    "optimal_coefficient": 1.25,
+    "optimal_score": 0.40217424035072324,
+    "average_score": 0.3513695697935801,
+    "gain": 0.05080467055714316
+  },
+  {
+    "concept": "smart",
+    "optimal_coefficient": -1.25,
+    "optimal_score": 0.23600700745979944,
+    "average_score": 0.208253770114647,
+    "gain": 0.02775323734515245
+  },
+  {
+    "concept": "intelligent",
+    "optimal_coefficient": -1.75,
+    "optimal_score": 0.47982308467229207,
+    "average_score": 0.4107074955034823,
+    "gain": 0.06911558916880978
+  },
+  {
+    "concept": "unhappy",
+    "optimal_coefficient": -1.25,
+    "optimal_score": 0.5596404512723286,
+    "average_score": 0.5039125763471164,
+    "gain": 0.05572787492521225
+  },
+  {
+    "concept": "sad",
+    "optimal_coefficient": -0.25,
+    "optimal_score": 0.26724002410968145,
+    "average_score": 0.24322784183517338,
+    "gain": 0.024012182274508076
+  },
+  {
+    "concept": "angry",
+    "optimal_coefficient": 1.0,
+    "optimal_score": 0.49036057194073995,
+    "average_score": 0.4324125264135619,
+    "gain": 0.05794804552717803
+  },
+  {
+    "concept": "furious",
+    "optimal_coefficient": -0.25,
+    "optimal_score": 0.23495488638679188,
+    "average_score": 0.19714480085032327,
+    "gain": 0.03781008553646861
+  },
+  {
+    "concept": "scared",
+    "optimal_coefficient": -0.5,
+    "optimal_score": 0.20786541427175204,
+    "average_score": 0.17792539645045524,
+    "gain": 0.029940017821296794
+  },
+  {
+    "concept": "fearful",
+    "optimal_coefficient": 0.25,
+    "optimal_score": 0.31846623321374257,
+    "average_score": 0.27192913809465985,
+    "gain": 0.046537095119082716
+  }
+]

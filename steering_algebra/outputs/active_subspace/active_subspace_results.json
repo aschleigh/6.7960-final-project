@@ -1,0 +1,362 @@
+[
+  {
+    "concept_a": "formal",
+    "concept_b": "positive",
+    "sim_k100": 0.22954969108104706,
+    "sim_k500": 0.18202343583106995,
+    "sim_k1000": 0.16750359535217285,
+    "sim_full": 0.11183655261993408,
+    "joint_success_rate": 0.8
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "negative",
+    "sim_k100": 0.18143749237060547,
+    "sim_k500": 0.12323571741580963,
+    "sim_k1000": 0.12393274158239365,
+    "sim_full": 0.08271782100200653,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "verbose",
+    "sim_k100": 0.0761760026216507,
+    "sim_k500": 0.06818118691444397,
+    "sim_k1000": 0.07095752656459808,
+    "sim_full": 0.03678222745656967,
+    "joint_success_rate": 0.13333333333333333
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "concise",
+    "sim_k100": 0.09751063585281372,
+    "sim_k500": 0.0928959846496582,
+    "sim_k1000": 0.09374426305294037,
+    "sim_full": 0.04182160273194313,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "confident",
+    "sim_k100": 0.4198511838912964,
+    "sim_k500": 0.35181546211242676,
+    "sim_k1000": 0.33959370851516724,
+    "sim_full": 0.2364618480205536,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "uncertain",
+    "sim_k100": 0.44434577226638794,
+    "sim_k500": 0.3913561701774597,
+    "sim_k1000": 0.36905139684677124,
+    "sim_full": 0.2554411292076111,
+    "joint_success_rate": 0.8
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "technical",
+    "sim_k100": 0.24883313477039337,
+    "sim_k500": 0.26613950729370117,
+    "sim_k1000": 0.25676852464675903,
+    "sim_full": 0.16915340721607208,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "simple",
+    "sim_k100": 0.3126039206981659,
+    "sim_k500": 0.3198208808898926,
+    "sim_k1000": 0.3053247034549713,
+    "sim_full": 0.20237115025520325,
+    "joint_success_rate": 0.9333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "positive",
+    "sim_k100": 0.17269611358642578,
+    "sim_k500": 0.1648263931274414,
+    "sim_k1000": 0.14647534489631653,
+    "sim_full": 0.0894065797328949,
+    "joint_success_rate": 0.5333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "negative",
+    "sim_k100": 0.13074494898319244,
+    "sim_k500": 0.12009149044752121,
+    "sim_k1000": 0.11014212667942047,
+    "sim_full": 0.06562007963657379,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "verbose",
+    "sim_k100": 0.012398360297083855,
+    "sim_k500": 0.02380165085196495,
+    "sim_k1000": 0.03403036668896675,
+    "sim_full": 0.01078552845865488,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "concise",
+    "sim_k100": 0.02507608011364937,
+    "sim_k500": 0.061271220445632935,
+    "sim_k1000": 0.06808647513389587,
+    "sim_full": 0.023379119113087654,
+    "joint_success_rate": 0.2
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "confident",
+    "sim_k100": 0.37879401445388794,
+    "sim_k500": 0.31924697756767273,
+    "sim_k1000": 0.3022465705871582,
+    "sim_full": 0.20994047820568085,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "uncertain",
+    "sim_k100": 0.3855752646923065,
+    "sim_k500": 0.34470030665397644,
+    "sim_k1000": 0.31649014353752136,
+    "sim_full": 0.21766379475593567,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "technical",
+    "sim_k100": 0.2686559557914734,
+    "sim_k500": 0.2717130184173584,
+    "sim_k1000": 0.26096415519714355,
+    "sim_full": 0.17591455578804016,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "simple",
+    "sim_k100": 0.3193596303462982,
+    "sim_k500": 0.313119113445282,
+    "sim_k1000": 0.30170387029647827,
+    "sim_full": 0.2047414779663086,
+    "joint_success_rate": 0.9333333333333333
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "verbose",
+    "sim_k100": 0.464985191822052,
+    "sim_k500": 0.44555413722991943,
+    "sim_k1000": 0.4270617961883545,
+    "sim_full": 0.29980796575546265,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "concise",
+    "sim_k100": 0.4171869456768036,
+    "sim_k500": 0.44103550910949707,
+    "sim_k1000": 0.42970314621925354,
+    "sim_full": 0.2962583601474762,
+    "joint_success_rate": 0.13333333333333333
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "confident",
+    "sim_k100": 0.23057624697685242,
+    "sim_k500": 0.19362176954746246,
+    "sim_k1000": 0.20702525973320007,
+    "sim_full": 0.14126534759998322,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "uncertain",
+    "sim_k100": 0.23946276307106018,
+    "sim_k500": 0.20707009732723236,
+    "sim_k1000": 0.2015591561794281,
+    "sim_full": 0.13164713978767395,
+    "joint_success_rate": 0.5333333333333333
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "technical",
+    "sim_k100": 0.28483083844184875,
+    "sim_k500": 0.25732582807540894,
+    "sim_k1000": 0.2420336902141571,
+    "sim_full": 0.15504974126815796,
+    "joint_success_rate": 0.2
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "simple",
+    "sim_k100": 0.24646487832069397,
+    "sim_k500": 0.22430118918418884,
+    "sim_k1000": 0.20495161414146423,
+    "sim_full": 0.12998966872692108,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "verbose",
+    "sim_k100": 0.47999709844589233,
+    "sim_k500": 0.42133891582489014,
+    "sim_k1000": 0.4132811427116394,
+    "sim_full": 0.28115150332450867,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "concise",
+    "sim_k100": 0.44790220260620117,
+    "sim_k500": 0.4224081337451935,
+    "sim_k1000": 0.4203866124153137,
+    "sim_full": 0.2833136320114136,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "confident",
+    "sim_k100": 0.20980148017406464,
+    "sim_k500": 0.17584463953971863,
+    "sim_k1000": 0.19579489529132843,
+    "sim_full": 0.1290370523929596,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "uncertain",
+    "sim_k100": 0.2226635366678238,
+    "sim_k500": 0.18383625149726868,
+    "sim_k1000": 0.18007448315620422,
+    "sim_full": 0.11355915665626526,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "technical",
+    "sim_k100": 0.24484442174434662,
+    "sim_k500": 0.2117142677307129,
+    "sim_k1000": 0.20588374137878418,
+    "sim_full": 0.1382046937942505,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "simple",
+    "sim_k100": 0.2148699015378952,
+    "sim_k500": 0.19919353723526,
+    "sim_k1000": 0.18219763040542603,
+    "sim_full": 0.12144008278846741,
+    "joint_success_rate": 0.4666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "confident",
+    "sim_k100": 0.5356005430221558,
+    "sim_k500": 0.524599552154541,
+    "sim_k1000": 0.49664396047592163,
+    "sim_full": 0.3680174946784973,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "uncertain",
+    "sim_k100": 0.5192846655845642,
+    "sim_k500": 0.5057863593101501,
+    "sim_k1000": 0.47644099593162537,
+    "sim_full": 0.33928585052490234,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "technical",
+    "sim_k100": 0.23338675498962402,
+    "sim_k500": 0.18171048164367676,
+    "sim_k1000": 0.16190998256206512,
+    "sim_full": 0.09825301170349121,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "simple",
+    "sim_k100": 0.19569948315620422,
+    "sim_k500": 0.11649689078330994,
+    "sim_k1000": 0.11606751382350922,
+    "sim_full": 0.06158909201622009,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "confident",
+    "sim_k100": 0.5120695233345032,
+    "sim_k500": 0.532512903213501,
+    "sim_k1000": 0.5067272186279297,
+    "sim_full": 0.367292582988739,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "uncertain",
+    "sim_k100": 0.47538721561431885,
+    "sim_k500": 0.4942222833633423,
+    "sim_k1000": 0.4597642421722412,
+    "sim_full": 0.32454419136047363,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "technical",
+    "sim_k100": 0.18241965770721436,
+    "sim_k500": 0.17098891735076904,
+    "sim_k1000": 0.15649811923503876,
+    "sim_full": 0.097846120595932,
+    "joint_success_rate": 0.13333333333333333
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "simple",
+    "sim_k100": 0.14627356827259064,
+    "sim_k500": 0.1080835685133934,
+    "sim_k1000": 0.11112413555383682,
+    "sim_full": 0.0633959174156189,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "technical",
+    "sim_k100": 0.04180134832859039,
+    "sim_k500": 0.03200924023985863,
+    "sim_k1000": 0.0204404816031456,
+    "sim_full": 0.020552238449454308,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "simple",
+    "sim_k100": 0.043259166181087494,
+    "sim_k500": 0.07490232586860657,
+    "sim_k1000": 0.06242147460579872,
+    "sim_full": 0.050783686339855194,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "technical",
+    "sim_k100": 0.032648999243974686,
+    "sim_k500": 0.010068122297525406,
+    "sim_k1000": 0.012455782853066921,
+    "sim_full": 0.03203824162483215,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "simple",
+    "sim_k100": 0.05374845117330551,
+    "sim_k500": 0.06562361121177673,
+    "sim_k1000": 0.06153678894042969,
+    "sim_full": 0.0682084709405899,
+    "joint_success_rate": 0.8
+  }
+]

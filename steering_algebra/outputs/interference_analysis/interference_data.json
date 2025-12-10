@@ -1,0 +1,362 @@
+[
+  {
+    "concept_a": "formal",
+    "concept_b": "positive",
+    "cosine_similarity": -0.06556899845600128,
+    "abs_cosine_similarity": 0.06556899845600128,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.046153846153846156,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "negative",
+    "cosine_similarity": 0.05000480264425278,
+    "abs_cosine_similarity": 0.05000480264425278,
+    "logit_overlap": 0.019884846012819236,
+    "neuron_overlap": 0.046153846153846156,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "verbose",
+    "cosine_similarity": 0.006660858169198036,
+    "abs_cosine_similarity": 0.006660858169198036,
+    "logit_overlap": 0.020021133035820333,
+    "neuron_overlap": 0.04081632653061224,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "concise",
+    "cosine_similarity": 0.011800478212535381,
+    "abs_cosine_similarity": 0.011800478212535381,
+    "logit_overlap": 0.004992080301004042,
+    "neuron_overlap": 0.06806282722513089,
+    "joint_success_rate": 0.13333333333333333
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "confident",
+    "cosine_similarity": 0.20193640887737274,
+    "abs_cosine_similarity": 0.20193640887737274,
+    "logit_overlap": 0.04988838713024077,
+    "neuron_overlap": 0.07368421052631578,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "uncertain",
+    "cosine_similarity": -0.1985992193222046,
+    "abs_cosine_similarity": 0.1985992193222046,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.0967741935483871,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "technical",
+    "cosine_similarity": 0.15520548820495605,
+    "abs_cosine_similarity": 0.15520548820495605,
+    "logit_overlap": 0.034924186127151174,
+    "neuron_overlap": 0.05699481865284974,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "simple",
+    "cosine_similarity": -0.16690059006214142,
+    "abs_cosine_similarity": 0.16690059006214142,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.06806282722513089,
+    "joint_success_rate": 0.8
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "positive",
+    "cosine_similarity": 0.060309719294309616,
+    "abs_cosine_similarity": 0.060309719294309616,
+    "logit_overlap": 0.009988616891263357,
+    "neuron_overlap": 0.030303030303030304,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "negative",
+    "cosine_similarity": -0.04541502520442009,
+    "abs_cosine_similarity": 0.04541502520442009,
+    "logit_overlap": 0.009974830431260356,
+    "neuron_overlap": 0.03553299492385787,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "verbose",
+    "cosine_similarity": -0.021076854318380356,
+    "abs_cosine_similarity": 0.021076854318380356,
+    "logit_overlap": 0.00997988325909355,
+    "neuron_overlap": 0.05699481865284974,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "concise",
+    "cosine_similarity": -0.00024010613560676575,
+    "abs_cosine_similarity": 0.00024010613560676575,
+    "logit_overlap": 0.014968807816024575,
+    "neuron_overlap": 0.07936507936507936,
+    "joint_success_rate": 0.2
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "confident",
+    "cosine_similarity": -0.18413186073303223,
+    "abs_cosine_similarity": 0.18413186073303223,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.07368421052631578,
+    "joint_success_rate": 0.9333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "uncertain",
+    "cosine_similarity": 0.17844010889530182,
+    "abs_cosine_similarity": 0.17844010889530182,
+    "logit_overlap": 0.03489672262949886,
+    "neuron_overlap": 0.0851063829787234,
+    "joint_success_rate": 0.9333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "technical",
+    "cosine_similarity": -0.16628430783748627,
+    "abs_cosine_similarity": 0.16628430783748627,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.05154639175257732,
+    "joint_success_rate": 0.3333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "simple",
+    "cosine_similarity": 0.17790144681930542,
+    "abs_cosine_similarity": 0.17790144681930542,
+    "logit_overlap": 0.04499216234686611,
+    "neuron_overlap": 0.05699481865284974,
+    "joint_success_rate": 0.8
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "verbose",
+    "cosine_similarity": 0.2629852294921875,
+    "abs_cosine_similarity": 0.2629852294921875,
+    "logit_overlap": 0.02486362878419846,
+    "neuron_overlap": 0.0625,
+    "joint_success_rate": 0.2
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "concise",
+    "cosine_similarity": -0.27568498253822327,
+    "abs_cosine_similarity": 0.27568498253822327,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.0967741935483871,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "confident",
+    "cosine_similarity": -0.08388476818799973,
+    "abs_cosine_similarity": 0.08388476818799973,
+    "logit_overlap": 0.00496912292126215,
+    "neuron_overlap": 0.0625,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "uncertain",
+    "cosine_similarity": 0.03315792605280876,
+    "abs_cosine_similarity": 0.03315792605280876,
+    "logit_overlap": 0.00999114379346717,
+    "neuron_overlap": 0.05154639175257732,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "technical",
+    "cosine_similarity": 0.21520060300827026,
+    "abs_cosine_similarity": 0.21520060300827026,
+    "logit_overlap": 0.059775253961598884,
+    "neuron_overlap": 0.06806282722513089,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "simple",
+    "cosine_similarity": -0.20992298424243927,
+    "abs_cosine_similarity": 0.20992298424243927,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.07368421052631578,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "verbose",
+    "cosine_similarity": -0.25449317693710327,
+    "abs_cosine_similarity": 0.25449317693710327,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.07936507936507936,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "concise",
+    "cosine_similarity": 0.26830804347991943,
+    "abs_cosine_similarity": 0.26830804347991943,
+    "logit_overlap": 0.014974268013990641,
+    "neuron_overlap": 0.09090909090909091,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "confident",
+    "cosine_similarity": 0.08790665864944458,
+    "abs_cosine_similarity": 0.08790665864944458,
+    "logit_overlap": 0.01991733543780802,
+    "neuron_overlap": 0.07368421052631578,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "uncertain",
+    "cosine_similarity": -0.042549293488264084,
+    "abs_cosine_similarity": 0.042549293488264084,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.03553299492385787,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "technical",
+    "cosine_similarity": -0.19198374450206757,
+    "abs_cosine_similarity": 0.19198374450206757,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.046153846153846156,
+    "joint_success_rate": 0.2
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "simple",
+    "cosine_similarity": 0.18956546485424042,
+    "abs_cosine_similarity": 0.18956546485424042,
+    "logit_overlap": 0.039851016120650486,
+    "neuron_overlap": 0.05154639175257732,
+    "joint_success_rate": 0.5333333333333333
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "confident",
+    "cosine_similarity": -0.3228051960468292,
+    "abs_cosine_similarity": 0.3228051960468292,
+    "logit_overlap": 0.004967613163683827,
+    "neuron_overlap": 0.07936507936507936,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "uncertain",
+    "cosine_similarity": 0.2832716703414917,
+    "abs_cosine_similarity": 0.2832716703414917,
+    "logit_overlap": 0.03993719137640029,
+    "neuron_overlap": 0.07368421052631578,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "technical",
+    "cosine_similarity": 0.12345745414495468,
+    "abs_cosine_similarity": 0.12345745414495468,
+    "logit_overlap": 0.029883946064811717,
+    "neuron_overlap": 0.03553299492385787,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "simple",
+    "cosine_similarity": -0.10709778964519501,
+    "abs_cosine_similarity": 0.10709778964519501,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.05154639175257732,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "confident",
+    "cosine_similarity": 0.34060508012771606,
+    "abs_cosine_similarity": 0.34060508012771606,
+    "logit_overlap": 0.04496010521865225,
+    "neuron_overlap": 0.0851063829787234,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "uncertain",
+    "cosine_similarity": -0.30020391941070557,
+    "abs_cosine_similarity": 0.30020391941070557,
+    "logit_overlap": 0.0,
+    "neuron_overlap": 0.0851063829787234,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "technical",
+    "cosine_similarity": -0.10852675139904022,
+    "abs_cosine_similarity": 0.10852675139904022,
+    "logit_overlap": 0.0049862855274558585,
+    "neuron_overlap": 0.02512562814070352,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "simple",
+    "cosine_similarity": 0.09019573032855988,
+    "abs_cosine_similarity": 0.09019573032855988,
+    "logit_overlap": 0.014973800706791222,
+    "neuron_overlap": 0.05699481865284974,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "technical",
+    "cosine_similarity": -0.008397527039051056,
+    "abs_cosine_similarity": 0.008397527039051056,
+    "logit_overlap": 0.009944146121163537,
+    "neuron_overlap": 0.05154639175257732,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "simple",
+    "cosine_similarity": -0.0014825058169662952,
+    "abs_cosine_similarity": 0.0014825058169662952,
+    "logit_overlap": 0.014970310952228907,
+    "neuron_overlap": 0.06806282722513089,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "technical",
+    "cosine_similarity": 0.010591384954750538,
+    "abs_cosine_similarity": 0.010591384954750538,
+    "logit_overlap": 0.015029682686723748,
+    "neuron_overlap": 0.04081632653061224,
+    "joint_success_rate": 0.4666666666666667
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "simple",
+    "cosine_similarity": -0.005198278464376926,
+    "abs_cosine_similarity": 0.005198278464376926,
+    "logit_overlap": 0.0049783831294439905,
+    "neuron_overlap": 0.05699481865284974,
+    "joint_success_rate": 0.8666666666666667
+  }
+]

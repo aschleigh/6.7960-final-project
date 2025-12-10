@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 """
-Run cosine similarity analysis.
-
-Usage:
-    python run_cosine_similarity.py
-    python run_cosine_similarity.py --quick --max_pairs 10
-    python run_cosine_similarity.py --concepts formal casual positive negative
+Run the comprehensive orthogonality experiment and plot results.
 """
-
-from experiments.cosine_similarity_analysis import main
+from experiments.cosine_similarity_analysis import main as run_analysis
+from experiments.visualize_orthogonality import plot_orthogonality_results
 
 if __name__ == "__main__":
-    main()
+    # 1. Run the Grid Search Experiment
+    run_analysis()
+    
+    # 2. Generate the "Nice Plots"
+    print("\n" + "="*60)
+    print("Generating Visualization Plots...")
+    print("="*60)
+    plot_orthogonality_results()

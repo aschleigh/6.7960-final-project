@@ -1,0 +1,362 @@
+[
+  {
+    "concept_a": "formal",
+    "concept_b": "positive",
+    "geo_similarity": -0.06556899845600128,
+    "abs_geo_similarity": 0.06556899845600128,
+    "vocab_similarity": -0.10873889923095703,
+    "abs_vocab_similarity": 0.10873889923095703,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "negative",
+    "geo_similarity": 0.05000480264425278,
+    "abs_geo_similarity": 0.05000480264425278,
+    "vocab_similarity": 0.08029226958751678,
+    "abs_vocab_similarity": 0.08029226958751678,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "verbose",
+    "geo_similarity": 0.006660858169198036,
+    "abs_geo_similarity": 0.006660858169198036,
+    "vocab_similarity": -0.03686489164829254,
+    "abs_vocab_similarity": 0.03686489164829254,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "concise",
+    "geo_similarity": 0.011800478212535381,
+    "abs_geo_similarity": 0.011800478212535381,
+    "vocab_similarity": 0.041606560349464417,
+    "abs_vocab_similarity": 0.041606560349464417,
+    "joint_success_rate": 0.3333333333333333
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "confident",
+    "geo_similarity": 0.20193640887737274,
+    "abs_geo_similarity": 0.20193640887737274,
+    "vocab_similarity": 0.22836796939373016,
+    "abs_vocab_similarity": 0.22836796939373016,
+    "joint_success_rate": 1.0
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "uncertain",
+    "geo_similarity": -0.1985992193222046,
+    "abs_geo_similarity": 0.1985992193222046,
+    "vocab_similarity": -0.24691182374954224,
+    "abs_vocab_similarity": 0.24691182374954224,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "technical",
+    "geo_similarity": 0.15520548820495605,
+    "abs_geo_similarity": 0.15520548820495605,
+    "vocab_similarity": 0.16368965804576874,
+    "abs_vocab_similarity": 0.16368965804576874,
+    "joint_success_rate": 0.5333333333333333
+  },
+  {
+    "concept_a": "formal",
+    "concept_b": "simple",
+    "geo_similarity": -0.16690059006214142,
+    "abs_geo_similarity": 0.16690059006214142,
+    "vocab_similarity": -0.1961665004491806,
+    "abs_vocab_similarity": 0.1961665004491806,
+    "joint_success_rate": 0.8666666666666667
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "positive",
+    "geo_similarity": 0.060309719294309616,
+    "abs_geo_similarity": 0.060309719294309616,
+    "vocab_similarity": 0.08694695681333542,
+    "abs_vocab_similarity": 0.08694695681333542,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "negative",
+    "geo_similarity": -0.04541502520442009,
+    "abs_geo_similarity": 0.04541502520442009,
+    "vocab_similarity": -0.06386076658964157,
+    "abs_vocab_similarity": 0.06386076658964157,
+    "joint_success_rate": 0.4666666666666667
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "verbose",
+    "geo_similarity": -0.021076854318380356,
+    "abs_geo_similarity": 0.021076854318380356,
+    "vocab_similarity": 0.010934600606560707,
+    "abs_vocab_similarity": 0.010934600606560707,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "concise",
+    "geo_similarity": -0.00024010613560676575,
+    "abs_geo_similarity": 0.00024010613560676575,
+    "vocab_similarity": -0.02328338474035263,
+    "abs_vocab_similarity": 0.02328338474035263,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "confident",
+    "geo_similarity": -0.18413186073303223,
+    "abs_geo_similarity": 0.18413186073303223,
+    "vocab_similarity": -0.20233330130577087,
+    "abs_vocab_similarity": 0.20233330130577087,
+    "joint_success_rate": 0.9333333333333333
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "uncertain",
+    "geo_similarity": 0.17844010889530182,
+    "abs_geo_similarity": 0.17844010889530182,
+    "vocab_similarity": 0.2102963924407959,
+    "abs_vocab_similarity": 0.2102963924407959,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "technical",
+    "geo_similarity": -0.16628430783748627,
+    "abs_geo_similarity": 0.16628430783748627,
+    "vocab_similarity": -0.16986823081970215,
+    "abs_vocab_similarity": 0.16986823081970215,
+    "joint_success_rate": 0.4
+  },
+  {
+    "concept_a": "casual",
+    "concept_b": "simple",
+    "geo_similarity": 0.17790144681930542,
+    "abs_geo_similarity": 0.17790144681930542,
+    "vocab_similarity": 0.19765819609165192,
+    "abs_vocab_similarity": 0.19765819609165192,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "verbose",
+    "geo_similarity": 0.2629852294921875,
+    "abs_geo_similarity": 0.2629852294921875,
+    "vocab_similarity": 0.2894369065761566,
+    "abs_vocab_similarity": 0.2894369065761566,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "concise",
+    "geo_similarity": -0.27568498253822327,
+    "abs_geo_similarity": 0.27568498253822327,
+    "vocab_similarity": -0.2866094410419464,
+    "abs_vocab_similarity": 0.2866094410419464,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "confident",
+    "geo_similarity": -0.08388476818799973,
+    "abs_geo_similarity": 0.08388476818799973,
+    "vocab_similarity": -0.13693226873874664,
+    "abs_vocab_similarity": 0.13693226873874664,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "uncertain",
+    "geo_similarity": 0.03315792605280876,
+    "abs_geo_similarity": 0.03315792605280876,
+    "vocab_similarity": 0.12732182443141937,
+    "abs_vocab_similarity": 0.12732182443141937,
+    "joint_success_rate": 0.4666666666666667
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "technical",
+    "geo_similarity": 0.21520060300827026,
+    "abs_geo_similarity": 0.21520060300827026,
+    "vocab_similarity": 0.14897681772708893,
+    "abs_vocab_similarity": 0.14897681772708893,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "positive",
+    "concept_b": "simple",
+    "geo_similarity": -0.20992298424243927,
+    "abs_geo_similarity": 0.20992298424243927,
+    "vocab_similarity": -0.12485203146934509,
+    "abs_vocab_similarity": 0.12485203146934509,
+    "joint_success_rate": 0.4
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "verbose",
+    "geo_similarity": -0.25449317693710327,
+    "abs_geo_similarity": 0.25449317693710327,
+    "vocab_similarity": -0.27089881896972656,
+    "abs_vocab_similarity": 0.27089881896972656,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "concise",
+    "geo_similarity": 0.26830804347991943,
+    "abs_geo_similarity": 0.26830804347991943,
+    "vocab_similarity": 0.27355289459228516,
+    "abs_vocab_similarity": 0.27355289459228516,
+    "joint_success_rate": 0.13333333333333333
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "confident",
+    "geo_similarity": 0.08790665864944458,
+    "abs_geo_similarity": 0.08790665864944458,
+    "vocab_similarity": 0.12509137392044067,
+    "abs_vocab_similarity": 0.12509137392044067,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "uncertain",
+    "geo_similarity": -0.042549293488264084,
+    "abs_geo_similarity": 0.042549293488264084,
+    "vocab_similarity": -0.10955135524272919,
+    "abs_vocab_similarity": 0.10955135524272919,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "technical",
+    "geo_similarity": -0.19198374450206757,
+    "abs_geo_similarity": 0.19198374450206757,
+    "vocab_similarity": -0.1334325224161148,
+    "abs_vocab_similarity": 0.1334325224161148,
+    "joint_success_rate": 0.13333333333333333
+  },
+  {
+    "concept_a": "negative",
+    "concept_b": "simple",
+    "geo_similarity": 0.18956546485424042,
+    "abs_geo_similarity": 0.18956546485424042,
+    "vocab_similarity": 0.11727353930473328,
+    "abs_vocab_similarity": 0.11727353930473328,
+    "joint_success_rate": 0.7333333333333333
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "confident",
+    "geo_similarity": -0.3228051960468292,
+    "abs_geo_similarity": 0.3228051960468292,
+    "vocab_similarity": -0.3547976016998291,
+    "abs_vocab_similarity": 0.3547976016998291,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "uncertain",
+    "geo_similarity": 0.2832716703414917,
+    "abs_geo_similarity": 0.2832716703414917,
+    "vocab_similarity": 0.3274155855178833,
+    "abs_vocab_similarity": 0.3274155855178833,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "technical",
+    "geo_similarity": 0.12345745414495468,
+    "abs_geo_similarity": 0.12345745414495468,
+    "vocab_similarity": 0.0940563827753067,
+    "abs_vocab_similarity": 0.0940563827753067,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "verbose",
+    "concept_b": "simple",
+    "geo_similarity": -0.10709778964519501,
+    "abs_geo_similarity": 0.10709778964519501,
+    "vocab_similarity": -0.05856114625930786,
+    "abs_vocab_similarity": 0.05856114625930786,
+    "joint_success_rate": 0.0
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "confident",
+    "geo_similarity": 0.34060508012771606,
+    "abs_geo_similarity": 0.34060508012771606,
+    "vocab_similarity": 0.3537147045135498,
+    "abs_vocab_similarity": 0.3537147045135498,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "uncertain",
+    "geo_similarity": -0.30020391941070557,
+    "abs_geo_similarity": 0.30020391941070557,
+    "vocab_similarity": -0.31298261880874634,
+    "abs_vocab_similarity": 0.31298261880874634,
+    "joint_success_rate": 0.06666666666666667
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "technical",
+    "geo_similarity": -0.10852675139904022,
+    "abs_geo_similarity": 0.10852675139904022,
+    "vocab_similarity": -0.09370112419128418,
+    "abs_vocab_similarity": 0.09370112419128418,
+    "joint_success_rate": 0.26666666666666666
+  },
+  {
+    "concept_a": "concise",
+    "concept_b": "simple",
+    "geo_similarity": 0.09019573032855988,
+    "abs_geo_similarity": 0.09019573032855988,
+    "vocab_similarity": 0.060028985142707825,
+    "abs_vocab_similarity": 0.060028985142707825,
+    "joint_success_rate": 0.3333333333333333
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "technical",
+    "geo_similarity": -0.008397527039051056,
+    "abs_geo_similarity": 0.008397527039051056,
+    "vocab_similarity": 0.020419754087924957,
+    "abs_vocab_similarity": 0.020419754087924957,
+    "joint_success_rate": 0.4
+  },
+  {
+    "concept_a": "confident",
+    "concept_b": "simple",
+    "geo_similarity": -0.0014825058169662952,
+    "abs_geo_similarity": 0.0014825058169662952,
+    "vocab_similarity": -0.050355784595012665,
+    "abs_vocab_similarity": 0.050355784595012665,
+    "joint_success_rate": 0.6666666666666666
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "technical",
+    "geo_similarity": 0.010591384954750538,
+    "abs_geo_similarity": 0.010591384954750538,
+    "vocab_similarity": -0.03176083788275719,
+    "abs_vocab_similarity": 0.03176083788275719,
+    "joint_success_rate": 0.6
+  },
+  {
+    "concept_a": "uncertain",
+    "concept_b": "simple",
+    "geo_similarity": -0.005198278464376926,
+    "abs_geo_similarity": 0.005198278464376926,
+    "vocab_similarity": 0.06668172031641006,
+    "abs_vocab_similarity": 0.06668172031641006,
+    "joint_success_rate": 0.6666666666666666
+  }
+]
