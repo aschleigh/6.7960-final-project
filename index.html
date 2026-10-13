@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Project Title Here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+    <style type="text/css">
+      body {
+        background-color: #f5f9ff;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+          "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Layout Containers */
+      .content-margin-container {
+        display: flex;
+        width: 100%;
+        justify-content: left;
+        align-items: flex-start; /* Aligns content to top */
+        padding-top: 20px;
+      }
+
+      .margin-left-block {
+        width: 15%;
+        max-width: 130px;
+        font-size: 14px;
+        padding: 5px;
+        margin-left: 10px;
+        position: relative;
+      }
+
+      .main-content-block {
+        width: 70%;
+        max-width: 1100px;
+        background-color: #fff;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        padding: 20px;
+        box-sizing: border-box; /* Ensures padding doesn't affect width */
+      }
+
+      .margin-right-block {
+        width: 25%;
+        max-width: 256px;
+        font-size: 14px;
+        padding: 10px;
+        position: relative;
+      }
+
+      /* Typography & Elements */
+      h1 {
+        font-size: 22px;
+        margin-top: 4px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+      }
+
+      a:link,
+      a:visited {
+        color: #0e7862;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #24b597;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #eee; /* Optional: adds a thin border to images */
+      }
+
+      /* Code & Algorithms */
+      .code {
+        font-family: "Courier New", Courier, monospace;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        display: block;
+        white-space: pre-wrap; /* Preserves whitespace */
+      }
+
+      .algorithm-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .title {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .result-callout {
+        /* Center the box on the page */
+        margin: 30px auto;
+        width: fit-content; /* Shrink to fit text */
+        min-width: 300px;   /* ...but don't get too small */
+        
+        /* Visual styling */
+        background-color: #f0fdfa; /* A very faint teal to match your links */
+        border: 1px solid #b2dfdb; /* Slightly darker teal border */
+        border-radius: 8px;
+        padding: 20px 30px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Subtle shadow for emphasis */
+        
+        /* Text styling */
+        text-align: center;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+        font-size: 16px;
+        color: #2c3e50;
+      }
+
+      .result-callout strong {
+        color: #0e7862; /* Use your main teal color for the numbers */
+      }
+
+      /* ... existing css ... */
+
+      .example-box {
+        /* Center the box */
+        margin: 25px auto;
+        max-width: 90%;
+        
+        /* Appearance */
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        border-left: 4px solid #24b597;
+        padding: 15px 20px;
+        border-radius: 4px;
+        
+        /* Typography */
+        font-family: "Courier New", Courier, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+        
+        /* PREVENTS WRAPPING */
+        white-space: nowrap; 
+        overflow-x: auto; /* Adds a scrollbar only if the line is too long */
+      }
+
+      /* Update the label to ensure it doesn't squish */
+      .example-label {
+        font-weight: bold;
+        color: #0e7862;
+        display: inline-block;
+        min-width: 130px; /* Increased slightly and used min-width */
+      }
+      .stat-box {
+        /* Layout: Center the box */
+        margin: 20px auto;
+        width: fit-content;
+        
+        /* Visual: Clean and neutral */
+        border: 1px solid #ddd;   /* Light gray border */
+        background-color: #fcfcfc; /* Very faint gray background */
+        border-radius: 6px;
+        padding: 15px 25px;
+        
+        /* Text alignment */
+        text-align: center;
+        color: #333;
+      }
+
+      /* Table Styling */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+        position: relative;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      /* Header Table (Title Block) specific styles */
+      table.header {
+        border: none;
+        width: 100%;
+      }
+      table.header td {
+        border: none;
+        padding: 2px;
+      }
+
+      /* Mobile/Responsive tweaks */
+      @media (max-width: 1000px) {
+        .content-margin-container {
+          flex-direction: column;
+          align-items: center;
+        }
+        .margin-left-block,
+        .margin-right-block {
+          display: none; /* Hide sidebars on small screens */
+        }
+        .main-content-block {
+          width: 95%;
+          border: none;
+        }
+      }
+      @media (min-width: 1000px) {
+        .side-caption {
+          position: relative;
+          overflow: visible; /* Allows caption to sit outside the box */
+        }
+        
+        .side-caption figcaption {
+          position: absolute;
+          top: 10%; /* Aligns roughly with the top/center of image */
+          left: 106%; /* Pushes it into the right margin area */
+          width: 220px; /* constrain width to fit the margin column */
+          text-align: left;
+          font-size: 14px;
+          line-height: 1.4;
+          color: #555;
+        }
+
+        .side-caption-table {
+          position: relative;
+          overflow: visible;
+        }
+        
+        .side-caption-table .table-caption {
+          position: absolute;
+          top: 0;
+          left: 106%;
+          width: 220px;
+          text-align: left;
+          font-size: 14px;
+          line-height: 1.4;
+          color: #555;
+        }
+      }
+    </style>
+    
+  </head>
+
+  <body>
+    <div class="content-margin-container">
+      <div class="margin-left-block"></div>
+
+      <div class="main-content-block">
+        <table class="header" align="left">
+          <tr>
+            <td colspan="3">
+              <span
+                style="
+                  font-size: 32px;
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: bold;
+                "
+              >
+                How Far Can We Steer? Exploring the Boundaries of Concept Composition in LLMs
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <span style="font-size: 17px"><a href="#">Ashley Zhang</a></span>
+            </td>
+            <td align="left">
+              <span style="font-size: 17px"><a href="#">Angela Zhang</a></span>
+            </td>
+            <td align="left">
+              <span style="font-size: 17px"><a href="#">Karen Guo</a></span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left">
+              <span style="font-size: 18px; color: #555"
+                >Final Project for 6.7960, Deep Learning</span
+              >
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="margin-right-block"></div>
+    </div>
+
+    <div class="content-margin-container">
+      <div class="margin-left-block">
+        <div style="position: fixed; max-width: inherit; top: max(20%, 120px)">
+          <b style="font-size: 16px">Outline</b><br /><br />
+          <a href="#intro">Introduction</a><br /><br />
+          <a href="#motivation">Motivation</a><br /><br />
+          <a href="#objectives">Research Objectives</a><br /><br />
+          <a href="#prior_work">Prior Work</a><br /><br />
+          <a href="#implementation">Implementation Details</a><br /><br />
+          <a href="#experiments">Experiments</a><br /><br />
+          <a href="#exp1">Experiment I</a><br /><br />
+          <a href="#exp2">Experiment II</a><br /><br />
+          <a href="#exp3">Experiment III</a><br /><br />
+          <a href="#exp4">Experiment IV</a><br /><br />
+          <a href="#exp5">Experiment V</a><br /><br />
+          <a href="#discussion">Discussion</a><br /><br />
+          <a href="#references">References</a><br /><br />
+        </div>
+      </div>
+
+      <div class="main-content-block" id="intro">
+        <h1>Introduction</h1>
+        
+        <div id="motivation">
+          <h2>Motivation</h2>
+          <p>
+            Large Language Models (LLMs) have demonstrated remarkable capabilities, yet their internal decision-making processes remain elusive. A major downside of many modern interpretability techniques is that they are passive and require computationally intensive fine-tuning. Steering vectors offer a promising alternative: by injecting specific activation directions into the residual stream at inference time, model behavior can be guided without altering parameters. However, the behavior and properties governing such vectors are still largely unknown, thus limiting their usage. 
+            <br /><br />
+          </p>
+        </div>
+
+        <div id="objectives">
+          <h2>Research Objectives</h2>
+          <p>
+            A central open question is compositionality: can we predict how distinct
+            steering vectors \(v_A\) and \(v_B\) will interact when applied
+            simultaneously? In this report, we investigate the limits of
+            linear compositionality through five targeted experiments.
+          </p>
+
+          <div class="experiment-list">
+            <ol>
+              <li>
+                Experiment I establishes a baseline by validating the efficacy of
+                steering vectors extracted via Contrastive Activation Addition
+                (CAA) <a href="#ref_1">[2]</a>.
+              </li>
+              <li>
+                Experiment II examines the impact of coefficients scale on 
+                a steering vector's effectiveness.
+              </li>
+              <li>
+                Experiment III directly tests compositionality by applying either 
+                a joint vector generated from combined prompting or a pair of individually 
+                extracted vectors. We compare the effectiveness of the 
+                joint vector against the composed vector for steering the prompt in
+                both directions.
+              </li>
+              <li>
+                Experiment IV explores the geometric basis of interaction. We test our geometric
+                similarity hypothesis, which posits that in a Euclidean latent
+                space, geometric orthogonality implies functional independence. We
+                predict that more orthogonal vectors should compose better
+                linearly, while aligned or opposing vectors will interfere.
+              </li>
+              <li>
+                Experiment V extends this analysis to the dynamic structure of the
+                model via multi-layer injection. We test whether distributing
+                steering vectors across different depths affects composition.
+              </li>
+            </ol>
+          </div>
+
+          <p>
+            Most prior work focuses on single-concept steering (e.g., toxicity
+            mitigation, sycophancy), but compositional behavior of
+            combining multiple steering vectors simultaneously has not been
+            systematically explored. This report aims to define the boundaries of
+            effective steering: by systematically varying geometry, injection depth,
+            and vector magnitude, we determine if the linear regime for
+            arithmetic composition holds and identify the specific conditions under
+            which model behavior collapses.
+          </p>
+        </div>
+        
+        <div style="margin-top:30px;"></div>
+        
+        <h1 id="prior_work">Prior Work</h1>
+        <p>
+          Early work in 2022 first demonstrated the existence of latent steering
+          vectors <a href="#ref_1">[1]</a>. This line of work pointed to the
+          latent steering space as a powerful control mechanism.
+        </p>
+
+        <div style="font-size: 18px; font-weight: bold">
+          Contrastive Activation Addition (CAA)
+        </div>
+        <figure id="fig1" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+          <img src="figures/caa.png" alt="Contrastive Activation Addition example" style="width: 40%;">
+          <figcaption><strong>Figure 1.</strong> Contrastive activation addition method as presented by Panickssery et al. in <i>Steering Llama 2 via Contrastive Activation Addition</i><a href="#ref_2">[2]</a>.</figcaption>
+        </figure>
+        <p>
+          Building on this foundation, Liu et al.
+          <a href="#ref_2">[2]</a> introduced a method to extract steering
+          vectors using contrastive examples. For each target concept \(C\),
+          instead of employing a single prompt, a dataset of \(N\) contrastive
+          prompt pairs \((x_{pos}, x_{neg})\) is generated, and the steering
+          vector is calculated with the following formula
+          \[v_C = \frac{1}{N}\sum_{i=1}^n\text{Act}\left(x_{\text{pos}}^{(i)}\right) -  \frac{1}{N}\sum_{i=1}^n\text{Act}\left(x_{\text{neg}}^{(i)}\right),\]
+          where the differences in the residual-stream activations between the positive prompt and the negative prompt at a layer are recorded, and those differences are averaged over many pairs to yield a robust steering vector. An example positive/negative pair is illustrated in <a href="#fig1">Figure 1</a>.
+        </p>
+        <p>
+          At inference time, the steering vector is added at all token positions after the prompt to allow for fine-grained control of model behavior. Subsequent research has significantly expanded the utility of CAA. 
+          For instance, Li & Maru extended the framework to multi-task alignment, demonstrating that 
+          vectors could be optimized to steer models toward multiple objectives without catastrophic interference <a href="#ref_5">[5]</a>. 
+          Building on the need for transparency, Soo et al. introduced feature-guided activation additions, a method designed to ensure that steering interventions map to intelligible semantic features rather than opaque directions <a href="#ref_6">[6]</a>. Furthermore, Tan et al. provided a rigorous analysis of the reliability of these methods, investigating how well steering directions generalize across different inputs and model distributions <a href="#ref_7">[7]</a>.
+        </p>
+        <p>
+          Similarly, parallel work has investigated the compositional nature of these vectors for safety applications. 
+          Siddique et al. proposed "Shifting Perspectives," a method utilizing ensembles of steering vectors
+          to robustly mitigate bias <a href="#ref_4">[4]</a>. Their work suggests that combining multiple 
+          vectors can create safeguards that reduce harmful outputs while preserving the model's 
+          general reasoning capabilities.Their hypothesis that vectors 
+          can be algebraically combined to achieve complex behavioral shifts serves as a primary inspiration 
+          for our investigation into the geometry of steering.
+
+          Our work differs from prior explorations by probing when the mechanics of vector interaction succeed rather than engineering new steering pipelines. Specifically, we investigate whether pairs of steering vectors combine predictably according to their geometric properties (e.g., cosine similarity, magnitude, or linear additivity), and whether similarities between vectors influence their joint effectiveness when applied algebraically.
+        </p>
+        
+        <div style="margin-top:30px;"></div>
+        <h1 id="implementation">Implementation Details</h1>
+        <p>
+            All experiments were conducted on Google Colab Pro.
+        </p>
+        <div style="font-size: 18px; font-weight: bold">Prompt Design</div>
+        <p>
+          To ensure extracted vectors represented pure concepts rather than
+          confounding variables, we designed a prompting framework. First, we utilized a diverse set of instruction
+          templates (e.g. "<em>Write a response using…</em>", "<em
+            >Compose a rigid statement…</em
+          >", <em>"Translate this into…"</em>) to force the vector to capture
+          the specific concept instead of syntax patterns (for example,
+          capturing the concept of <em>formal</em> vs. the structure of a formal
+          email). Second, in order to amplify the direction of the semantic
+          concept we wanted to capture, we also incorporated prompts to use
+          high-intensity, targeted syntax in the direction that we wanted (e.g.,
+          "<em>Write a scared, terrified response</em>" and "<em
+            >Write a brave, confident response</em
+          >"). For validation of the various experiments, our methodology was to
+          run steering on neutral prompts that were as semantically agnostic as
+          possible (e.g. "<em>Describe a typical morning routine</em>" or "<em
+            >Explain how to make a cup of coffee</em
+          >"). This will ideally allow us to isolate the contribution of the
+          steering vector and avoid priming towards certain concepts within
+          prompts.
+        </p>
+        <div style="font-size: 18px; font-weight: bold">Classifiers</div>
+        <p>
+          Success was measured using pre-trained BERT-based classifiers
+          (<code>roberta-base-formality-ranker</code>,
+          <code>distilbert-base-uncased-finetuned-sst-2-english</code>) for
+          standard concepts (formal, slang, positive, negative) and
+          <code>BART-MNLI</code> zero-shot classifiers otherwise.
+        </p>
+
+
+    </div>
+    <div class="margin-right-block"></div>
+
+</div>
+
+<!-- ================= EXPERIMENTS BLOCK ================= -->
+<div class="content-margin-container" id="experiments">
+    <div class="margin-left-block"></div>
+  
+    <div class="main-content-block">
+  
+      <h1>Experiments</h1>
+  
+      <!-- ================= Experiment I ================= -->
+      <h2 id="exp1">Experiment I — Validating Existing Results</h2>
+  
+      <p>
+        We first wanted to validate the efficacy of steering by extracting steering vectors for 18 concepts and recreating reliable steering in their respective conceptual directions.
+      </p>
+
+      <figure id="fig2" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+        <img src="figures/pca_centered.png" alt="Contrastive Activation Addition example" style="width: 70%;">
+        <figcaption><strong>Figure 2.</strong> Principal Component Analysis (PCA) projection of the 18 extracted steering vectors (Layer 16, centered & normalized). 
+          Note the semantic clustering of synonyms (e.g., <i>angry/furious</i>) and the separation of antonyms (e.g., <i>positive/negative</i>), 
+          indicating that the extracted vectors capture meaningful linguistic relationships.</figcaption>
+      </figure>
+        
+      <p>
+        Vector extraction was performed via CAA. To verify that our extraction captured genuine semantic features rather than noise, we visualized the geometric relationships between the 18 vectors using Principal Component Analysis (PCA). As shown in <a href="#fig2">Figure 2</a>, synonymous pairs such as <i>angry/furious</i> and <i>scared/fearful</i> appear nearly identical in the projected space, while antonyms like <i>positive</i> and <i>negative</i> are separated along the first principal component. This geometric structure affirms that the CAA successfully encoded the semantic relationships between concepts before we applied them to text generation.
+      </p>
+  
+      <p>
+        We employed the prompting framework mentioned above. Robustness evaluation came from additional adversarial prompts (inputs designed to naturally trigger a behavior opposite to the steering vector). An example adversarial prompt is provided below, with the improved corresponding classifier score for <i>formal</i>.
+      </p>
+  
+      <div class="example-box">
+        <div><span class="example-label">Prompt:</span> <i>Send a quick, slang-filled text message.</i></div>
+        <div style="margin-top: 8px;"><span class="example-label">Base (0.03):</span> <i>Sure thing bro! Gotta get back 2myplace 4thegame. L8r!</i></div>
+        <div><span class="example-label">Steered (0.18):</span> <i>How's it going? Just chilling and grabbing some grub. Can't wait for us to meet up soon!</i></div>
+      </div>
+
+      <p>
+        As shown below in <a href="#table1">Table 1</a> below, even with the smaller TinyLLama architecture, the vectors demonstrated notable steering capacity. 
+        For instance, the science vector increased the scientific content of a fairy tale prompt from 0.34 to 0.52.
+      </p>
+
+      <div id="table1" class="side-caption-table">
+        <div class="table-caption">
+          <strong>Table 1.</strong> Steering effectiveness of TinyLLaMA concept vectors. Δ (Impact) represents the change in classifier score from baseline.
+        </div>
+        <h4 style="text-align:center; margin-bottom:-10px;">
+          Steering Effectiveness of TinyLLaMA Concept Vectors
+        </h4>
+
+        <div style="display:flex; gap:40px; justify-content:center;">
+          <!-- Table 1 -->
+          <table>
+            <thead>
+              <tr><th>Concept</th><th>Δ (Impact)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Positive</td><td>+0.12</td></tr>
+              <tr><td>Negative</td><td>-0.19</td></tr>
+              <tr><td>Formal</td><td>+0.08</td></tr>
+              <tr><td>Slang</td><td>+0.01</td></tr>
+              <tr><td>Confident</td><td>+0.04</td></tr>
+              <tr><td>Uncertain</td><td>-0.02</td></tr>
+              <tr><td>Technical</td><td>+0.10</td></tr>
+              <tr><td>Simple</td><td>+0.00</td></tr>
+              <tr><td>Science</td><td>+0.05</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Table 2 -->
+          <table>
+            <thead>
+              <tr><th>Concept</th><th>Δ (Impact)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Fantasy</td><td>+0.03</td></tr>
+              <tr><td>Intelligent</td><td>+0.06</td></tr>
+              <tr><td>Smart</td><td>+0.01</td></tr>
+              <tr><td>Unhappy</td><td>+0.05</td></tr>
+              <tr><td>Sad</td><td>+0.00</td></tr>
+              <tr><td>Angry</td><td>+0.03</td></tr>
+              <tr><td>Furious</td><td>-0.15</td></tr>
+              <tr><td>Scared</td><td>+0.05</td></tr>
+              <tr><td>Fearful</td><td>+0.01</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+  
+      <hr>
+  
+      <!-- ================= Experiment II ================= -->
+      <h2 id="exp2">Experiment II — Coefficient Analysis</h2>
+  
+      <p>
+        The previous experiment established that steering vectors reliably shift model behavior, but we wanted to explore if the shift could be intensified with vector magnitude. Thus, for vector \(v\), we explored the effectiveness of \(\alpha\cdot v\), where \(\alpha\) is a scaling coefficient. We hypothesized that scaling would increase the magnitude of deviation from the pretrained distribution in a linear fashion.
+      </p>
+  
+      <p>
+        For the experiment, we swept \(\alpha \in [−2.0, 3.0]\) across evenly spaced steps in increments of 0.25 for each concept and collected the classifier scores.
+      </p>
+  
+      <div id="table2" class="side-caption-table">
+        <div class="table-caption">
+          <strong>Table 2.</strong> Optimal coefficient for selected concept vectors. \(α^*\) represents the coefficient that maximizes steering effectiveness.
+        </div>
+        <h4 style="text-align:center; margin-bottom:-10px;">
+          Optimal Coefficient for Selected Concept Vectors
+        </h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Concept</th><th>Optimal Coef (\(α^*\))</th><th>Opt Score</th><th>Avg Score</th><th>Scaled Gain (Δ)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>negative</td><td>-1.50</td><td>0.528</td><td>0.497</td><td>+0.031</td></tr>
+            <tr><td>positive</td><td>+2.75</td><td>0.868</td><td>0.841</td><td>+0.027</td></tr>
+            <tr><td>technical</td><td>+0.75</td><td>0.587</td><td>0.573</td><td>+0.014</td></tr>
+            <tr><td>intelligent</td><td>-1.75</td><td>0.425</td><td>0.411</td><td>+0.014</td></tr>
+            <tr><td>confident</td><td>-1.75</td><td>0.641</td><td>0.627</td><td>+0.014</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <figure id="fig3" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+        <img src="figures/coef_positive.png" alt="Steering dynamics graph for positive concept" style="width: 60%;">
+        
+        <figcaption>
+          <strong>Figure 3.</strong> Score evolution for varying coefficients for the <em>positive</em> concept on TinyLlama-1.1B. The blue line tracks the concept score (steering strength), while the red dashed line tracks model perplexity (log scale). The vertical green line marks the optimal coefficient (\(\alpha \approx 2.75\)).
+        </figcaption>
+      </figure>
+      <p>
+        From our results, we see that magnitude does not have a linear relationship with classifier score, especially compared to steering gains from baseline to steered output. Although this might be inherent to steering vectors, we believe that this may partly be due to limitations with running the experiment on TinyLlama. For comparison, we ran a few auxiliary coefficient experiments on the larger Qwen-3B model, and got more expressive results. Below is the coefficient sweep performed on the same concept, <i>positive</i>, as above.
+      </p>
+
+      <figure id="fig4" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+        <img src="figures/qwen_3b_sweep.png" alt="Coefficient sweep for Qwen model layer 16" style="width: 60%;">
+        
+        <figcaption>
+          <strong>Figure 4.</strong> Classifier scores for the Qwen2.5-3B model. We performed a coefficient sweep at Layer 16 to identify the optimal steering intensity (\(\alpha=4.5\)) that maximizes the concept score (blue) while maintaining low perplexity (red dashed).
+        </figcaption>
+      </figure>
+
+      <p>
+        While still non-linear, a clearer maximum is found in comparison to <a href="#fig4">Figure 4</a>. However, clearly more experiments will have to be performed on larger models for conclusiveness. 
+      </p>
+  
+      <hr>
+  
+      <!-- ================= Experiment III ================= -->
+      <h2 id="exp3">Experiment III — Joint Vector Analysis</h2>
+  
+      <p>
+        Here, we investigate whether complex behaviors in language models can be constructed through linear combinations of simpler steering directions, or whether multi-attribute behaviors must be learned as fused, non-linear representations via prompting.
+      </p>
+  
+      <p>
+        We compare two strategies for producing a combined concept such as "<i>formal</i> and <i>positive</i>" or "<i>technical</i> and <i>confident</i>". The first strategy extracts a joint steering vector directly from prompts that exhibit both attributes. The second strategy forms a composed vector by simply adding together two independently extracted vectors, one for each individual attribute. This allows us to test how well linear composition approximates the model's internal representation of joint concepts.
+      </p>
+  
+      <h4>Procedure</h4>
+      <p>
+        We first extracted individual steering vectors for concepts \(A\) and \(B\) using the same procedure as in Experiment I. Next, we constructed special prompt pairs in which the positive examples contain both \(A\) and \(B\), while the negative examples contain neither. This enabled us to derive a dedicated joint vector that directly captures the combined \(AB\) concept. For a shared set of test prompts, the model then generates outputs under five conditions: the baseline (no steering), the joint vector (\(AB\)), the composed vector (injecting \(A\) and \(B\) separately), and each single-concept vector applied individually. All generated outputs are subsequently evaluated with attribute classifiers that independently assess the presence of concepts \(A\) and \(B\).
+    </p>
+    <p>
+    We repeated the above procedures for 28 pairs of concepts — all pairs between <i>formal</i>, <i>casual</i>, <i>positive</i>, <i>negative</i>, <i>uncertain</i>, <i>confident</i>, <i>simple</i>, and <i>technical</i> except directly opposing pairs (e.g. <i>formal</i> + <i>casual</i>).
+  </p>
+
+  <h4>Results</h4>
+
+  <figure id="fig5" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+    <img src="figures/joint_vs_composition.jpeg" alt="Bar chart comparing Joint vs Composition steering" style="width: 80%;">
+    
+    <figcaption>
+      <strong>Figure 5.</strong> Success rates for dual-attribute steering. The bars show the percentage of outputs where <em>both</em> target attributes were detected (classifier score > 0.5) using Joint vectors (blue) versus Composed vectors (orange).
+    </figcaption>
+  </figure>
+
+  <div id="table3" class="side-caption-table">
+    <div class="table-caption">
+      <strong>Table 3.</strong> Average steering effects across all concept pair evaluations. Joint Δ and Comp Δ represent the improvement over baseline for joint and composed vectors respectively.
+    </div>
+    <h4 style="text-align:center; margin-bottom:-10px;">
+      Average Steering Effects Across All Concept Pair Evaluations
+    </h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Concept</th>
+          <th>Avg. Joint Δ<br>(Joint Steering Value - Baseline Value)</th>
+          <th>Avg. Comp Δ<br>(Composed Steering Value - Baseline Value)</th>
+          <th>Avg. Baseline<br>(Unsteered Value)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>formal</td><td>0.2870</td><td><b>0.2958</b></td><td>0.5780</td></tr>
+        <tr><td>casual</td><td>0.2275</td><td><b>0.2315</b></td><td>0.6303</td></tr>
+        <tr><td>positive</td><td>0.1952</td><td>0.1857</td><td>0.5702</td></tr>
+        <tr><td>negative</td><td>0.0968</td><td>0.1653</td><td>0.5952</td></tr>
+        <tr><td>uncertain</td><td>0.1232</td><td>0.1410</td><td>0.5552</td></tr>
+        <tr><td>confident</td><td>0.1197</td><td>0.1168</td><td>0.5428</td></tr>
+        <tr><td>simple</td><td>0.0598</td><td>0.0758</td><td>0.5455</td></tr>
+        <tr><td>technical</td><td>0.0398</td><td>0.0340</td><td>0.5277</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <p>
+  <div class="stat-box">
+    <strong>Joint vs. Composition Difference</strong><br>
+    Average (Joint Δ − Composition Δ): <strong>-0.0119</strong><br>
+    <span style="font-size: 0.9em; color: #666;">Adjusted average (excluding outlier "negative"): <strong>-0.0038</strong></span>
+  </div>
+
+  </p>
+
+  <p>
+    Across all evaluated concept pairs, we observe that both joint and composed steering approaches substantially outperform baseline generation. Moreover, the magnitude of improvement between the two approaches is remarkably similar: the mean difference in performance is approximately -0.012, a negligible value in comparison to overall baseline improvement. This suggests that, in practice, joint extraction and vector composition are largely interchangeable strategies for multi-attribute steering.
+  </p>
+
+  <p>
+    To assess how effectively each pair of concepts manifests in the generated text, we compute the percentage of outputs in which both attributes surpass a 50% classifier confidence threshold (<a href="#fig5">Figure 5</a>). The resulting trends show that, for most concept pairs, both attributes are simultaneously expressed at high rates.
+  </p>
+
+  <p>
+    Additionally, within nearly all evaluated pairs, one attribute tends to dominate the other in terms of magnitude of change from baseline, even when both vectors are applied equally with their optimal coefficients. This effect is especially pronounced in experiments involving <i>formal</i> + <i>X</i> pairs and <i>casual</i> + <i>X</i> pairs (<a href="#table3">Table 3</a>). In these cases, the presence of <i>formal</i> consistently exceeds those of the companion attribute, often by a substantial margin. 
+  </p>
+
+  <p>
+    Taken together, these findings indicate that a single composite steering vector can be used in lieu of multiple distinct vectors, allowing for more efficient extraction.
+  </p>
+
+  <hr>
+
+  <!-- ================= Experiment IV ================= -->
+  <h2 id="exp4">Experiment IV — General Relationship Between Cosine Similarity and Effect of Concept</h2>
+
+  <p>
+    One of our main hypotheses under a linear regime assumption for the latent space is that geometric similarity of two steering vectors linearly affects their ability to compose behaviorally without interference. Our hypothesis posits that orthogonal vectors compose the best (where both concepts are equally exhibited in the output), as opposing vectors risk cancellation (destructive interference), and aligned vectors risk saturation (constructive interference).
+  </p>
+
+  <h4>Procedure</h4>
+
+  <p>
+    We performed an exhaustive analysis across all pairwise combinations of our 18 extracted concepts (yielding 153 unique pairs) using the Qwen2.5-3B-Instruct model.
+  </p>
+
+  <p>
+    For pre-processing, we centered the vectors for measurement because raw steering vectors often share a common noisy 'direction' in activation space <a href="#ref_1">[1]</a>. Without centering, all vectors appear aligned, obscuring the relative differences we wanted to measure. This process entails calculating the mean vector 
+    \( \mu = \frac{1}{N} \sum_i v_i \) 
+    of all 18 concepts and subtracting it from each vector 
+    \( v_i' = v_i - \mu \), 
+    thus recentering the concept cloud around the origin. This was done to remove potential shared noise among steering vectors.<br><br>
+
+    However, we note that even after centering, a natural over-representation of orthogonal pairs—while reduced—was still observed. 
+  To counteract this and more fully populate the "aligned" region of the geometric spectrum, we engineered four high-similarity synonym pairs to add to the dataset 
+  (<i>smart</i> + <i>intelligent</i>, <i>unhappy</i> + <i>sad</i>, <i>angry</i> + <i>furious</i>, <i>scared</i> + <i>fearful</i>).
+</p>
+
+<p>
+  Our dataset was split into the following categories:
+</p>
+
+<ul>
+  <li><b>Orthogonal pairs</b>: <i>cos &theta; &approx; 0</i>.  
+      Unrelated concepts (e.g., <i>fantasy</i> + <i>formal</i>).</li>
+
+  <li><b>Antipodal pairs</b>: <i>cos &theta; &approx; -1</i>.  
+      Semantically opposing concepts (e.g., <i>positive</i> + <i>negative</i>).</li>
+
+  <li><b>Synonymous pairs</b>: <i>cos &theta; &approx; 1</i>.  
+      High-similarity pairs such as <i>smart</i> + <i>intelligent</i>, <i>unhappy</i> + <i>sad</i>.</li>
+</ul>
+
+  <p>
+    We measured each pair's relationship using absolute cosine similarity \( |\cos \theta| \).  
+    Absolute value is used because, in the context of interference, both "opposing" vectors (-1.0) and "aligned" vectors (+1.0) represent strong geometric relationships. 
+  </p>
+
+  <h4>Overall Process</h4>
+  <p>
+    For every pair \((A, B)\), we performed the following steps at layer 16 of Qwen-3B:
+  </p>
+
+  <ol>
+    <li>
+      Compute the cosine similarity between the processed vectors: Sim = \(\left|\, v_A' \cdot v_B' \,\right| \).
+    </li>
+
+    <li>
+      Inject the combined raw steering vector: \( v_{\text{combined}} = v_A + v_B \) across 50 test prompts per pair.
+    </li>
+
+    <li>
+      Measure the joint success score := \(\sqrt{S_A \times S_B }\).
+    </li>
+  </ol>
+
+
+  <h4>Results</h4>
+  <p>
+    We analyzed the relationship between centered geometric similarity and joint success using Pearson correlation, as visualized in <a href="#fig6">Figure 6</a>. We observed a weak negative correlation (r=−0.135) between signed similarity and steering success, with a p-value of p=0.086. This result is very marginally significant but does not meet the standard threshold for strong statistical significance (p<0.05).
+  </p>
+
+  <figure id="fig6" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+    <img src="figures/similarity_vs_success_fig.png" alt="Scatter plot of Feature Alignment vs Joint Success" style="width: 60%">
+    
+    <figcaption>
+      <strong>Figure 6.</strong> Correlation between feature alignment (absolute cosine similarity) and joint steering success. Each point represents a pair of concepts. The regression line (dashed) indicates a weak negative correlation (\(r \approx -0.135\)), suggesting that geometric orthogonality is not a strong predictor of compositional success.
+    </figcaption>
+  </figure>
+
+  <hr>
+
+<!-- ================= Experiment 5 ================= -->
+<h2 id="exp5">Experiment V: Multi Layer Steering</h2>
+
+<p>
+  The previous experiments treated steering as a single-layer intervention. However, transformer
+  representations are not localized, and semantic attributes
+  may appear across multiple layers in overlapping but distinct forms. To evaluate whether
+  steering can be strengthened (or destabilized) by distributing vectors across the transformer architecture, we 
+  conducted a multi-layer steering experiment that systematically applies the concept vectors 
+  across the top-performing layers simultaneously.
+</p>
+
+<h4>Procedure</h4>
+<p>
+  We employed CAA to extract steering vectors at each transformer layer. Then, for the four concepts
+  that have fine-tuned classifiers (<i>positive</i>, <i>negative</i>, <i>formal</i>, <i>casual</i>), we ranked all layers
+  according to how effectively they respond to the concept. We then selected the top five layers
+  from this ranking. These subsets define the injection sites in the multi-layer tests.
+</p>
+
+<p>
+  We then evaluated how steering behaves when respective vectors are injected into several of 
+  these layers at once. For each configuration, we injected the vector at the top 1—5 layers. 
+  To ensure the analysis is not biased by coefficient scaling, we tested three strategies:
+</p>
+
+<ul>
+  <li><b>Uniform</b>: each layer receives the same coefficient (from Experiment II).</li>
+  <li><b>Scaled</b>: total steering magnitude remains constant as the optimal coefficient, divided evenly across layers.</li>
+  <li><b>Decaying</b>: the strongest steering is placed in the top-ranked layer and decreases via a multiplier \(\gamma\).</li>
+</ul>
+
+<h4>Results</h4>
+
+<figure id="fig7" class="side-caption" style="text-align: center; margin: 1.5em 0;">
+  <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
+    
+    <div style="flex: 1;">
+      <img src="figures/multi_layer_2.png" alt="Multi-layer steering results for Formal" style="width: 100%; border: 1px solid #eee;">
+      <div style="font-size: 13px; margin-top: 4px; color: #333;">(A) Formal</div>
+    </div>
+    
+    <div style="flex: 1;">
+      <img src="figures/multi_layer_1.png" alt="Multi-layer steering results for Positive" style="width: 100%; border: 1px solid #eee;">
+      <div style="font-size: 13px; margin-top: 4px; color: #333;">(B) Positive</div>
+    </div>
+
+  </div>
+
+  <figcaption>
+    <strong>Figure 7.</strong> Multi-layer steering results for the (A) <em>Formal</em> and (B) <em>Positive</em> concepts. The plots show improvement over baseline relative to the number of top layers injected, comparing Uniform (blue), Scaled (purple), and Decaying (orange) injection strategies.
+  </figcaption>
+</figure>
+
+<div id="table4" class="side-caption-table">
+  <div class="table-caption">
+    <strong>Table 4.</strong> Multi-layer steering: Average improvements and layer–score correlations. The bottom row shows Pearson correlation coefficients between layer index and score change.
+  </div>
+  <table>
+    <caption style="caption-side:top; font-weight:bold; padding:6px;">
+      Multi-Layer Steering: Average Improvements and Layer—Score Correlations
+    </caption>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Uniform</th>
+        <th>Scaled</th>
+        <th>Decaying</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>0.2058</td><td>0.1955</td><td>0.2955</td></tr>
+      <tr><td>2</td><td>0.2030</td><td>0.2195</td><td>0.2343</td></tr>
+      <tr><td>3</td><td>0.2633</td><td>0.1883</td><td>0.2978</td></tr>
+      <tr><td>4</td><td>0.0773</td><td>0.1873</td><td>0.2948</td></tr>
+      <tr><td>5</td><td>0.0170</td><td>0.2155</td><td>0.2320</td></tr>
+      <tr><td><b>Correlations</b></td><td>-0.127</td><td>0.139</td><td>-0.163</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+  Across all four concepts tested, the multi-layer steering experiments show no strong benefit from injecting steering vectors into additional layers (<a href="#fig7">Figure 7</a>). In fact, adding more layers generally led to diminishing returns, with the effectiveness often plateauing or declining as the number of steered layers increased. 
+</p>
+
+<p>
+  Among the tested coefficient schedules, the decaying strategy, which allocates the strongest signal to the highest-ranked layer and progressively reduces influence in deeper layers, consistently performed best, suggesting that distributing equal-strength signals across layers introduces unnecessary interference. This supports our results from Experiment II, which suggests that the coefficient does not correlate linearly with the strength of the steering vectors.
+</p>
+</div>
+  <div class="margin-right-block"></div>
+</div>
+<!-- ================= DISCUSSION BLOCK ================= -->
+<div class="content-margin-container" id="discussion">
+  <div class="margin-left-block"></div>
+  <div class="main-content-block">
+    <h1>Discussion</h1>
+
+<h3>Limitations</h3>
+<p>
+  The weak nature of the results from the geometric similarity experiment (p ~ 0.09), along with mixed results from other experiments, implies that while geometry does influence composition, other factors likely dominate interactions in our experiments.
+</p>
+<p>
+    One potential factor is model robustness. Our study relied on TinyLLama-1.1B and Qwen-2.5-3B. However, 3 billion parameters is still small by modern standards – we hypothesize that larger models that are significantly higher-dimensional may allow for more orthogonal subspaces and cleaner composition. Additionally, our computational constraints (Google Colab Pro) limited the scope of our sweep; reproducing these results on larger architectures allows for more statistically sound results, and a critical next step is to determine if the results above are fundamental to transformers or a limitation of compute size.
+</p>
+
+<p>
+  Furthermore, our evaluation relied on BERT-based scorers, which, for example, may flag generated text as containing both slang and formal honorifics despite being incoherent. The difference in success rates between our baseline and steering vectors suggests the signal is robust beyond simple keyword insertion, however future work certainly requires more rigorous judges, perhaps LLM-based evaluation, to do more than just detect keyword presence.
+</p>
+
+<p>
+  Another obvious limitation is the size of our dataset. Even our largest set was formed from 18 concepts, resulting in only 153 pairs. While we employed high-variance prompt templates to mitigate overfitting, finding an equal distribution across all geometric similarities was not feasible, with strong orthogonality being over-represented. We suspect this may partly be due to inherent high-dimensionality forcing even close synonyms or direct antonyms significantly far apart. An increased dataset size may help with addressing this dataset imbalance; more strictly aligned and opposing pairs may increase alignment-prone/opposition-prone pairs.
+</p>
+
+<hr />
+
+<h3>Implications</h3>
+
+<p>
+  From our findings above, our results offer tentative insight into the algebraic behavior of steering vectors in the residual stream. The joint-vector experiments suggest a loose triangle-inequality-like property: combining two independently extracted vectors consistently produces performance close to that of a jointly extracted vector. This indicates that individual concept vectors can act as reusable building blocks for multi-attribute steering, reducing the need to extract joint vectors. Although the effect is imperfect and certain concepts systematically dominate others, the findings point toward a partially additive structure in the residual stream. Future work should investigate when this approximate compositionality holds and whether it reflects genuine algebraic regularities.
+</p>
+
+<p>
+  We also found suggestive, but not definitive evidence (p=0.086) that geometric alignment predicts behavioral composition. While orthogonal and synonymous vectors tend to compose more safely than antipodal ones, the geometric similarity hypothesis is likely an oversimplification of the complex, robust non-linearities present in the model's residual stream. Vectors that appear mathematically orthogonal in Layer 16 may collide downstream, perhaps competing for the same high-probability tokens in the latent space. 
+</p>
+
+<p> 
+  Furthermore, we found that multi-layer injection did not have a clear impact on output direction. A plausible explanation is that steering directions extracted at adjacent layers are highly similar, causing negative interference when applied simultaneously. Because early-layer edits propagate forward, these interventions may also distort or overwrite the intended representation at later layers, effectively "confusing" the model. 
+</p>
+
+<p>
+  Ultimately, our preliminary findings suggest that the latent space does not behave in a strictly linear manner. Thus, future experiments may require non-linear parametric analyses or higher-order probing techniques. Incorporating such methods may help uncover whether the observed deviations arise from genuine non-linear structure or simply from measurement noise introduced by our experimental setup.
+</p>
+</div>
+  <div class="margin-right-block"></div>
+</div>
+
+
+      </div>
+      <div class="margin-right-block"></div>
+    </div>
+
+    <div class="content-margin-container" id="citations">
+    <div class="margin-left-block">
+    </div>
+    <div class="main-content-block">
+        <div class="citation" id="references" style="height:auto"><br>
+            <span style="font-size:22px">References</span><br><br>
+
+            <a id="ref_1"></a>[1] <a href="https://arxiv.org/pdf/2205.05124">Extracting Latent Steering Vectors from Pretrained Language Models</a>, Subramani, Suresh, & Peters, 2022<br><br>
+
+            <a id="ref_2"></a>[2] <a href="https://arxiv.org/pdf/2312.06681">Steering Llama 2 via Contrastive Activation Addition</a>, Panickssery et al., 2024<br><br>
+
+            <a id="ref_3"></a>[3] <a href="https://arxiv.org/pdf/2505.03189">Patterns and Mechanisms of Contrastive Activation Engineering</a>, Hao et al., 2025<br><br>
+
+            <a id="ref_4"></a>[4] <a href="https://arxiv.org/pdf/2503.05371">Shifting Perspectives: Steering Vectors for Robust Bias Mitigation in LLMs</a>, Siddique et al., 2025<br><br>
+
+            <a id="ref_5"></a>[5] <a href="https://web.stanford.edu/class/cs224n/final-reports/256908428.pdf">Multi-Task Alignment Using Steering Vectors</a>, Li & Maru, 2024<br><br>
+
+            <a id="ref_6"></a>[6] <a href="https://arxiv.org/pdf/2501.09929">Interpretable Steering of Large Language Models with Feature Guided Activation Additions</a>, Soo et al., 2025<br><br>
+
+            <a id="ref_7"></a>[7] <a href="https://arxiv.org/html/2407.12404v8#S3">Analysing the Generalisation and Reliability of Steering Vectors</a>, Tan et al., 2025<br><br>
+
+        </div>
+    </div>
+    <div class="margin-right-block">
+        </div>
+</div>
+  </body>
+</html>
